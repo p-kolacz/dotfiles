@@ -1,3 +1,6 @@
 /*
 !.gitignore
+!/.config/
+/.config/*
 
+!/.config/kitty/
