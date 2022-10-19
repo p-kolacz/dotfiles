@@ -4,3 +4,6 @@
 /.config/*
 
 !/.config/kitty/
+
+!/.zshenv
+!/.config/zsh/
