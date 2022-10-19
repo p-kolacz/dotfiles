@@ -3,6 +3,7 @@
 !/.config/
 /.config/*
 
+!/.config/fontconfig/
 !/.config/kitty/
 
 !/.zshenv
