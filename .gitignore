@@ -3,6 +3,7 @@
 !/.config/
 /.config/*
 
+!/.config/aseprite/
 !/.config/fontconfig/
 !/.config/kitty/
 
