@@ -5,8 +5,9 @@
 
 !/.config/aseprite/
 !/.config/fontconfig/
-!/.config/mpv/
 !/.config/kitty/
+!/.config/mpv/
+!/.config/nsxiv/
 
 !/.zshenv
 !/.config/zsh/

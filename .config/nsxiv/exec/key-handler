@@ -1,0 +1,138 @@
+#!/bin/bash
+
+# Called by nsxiv(1) after the external prefix key (C-x by default) is pressed.
+# The next key combo is passed as its first argument. Passed via stdin are the
+# images to act upon: all marked images, if in thumbnail mode and at least one
+# image has been marked, otherwise the current image. nsxiv(1) will block until
+# the handler terminates. It then checks which images have been modified and
+# reloads them.
+
+# By default nsxiv(1) will send one image per-line to stdin, however when using
+# -0 the image list will be NULL separated and the enviornment variable
+# "$NSXIV_USING_NULL" will be set to 1.
+
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+# where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
+# keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
+# If KEY has an uppercase equivalent, S-KEY is resolved into it. For instance,
+# K replaces S-k and Scedilla replaces S-scedilla, but S-Delete is sent as-is.
+
+# /home/piotr/repos/nsxiv/examples/key-handler
+
+exec &>> "$XDG_STATE_HOME/nsxiv.log"
+
+DEST_DIRS="$HOME/Cloud/Images $HOME/Data/Photos $HOME/tmp $HOME/Leathercraft"
+
+ICON=/usr/local/share/icons/hicolor/64x64/apps/nsxiv.png
+TMP_FILE=/tmp/nsxiv-kh-operation
+
+# Open RAW version of file (or file itself) in $1 app
+develop() {
+	app=$1
+	while read file; do
+		rootname="${file%.*}"
+		filename="${rootname}.DNG"
+		if [[ -f ${rootname}.DNG ]]; then
+			$app "${rootname}.DNG" &
+		elif [[ -f ${rootname}.PEF ]]; then
+			$app "${rootname}.PEF" &
+		else
+			$app "$file" &
+		fi
+	done
+}
+
+notify() {
+	notify-send -i $ICON "NSXIV" "$1"
+}
+
+# Perform operation (cp, mv) and write repeat instructions to tmp file
+operation() {
+	op=$1
+	dir="$2"
+	[[ -d $dir ]] || return
+	local status=""
+	while read file; do
+		local base_name=$(basename "$file")
+		local remote_filename="$dir/$base_name" 
+		[[ -f $remote_filename ]] && { status="$status\n$base_name already exists in $dir"; continue; }
+		local versions=("${file%.*}".*)
+		$op "${versions[@]}" "$dir"
+		status="$status\n${file%.*}.* $op-ed to $dir"
+	done
+	echo "$op $dir" > $TMP_FILE
+	notify "$status"
+}
+
+# Prompt for directory & perform operation (cp, mv)
+prompt_and_op() {
+	dir=$(find $DEST_DIRS -type d -not -path '*/.*' 2>/dev/null | sed "s|^$HOME/||" | rofi -dmenu -i -p " " -theme-str "window {width: 50%;}" -location 6)
+	[[ -n $dir ]] && operation $1 "$HOME/$dir"
+}
+
+# Repeat last operation if instructions fount in tmp file
+repeat() {
+	[[ -f $TMP_FILE ]] || return
+	read op dir < $TMP_FILE
+	operation $op "$dir"
+}
+
+resize() {
+	local i=0
+	while read file; do
+		local rootname=${file%.*}
+		local extension=${file##*.}
+		local new_name="${rootname}_$1.$extension"
+		convert "$file" -resize "$1" "$new_name" && i=$((i+1))
+	done
+	notify "Resized $i file(s) to $1"
+}
+
+prompt_resize() {
+	local sizes="CGA (320x200) 16:10\nHVGA (480x320) 3:2\nVGA (640x480) 4:3\nPAL (768x576) 4:3\nSVGA (800x600) 4:3\nXGA (1024x768) 4:3\n(1152x768) 3:2\n(1280x854) 3:2\n(1440x960) 3:2\nFull HD (1920x1080) 16:9\n2K (2048x1080) 17:9\n UHD-1 (3840x2160) 16:9\n4K (4096x2160) 17:9"
+	local entry=$(echo -e $sizes | rofi -dmenu -p " " -location 6)
+	[[ -n $entry ]] || return
+	local size=$(echo "$entry" | grep -Po "\d+x\d+")
+	resize "$size"
+}
+
+rotate() {
+	degree="$1"
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+		case "$(file -b -i "$file")" in
+		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+		*)           mogrify  -rotate "$degree" "$file" ;;
+		esac
+	done
+}
+
+set_wallpaper() {
+	read file
+	wallpaper set "$file"
+	notify "Wallpaper set:\n$file"
+}
+
+case "$1" in
+	period)   repeat ;;
+	w)        set_wallpaper ;;
+	x)        xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+	C-c)      while read file; do xclip -selection clipboard -target image/png "$file"; notify "$file content copied to clipboard"; done ;;
+	# "e")        while read file; do $TERMINAL -e sh -c "exiv2 '$file' | $PAGER" & done ;;
+	e)        while read file; do notify "$(exiv2 "$file" | column -t -s :)";  done ;;
+	i)        while read file; do notify "$(mediainfo "$file")"; done ;;
+	l)        while read file; do echo "$file"; done; kill $PPID ;; # dmenu imitation
+	g)        tr '\n' '\0' | xargs -0 gimp & ;;
+	G)        tr '\n' '\0' | xargs -0 gthumb & ;;
+	t)        develop rawtherapee ;;
+	d)        develop darktable ;;
+	c)        prompt_and_op cp ;;
+	m)        prompt_and_op mv ;;
+	C-d)      while read file; do trash "${file%.*}".*; done ;;
+	C-comma)  rotate 270 ;;
+	C-period) rotate  90 ;;
+	C-slash)  rotate 180 ;;
+	r)        prompt_resize ;;
+	1)        resize 1920x1080 ;;
+	4)        resize 3840×2160 ;;
+esac
+
