@@ -8,6 +8,8 @@
 !/.config/kitty/
 !/.config/mpv/
 !/.config/nsxiv/
+!/.config/picom.conf
+!/.config/python/
 
 !/.zshenv
 !/.config/zsh/
