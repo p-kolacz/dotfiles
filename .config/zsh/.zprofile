@@ -1,6 +1,5 @@
 # Runs at login as second config file
 
-source $ZDOTDIR/xdg-comply.zsh
 source $ZDOTDIR/plugins/ssh-agent.zsh
 
 path+="$HOME/.dotfiles/bin"

@@ -25,6 +25,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/config
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 # export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
+export PSQL_HISTORY="$XDG_STATE_HOME"/psql_history
 export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/startup.py
 export SOLARGRAPH_CACHE="$XDG_CACHE_HOME"/solargraph
 export SQLITE_HISTORY="$XDG_STATE_HOME"/sqlite_history
@@ -34,4 +35,5 @@ export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias pidgin="pidgin --config=$XDG_DATA_HOME/purple"
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 

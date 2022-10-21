@@ -9,7 +9,9 @@ export BROWSER="brave"
 export IMGVIEWER="nsxiv -a"
 export IMGRIFLE="nsxiv-rifle"
 export VMENU="rofi -dmenu"
-export LG_CONFIG_FILE="$DOTFILES/lazygit/config.yml,$DOTFILES/lazygit/${THEME_VARIANT:-dark}.yml"
+export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/${THEME_VARIANT:-dark}.yml"
+
+source $ZDOTDIR/xdg-comply.zsh
 
 source $($DOTFILES/bin/theme current)
 
