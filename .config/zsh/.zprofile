@@ -4,9 +4,9 @@ source $ZDOTDIR/xdg-comply.zsh
 source $ZDOTDIR/plugins/ssh-agent.zsh
 
 path+="$HOME/.dotfiles/bin"
+path+="$HOME/bin"
 path+="$HOME/.local/bin"
 path+="$HOME/.local/lib/node_modules/bin"
-path+="$HOME/.local/share/gem/ruby/3.0.0/bin"
 
 export CALIBRE_USE_SYSTEM_THEME=1
 export QT_QPA_PLATFORMTHEME="qt5ct"

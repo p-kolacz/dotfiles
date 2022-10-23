@@ -33,6 +33,8 @@ setopt autocd
 # [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
 [[ -d $DOTFILES/bin/diyfetch ]] && ("$DOTFILES/bin/diyfetch/timefetch")
 
+fortune confucius | lolcat
+
 
 eval "$(starship init zsh)"
 

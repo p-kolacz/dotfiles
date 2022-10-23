@@ -4,6 +4,7 @@
 /.config/*
 
 !/.config/aseprite/
+!/.config/dosbox/
 !/.config/fontconfig/
 !/.config/kitty/
 !/.config/lazygit/

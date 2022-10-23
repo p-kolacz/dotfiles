@@ -55,7 +55,7 @@ abbr pacown="pacman -Qo"
 abbr paclist="pacman -Ql"
 
 # Systemctl ---------------------------
-abbr sys="sudo systemctl"
+# abbr sys="sudo systemctl"
 # abbr sys="systemctl status"
 # abbr syse="sudo systemctl enable"
 # abbr sysd="sudo systemctl disable"
