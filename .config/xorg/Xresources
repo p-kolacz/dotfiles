@@ -1,0 +1,31 @@
+! Comment
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
+XTerm.vt100.foreground: #e5e5e5
+XTerm.vt100.background: #222222
+XTerm.vt100.font: xft:monospace:size=12
+
+Sxiv.foreground: #e7e7e7
+Sxiv.background: #282828
+Sxiv.font: monospace-12
+
+! Nsxiv.window.foreground: #e7e7e7
+! Nsxiv.window.background: #282828
+! Nsxiv.bar.font: monospace-12
+
+! dmenu
+dmenu.font: monospace-13
+! dmenu.background: #282828
+! dmenu.foreground: #ebdbb2
+dmenu.selbackground: #458588
+dmenu.selforeground: #ebdbb2
+
+Xcursor.size: 32
+
