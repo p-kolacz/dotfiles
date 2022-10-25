@@ -1,0 +1,64 @@
+#!/bin/bash
+
+if [ $# -lt 2 ]; then
+	echo "Usage: $(basename $0) [-f] destdir achieve.."
+	echo '-f forces creation of nonexistent destdir'
+	exit 1
+fi
+
+if [ "$1" = '-f' ]; then
+	FORCE=1
+	shift
+else
+	FORCE=0
+fi
+
+if [ -z "$1" ]; then
+	OUTPUT=.
+else
+	OUTPUT="$1"
+fi
+shift
+
+if [ ! -d "$OUTPUT" ]; then
+	if [ -e "$OUTPUT" ]; then
+		echo "'$OUTPUT' already exists and is not a directory"
+		exit 1
+	elif [ "$FORCE" != "0" ]; then
+		mkdir -p "$OUTPUT"
+	else
+		echo "'$OUTPUT' doesn't exist"
+		exit 1
+	fi
+fi
+
+exitcode=0
+
+for file; do
+	if [ ! -f "$file" ]; then
+		echo "'$file' is not a valid file"
+		continue
+	fi
+
+	FULL=$(readlink -f "$file")
+
+	cd "$OUTPUT"
+
+	case "$file" in
+		*.tar|*.tar.bz2|*.tbz2|*.tar.gz|*.tgz|*.tar.lz|*.tlz|*.tar.lzma|*.tar.xz|*.txz|*.tar.Z|*.tar.zst) tar xvf "$FULL" ;;
+		*.bz2) bunzip2 "$FULL" ;;
+		*.gz) gunzip -k "$FULL" ;;
+		*.lz4) unlz4 "$FULL" ;;
+		*.lzma) unlzma "$FULL" ;;
+		*.xz) unxz "$FULL" ;;
+		*.z) uncompress "$FULL" ;;
+		*.zst) unzstd "$FULL" ;;
+		*.7z|*.apk|*.cab|*.jar|*.iso|*.rar|*.zip) 7z x "$FULL" ;;
+		*) echo "'$file' cannot be extracted via this script"; exitcode=1 ;;
+	esac
+
+	cd "$OLDPWD"
+done
+
+exit $exitcode
+

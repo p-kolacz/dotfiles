@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+
+import sys, binascii
+print("%X" % binascii.crc32( open(sys.argv[1], "rb").read() ), end="")
+

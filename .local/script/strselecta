@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[[ -z $1 ]]  && exit 1
+
+file=$(dirname $0)/../share/txt/$1.txt
+
+[[ ! -f $file ]] && echo "Invalid file: $file" && exit 2
+
+field=${2:-1}
+val=$(cat "$file" | $VMENU | cut -d ' ' -f$field)
+[[ -n "$val" ]] && printf "$val" | xclip -selection clipboard && \
+	notify-send -i $HOME/.dotfiles/share/icons/arch.svg "String selecta" "$val copied"
+

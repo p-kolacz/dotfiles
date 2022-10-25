@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SHELL=/bin/bash
+export SYSTEMD_COLORS=true
+
+preview() {
+	systemctl status "$@"
+}
+
+export -f preview
+
+systemctl list-units --type=service --all --plain --no-pager --legend=false "$1" \
+	| sed -r -e "s/loaded\s+/🤖 /" -e "s/not-found/💔/" -e "s/dead\s+/☠️ /" -e "s/running/🏃/" -e "s/inactive/祿/" -e "s/active\s+/綠 /" \
+	| fzf \
+	--preview "preview $1 {1}" \
+	--preview-window=top,70% \
+
+	# --bind "F1:reload(_installed)" \
+

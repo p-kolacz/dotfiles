@@ -1,0 +1,21 @@
+#!/bin/bash
+
+[ $# -eq 1 ] || exit 1
+
+declare -A colors=([black]=0 [red]=1 [green]=2 [yellow]=3 [blue]=4 [magenta]=5 [cyan]=6 [white]=7)
+
+case $1 in
+	fg)
+		key=foreground ;;
+	bg)
+		key=background ;;
+	br*)
+		val=${colors[${1:2}]}
+		key=color$((val+8))
+	   	;;
+	*)
+		key=color${colors[$1]} ;;
+esac
+
+xrdb -query | grep "^*$key:" | cut -f2
+

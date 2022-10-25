@@ -1,0 +1,264 @@
+#!/bin/bash
+DOTFILES="$HOME/.dotfiles"
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                 Groups                                   ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+laptop() {
+	desktop
+	hw/bluetooth
+	hw/wifi
+	install xorg-xinput tlp # xinput 4 touchpad
+	copy "$DOTFILES/share/etc/udev/rules.d/backlight.rules" /etc/udev/rules.d/
+	copy "$DOTFILES/share/etc/X11/xorg.conf.d/40-touchpad.conf" /etc/X11/xorg.conf.d/
+}
+
+desktop() {
+	bspwm
+	fonts
+	pipewire
+	terminal
+	apps
+}
+
+bspwm() {
+	xorg
+	install bspwm sxhkd picom libnotify dunst rofi rofi-calc
+	ynstall polybar
+}
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                 Targets                                  ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+# stow -v --no-folding aseprite xnview 
+# devops() {
+	# install rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
+	# ynstall xsv-bin sql-language-server
+# }
+
+apps() {
+	install kitty syncthing
+	startenableuser syncthing.service
+	install arc-gtk-theme
+	install gimp gnome-font-viewer qalculate-gtk gnumeric pcmanfm	# GTK apps
+	install flameshot keepassxc # Ot Apps
+	install imagemagick mpv zathura-pdf-poppler
+	ynstall brave-bin haiku-icon-theme
+}
+
+cron() {
+	install cronie
+	startenable cronie.service
+}
+
+core/yay() {
+	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
+	yay --nodiffmenu --nocleanmenu --save
+}
+
+dev/docker() {
+	install docker docker-compose
+	startenable docker.service
+	sudo groupadd docker
+	sudo usermod --append --groups docker "$USER"
+	echo "Relogin for adding to gorup to take effect" 
+}
+dev/go() {
+	install go gopls
+}
+dev/nodejs() {
+	install npm typescript-language-server
+}
+dev/php() {
+	install php phpactor
+}
+dev/python() {
+	install python python-pip pyright
+}
+dev/ruby() {
+	echo "Install ruby using asdf or check if latest version is avaulable in repos"
+	# install ruby yaml-language-server
+	# gem install solargraph --conservative
+}
+dev/rails() {
+	dev/ruby
+	gem install rails --conservative
+}
+
+dotfiles() {
+	cd "$DOTFILES" || { echo "$DOTFILES"; exit 1; }
+	mkdir -p "$HOME"/.config/git "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/share/fonts
+	install stow
+	# shellcheck disable=SC2035
+	if [[ $DRYRUN ]]; then
+		stow -vn */
+		echo "DRYRUN: installing yay"
+		echo "copy $DOTFILES/share/git/config $HOME/.config/git"
+	else
+		core/yay
+		stow -v */
+		copy "$DOTFILES/share/git/config" "$HOME/.config/git"
+	fi
+}
+
+fonts() {
+	install noto-fonts-emoji ttf-roboto ttf-ubuntu-font-family ttf-nerd-fonts-symbols-2048-em
+	# ynstall nerd-fonts-victor-mono 
+}
+
+hw/bluetooth() {
+	install bluez bluez-utils
+	startenable bluetooth.service
+}
+hw/nvidia() {
+	install nvidia-dkms nvidia-prime
+}
+hw/printer() {
+	install cups system-config-printer
+	startenable cups.service
+}
+hw/printer-dcpt500w() {
+	hw/printer
+	install lib32-glibc		# this is needed for drivers to work, see https://aur.archlinux.org/packages/brother-dcpt500w
+	ynstall brother-dcpt500w
+}
+hw/scanner() {
+	install simple-scan sane-airscan
+}
+hw/redox() {
+	install avr-libc avrdude
+}
+hw/wacom() {
+	install xf86-input-wacom
+}
+hw/wifi() {
+	install wireless-regdb
+	# startenable NetworkManager.service
+}
+
+music() {
+	ynstall deadbeef deadbeef-mpris2-plugin deadbeef-plugin-musical-spectrum-gtk2-git
+}
+
+nvim() {
+	install neovim python python-pip lua-language-server ctags
+	ynstall figlet-fonts 
+	python -m pip install --user --upgrade pynvim
+}
+
+pipewire() {
+	install pipewire wireplumber pipewire-pulse pavucontrol playerctl
+}
+
+photo() {
+	install darktable
+}
+
+terminal() {
+	install git lsof man-db man-pages htop p7zip polkit ripgrep starship
+	install catdoc hexyl highlight mediainfo odt2txt
+	install fzf lazygit smartmontools trash-cli
+	install bash-language-server shellcheck
+	# TODO: remove simple-mtpfs?
+	ynstall gotop nerdfetch recutils simple-mtpfs wordnet-cli
+	nvim
+	vifm
+}
+
+vifm() {
+	install vifm fuse-zip curlftpfs sshfs meld
+	ynstall archivemount dragon-drop fuse3-p7zip-git
+}
+
+xorg() {
+	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx slock
+	sudo ln -s "$DOTFILES/share/etc/systemd/system/sleep@.service" /etc/systemd/system/
+	copy "$DOTFILES/share/etc/X11/xorg.conf.d/00-keyboard.conf" /etc/X11/xorg.conf.d/
+	copy "$DOTFILES/share/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
+	copy "$DOTFILES/share/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
+}
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                  Utilz                                   ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+install() {
+	[[ $DRYRUN ]] && { echo "DRYRUN installing:" "$@"; return; }
+	sudo pacman -S --needed --noconfirm "$@" 
+}
+ynstall() {
+	[[ $DRYRUN ]] && { echo "DRYRUN installing from AUR:" "$@"; return; }
+	yay -S --needed --nodiffmenu --nocleanmenu "$@" 
+}
+copy() {
+	sudo cp -v --no-clobber "$1" "$2"
+}
+startenable() {
+	[[ $DRYRUN ]] && { echo "DRYRUN start & enable: $1"; return; }
+	sudo systemctl enable "$1"
+	sudo systemctl start "$1"
+}
+startenableuser() {
+	[[ $DRYRUN ]] && { echo "DRYRUN start & enable --user: $1"; return; }
+	systemctl --user enable "$1"
+	systemctl --user start "$1"
+}
+usage() {
+	local funcs
+	funcs=$(declare -F | cut -d" " -f3 | grep -Ev "install|ynstall|startenable|usage" | column) # | tr "\n" ",")
+	cat << EOF
+$SCRIPT: Install/configure packages
+
+SYNOPSIS:
+	$SCRIPT [OPTION ...] TARGET
+
+OPTIONS:
+	-n, --dry-run       Don't do just show
+	-h, --help          Display help
+
+TARGETS:
+$funcs
+
+EOF
+}
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                   Run                                    ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+SCRIPT=${0##*/}
+OPTS=$(getopt --options n,h --longoptions dry-run,help --name "$SCRIPT" -- "$@") || exit 1
+eval set -- "$OPTS"
+
+while true; do
+	case "$1" in
+		-n|--dry-run)
+			DRYRUN=true
+			shift
+			;;
+		-h|--help)
+			usage
+			exit
+			;;
+		--)
+			shift
+			break
+			;;
+		*)
+			echo "Invalid argument: $1"
+			exit 1
+	esac
+done
+
+case $# in
+	0) usage; exit 2 ;;
+	1) ;;
+	*)
+		echo "Too many targets $#"; exit 3 ;;
+esac
+
+[[ ! $(typeset -f "$1") ]] && { echo "Invalid target: $1"; exit 4; }
+$1
+

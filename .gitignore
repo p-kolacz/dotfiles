@@ -12,6 +12,8 @@
 !/.config/nsxiv/
 !/.config/picom.conf
 !/.config/python/
-
 !/.zshenv
 !/.config/zsh/
+
+!/.local/script/
+

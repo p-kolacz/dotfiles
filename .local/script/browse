@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DBNAME=$1
+# KEY_NO=${2:-1}
+# BASE=$(dirname "$0")
+BASE="$HOME/Cloud/Exocortex/Databases"
+export DB=$BASE/db/$DBNAME.rec
+export TEMPL=$BASE/templ/$DBNAME
+SHELL=/bin/bash
+KEY=$(recinf -d "$DB" | grep %key | sed "s/%key: //")
+export KEY
+echo "$KEY"
+
+function preview() {
+	# echo "$1"
+	recsel -e "$KEY = '$1'" "$DB" 
+}
+
+export -f preview
+
+recsel "$DB" | \
+	recfmt -f "$TEMPL/fzf-list.templ" | \
+	column --table --separator "|" --output-separator "│" | \
+	fzf \
+	--layout=reverse \
+	--no-sort \
+	--preview="preview {1}" \
+	--preview-window=",30%" \
+	--delimiter='│'
+
+

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+CONFIG="$HOME/.config"
+THEMES="$HOME/.dotfiles/share/themes"
+CURRENT_THEME="$HOME/.local/config/theme"
+
+browse() {
+	local file
+	file=$(find "$THEMES"/*.sh -type f -printf "%f\n" | rofi -dmenu -i -p " ")
+	apply "$file"
+}
+
+apply() {
+	file=$THEMES/$1
+	[[ -f $file ]] || { echo "Invalid file: $1"; exit 1; }
+
+	ln -s --force "$file" "$CURRENT_THEME"
+	source "$CURRENT_THEME"
+
+	# Kitty
+	envsubst < "$CONFIG/kitty/colors/template.conf" > "$CONFIG/kitty/colors/local.conf"
+
+	# Dunst
+	envsubst < "$CONFIG/dunst/dunstrc.d/colors.template" > "$CONFIG/dunst/dunstrc.d/color.conf"
+
+	# zathura
+	envsubst < "$CONFIG/zathura/theme.template" > "$CONFIG/zathura/theme"
+}
+
+current() {
+	if [[ -f $CURRENT_THEME ]]; then
+		echo "$CURRENT_THEME"
+	else
+		# source "$(find "$DOTFILES/share/themes" -type f | head -n 1)"
+		find "$DOTFILES/share/themes" -type f | head -n 1
+	fi
+}
+
+case $1 in
+	apply)    apply ;;
+	current)  current ;;		
+	*)        browse ;;
+esac
+

@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+import subprocess
+
+COLORS = ['K', 'R', 'G', 'Y', 'B', 'M', 'C', 'W']
+RST = "\033[0m"
+
+def codes(prefix):
+	t = []
+	for i in range(len(COLORS)):
+		t.append(f"{prefix}{i}".center(4))
+	print("" + "".join(t))
+
+def foreground(prefix, sufix):
+	t = []
+	for k,v in enumerate(COLORS):
+		t.append(f"\033[{prefix}{k}m{v}{sufix}{RST}")
+	print(" " + "  ".join(t))
+		
+def background(prefix):
+	t = []
+	for i in range(len(COLORS)):
+		t.append(f"\033[{prefix}{i}m    {RST}")
+	print("".join(t))
+
+def font():
+	subprocess.run(["fc-match", "monospace"])
+	print()
+	
+
+def styles():
+	print(f"\033[1mbold(1){RST} \033[3mitalic(3){RST} \033[4munderline(4){RST} \033[4:3mundercurl(4:3){RST} \033[9mstrike(9){RST}\n")
+
+def plchars():
+	print("PL chars: EĘeęOÓoóAĄaąSŚsśLŁlłZŻŹzżźCĆcćNŃnń\n")
+
+def ligatures():
+	print("Ligatures: == === => ->")
+
+codes(3)
+foreground(3,1)
+foreground(9,2)
+codes(9)
+print()
+
+codes(4)
+background(4)
+background(10)
+codes(10)
+print()
+
+font()
+styles()
+plchars()
+ligatures()

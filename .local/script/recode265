@@ -1,0 +1,15 @@
+#!/bin/bash
+
+[[ $# -eq 0 ]] && { echo "Usage: recode265 file(s)"; exit 1; }
+
+for file in "$@"; do
+	base=$(basename "$file")
+	new_name="${base%.*}_x265.mp4"
+	if [[ -f $new_name ]]; then
+		echo "Already exists: $new_name"
+	else
+		echo "Recoding: $file -> $new_name"
+		ffmpeg -i "$file" -c:v libx265 -vtag hvc1 -c:a copy "$new_name"
+	fi
+done
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+DBDIR="$HOME/Cloud/Exocortex/Databases"
+
+if [[ $# -eq 0 ]]; then
+	dbfile=$(find "$DBDIR/db" -type f | fzf)
+	[[ -z $dbfile ]] && exit
+else
+	dbfile="$DBDIR/db/$1.rec"
+fi
+
+[[ -f $dbfile ]] || { echo "Invalid file: $dbfile"; exit 1; }
+cd "$DBDIR" || exit 2
+$EDITOR "$dbfile"
+

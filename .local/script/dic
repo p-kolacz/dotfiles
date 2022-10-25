@@ -1,0 +1,29 @@
+#!/bin/bash
+
+CACHE_FILE="$HOME/.cache/wnindex"
+
+if [[ ! -f $CACHE_FILE ]]; then
+	for f in /usr/share/wordnet/dict/index.[anv]*; do
+		tail -n +30 $f | cut -f1 -d' '
+	done | sort -u > $CACHE_FILE
+fi
+
+preview() {
+	local word=$1
+	local mode=$2
+	wn $word -$mode | grep -v "^Sense" | fmt -s -w $FZF_PREVIEW_COLUMNS
+}
+
+export SHELL=/bin/bash
+export -f preview
+
+cat $CACHE_FILE | fzf \
+	--preview "preview {} over" \
+   	--preview-window=top:80% \
+	--header $'Synonyms: ctrl- \e[94;4mn\e[0moun \e[94;4mv\e[0merb \e[94;4ma\e[0mdjective adve\e[94;4mr\e[0mb | Overview: ctrl-o' \
+	--bind "ctrl-o:preview:preview {} over" \
+	--bind "ctrl-n:preview:preview {} synsn" \
+	--bind "ctrl-v:preview:preview {} synsv" \
+	--bind "ctrl-a:preview:preview {} synsa" \
+	--bind "ctrl-r:preview:preview {} synsr"
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+FILE="$HOME/Cloud/Exocortex/Notes/Waga.md"
+
+if [[ $# -eq 0 ]]; then
+	vim "$FILE"
+else
+	entry="$(date +%F) - $(echo "$1")"
+	echo -e "$entry\n$(cat "$FILE")" > "$FILE"
+fi
+

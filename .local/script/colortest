@@ -1,0 +1,62 @@
+#!/bin/bash
+
+source $(dirname $0)/colorize.sh
+
+COL_WIDTH=10
+COLORS=(black red green yellow blue magenta cyan white)
+labels=(BL RD GR YL BL MG CY WH)
+
+for y in {0..7}; do 
+	ycolor=${COLORS[y]}
+	format $ycolor
+	echo -n " ${labels[y]} "
+	format reset
+    for x in {0..7}; do 
+		xcolor=${COLORS[x]}
+		ycolor=${COLORS[y]}
+		format bg$xcolor $ycolor
+		echo -n " ${labels[y]} "
+		format reset
+	done
+
+	ycolor=${COLORS[y]}
+	format br$ycolor
+	echo -n " ${labels[y]} "
+	format reset
+    for x in {0..7}; do 
+		xcolor=${COLORS[x]}
+		ycolor=${COLORS[y]}
+		format bgbr$xcolor $ycolor
+		echo -n " ${labels[y]} "
+		format reset
+	done
+	echo
+done
+
+for y in {0..7}; do 
+	ycolor=${COLORS[y]}
+	format br$ycolor
+	echo -n " ${labels[y]} "
+	format reset
+    for x in {0..7}; do 
+		xcolor=${COLORS[x]}
+		ycolor=${COLORS[y]}
+		format bg$xcolor br$ycolor
+		echo -n " ${labels[y]} "
+		format reset
+	done
+
+	ycolor=${COLORS[y]}
+	format br$ycolor
+	echo -n " ${labels[y]} "
+	format reset
+    for x in {0..7}; do 
+		xcolor=${COLORS[x]}
+		ycolor=${COLORS[y]}
+		format bgbr$xcolor br$ycolor
+		echo -n " ${labels[y]} "
+		format reset
+	done
+	echo
+done
+

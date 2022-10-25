@@ -1,0 +1,18 @@
+#!/bin/bash
+
+case "$1" in
+	get)
+		pacmd list-sinks | grep volume | head -n 1 | awk '{print $5}' ;;
+	set)
+		pactl set-sink-volume @DEFAULT_SINK@ "$2" ;;
+	inc)
+		pactl set-sink-volume @DEFAULT_SINK@ +5% ;;
+	dec)
+		pactl set-sink-volume @DEFAULT_SINK@ -5% ;;
+	toggle)
+		pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
+	muted)
+		pacmd list-sinks | grep mute | head -n 1 | awk '{print $2}' ;;
+	*)
+		echo "Usage: volume {get, set x, inc, dec, toggle, muted}"
+esac

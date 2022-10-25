@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# https://gist.github.com/AnatomicJC/e773dd55ae60ab0b2d6dd2351eb977c1
+
+
+[[ $# -ne 1 ]] && echo "Usage: android-get [apk|data]" && exit 1
+
+# -f see file, -3 third party apps only
+package=$(adb shell pm list packages -f -3 | fzf)
+[[ -z $package ]] && exit 1
+
+tmp=$(echo "$package" | sed "s/^package://") 
+file_name=$(echo ${tmp%=*})
+pkg_name=$(echo ${tmp##*=})
+
+case $1 in
+	apk)
+		adb pull $file_name $pkg_name.apk ;;
+	data)
+		adb backup -f $pkg_name.data $pkg_name ;;
+	*)
+		echo "Invalid option: $1"
+esac
+

@@ -1,0 +1,76 @@
+#!/bin/bash
+
+source colorize.sh
+export -f format
+export -f colorize
+
+SHELL=/bin/bash
+
+echo query > /tmp/pms_mode
+
+_header() {
+	echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+	[[ -z $1 ]] && format bold 
+	echo -n "F1 inst."
+	format reset && echo -n " │ "
+
+	[[ $1 == e ]] && format bold 
+	echo -n "F2 explicit"
+	format reset && echo -n " │ "
+
+	[[ $1 == ett ]] && format bold 
+	echo -n "F3 !req."
+	format reset && echo -n " │ "
+
+	[[ $1 == dt ]] && format bold 
+	echo -n "F4 orph."
+	format reset && echo -n " │ "
+
+	[[ $1 == avail ]] && format bold 
+	echo -n "F5 all"
+	format reset
+
+	echo " | F6 files │ F8 rem"
+
+	echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+}
+
+_info() {
+	local mode=$(cat /tmp/pms_mode)
+	([[ $mode == query ]] && pacman -Qi $1 || pacman -Si $1) | colorize 'Wymagany.*' red | colorize 'Zale.*' green | colorize 'Grup.*' blue
+}
+
+_installed() {
+	echo query > /tmp/pms_mode
+	_header $1
+	pacman -Qq$1
+}
+
+_avail() {
+	echo sync > /tmp/pms_mode
+	_header avail
+	pacman -Slq
+}
+
+export -f _header
+export -f _info
+export -f _installed
+export -f _avail
+
+package=$(_installed | fzf \
+	--header-lines 3 \
+	--layout=reverse-list \
+	--preview "_info {}" \
+	--preview-window=top,70% \
+	--bind "F1:reload(_installed)" \
+	--bind "F2:reload(_installed e)" \
+	--bind "F3:reload(_installed ett)" \
+	--bind "F4:reload(_installed dt)" \
+	--bind "F5:reload(_avail)" \
+	--bind "F6:execute(pacman -Ql {} | fzf)" \
+	--bind "F8:execute(sudo pacman -Rns {} < /dev/tty > /dev/tty 2>&1)" )
+
+mode=$(cat /tmp/pms_mode)
+[[ -n $package && $mode == "sync" ]] && sudo pacman -S "$package"
+

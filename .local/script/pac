@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function usage() {
+	echo "Usage: [orph|remorph|up|sync|lastup|set-mirrors|clear]"
+}
+
+case $1 in
+	orph)        pacman -Qdt ;;
+	remorph)     sudo pacman -Rs "$(pacman -Qqdt)" ;;
+	up)          sudo pacman -Syu ;;
+	sync)        sudo pacman -Sy ;;
+	lastup)      grep "starting full system upgrade" /var/log/pacman.log | tail ;;
+	set-mirrors)
+		sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+		cat /etc/pacman.d/mirrorlist
+		;;
+	clear)	# clear cache
+		yay -Sc ;;
+	*) usage
+esac
+

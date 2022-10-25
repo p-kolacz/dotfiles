@@ -1,0 +1,16 @@
+#!/bin/sh
+
+LAYOUTS="$DOTFILES/share/screenlayout/"
+
+label=$(find "$LAYOUTS"*sh | xargs -n 1 basename | sed "s/.sh$//" | $VMENU)
+
+file="$LAYOUTS$label.sh"
+
+[ -f "$file" ] || exit
+
+"$file" || exit 1
+
+ln -s "$file" "$HOME/.local/config/screenlayout"
+kbrate.sh
+wallpaper restore 
+

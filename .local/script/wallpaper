@@ -1,0 +1,28 @@
+#!/bin/bash
+
+FILE="$HOME/.cache/wallpaper"
+# WALLSET="feh --no-fehbg --bg-fill"
+WALLSET="xwallpaper --zoom"
+
+browse() {
+	# recursive thumbnail fullscreen
+	$IMGVIEWER -rtf ~/Cloud/Images/Wallpapers &
+}
+
+setwp() {
+	[[ -f $1 ]] || { echo "Invalid file: $1"; exit ; }
+	cp "$1" "$FILE"
+	$WALLSET "$FILE"
+}
+
+restorewp() {
+	[[ -f "$FILE" ]] || setwp "$HOME/.dotfiles/share/wallpapers/arch_layers.png"
+	$WALLSET "$FILE"
+}
+
+case "$1" in
+	"set") setwp "$2" ;;
+	"restore") restorewp ;;
+	*) browse
+esac
+

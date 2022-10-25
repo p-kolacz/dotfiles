@@ -1,0 +1,29 @@
+#!/bin/bash
+
+ID=$(xinput | grep -oP "Touchpad.*id=\K\d+")
+[[ -z $ID ]] && { echo "No touchpad found."; exit 1; } 
+
+toggle() {
+	enabled=$(xinput --list-props $ID | grep -oP "Device Enabled.*:.*\K\d")
+	[[ $enabled -eq 0 ]] && opt=enable || opt=disable
+	xinput $opt $ID \
+		&& notify-send Touchpad ${opt}d \
+		|| notify-send Touchpad "failed to $opt"
+}
+
+dwt_toggle() {
+	opt=$(xinput --list-props $ID | grep -oP "Disable While Typing Enabled \(\K\d+")
+	enabled=$(xinput --list-props $ID | grep -oP "Disable While Typing Enabled \(\d+\):\s+\K\d")
+	((enabled = !enabled))
+	xinput set-prop $ID $opt $enabled \
+		&& notify-send "Touchpad" "DWT set to $enabled" \
+		|| notify-send "Touchpad" "set-prop failed"
+}
+
+case $1 in
+	status)		xinput --list-props $ID ;;
+	toggle)		toggle ;;
+	dwt-toggle)	dwt_toggle ;;
+	*)			echo "Usage: touchpad [ status | toggle | dwt-toggle ]"
+esac
+
