@@ -1,0 +1,90 @@
+# https://github.com/baskerville/sxhkd
+# Reload: pkill -USR1 -x sxhkd
+
+#---------------------------------------------------------------------------------------#
+								  # Keyboard #
+#---------------------------------------------------------------------------------------#
+
+super + Return
+	$TERMINAL
+
+super + space
+	rofi -show drun -theme-str 'window \{width:33%;\}'
+
+super + Delete
+	power.sh
+
+super + Escape
+	slock
+
+Pause
+	slock
+
+super + {F1,F2,F3,F4,F10}
+	{strselecta icons,strselecta emoji,strselecta entities,strselecta boxes,mnter.sh}
+
+XF86Audio{Play,Prev,Next}
+	playerctl {play-pause,previous,next}
+
+XF86Audio{Raise,Lower}Volume
+	volume {inc,dec}
+
+XF86AudioMute
+	volume toggle
+
+XF86MonBrightnessUp
+	backlight +5
+
+XF86MonBrightnessDown   
+	backlight -5
+
+XF86TouchpadToggle
+	touchpad toggle
+
+super + 6
+	bluetoothctl power on
+
+plusminus
+	bluetoothctl power on
+
+# Apps --------------------------------
+
+Print
+	flameshot full -p ~/
+
+super + Print
+	flameshot gui
+
+super + equal
+	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '\{result\}' | xclip -selection clipboard" -theme-str 'window \{width:50%;height:20%;\}' -location 6
+
+super + parenleft
+	networkmanager_dmenu
+
+super + parenright
+	rofi-bluetooth
+
+
+#---------------------------------------------------------------------------------------#
+								   # Mouse #
+#---------------------------------------------------------------------------------------#
+
+button6
+	xdotool key ctrl+shift+Tab
+	# xte 'keydown Control_L' 'keydown Shift_L' 'key Tab' 'keyup Shift_L' 'keyup Control_L'
+
+button7
+	xdotool key ctrl+Tab
+	# xte 'keydown Control_L' 'key Tab' 'keyup Control_L'
+
+button10
+	long-press.sh press 10 ctrl+w
+	# xdotool key ctrl+w
+	# xte 'keydown Control_L' 'key W' 'keyup Control_L'
+
+@button10
+	long-press.sh release 10 ctrl+w
+
+button11
+	xdotool key ctrl+shift+m
+

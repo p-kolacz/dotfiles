@@ -23,7 +23,7 @@ screenlayout="$HOME/.local/config/screenlayout"
 source "$XDG_CONFIG_HOME/xorg/autostart.sh" > "$XDG_STATE_HOME/autostart.log" 2>&1
 
 { [ $WM == bspwm ] && 
-	sxhkd -c ~/.config/sxhkd/sxhkdrc ~/.config/bspwm/sxhkdrc ||
+	sxhkd -c ~/.config/sxhkd/global-mappings ~/.config/bspwm/wm-mappings ||
 	sxhkd; } &
 
 exec $WM > "$XDG_STATE_HOME/$WM.log" 2>&1

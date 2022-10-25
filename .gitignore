@@ -4,6 +4,7 @@
 /.config/*
 
 !/.config/aseprite/
+!/.config/bspwm/
 !/.config/dosbox/
 !/.config/fontconfig/
 !/.config/kitty/
@@ -12,6 +13,7 @@
 !/.config/nsxiv/
 !/.config/picom.conf
 !/.config/python/
+!/.config/sxhkd/
 !/.config/xorg/
 !/.config/zsh/
 !/.zshenv

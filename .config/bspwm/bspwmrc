@@ -1,0 +1,78 @@
+#! /bin/bash
+
+#------------------------------------------------------------------------------#
+								  # Monitors #
+#------------------------------------------------------------------------------#
+
+case $(monitors count) in
+	1)
+		bspc monitor "$(monitors primary)" --reset-desktops F Q W E R T A S D G C V
+		;;
+	2)
+		bspc monitor "$(monitors primary)" --reset-desktops F A S D G
+		bspc monitor "$(monitors secondary)" --reset-desktops Q W E R T C V
+		;;
+	3)
+		bspc monitor "$(monitors primary)" --reset-desktops F A S D G
+		bspc monitor "$(monitors left)"    --reset-desktops C V
+		bspc monitor "$(monitors right)"   --reset-desktops Q W E R T
+		;;
+esac
+
+# bspc config remove_disabled_monitors true
+# bspc config remove_unplugged_monitors true
+
+#------------------------------------------------------------------------------#
+								  # Desktops #
+#------------------------------------------------------------------------------#
+
+bspc desktop W -l monocle
+bspc desktop G -l monocle
+
+#------------------------------------------------------------------------------#
+								 # Distances #
+#------------------------------------------------------------------------------#
+
+bspc config border_width			1
+bspc config borderless_monocle		true
+bspc config focused_border_color	"$THEME_BLACK"
+bspc config active_border_color		"$THEME_BG"
+bspc config normal_border_color		"$THEME_BG"
+bspc config window_gap				16
+bspc config gapless_monocle			true
+bspc config split_ratio				0.52
+
+#------------------------------------------------------------------------------#
+								   # Mouse #
+#------------------------------------------------------------------------------#
+
+xsetroot -cursor_name left_ptr
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
+bspc config pointer_follows_monitor true
+
+#------------------------------------------------------------------------------#
+								   # Rules #
+#------------------------------------------------------------------------------#
+
+set_rule() {
+	state=$1 && shift
+	for class in "$@"; do
+		bspc rule -a "$class" state="$state"
+	done
+}
+
+bspc rule -r "*"
+bspc rule -a Screenkey manage=off
+bspc rule -a scratchpad state=floating sticky=on rectangle=1200x800+220+260
+bspc rule -a Gimp desktop=G follow=on
+set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal
+# set_rule tiled Zathura Emacs
+# set_rule fullscreen Meld
+
+#------------------------------------------------------------------------------#
+								   # Panel #
+#------------------------------------------------------------------------------#
+
+polybarctl restart &
+
