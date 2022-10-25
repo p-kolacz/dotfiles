@@ -31,10 +31,9 @@ setopt HIST_IGNORE_DUPS
 setopt autocd
 
 # [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
-[[ -d $DOTFILES/bin/diyfetch ]] && ("$DOTFILES/bin/diyfetch/timefetch")
+[[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
 
 fortune confucius | lolcat
-
 
 eval "$(starship init zsh)"
 

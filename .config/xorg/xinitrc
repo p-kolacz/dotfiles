@@ -2,7 +2,7 @@
 
 WM=bspwm
 
-userresources=$DOTFILES/xorg/Xresources
+userresources=$XDG_CONFIG_HOME/xorg/Xresources
 sysresources=/etc/X11/xinit/.Xresources
 
 [[ -f $sysresources ]] && xrdb -merge "$sysresources"
@@ -20,7 +20,7 @@ fi
 screenlayout="$HOME/.local/config/screenlayout"
 [[ -f $screenlayout ]] && $screenlayout
 
-source "$DOTFILES/xorg/autostart.sh" > "$XDG_STATE_HOME/autostart.log" 2>&1
+source "$XDG_CONFIG_HOME/xorg/autostart.sh" > "$XDG_STATE_HOME/autostart.log" 2>&1
 
 { [ $WM == bspwm ] && 
 	sxhkd -c ~/.config/sxhkd/sxhkdrc ~/.config/bspwm/sxhkdrc ||

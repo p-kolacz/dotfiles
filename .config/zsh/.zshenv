@@ -1,7 +1,6 @@
 # Runs always as first config file
 
 export ZDOTDIR="$HOME/.config/zsh"
-export DOTFILES="$HOME/.dotfiles"
 export TERMINAL="kitty"
 export PAGER="less"
 export EDITOR="nvim"
@@ -13,7 +12,7 @@ export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazy
 
 source $ZDOTDIR/xdg-comply.zsh
 
-source $($DOTFILES/bin/theme current)
+source $($HOME/.local/script/theme current)
 
 [[ -f $HOME/.local/config/zsh/custom.zshenv ]] && source $HOME/.local/config/zsh/custom.zshenv
 
