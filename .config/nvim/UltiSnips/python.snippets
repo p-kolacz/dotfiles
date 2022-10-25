@@ -1,0 +1,152 @@
+snippet =
+print($1)
+endsnippet
+
+snippet ==
+################################################################################
+endsnippet
+
+snippet --
+# ---------------------------------------------------------------------------- #
+endsnippet
+
+snippet expand_home
+os.path.expanduser($0)
+endsnippet
+
+snippet args
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.set_defaults(func=run_action)
+subparsers = parser.add_subparsers()
+
+sp_preview = subparsers.add_parser("preview")
+sp_preview.add_argument("line")
+sp_preview.set_defaults(func=preview_action)
+
+subparsers.add_parser("setup").set_defaults(func=setup_action)
+
+args = parser.parse_args()
+args.func(args)
+
+endsnippet
+
+snippet call_func_by_string
+globals()["$1"]()
+endsnippet
+
+snippet capture_signal "Capture system signal like SIGINT"
+import signal
+import sys
+
+def signal_handler(sig, frame):
+	print('You pressed Ctrl+C!')
+	sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+endsnippet
+
+snippet file2list
+f.readlines()
+endsnippet
+
+snippet file_basename "File basename?"
+from pathlib import Path
+Path($1).stem
+endsnippet
+
+snippet file_ext
+from pathlib import Path
+Path($1).suffix
+endsnippet
+
+snippet file_size
+os.path.getsize(${1:path})
+endsnippet
+
+snippet for_kv "Iterate keys and values of list"
+for k,v in enumerate(listvar):
+	$0
+endsnippet
+
+snippet hash "Hashing functions"
+import hashlib
+hashlib.md5(b"string to hash").hexdigest()
+hashlib.sha1(s.encode()).hexdigest()
+endsnippet
+
+snippet input_edit "Input prompt prefilled with text" b
+def input_edit(prompt, text):
+	import readline
+	def hook():
+		readline.insert_text(text)
+		readline.redisplay()
+	readline.set_pre_input_hook(hook)
+	result = input(prompt)
+	readline.set_pre_input_hook()
+	return result
+endsnippet
+
+snippet iterate_indexes "Iterate over list indexes"
+for i in range(len(${1:list})):
+	$0
+endsnippet
+
+snippet list_files
+Path(${1:folder}).glob("${2:glob}")
+endsnippet
+
+snippet number2bigletter "Converts number to corresponding big letter 1->A, etc." i
+chr(ord("@") + ${1:number})
+endsnippet
+
+snippet number2smallletter "Converts number to corresponding small letter 1->a, etc." i
+chr(ord("\`") + ${1:number})
+endsnippet
+
+snippet openURL "Open URL in browser"
+browser = os.environ.get("BROWSER")
+subprocess.run([browser, url])
+endsnippet
+
+snippet overwrite_line "" i
+print($1, end="\r")
+endsnippet
+
+snippet regex_matched_part "Use regex matched part"
+\1
+endsnippet
+
+snippet remove_by_index "Remove item from list by index"
+list.pop(index)
+endsnippet
+
+snippet request_content "gzip and deflate automatically decoded"
+Response.content
+endsnippet
+
+snippet run_pipe "Run process with input"
+subprocess.run(${1:process}, text=True, input=${2:input})
+endsnippet
+
+snippet run_result "Run process and capture output"
+result = subprocess.run(${1:process}, stdout=subprocess.PIPE)
+result.stdout
+endsnippet
+
+snippet script_filename "Script name from argparse"
+parser.prog
+endsnippet
+
+snippet script_full_path
+os.path.abspath(parser.prog)
+endsnippet
+
+snippet script_full_dir
+os.path.dirname(os.path.abspath(parser.prog))
+endsnippet
+
+snippet wait_any_key
+input("Press any key...")
+endsnippet

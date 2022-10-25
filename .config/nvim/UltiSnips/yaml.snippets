@@ -1,0 +1,12 @@
+snippet gha-get-version
+      - name: Get version
+        id: get-version
+        run: echo "VERSION=$(git describe --tags)" >> $GITHUB_OUTPUT
+endsnippet
+
+snippet gha-debug-version
+      - name: Debug version
+        run: |
+          echo "The version is: ${{ steps.get-version.outputs.VERSION }} "
+endsnippet
+

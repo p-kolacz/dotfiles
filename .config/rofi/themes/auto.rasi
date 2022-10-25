@@ -1,0 +1,80 @@
+/* https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown */
+
+* {
+	/* background-color: transparent; */
+	background-color: inherit;
+	color: inherit;
+}
+
+window {
+	width: 30%;
+	border: 1px;
+	background-color: ${THEME_BG};
+	color: ${THEME_FG};
+	border-color: ${THEME_BLACK};
+	/* border-radius: 30px; */
+}
+
+inputbar {
+	border: 0 0 1px 0;
+	border-color: ${THEME_BG};
+	children: [prompt, entry, num-filtered-rows, textbox-slash, num-rows, case-indicator];
+}
+prompt {
+	background-color: ${THEME_BG};
+    padding: 8px;
+}
+entry {
+    padding: 8px;
+	color: ${THEME_FG};
+}
+num-filtered-rows {
+    padding: 8px 0 8px 8px;
+}
+textbox-slash {
+	padding: 8px 0;
+	expand: false;
+	content: "/";
+}
+num-rows {
+    padding: 8px 8px 8px 0;
+}
+case-indicator {
+    padding: 8px;
+	background-color: ${THEME_BG};
+}
+
+listview {
+    scrollbar: true;
+	lines: 10;
+}
+scrollbar {
+	enabled: false;
+	handle-color: ${THEME_BLACK};
+}
+
+element {
+	padding: 4px 8px;
+}
+element-icon {
+	margin: 0 8px 0 0;
+	/* padding-right: 15px; */
+}
+element-text {
+	text-color: ${THEME_FG};
+}
+
+element selected {
+	background-color: ${THEME_ACCENT};
+}
+element-text selected {
+	text-color: ${THEME_BG};
+		
+}
+
+textbox {
+	text-color: ${THEME_FG};
+	padding: 0 15px;
+}
+
+/* vim:ft=css

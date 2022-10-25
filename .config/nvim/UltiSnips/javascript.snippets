@@ -1,0 +1,296 @@
+snippet hsl
+function hsl(h, s, l) {
+	return "hsl(" + h + ", " + s + "%, " + l + "%)"
+}
+endsnippet
+
+snippet rgb2hex
+function rgb2hex(rgb)
+{
+	var ret = "#"
+	var rgb = rgb.substring(4, rgb.length-1).split(", ")
+	for(var i in rgb)
+		ret += Number(rgb[i]).toString(16)
+			return ret.toUpperCase()
+}
+endsnippet
+
+snippet domready
+window.addEventListener('DOMContentLoaded', () => {
+	$0
+});
+
+endsnippet
+
+snippet $
+function $(selector) { return document.querySelectorAll(selector) }
+
+endsnippet
+
+snippet applyArrayToConstructor
+var s = new (Function.prototype.bind.apply(Something, [null, a, b, c]))
+endsnippet
+
+snippet cookiesCrap
+$("#cookie-notice .cookie-notice-button").click(function() {
+	setCookie("cookies_accepted", "1", 9999)
+	$("#cookie-notice").fadeOut()
+})
+function setCookie(name,value,days) {
+	var expires = "";
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime() + (days*24*60*60*1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+endsnippet
+
+snippet czasu
+function czasu(x,unit)
+{
+	var odm = {
+		milleniów:	['millenium','millenia'],
+		wieków:		['wiek','wieki'],
+		lat:		['rok','lata'],
+		kwartałów:	['kwartał','kwartały'],
+		miesięcy:	['miesiąc','miesiące'],
+		tygodni:	['tydzień','tygodnie'],
+		dni:		['dzień','dni']
+	}
+
+	if(!odm[unit]) odm[unit] = [unit + 'a', unit + 'y']
+	if(x == 1) return odm[unit][0]
+	if(x > 21) x %= 10
+	return x >=2 && x <= 4 ? odm[unit][1] : unit
+}
+endsnippet
+
+snippet decimalSeparator
+(.1).toLocaleString().charAt(1)
+endsnippet
+
+snippet detectShittyBrowser
+(/msie|trident|edge/i).test(navigator.userAgent)
+endsnippet
+
+snippet dl2accordion
+$(function() {
+	var allPanels = $('.accordion > dd').hide()
+
+	$('.accordion > dt > a').click(function() {
+		if($(this).parent().hasClass('active'))
+		{
+			$(this).parent().removeClass('active')
+			allPanels.slideUp()
+		}
+		else
+		{
+			$('.accordion > dt.active').removeClass('active')
+			$(this).parent().addClass('active')
+			allPanels.slideUp()
+			$(this).parent().next().slideDown()
+		}
+		return false
+	});
+})
+endsnippet
+
+snippet fluidVideo
+$(function() {
+	var $allVideos = $("iframe[src*='//player.vimeo.com'], iframe[src*='//www.youtube.com'], object, embed"),
+	$fluidEl = $("article");
+
+	$allVideos.each(function() {
+		$(this)
+			// jQuery .data does not work on object/embed elements
+			.attr('data-aspectRatio', this.height / this.width)
+			.removeAttr('height')
+			.removeAttr('width');
+	});
+
+	$(window).resize(function() {
+		var newWidth = $fluidEl.width();
+		$allVideos.each(function() {
+			var $el = $(this);
+			$el
+				.width(newWidth)
+				.height(newWidth * $el.attr('data-aspectRatio'));
+		});
+	}).resize();
+});
+endsnippet
+
+snippet lazyHash "Sets #anchor in URL without scrolling to it"
+function lazyHash(hash)
+{
+	var
+		id = hash.replace(/^.*#/, ''),
+		elem = document.getElementById(id);
+	elem.id = id + '-tmp';
+	window.location.hash = hash;
+	elem.id = id;
+}
+endsnippet
+
+snippet log
+function l() { window.console && console.log.apply(console,arguments) }
+endsnippet
+
+snippet mobile_menu
+$('#menuswitch').click(function() {
+	$('#mainmenu').toggle()
+	return false
+})
+
+$(document).mouseup(function(e) {
+	var menu = $('#mainmenu');
+	if($('#menuswitch').css('display') == 'block')
+		if(!menu.is(e.target) // The target of the click isn't the container.
+			&& menu.has(e.target).length === 0) // Nor a child element of the container
+		{
+			menu.hide();
+		}
+});
+endsnippet
+
+snippet objectEmpty "Is object empty"
+Object.keys(obj).length === 0 && obj.constructor === Object
+endsnippet
+
+snippet optionTest "Get text of selected `select` option"
+$( "#myselect option:selected" ).text()
+endsnippet
+
+snippet preloadImages
+function preloadImages(imgs)
+{
+	for(var i in imgs)
+	{
+		var img = new Image()
+		img.src = 'img/' + imgs[i]
+	}
+}
+endsnippet
+
+snippet rwd_size
+$(function() {
+	if(location.hostname === "localhost")
+	{
+		$('body').append('<div style="position: fixed; left: 47%; top: 0; background: #111; color: #eee; font: 12px sans-serif; padding: 0 2px; z-index: 10000" id="viewport-size-234069873"></div>')
+		$(window).resize(function() {
+			$('#viewport-size-234069873').html(Math.max(document.documentElement.clientWidth, window.innerWidth || 0))
+		})
+		$(window).resize()
+	}
+})
+endsnippet
+
+snippet scroll2anchor
+$.fn.scrollTo = function(speed, easing) {
+	$('html,body').stop().animate({scrollTop: $(this).offset().top}, speed, easing)
+}
+
+$.fn.scrollToAnchor = function(speed, easing) {
+	$($(this).attr('href')).scrollTo(speed, easing)
+}
+endsnippet
+
+snippet sequentialFade
+$.fn.sequentialFadeIn = function(delay, initialSpeed, easing) {
+	if(!delay)
+		delay = 1000
+	if(!initialSpeed)
+		initialSpeed = 1000
+	if(!easing)
+		easing = 2
+
+	var $elements = $(this), currentIndex = -1, currentSpeed = initialSpeed
+
+	setTimeout(fadeIn, delay)
+
+	function fadeIn()
+	{
+		if(++currentIndex == $elements.length)
+			return
+
+		$($elements[currentIndex]).animate({opacity: 1})
+		setTimeout(fadeIn, currentSpeed)
+		currentSpeed /= easing
+	}
+}
+endsnippet
+
+snippet slugGenerator "Generates slug from string"
+/*
+ * Slug generator v1.0
+ * Generates slug from string, replacing whitespaces with hypens and removing unwanted chars
+ */
+
+(function() {
+	'use strict';
+	var charMap = {'ß':'ss','à':'a','á':'a','â':'a','ã':'a','ä':'ae','å':'a','æ':'ae','ç':'c','è':'e','é':'e','ê':'e','ë':'e','ì':'i','í':'i','î':'i','ï':'i','ð':'d','ñ':'n','ò':'o','ó':'o','ô':'o','õ':'o','ö':'oe','ő':'o','ø':'o','ù':'u','ú':'u','û':'u','ü':'ue','ű':'u','ý':'y','þ':'th','ÿ':'y','α':'a','β':'b','γ':'g','δ':'d','ε':'e','ζ':'z','η':'h','θ':'8','ι':'i','κ':'k','λ':'l','μ':'m','ν':'n','ξ':'3','ο':'o','π':'p','ρ':'r','σ':'s','τ':'t','υ':'y','φ':'f','χ':'x','ψ':'ps','ω':'w','ά':'a','έ':'e','ί':'i','ό':'o','ύ':'y','ή':'h','ώ':'w','ς':'s','ϊ':'i','ΰ':'y','ϋ':'y','ΐ':'i','ş':'s','ı':'i','ğ':'g','ќ':'kj','љ':'lj','њ':'nj','тс':'ts','а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'zh','з':'z','и':'i','й':'j','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','ш':'sh','щ':'sh','ъ':'u','ы':'y','ь':'','э':'e','ю':'yu','я':'ya','є':'ye','і':'i','ї':'yi','ґ':'g','č':'c','ď':'d','ě':'e','ň':'n','ř':'r','š':'s','ť':'t','ů':'u','ž':'z','ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ś':'s','ź':'z','ż':'z','ā':'a','ē':'e','ģ':'g','ī':'i','ķ':'k','ļ':'l','ņ':'n','ū':'u'};
+
+	window.slug = function(s)
+	{
+		s = s.toLowerCase();
+		var ret = '';
+		for(var i in s)
+			if(charMap[s[i]])
+				ret += charMap[s[i]]
+			else
+				ret += s[i]
+		return ret.replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-');
+	}
+})();
+endsnippet
+
+snippet smoothScroll
+$.fn.smoothScroll = function(speed, easing) {
+	$(this).click(function() {
+		$('html,body').stop().animate({
+			scrollTop: $($(this).attr("href")).offset().top
+		}, speed, easing)
+	})
+}
+endsnippet
+
+snippet textareaTab
+$(function(){
+	$("textarea").keydown(function(e) {
+		if(e.keyCode === 9) { // tab was pressed
+			// get caret position/selection
+			var start = this.selectionStart;
+			var end = this.selectionEnd;
+
+			var $this = $(this);
+			var value = $this.val();
+
+			// set textarea value to: text before caret + tab + text after caret
+			$this.val(value.substring(0, start)
+				+ "\t"
+				+ value.substring(end));
+
+			// put caret at right position again (add one for the tab)
+			this.selectionStart = this.selectionEnd = start + 1;
+
+			// prevent the focus lose
+			e.preventDefault();
+		}
+	});
+})
+endsnippet
+
+snippet time
+function curtime()
+{
+	var
+		date = new Date(),
+		hours = date.getHours(),
+		min = date.getMinutes(),
+		sec = date.getSeconds()
+	return (hours < 10 ? '0' + hours : hours) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec)
+}
+endsnippet
+

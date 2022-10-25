@@ -1,0 +1,10 @@
+set default-bg "$THEME_BG"
+set default-fg "$THEME_FG"
+set statusbar-bg "$THEME_BG"
+set statusbar-fg "$THEME_FG"
+set notification-bg "$THEME_BG"
+set notification-fg "$THEME_FG"
+
+set recolor-lightcolor "$THEME_BG"
+set recolor-darkcolor "$THEME_FG"
+

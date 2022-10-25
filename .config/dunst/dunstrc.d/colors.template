@@ -1,0 +1,18 @@
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "$THEME_BG"
+    foreground = "$THEME_FG"
+    frame_color = "$THEME_BLUE2"
+
+[urgency_normal]
+    background = "$THEME_BG"
+    foreground = "$THEME_FG"
+    frame_color = "$THEME_ACCENT"
+
+[urgency_critical]
+    background = "$THEME_BG"
+    foreground = "$THEME_FG"
+    frame_color = "$THEME_RED"
+
+# vim: ft=cfg

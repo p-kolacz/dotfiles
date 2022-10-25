@@ -1,0 +1,69 @@
+snippet 301
+Redirect 301 /retiredpage.html http://www.xyz.com/newpage.html
+endsnippet
+
+snippet addwww
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} (.+)$
+RewriteRule ^(.*)$ https://www.%1/\$1 [R=301,L] .
+endsnippet
+
+snippet auth
+AuthName "Auth"
+AuthType Basic
+AuthUserFile /home/virtual/www/.htusers
+require valid-user
+
+Deny from all
+Allow from 1.1.1.1
+Order deny,allow
+Satisfy any
+endsnippet
+
+snippet https
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+endsnippet
+
+snippet ifmodule "IfModule mod_rewrite" b
+<IfModule mod_rewrite.c>
+</IfModule>
+endsnippet
+
+snippet killwww
+RewriteEngine On
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} ^www.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/\$1 [R=301,L]
+endsnippet
+
+snippet noindex
+Options -Indexes
+endsnippet
+
+snippet noindexhome
+Options -DirList
+endsnippet
+
+snippet redirect_ip
+RewriteEngine On
+RewriteCond %{REMOTE_ADDR} !^1.2.3.4$
+RewriteRule ^(.*)$ /old/\$1 [L]
+# Add In /old directory : RewriteEngine On
+endsnippet
+
+snippet rewrite
+RewriteRule \.(js|css|gif|png|jpg|swf)$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?url=\$1 [QSA,L]
+endsnippet
+
+snippet skipdir
+RewriteEngine On
+RewriteRule ^(.*)$ /public/\$1 [L]
+endsnippet
+

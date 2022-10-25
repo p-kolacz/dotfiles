@@ -1,0 +1,13 @@
+# vim:ft=vim commentstring=#%s
+
+include theme
+set sandbox none
+set selection-clipboard clipboard
+
+set font "monospace 12"
+set guioptions "sv"
+
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map p print

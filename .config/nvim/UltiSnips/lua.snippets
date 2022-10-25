@@ -1,0 +1,61 @@
+snippet starts_with
+function string.starts(string,start)
+	return string.sub(string,1,string.len(start))==start
+end
+endsnippet
+
+snippet edit_command "edit from variable"
+execute 'edit' func().'.txt'
+endsnippet
+
+snippet pr
+print($1)
+$0
+endsnippet
+
+snippet capitalize
+local function capitalize(s)
+	return s:sub(1,1):upper()..s:sub(2)
+end
+$0
+endsnippet
+
+# snippet clone
+# function table.clone(org)
+# 	return {table.unpack(org)}
+# end
+
+# endsnippet
+
+snippet file_relative_path
+@%
+endsnippet
+
+snippet full_path
+expand('%:p')
+endsnippet
+
+snippet file_base
+expand('%:t:r')
+endsnippet
+
+snippet file_extension
+expand('%:e')
+endsnippet
+
+snippet file_root_path
+expand('%:p:h')
+endsnippet
+
+snippet randomize "initialize random generator"
+math.randomseed(os.time())
+endsnippet
+
+snippet random_table_element
+${1:table}[math.random(#$1)]
+endsnippet
+
+snippet round
+math.floor($1 + 0.5)$0
+endsnippet
+

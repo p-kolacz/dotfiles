@@ -1,0 +1,36 @@
+snippet jsconfig
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"checkJs": false
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
+
+endsnippet
+
+snippet card
+"$1": {
+	"no":		"$2",
+	"rarity":	"$3",
+	"cost":		{$4},
+	"effects":	{ $5 }
+},
+endsnippet
+
+snippet cp
+"$1": {
+	"no":		"00$2",
+	"rarity":	"${3:common}",
+	"cost":		{},
+	"effects":	{ "punishment": $4 }
+},
+endsnippet
+
+snippet s
+"sympathy": { "defendant": $1, "victim": $2 }
+endsnippet
+

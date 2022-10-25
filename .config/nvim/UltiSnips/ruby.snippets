@@ -1,0 +1,71 @@
+snippet uppercase
+$1.upcase
+endsnippet
+
+snippet lowercase
+$1.downcase
+endsnippet
+
+snippet case "switch/case/match"
+case ${1:var}
+  when ${2:condition}
+    ${3:action}
+  else
+    ${4:default}
+end
+
+endsnippet
+
+snippet loop
+loop do
+  $1
+end
+
+endsnippet
+
+snippet @exceptions "try/catch"
+begin
+  ...
+rescue ZeroDivisionError => e
+  ...
+end
+endsnippet
+
+snippet @string_interpolation
+"Hello, #{name}!"
+endsnippet
+
+snippet @next
+for i in 1..10
+  next if i % 2 == 0
+  puts i
+end
+endsnippet
+
+snippet @array_map "applies block expr to every element of input_array"
+output_array = input_array.map { |n| n * 5 }
+output_array = input_array.map &:capitalize
+endsnippet
+
+snippet @array_select "return all matched elements"
+output_array = input_array.select { |x| x[:active] }
+endsnippet
+
+snippet @array_detect "return first match"
+output_array = input_array.detect { |x| x[:active] }
+endsnippet
+
+snippet @array_reduce "return one"
+value = input_array.reduce(0) do |total, x|
+  total = total + x
+end
+endsnippet
+
+snippet @array_count "return count of elements matching expr"
+count = input_array.count { |x| x == 1 }
+endsnippet
+
+snippet @safe_navigation "skip if nil"
+name = customer&.first_name
+endsnippet
+

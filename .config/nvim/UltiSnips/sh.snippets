@@ -1,0 +1,168 @@
+snippet absolute_path "Absolute path with file name"
+realpath $0
+endsnippet
+
+snippet assoc_array
+declare -A ${1:var}=([${2:key}]=${3:value})
+endsnippet
+
+snippet case
+case $1 in
+	$0) ;;
+	*)
+esac
+
+endsnippet
+
+snippet color
+"\e[$1m"
+endsnippet
+
+snippet coloreset
+"\e[0m"
+endsnippet
+
+snippet default "parameter default value"
+${$1:-$2}
+endsnippet
+
+snippet default_assign "parameter default value assign"
+${$1:=$2}
+endsnippet
+
+snippet delete_line_in_file
+sed -i "/${1:regex}/c\\" ${2:filename}
+endsnippet
+
+snippet file_name "root name of file" i
+${${1:filename}%.*}
+endsnippet
+
+snippet file_ext "file extension" i
+${${1:filename}##*.}
+endsnippet
+
+snippet float_calc
+bc <<< "scale=2; $1"
+endsnippet
+
+snippet function_exists
+typeset -f ${1:function_name} > /dev/null$0
+endsnippet
+
+snippet is_binary "Is file binary"
+file --dereference --mime-encoding ${1:filename} | grep -q binary
+endsnippet
+
+snippet last_exit
+$?
+endsnippet
+
+snippet list_functions "list functions declared in script"
+declare -F | cut -d" " -f3
+endsnippet
+
+
+snippet log2file
+exec >> ${1:filename}
+exec 2>&1
+
+endsnippet
+
+snippet lowercase
+${${1:var},,}
+endsnippet
+
+snippet uppercase
+${${1:var}^^}
+endsnippet
+
+snippet capitalize
+${${1:var}^}
+endsnippet
+
+snippet kill_eol
+tr -d "\n" < ${1:filename}
+endsnippet
+
+snippet line_count
+wc -l < ${1:filename}
+endsnippet
+
+snippet nth_line
+tail -n+${1:line_no} ${2:filename} | head -1
+endsnippet
+
+snippet overwrite_line
+echo -en "$1\r"
+endsnippet
+
+snippet pipe_echo "pipe text to command instead of `echo text | command`"
+${1:command} <<< ${2:text}
+endsnippet
+
+snippet pipe_file "pipe file to cmd instead of `cat file | command`"
+${1:command} < ${2:file}
+endsnippet
+
+snippet read_first_line
+read line < ${1:filename}
+endsnippet
+
+snippet remove_last_char
+${${1:var}%?}
+endsnippet
+
+snippet remove_last_file_line "Remove last line from file"
+sed -i '$ d' ${1:filename}
+endsnippet
+
+snippet run_function "Run script function or 'usage'"
+[[ ! $(typeset -f "\$1") ]] && { usage; exit 1; }
+$1
+endsnippet
+
+snippet script_name
+${0##*/}
+endsnippet
+
+snippet script_dir
+$(dirname "$0")
+endsnippet
+
+snippet sed_multi
+sed -e "$1" -e "$2"
+endsnippet
+
+snippet sed_use_pattern
+sed "s/${1:pattern}/&/"
+endsnippet
+
+snippet sort_in_place
+sort -o ${1:filename} ${2:filename}
+endsnippet
+
+snippet substr
+${${1:var}:${2:start}:${3:length}}
+endsnippet
+
+snippet wait_for_last_bg_process
+wait $!
+endsnippet
+
+snippet remove_first_line
+| tail -n + 2
+endsnippet
+
+snippet remove_last_line
+| head -n -1
+endsnippet
+
+snippet runfunc
+usage() {
+	printf "Usage: ${0##*/} [%s]\n" $(declare -F | cut -d" " -f3 | tr "\n" "|")
+}
+
+[[ $# -eq 0 || ! $(typeset -f $1) ]] && { usage; exit 1; } || $1
+endsnippet
+

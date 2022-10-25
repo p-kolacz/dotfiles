@@ -1,0 +1,16 @@
+[core]
+	pager = "less -R"
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[mergetool "nvim"]
+	cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE"
+[mergetool "meld"]
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[include]
+	path = ~/.local/config/gitconfig

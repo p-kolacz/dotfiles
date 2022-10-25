@@ -1,0 +1,12 @@
+snippet command2function "Define command for function"
+command! -nargs=+ ${1:CommandName} call ${2:FunctionName}(<f-args>)$0
+endsnippet
+
+snippet file_exists "Check if file exists" i
+filereadable($1)$0
+endsnippet
+
+snippet split_by_chars "Split string by characters"
+split($1, '\zs')$0
+endsnippet
+

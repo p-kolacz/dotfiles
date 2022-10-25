@@ -1,0 +1,358 @@
+" vim: filetype=vifm
+
+" ------------------------------------------------------------------------------
+"								  Environment
+" ------------------------------------------------------------------------------
+
+" set shell=/bin/bash
+set vicmd=nvim
+
+" ------------------------------------------------------------------------------
+"								   Behaviour
+" ------------------------------------------------------------------------------
+
+" Controls displaying of dot directories.
+set dotdirs=
+
+" This makes vifm perform file operations on its own instead of relying on standard utilities like `cp`.
+set syscalls
+
+" This is how many directories to store in the directory history.
+set history=100
+
+" Automatically resolve symbolic links on l or Enter.
+set nofollowlinks
+
+" Maximum number of changes that can be undone.
+set undolevels=100
+
+" Use Vim's format of help file (has highlighting and "hyperlinks").
+" If you would rather use a plain text help file set novimhelp.
+set vimhelp
+
+" What should be saved automatically between vifm sessions.
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" Don't do too many requests to slow file systems
+if !has('win')
+    set slowfs=curlftpfs
+endif
+
+" ------------------------------------------------------------------------------
+"								   Appearance
+" ------------------------------------------------------------------------------
+
+" List of color schemes to try (picks the first one supported by the terminal)
+colorscheme auto
+
+" Icons
+source ~/.config/vifm/favicons.vifm
+
+" Format for displaying time in file list
+set timefmt="%Y-%m-%d %H:%M"
+
+" Show list of matches on tab completion in command-line mode
+set wildmenu wildstyle=popup
+
+" Display suggestions in normal, visual and view modes for keys, marks and
+" registers (at most 5 files).  In other view, when available.
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" Try to leave some space from cursor to upper/lower border in lists
+set scrolloff=4
+
+" Set custom status line look
+" set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
+set statusline=" %T%= %E / %a %17A %10u:%-7g %14d  "
+
+" Tabs
+set tabscope=pane tabprefix=" " tabsuffix=" "
+
+" Miller columns
+set milleroptions=lsize:1,csize:3,rsize:3,rpreview:all
+
+" Display only last directory in tab line instead of full path
+set shortmess+=L
+
+" ------------------------------------------------------------------------------
+"									 Search
+" ------------------------------------------------------------------------------
+
+set ignorecase smartcase nohlsearch incsearch
+" set grepprg='grep -n -H -I -r --color=always %i %a %s'
+" set grepprg='ag --line-numbers %i %a %s'
+
+" ------------------------------------------------------------------------------
+"									 Marks
+" ------------------------------------------------------------------------------
+
+" :mark mark /full/directory/path [filename]
+mark h ~/
+
+" ------------------------------------------------------------------------------
+"									 Server
+" ------------------------------------------------------------------------------
+" Export IPC name of current instance as environment variable and use it to
+" communicate with the instance later.
+"
+" It can be used in some shell script that gets run from inside vifm, for
+" example, like this:
+"     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
+"
+" let $VIFM_SERVER_NAME = v:servername
+
+" ------------------------------------------------------------------------------
+"									Mappings
+" ------------------------------------------------------------------------------
+
+nnoremap b :bmarks<cr>
+nnoremap O :sync %c<cr>
+nnoremap o :sync<cr>
+nnoremap s :shell<cr>
+nnoremap S :sort<cr>
+nnoremap t :select<cr>j
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+nnoremap * ggvG<cr>gg
+nnoremap <c-f> :FZFfindFile<cr>
+
+" Mappings for faster renaming
+nnoremap a cW
+nnoremap A cw
+nnoremap cc cw<c-u>
+nnoremap ce cw<c-w>
+nnoremap cw cW<c-u>
+nnoremap cW cw<c-u>
+nnoremap cv :rename<cr>
+nnoremap I cw<c-a>
+
+" Windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Tabs
+nnoremap <c-t> :tabnew<cr>
+nnoremap <c-j> :tabnext<cr>
+nnoremap <c-k> :tabprev<cr>
+
+" Leader
+nnoremap \a ggvG<cr>
+nnoremap \b :backup<cr>
+nnoremap \cf :cmp<cr>
+nnoremap \cc :compare<cr>
+nnoremap \cd :compare listdups<cr>
+nnoremap \cu :compare listunique<cr>
+nnoremap \C :write | edit $MYVIFMRC | restart full<cr>
+nnoremap \d :dragon<cr>
+nnoremap \e :extract<cr>
+nnoremap \g :grep<space>
+nnoremap \h :history<cr>
+nnoremap \m :media<cr>
+nnoremap \r :lstrash<cr>
+nnoremap \T :!$TERMINAL &<cr>
+nnoremap \t :tar<cr>
+nnoremap \w :set wrap!<cr>
+nnoremap \z :zip<cr>
+nnoremap \7 :sevenz<cr>
+nnoremap \sc :!crc32 %c %S<cr>
+nnoremap \sm :!md5sum %c | cut -d' ' -f1 %S<cr>
+nnoremap \s1 :!sha1sum %c | cut -d' ' -f1 %S<cr>
+nnoremap \s2 :!sha256sum %c | cut -d' ' -f1 %S<cr>
+nnoremap \s5 :!sha512sum %c | cut -d' ' -f1 %S<cr>
+
+" Fs
+nnoremap <f2> cW
+nnoremap <f3> :!$PAGER %c<cr>
+nnoremap <s-f4> :touch<space>
+nnoremap <f4> :edit<cr>
+nnoremap <f5> :copy &<cr>
+nnoremap <s-f5> :rlink<cr>
+nnoremap <c-f5> :copy!<cr>
+nnoremap <f6> :move &<cr>
+nnoremap <c-f6> :move!<cr>
+nnoremap <f7> :mkdir<space>
+nnoremap <f8> :delete<cr>
+nnoremap <f11> :cmpfiles<cr>
+nnoremap <f12> :cmpdirs<cr>
+
+" Views
+nnoremap <a-s> :set viewcolumns=""<cr>
+nnoremap <a-c> :set viewcolumns=-{name}..,11{perms}<cr>
+nnoremap <a-d> :set viewcolumns=-{name}..,17{mtime}<cr>
+nnoremap <a-f> :set viewcolumns=-{name}..,6{size},17{mtime}<cr>
+
+nnoremap <c-]> :wincmd o<cr>:set millerview<cr>
+nnoremap <c-[> :wincmd v<cr>:set nomillerview<cr>
+" nnoremap ` :set millerview!<cr>
+
+" Interaction with system clipboard
+if executable('xclip')
+    " Yank current directory path into the clipboard
+	nnoremap yd :!echo -n %d | xclip -selection clipboard %i<cr>:echo expand('%"d') "is yanked to clipboard"<cr>
+	" Yank current file name into the clipboard
+	nnoremap yf :!echo -n %c | xclip -selection clipboard %i<cr>:echo expand('%"c') "is yanked to clipboard"<cr>
+	" Yank current file path into the clipboard
+	nnoremap yF :!echo -n %c:p | xclip -selection clipboard %i<cr>:echo expand('%"c:p') "is yanked to clipboard"<cr>
+	" yank root of current file's name into the clipboard
+	nnoremap yr :!echo -n %c:r | xclip -selection clipboard %i<cr>:echo expand('%"c:r') "is yanked to clipboard"<cr>
+elseif executable('xsel')
+    " Yank current directory path into primary and selection clipboards
+    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
+                \ echo -n %d | xsel --clipboard --input %i<cr>
+    " Yank current file path into into primary and selection clipboards
+    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
+                \ echo -n %c:p | xsel --clipboard --input %i<cr>
+endif
+
+
+" ------------------------------------------------------------------------------
+"									Commands
+" ------------------------------------------------------------------------------
+
+" :com[mand][!] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+" %i completely ignore command output.
+" %S show command output in the status bar.
+
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vim "+grep %a"
+command! reload :write | restart full
+command! dragon dragon-drop -a -x %f &
+
+" Compress
+" command! zip zip -r %D/%c.zip %f
+command! zip 7z a -tzip %D/%c.zip %f
+command! sevenz 7z a %D/%c.7z %f
+command! backup 7z a %D/%c_$(date +%%F).zip %f
+command! tar tar cvf %D/%c_$(date +%%F).tar %f
+command! extract extract %D %f
+
+" Compare
+command! diff vim -d %f %F
+command! cmpfiles meld %f %F &
+command! cmpdirs meld %d %D &
+command! cmpinternal compare-cmd %a %S
+command! cmp : if expand('%%c') == expand('%%f')
+	\ |     echo expand('Comparing %%"c and %%"C:t ...')
+	\ |     cmpinternal %c %C
+	\ | else
+	\ |     echo expand('Comparing files: %%"f ...')
+	\ |     cmpinternal %f
+	\ | endif
+
+command! FZFfindDir : set noquickview
+ 	\| let $FZF_PICK = term('find $HOME -type d | fzf --height 10 2>/dev/tty')
+	\| if $FZF_PICK != ''
+	\|     execute 'cd' fnameescape($FZF_PICK)
+	\| endif
+command! FZFfindFile : set noquickview
+ 	\| let $FZF_PICK = term('find $HOME | fzf --height 10 2>/dev/tty')
+	\| if $FZF_PICK != ''
+	\|     execute 'goto' fnameescape($FZF_PICK)
+	\| endif
+
+" ------------------------------------------------------------------------------
+"							   File run & preview
+" ------------------------------------------------------------------------------
+
+" set previewprg='preview.sh %c %pw %ph %px'
+
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
+		" \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
+		" \ %pc
+		" \ kitty icat --silent --clear
+
+fileviewer *[^/] preview.sh %c %pw %ph %px
+fileviewer .*[^/] preview.sh %c %pw %ph %px
+
+" MD5
+filetype *.md5
+       \ {Check MD5 hash sum}
+       \ md5sum -c %f %S,
+
+" SHA1
+filetype *.sha1
+       \ {Check SHA1 hash sum}
+       \ sha1sum -c %f %S,
+
+" SHA256
+filetype *.sha256
+       \ {Check SHA256 hash sum}
+       \ sha256sum -c %f %S,
+
+" SHA512
+filetype *.sha512
+       \ {Check SHA512 hash sum}
+       \ sha512sum -c %f %S,
+
+" GPG signature
+filetype {*.asc},<application/pgp-signature>
+       \ {Check signature}
+       \ !!gpg --verify %c,
+
+" FuseZipMount
+" filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
+	" \<application/zip,application/java-archive>
+filetype {*.zip,*.war,*.ear,*.oxt,*.apkg},
+       \<application/zip>
+       \ {Mount with fuse-zip}
+       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {View contents}
+       \ zip -sf %c | less,
+       \ {Extract here}
+       \ tar -xf %c,
+
+" ArchiveMount
+filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
+        \<application/x-tar>
+       \ {Mount with archivemount}
+       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+
+" Rar2FsMount and rar archives
+filetype {*.rar},<application/x-rar>
+       \ {Mount with rar2fs}
+       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+
+" IsoMount
+filetype {*.iso},<application/x-iso9660-image>
+       \ {Mount with fuseiso}
+       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+
+" SshMount
+filetype *.ssh
+       \ {Mount with sshfs}
+       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR %FOREGROUND,
+
+" FtpMount
+filetype *.ftp
+       \ {Mount with curlftpfs}
+       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
+
+" Fuse7z and 7z archives
+filetype {*.7z},<application/x-7z-compressed>
+       \ {Mount with fuse-7z}
+       \ FUSE_MOUNT|fuse3-p7zip %SOURCE_FILE %DESTINATION_DIR,
+       " \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+
+
+" Directories
+filextype */
+        \ {View in thunar}
+        \ Thunar %f &,
+
+" Open all other files with:
+filextype * run.sh &> /dev/null &
+" filextype * run.sh & %i
+

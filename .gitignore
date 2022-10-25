@@ -6,15 +6,22 @@
 !/.config/aseprite/
 !/.config/bspwm/
 !/.config/dosbox/
+!/.config/dunst/
 !/.config/fontconfig/
+!/.config/git/
 !/.config/kitty/
 !/.config/lazygit/
 !/.config/mpv/
 !/.config/nsxiv/
+!/.config/nvim/
 !/.config/picom.conf
+!/.config/polybar/
 !/.config/python/
+!/.config/rofi/
 !/.config/sxhkd/
+!/.config/vifm/
 !/.config/xorg/
+!/.config/zathura/
 !/.config/zsh/
 !/.zshenv
 

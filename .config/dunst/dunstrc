@@ -1,0 +1,58 @@
+# https://dunst-project.org/documentation/
+# See dunst(5) for all configuration options or /etc/dunst/dunstrc
+
+[global]
+    # Display notification on focused monitor. Possible modes are: mouse, keyboard, none
+    follow = mouse
+
+    # dynamic width from 0 to 300
+    # width = (0, 300)
+    # constant width of 300
+    width = (300, 1000)
+
+    # The maximum height of a single notification, excluding the frame.
+    height = 300
+
+    # Position the notification in the top right corner
+    origin = top-right
+
+    # Offset from the origin
+    offset = 10x30
+
+    # The transparency of the window.  Range: [0; 100].
+    transparency = 0
+
+    # Draw a line of "separator_height" pixel height between two
+    # notifications.
+    # Set to 0 to disable.
+    separator_height = 1
+
+    # Defines width in pixels of frame around the notification window. Set to 0 to disable.
+    frame_width = 1
+
+    font = ui 12
+
+    # Vertical alignment of message text and icon. Possible values are "top", "center" and "bottom".
+    vertical_alignment = top
+
+    # Scale larger icons down to this size, set to 0 to disable
+    max_icon_size = 64
+
+    # dmenu path.
+    dmenu = $VMENU
+
+    # Defines list of actions for each mouse event
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+[urgency_low]
+    default_icon = ~/.dotfiles/share/icons/arch.svg
+
+[urgency_normal]
+    default_icon = ~/.dotfiles/share/icons/arch.svg
+
+[urgency_critical]
+    default_icon = ~/.dotfiles/share/icons/arch.svg
+
+# vim: ft=cfg

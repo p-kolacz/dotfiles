@@ -1,0 +1,117 @@
+snippet =
+<%= $0 %>
+endsnippet
+
+snippet erb
+<% $0 %>
+endsnippet
+
+snippet end
+<% end %>
+endsnippet
+
+snippet disable_cache
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+endsnippet
+
+snippet google_maps
+<div id="gmap"></div>
+<script>
+	var map, markers = [{lat: 0, lng: 0}], bounds;
+
+	function setAllMarkers() {
+		for(var t in markers)
+			markers[t].setMap(map)
+		center()
+	}
+
+	function addToBounds(bounds, marker)
+	{
+		var loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng())
+		bounds.extend(loc)
+		return bounds
+	}
+
+	function center()
+	{
+		map.fitBounds(bounds);
+		map.panToBounds(bounds);
+	}
+
+	function initMap() {
+		// var uluru = {lat: -25.363, lng: 131.044};
+		map = new google.maps.Map(document.getElementById('gmap'), {
+			zoom: 4,
+			// center: uluru,
+			styles: [{
+				stylers: [
+					{ "saturation": -100 },
+					// { "lightness": -8 },
+					// { "gamma": 1.18 }
+				]
+			}]
+		});
+
+		bounds  = new google.maps.LatLngBounds()
+		for(var t in markers)
+		{
+			markers[t] = new google.maps.Marker({
+				position: markers[t],
+				map: map
+			});
+			addToBounds(bounds, markers[t])
+		}
+		setAllMarkers()
+
+		// var marker = new google.maps.Marker({
+			// position: uluru,
+			// map: map
+		// });
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=KEY_HERE&callback=initMap"></script>
+endsnippet
+
+snippet html
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>$0</title>
+
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/main.js"></script>
+	</head>
+
+	<body>
+		<header>
+		</header>
+
+		<nav>
+		</nav>
+
+		<main>
+		</main>
+
+		<footer>
+		</footer>
+	</body>
+</html>
+
+endsnippet
+
+snippet redirection
+<meta http-equiv="refresh" content="5; url=http://www.example.com/">
+endsnippet
+
+snippet youtube
+<div class="youtube">
+	<iframe id="ytplayer" type="text/html" width="1267" height="712"
+		src="http://www.youtube.com/embed/VIDEO_ID"
+		frameborder="0"></iframe>
+</div>
+endsnippet
+

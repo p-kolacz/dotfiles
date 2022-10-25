@@ -1,0 +1,22 @@
+#!/bin/sh
+
+restart() {
+	stop
+	polybar --reload --log=warning primary &
+	for m in $(monitors secondary); do
+		export MONITOR="$m"
+		polybar --reload --log=warning secondary &
+	done
+}
+
+stop() {
+	killall --wait --quiet polybar
+}
+
+case $1 in
+	restart) restart ;;
+	reload)  pkill -USR1 -x polybar ;;
+	stop)    stop ;;
+	*)       echo "Usage: polybarctl [restart|reload|stop]"
+esac
+
