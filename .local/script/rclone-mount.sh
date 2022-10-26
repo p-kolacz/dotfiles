@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-mkdir -p ~/crypt ~/vault
-# umount ~/crypt
-rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/rclone-crypt.log" crypt: ~/crypt
-# umount ~/vault 
-rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/rclone-vault.log" vault:files/vault ~/vault
+mkdir -p ~/server/{crypt,static,vault}
+
+rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/rclone-crypt.log" crypt: ~/server/crypt
+rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/rclone-static.log" vault:apps/static ~/server/static
+rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/rclone-vault.log" vault:files/vault ~/server/vault
 

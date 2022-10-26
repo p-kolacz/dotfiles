@@ -14,6 +14,11 @@ edit() {
 fonts() {
 	$EDITOR -O ~/.local/config/fonts.conf ~/.config/fontconfig/fonts.conf
 }
+puda() {
+	_git add .
+	_git commit -m "$(date +%F_%T)"
+	_git push
+}
 zsh() {
 	$EDITOR -o ~/.config/zsh/.zshenv ~/.config/zsh/.zprofile ~/.config/zsh/.zshrc
 }
