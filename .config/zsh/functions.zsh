@@ -1,11 +1,3 @@
-# conf() {
-# 	local old=$PWD
-# 	cd ~/.dotfiles
-# 	local file=$(find . -not -wholename "./.git*" -type f | fzf --preview "preview.sh {}")
-# 	[[ -f $file ]] && $EDITOR "$file"
-# 	cd "$old"
-# }
-
 encfile() {
 	gpg --symmetric "$1"
 }
