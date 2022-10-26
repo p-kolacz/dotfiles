@@ -4,8 +4,6 @@ FILE_PATH=$1
 
 [[ $# -eq 0 ]] && { echo "Usage: run.sh filepath"; exit 1; }
 
-[[ -x $FILE_PATH ]] && { $TERMINAL --hold sh -c "$FILE_PATH;" exit 0; }
-
 FILE_EXTENSION="${FILE_PATH##*.}"
 FILE_EXTENSION="${FILE_EXTENSION,,}"
 
@@ -22,8 +20,7 @@ case $FILE_EXTENSION in
 		gnome-font-viewer -- "$FILE_PATH" ;;
 	3gp|avi|flv|m4v|mkv|mov|mp4|mpg|mpeg|ogv|qt|vob|webm|wmv)
 		mpv -- "$FILE_PATH" & ;;
-	flac|m4a|mod|mp3|ogg|wav|wma)
-		# ffplay -nodisp -autoexit "$FILE_PATH" ;;
+	flac|m4a|mp3|ogg|wav|wma)
 		deadbeef "$FILE_PATH" ;;
 	it|mod|s3m|xm)
 		deadbeef "$FILE_PATH" ;;
@@ -52,9 +49,7 @@ case $FILE_EXTENSION in
 		sha512sum -c -- "$FILE_PATH" ;;
 	lego)
 		;;
-	# *)
-		# file --dereference --mime-encoding "$FILE_PATH" | grep -q binary \
-			# || $EDITOR "$FILE_PATH" ;;
+	*)
+		[[ -x $FILE_PATH ]] && { $TERMINAL --hold sh -c "$FILE_PATH"; exit 0; }
 esac
-
 
