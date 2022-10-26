@@ -30,6 +30,9 @@
 !/.local/
 /.local/*
 !/.local/script/
+!/.local/share/
+/.local/share/*
+!/.local/share/sounds/
 
 !/src/
 /src/*

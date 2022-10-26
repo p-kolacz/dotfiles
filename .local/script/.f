@@ -15,6 +15,7 @@ fonts() {
 	$EDITOR -O ~/.local/config/fonts.conf ~/.config/fontconfig/fonts.conf
 }
 puda() {
+	cd "$HOME" || exit 1
 	_git add .
 	_git commit -m "$(date +%F_%T)"
 	_git push
