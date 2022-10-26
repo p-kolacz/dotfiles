@@ -41,7 +41,7 @@ bspwm() {
 apps() {
 	install kitty syncthing
 	startenableuser syncthing.service
-	install arc-gtk-theme
+	install arc-gtk-theme gtk-engines gtk-engine-murrine
 	install gimp gnome-font-viewer qalculate-gtk gnumeric pcmanfm	# GTK apps
 	install flameshot keepassxc # Ot Apps
 	install imagemagick mpv zathura-pdf-poppler

@@ -9,6 +9,8 @@
 !/.config/dunst/
 !/.config/fontconfig/
 !/.config/git/
+!/.config/gtk-2.0/
+!/.config/gtk-3.0/
 !/.config/kitty/
 !/.config/lazygit/
 !/.config/mpv/
@@ -28,4 +30,8 @@
 !/.local/
 /.local/*
 !/.local/script/
+
+!/src/
+/src/*
+!/src/redox/
 
