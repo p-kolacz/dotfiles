@@ -26,9 +26,14 @@ require('telescope').setup {
 		winblend = 5,
 	},
 	pickers = {
-		symbols = {
-			theme = "cursor",
-		},
+		find_files	= { theme = "ivy" },
+		git_files	= { theme = "ivy" },
+		grep_string	= { theme = "ivy" },
+		live_grep	= { theme = "ivy" },
+		buffers		= { theme = "ivy" },
+		oldfiles	= { theme = "ivy" },
+		current_buffer_fuzzy_find	= { theme = "ivy" },
+		symbols		= { theme = "cursor" },
 	},
 }
 
@@ -37,14 +42,14 @@ require('telescope').setup {
 
 --File pickers
 -- nnoremap('<C-space>',  ':Telescope find_files find_command=rg,--hidden,--files<cr>')
-nnoremap('<C-space>',  ':Telescope find_files theme=ivy<cr>')
+nnoremap('<C-space>',  ':Telescope find_files<cr>')
 nnoremap('<leader>gf', ':Telescope git_files<cr>', 'find files')
 nnoremap('<leader>fc', ':Telescope grep_string<cr>', 'find cword')
 nnoremap('<leader>ff', ':Telescope live_grep<cr>', 'find in files')
 -- nnoremap('<leader>fb', ':Telescope file_browser theme=get_dropdown<cr>', 'browse files')
 
 --Vim pickers
-nnoremap('<leader>vb', ':Telescope buffers theme=ivy<cr>', 'buffers')
+nnoremap('<leader>vb', ':Telescope buffers<cr>', 'buffers')
 nnoremap('<leader>fh', ':Telescope oldfiles<cr>', 'history')
 nnoremap('<leader>vc', ':Telescope commands<cr>', 'commands')
 nnoremap('<C-p>',      ':Telescope commands theme=get_dropdown<cr>')
@@ -59,7 +64,7 @@ nnoremap('<leader>vk', ':Telescope keymaps<cr>', 'keymaps')
 nnoremap('<leader>vf', ':Telescope filetypes theme=get_dropdown<cr>', 'filetypes')
 nnoremap('<leader>vh', ':Telescope highlights<cr>', 'highlights')
 nnoremap('<leader>vs', ':Telescope colorscheme theme=dropdown<cr>', 'colorschemes')
-nnoremap('<leader>/',  ':Telescope current_buffer_fuzzy_find theme=ivy<cr>', 'search')
+nnoremap('<leader>/',  ':Telescope current_buffer_fuzzy_find<cr>', 'search')
 
 --LSP Pickers
 
