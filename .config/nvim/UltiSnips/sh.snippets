@@ -1,3 +1,5 @@
+extends ansi_codes
+
 snippet absolute_path "Absolute path with file name"
 realpath $0
 endsnippet
@@ -14,20 +16,47 @@ esac
 
 endsnippet
 
-snippet color
-"\e[$1m"
+# snippet color
+# "\e[$1m"
+# endsnippet
+
+# snippet coloreset
+# "\e[0m"
+# endsnippet
+
+# https://github.com/dylanaraps/pure-sh-bible#count-files-or-directories-in-directory
+snippet count_files "count files or dirs in directory"
+count() {
+	# Usage: count /path/to/dir/*
+	#        count /path/to/dir/*/
+	[ -e "$1" ] \
+		&& printf '%s\n' "$#" \
+		|| printf '%s\n' 0
+}
 endsnippet
 
-snippet coloreset
-"\e[0m"
+snippet default "use default if var empty or unset"
+${${1:var}:-${2:default}}
 endsnippet
 
-snippet default "parameter default value"
-${$1:-$2}
+snippet default_ifempty "use default if var empty"
+${${1:var}-${2:default}}
 endsnippet
 
-snippet default_assign "parameter default value assign"
-${$1:=$2}
+snippet default_assign "set default to var if empty or unset"
+${${1:var}:=${2:default}}
+endsnippet
+
+snippet default_assign_ifempty "set default to var if empty"
+${${1:var}=${2:default}}
+endsnippet
+
+snippet default_ifnotempty "use default if var is not empty"
+${${1:var}:+${2:default}}
+endsnippet
+
+snippet default_ifset "use default if var is set"
+${${1:var}+${2:default}}
 endsnippet
 
 snippet delete_line_in_file
@@ -73,6 +102,142 @@ snippet lowercase
 ${${1:var},,}
 endsnippet
 
+snippet lstrip_function
+lstrip() {
+	# Usage: lstrip "string" "pattern"
+	printf '%s\n' "\${1##\$2}"
+}
+$0
+endsnippet
+
+# https://github.com/dylanaraps/pure-sh-bible#parsing-a-keyval-file
+snippet parse_key_values
+# Setting 'IFS' tells 'read' where to split the string.
+while IFS='=' read -r key val; do
+	# Skip over lines containing comments.
+	# (Lines starting with '#').
+	[ "${key##\#*}" ] || continue
+
+	# '$key' stores the key.
+	# '$val' stores the value.
+	printf '%s: %s\n' "$key" "$val"
+
+	# Alternatively replacing 'printf' with the following
+	# populates variables called '$key' with the value of '$val'.
+	#
+	# NOTE: I would extend this with a check to ensure 'key' is
+	#       a valid variable name.
+	# export "$key=$val"
+	#
+	# Example with error handling:
+	# export "$key=$val" 2>/dev/null ||
+	#     printf 'warning %s is not a valid variable name\n' "$key"
+done < "file"
+endsnippet
+
+snippet remove_short_start "remove shortest match of pattern from start of string"
+\${${1:var}#${2:pattern}}
+endsnippet
+
+snippet remove_long_start "remove longest match of pattern from start of string"
+\${${1:var}##${2:pattern}}
+endsnippet
+
+snippet remove_short_end "remove shortest match of pattern from end of string"
+\${${1:var}%${2:pattern}}
+endsnippet
+
+snippet remove_long_end "remove longest match of pattern from end of string"
+\${${1:var}%%${2:pattern}}
+endsnippet
+
+snippet rstrip_function
+rstrip() {
+	# Usage: rstrip "string" "pattern"
+	printf '%s\n' "\${1%%\$2}"
+}
+$0
+endsnippet
+
+snippet split_function "split string delimiter"
+split() {
+	# Disable globbing. This ensures that the word-splitting is safe.
+	set -f
+
+	# Store the current value of 'IFS' so we can restore it later.
+	old_ifs=$IFS
+
+	# Change the field separator to what we're splitting on.
+	IFS=$2
+
+	# Create an argument list splitting at each
+	# occurance of '$2'.
+	#
+	# This is safe to disable as it just warns against
+	# word-splitting which is the behavior we expect.
+	# shellcheck disable=2086
+	set -- $1
+
+	# Print each list value on its own line.
+	printf '%s\n' "$@"
+
+	# Restore the value of 'IFS'.
+	IFS=$old_ifs
+
+	# Re-enable globbing.
+	set +f
+}
+$0
+endsnippet
+
+# https://github.com/dylanaraps/pure-sh-bible#trim-quotes-from-a-string
+snippet trim_quotes_function "trim_quotes string"
+trim_quotes() {
+	set -f				# Disable globbing.
+    old_ifs=$IFS
+    IFS=\"\'			# Set 'IFS' to ["'].
+    # shellcheck disable=2086
+    set -- $1			# Create an argument list, splitting the string at ["'].
+	IFS=				# Set 'IFS' to blank to remove spaces left by the removal of ["'].
+    printf '%s\n' "$*"	# Print the quote-less string.
+    IFS=$old_ifs
+    set +f				# Re-enable globbing.
+}
+endsnippet
+
+snippet trim_whitespaces_function "trim_whitespaces string"
+trim_whitespaces() {
+	# Remove all leading white-space.
+	# '${1%%[![:space:]]*}': Strip everything but leading white-space.
+	# '${1#${XXX}}': Remove the white-space from the start of the string.
+	trim=${1#${1%%[![:space:]]*}}
+
+	# Remove all trailing white-space.
+	# '${trim##*[![:space:]]}': Strip everything but trailing white-space.
+	# '${trim%${XXX}}': Remove the white-space from the end of the string.
+	trim=${trim%${trim##*[![:space:]]}}
+
+	printf '%s\n' "$trim"
+}
+$0
+endsnippet
+
+snippet trim_all_whitespaces_function
+# shellcheck disable=SC2086,SC2048
+trim_all_whitespaces() {
+	set -f				# Disable globbing to make the word-splitting below safe.
+
+	# Set the argument list to the word-splitted string.
+	# This removes all leading/trailing white-space and reduces
+	# all instances of multiple spaces to a single ("  " -> " ").
+	set -- $*
+
+	printf '%s\n' "$*"	# Print the argument list as a string.
+	set +f				# Re-enable globbing.
+}
+$0
+endsnippet
+
 snippet uppercase
 ${${1:var}^^}
 endsnippet
@@ -84,6 +249,11 @@ endsnippet
 snippet kill_eol
 tr -d "\n" < ${1:filename}
 endsnippet
+
+snippet varlength "length of var in characters"
+\${#${1:var}}
+endsnippet
+
 
 snippet line_count
 wc -l < ${1:filename}
@@ -144,6 +314,18 @@ endsnippet
 
 snippet substr
 ${${1:var}:${2:start}:${3:length}}
+endsnippet
+
+snippet substr? "check if string contains substring"
+case $1 in
+	*sub_string1*)
+	;;
+	*sub_string2*)
+	;;
+	*)
+	;;
+esac
+$0
 endsnippet
 
 snippet wait_for_last_bg_process

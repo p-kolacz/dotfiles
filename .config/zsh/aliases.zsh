@@ -31,7 +31,7 @@ alias spindown="sudo hdparm -y"
 
 # Edit config files -------------------
 alias conf=".f conf"
-alias evim="edit_in_dir $DOTFILES/nvim/.config/nvim/ init.lua"
+alias evim="edit_in_dir $XDG_CONFIG_HOME/nvim/ init.lua"
 alias redox="edit_in_dir ~/src/qmk_firmware keyboards/redox_w/keymaps/max/keymap.c"
 
 # Git ---------------------------------
