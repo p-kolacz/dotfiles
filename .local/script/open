@@ -2,7 +2,7 @@
 
 FILE_PATH=$1
 
-[[ $# -eq 0 ]] && { echo "Usage: run.sh filepath"; exit 1; }
+[[ $# -eq 0 ]] && { echo "Usage: open filepath"; exit 1; }
 
 FILE_EXTENSION="${FILE_PATH##*.}"
 FILE_EXTENSION="${FILE_EXTENSION,,}"

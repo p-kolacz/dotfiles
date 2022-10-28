@@ -267,15 +267,15 @@ command! FZFfindFile : set noquickview
 "							   File run & preview
 " ------------------------------------------------------------------------------
 
-" set previewprg='preview.sh %c %pw %ph %px'
+" set previewprg='view %c %pw %ph %px'
 
 " fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
 		" \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
 		" \ %pc
 		" \ kitty icat --silent --clear
 
-fileviewer *[^/] preview.sh %c %pw %ph %px
-fileviewer .*[^/] preview.sh %c %pw %ph %px
+fileviewer *[^/] view %c %pw %ph %px
+fileviewer .*[^/] view %c %pw %ph %px
 
 " MD5
 filetype *.md5
@@ -353,6 +353,6 @@ filextype */
         \ Thunar %f &,
 
 " Open all other files with:
-filextype * run.sh &> /dev/null &
+filextype * open &> /dev/null &
 " filextype * run.sh & %i
 
