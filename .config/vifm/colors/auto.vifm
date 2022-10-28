@@ -9,5 +9,5 @@ highlight Win         cterm=none    ctermfg=default     ctermbg=none
 " highlight TopLineSel  cterm=none    ctermfg=lightwhite  ctermbg=black
 
 " highlight StatusLine  cterm=none    ctermfg=white       ctermbg=black
-highlight CmdLine     cterm=none    ctermfg=white       ctermbg=none
+" highlight CmdLine     cterm=none    ctermfg=white       ctermbg=none
 

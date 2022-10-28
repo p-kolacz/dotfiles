@@ -23,7 +23,7 @@ require('telescope').setup {
 				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
-		winblend = 5,
+		-- winblend = 5,	-- winblend wont blend onto emojis
 	},
 	pickers = {
 		find_files	= { theme = "ivy" },

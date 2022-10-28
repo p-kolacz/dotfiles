@@ -7,4 +7,4 @@ setxkbmap -option caps:escape
 kbrate.sh
 bluetoothctl power on &
 numlockx &
-
+xplugd &

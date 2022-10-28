@@ -5,7 +5,7 @@ _git() {
 }
 conf() {
 	cd "$HOME" || exit 1
-	file=$(_git ls-files | fzf --preview "preview.sh {}")
+	file=$(_git ls-files | fzf --preview "view {}")
 	[[ -f $file ]] && $EDITOR "$file"
 }
 edit() {
