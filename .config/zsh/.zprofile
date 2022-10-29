@@ -14,6 +14,6 @@ CUSTOM="$HOME/.local/config/zsh/custom.zprofile"
 [[ -f $CUSTOM ]] && source $CUSTOM
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	startx $XDG_CONFIG_HOME/xorg/xinitrc > $XDG_STATE_HOME/startx.log 2>&1
+	startx $XDG_CONFIG_HOME/xorg/xinitrc > $XDG_STATE_HOME/log/startx.log 2>&1
 fi
 

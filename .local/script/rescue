@@ -5,11 +5,11 @@ remove-pacman-lock() {
 }
 
 check-packages() {
-	pacman -Qkk | grep --invert-match "0 altered files"
+	sudo pacman -Qkk | grep --invert-match "0 altered files"
 }
 
 check-packages-db() {
-	pacman -Qkk | grep "mtree"
+	sudo pacman -Qkk | grep "mtree"
 }
 
 # usefull for mtree errors

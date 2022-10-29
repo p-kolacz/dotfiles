@@ -10,6 +10,7 @@ laptop() {
 	hw/bluetooth
 	hw/wifi
 	install xorg-xinput tlp # xinput 4 touchpad
+	ynstall xplugd
 	copy "$DOTFILES/share/etc/udev/rules.d/backlight.rules" /etc/udev/rules.d/
 	copy "$DOTFILES/share/etc/X11/xorg.conf.d/40-touchpad.conf" /etc/X11/xorg.conf.d/
 }
@@ -89,7 +90,7 @@ dev/rails() {
 
 dotfiles() {
 	cd "$DOTFILES" || { echo "$DOTFILES"; exit 1; }
-	mkdir -p "$HOME"/.config/git "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/share/fonts
+	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/share/fonts "$HOME"/.local/state/log
 	install stow
 	# shellcheck disable=SC2035
 	if [[ $DRYRUN ]]; then

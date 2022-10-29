@@ -19,7 +19,7 @@
 
 # /home/piotr/repos/nsxiv/examples/key-handler
 
-exec &>> "$XDG_STATE_HOME/nsxiv.log"
+exec &>> "$XDG_STATE_HOME/log/nsxiv.log"
 
 DEST_DIRS="$HOME/Cloud/Images $HOME/Data/Photos $HOME/tmp $HOME/Leathercraft"
 
