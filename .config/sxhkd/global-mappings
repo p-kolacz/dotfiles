@@ -1,3 +1,4 @@
+# vim:ft=sxhkd
 # https://github.com/baskerville/sxhkd
 # Reload: pkill -USR1 -x sxhkd
 
@@ -15,10 +16,10 @@ super + Delete
 	power.sh
 
 super + Escape
-	slock
+	lock-workstation
 
 Pause
-	slock
+	lock-workstation
 
 super + {F1,F2,F3,F4,F10}
 	{strselecta icons,strselecta emoji,strselecta entities,strselecta boxes,mnter.sh}

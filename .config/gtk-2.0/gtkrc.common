@@ -1,5 +1,4 @@
 include "gtkrc.local"
-gtk-icon-theme-name="Haiku"
 gtk-font-name="ui 12"
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR

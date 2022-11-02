@@ -174,7 +174,7 @@ vifm() {
 }
 
 xorg() {
-	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx slock
+	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx i3lock
 	sudo ln -s "$DOTFILES/share/etc/systemd/system/sleep@.service" /etc/systemd/system/
 	copy "$DOTFILES/share/etc/X11/xorg.conf.d/00-keyboard.conf" /etc/X11/xorg.conf.d/
 	copy "$DOTFILES/share/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/

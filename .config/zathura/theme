@@ -1,10 +1,10 @@
-set default-bg "#24283c"
-set default-fg "#c0caf5"
-set statusbar-bg "#24283c"
-set statusbar-fg "#c0caf5"
-set notification-bg "#24283c"
-set notification-fg "#c0caf5"
+set default-bg "#faf4ed"
+set default-fg "#575279"
+set statusbar-bg "#faf4ed"
+set statusbar-fg "#575279"
+set notification-bg "#faf4ed"
+set notification-fg "#575279"
 
-set recolor-lightcolor "#24283c"
-set recolor-darkcolor "#c0caf5"
+set recolor-lightcolor "#faf4ed"
+set recolor-darkcolor "#575279"
 
