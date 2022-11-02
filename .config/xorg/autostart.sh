@@ -8,3 +8,4 @@ kbrate.sh
 bluetoothctl power on &
 numlockx &
 xplugd &
+rclone-mount.sh &
