@@ -30,9 +30,13 @@
 !/.local/
 /.local/*
 !/.local/script/
+
 !/.local/share/
 /.local/share/*
+!/.local/share/icons/
 !/.local/share/sounds/
+!/.local/share/txt/
+!/.local/share/wallpapers/
 
 !/src/
 /src/*

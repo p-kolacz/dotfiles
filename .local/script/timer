@@ -5,8 +5,8 @@ usage() {
 }
 
 term() {
-	rm $FILE
-	notify-send -i ~/.dotfiles/share/icons/timer.png "Timer" "Timer terminated"
+	rm "$FILE"
+	notify-send -i ~/.local/share/icons/timer.png "Timer" "Timer terminated"
 	exit 10
 }
 
@@ -36,5 +36,5 @@ sleep $timeout &
 wait $!
 
 rm $FILE
-notify-send -i ~/.dotfiles/share/icons/timer.png "Timer" "Time is up!"
+notify-send -i ~/.local/share/icons/timer.png "Timer" "Time is up!"
 notify-sound.sh
