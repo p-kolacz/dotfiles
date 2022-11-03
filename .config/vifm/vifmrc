@@ -132,7 +132,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Tabs
-nnoremap <c-t> :tabnew<cr>
+nnoremap <c-t> :tabnew<cr>:cd<cr>
 nnoremap <c-j> :tabnext<cr>
 nnoremap <c-k> :tabprev<cr>
 
