@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# IMAGE_DIR=$HOME/server/static/art
-IMAGE_DIR=$HOME/server/static/wallpapers/space
+IMAGE_DIR=$HOME/.local/share/lockimages
+CACHE_FILE=$HOME/.cache/lock.png
 
-IMAGE=$(find "$IMAGE_DIR"/*.png -type f | shuf -n1)
+IMAGE=$(find "$IMAGE_DIR"/* -type f | shuf -n1)
 
-i3lock -i "$IMAGE"
+[[ ! -f $IMAGE ]] && { i3lock; exit; }
+
+convert "$IMAGE" -resize 1920x1080^ "$CACHE_FILE"
+i3lock -i "$CACHE_FILE"
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 CONFIG="$HOME/.config"
-THEMES="$HOME/.dotfiles/share/themes"
-CURRENT_THEME="$HOME/.local/config/theme"
+THEMES="$HOME/.local/share/themes"
+CURRENT_THEME="$CONFIG/theme"
 
 browse() {
 	local file
@@ -31,7 +31,6 @@ current() {
 	if [[ -f $CURRENT_THEME ]]; then
 		echo "$CURRENT_THEME"
 	else
-		# source "$(find "$DOTFILES/share/themes" -type f | head -n 1)"
 		find "$DOTFILES/share/themes" -type f | head -n 1
 	fi
 }

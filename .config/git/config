@@ -13,4 +13,4 @@
 [mergetool "meld"]
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [include]
-	path = ~/.local/config/gitconfig
+	path = local

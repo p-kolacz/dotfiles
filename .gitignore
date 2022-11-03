@@ -5,6 +5,7 @@
 
 !/.config/aseprite/
 !/.config/bspwm/
+!/.config/etc/
 !/.config/dosbox/
 !/.config/dunst/
 !/.config/fontconfig/
@@ -35,6 +36,7 @@
 /.local/share/*
 !/.local/share/icons/
 !/.local/share/sounds/
+!/.local/share/themes/
 !/.local/share/txt/
 !/.local/share/wallpapers/
 
