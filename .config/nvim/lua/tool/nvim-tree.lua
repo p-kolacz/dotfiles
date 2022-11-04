@@ -11,7 +11,7 @@ require'nvim-tree'.setup {
 		},
 	},
 	renderer = { icons = { glyphs = { git = {
-		unstaged = "-",
+		unstaged = "*",
 		-- staged = "✓",
 		-- unmerged = "",
 		-- renamed = "➜",

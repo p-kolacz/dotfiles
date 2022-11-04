@@ -7,7 +7,7 @@ User=%I
 Type=forking
 Environment=DISPLAY=:0
 Environment="XAUTHORITY=/run/user/1000/Xauthority"
-ExecStart=/usr/bin/slock
+ExecStart=/home/piotr/.local/script/lock-workstation
  
 [Install]
 WantedBy=sleep.target
