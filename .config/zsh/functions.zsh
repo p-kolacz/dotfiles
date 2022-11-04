@@ -57,7 +57,7 @@ notes() {
 	# local file=$(find $dir -name "*.md" -type f | fzf --preview "preview.sh {}")
 	# [[ -f $file ]] && edit_in_dir "$dir" "$file"
 	cd "$HOME/Exocortex/Notes/"
-	local file=$(find . -name "*.md" -type f | fzf --preview "preview.sh {}")
+	local file=$(find . -name "*.md" -type f | fzf --preview "view {}")
 	[[ -f $file ]] && $EDITOR "$file"
 }
 
