@@ -6,16 +6,16 @@
 
 case $(monitors count) in
 	1)
-		bspc monitor "$(monitors primary)" --reset-desktops F Q W E R T A S D G C V
+		bspc monitor "$(monitors primary)"   --reset-desktops F Q W E R T A S D G C V
 		;;
 	2)
-		bspc monitor "$(monitors primary)" --reset-desktops F A S D G
+		bspc monitor "$(monitors primary)"   --reset-desktops F A S D G
 		bspc monitor "$(monitors secondary)" --reset-desktops Q W E R T C V
 		;;
 	3)
-		bspc monitor "$(monitors primary)" --reset-desktops F A S D G
-		bspc monitor "$(monitors left)"    --reset-desktops C V
-		bspc monitor "$(monitors right)"   --reset-desktops Q W E R T
+		bspc monitor "$(monitors primary)"   --reset-desktops F W A S D G
+		bspc monitor "$(monitors left)"      --reset-desktops R C V
+		bspc monitor "$(monitors right)"     --reset-desktops Q E T
 		;;
 esac
 
