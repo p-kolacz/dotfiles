@@ -1,0 +1,7 @@
+" vim: filetype=vifm
+
+highlight clear
+
+highlight Win         cterm=none    ctermfg=default     ctermbg=default
+highlight CmdLine     cterm=none    ctermfg=default     ctermbg=default
+

@@ -43,11 +43,11 @@ endif
 "								   Appearance
 " ------------------------------------------------------------------------------
 
-" List of color schemes to try (picks the first one supported by the terminal)
-colorscheme auto
+" source instead of colorscheme to use env var
+source $VIFM/colors/$THEME_VARIANT.vifm
 
 " Icons
-source ~/.config/vifm/favicons.vifm
+source $VIFM/favicons.vifm
 
 " Format for displaying time in file list
 set timefmt="%Y-%m-%d %H:%M"
@@ -149,6 +149,7 @@ nnoremap \e :extract<cr>
 nnoremap \g :grep<space>
 nnoremap \h :history<cr>
 nnoremap \m :media<cr>
+nnoremap \q :quit<cr>
 nnoremap \r :lstrash<cr>
 nnoremap \T :!$TERMINAL &<cr>
 nnoremap \t :tar<cr>
