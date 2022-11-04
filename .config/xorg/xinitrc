@@ -17,7 +17,7 @@ fi
 
 # [ -n $THEME ] && xrdb -merge $HOME/.dotfiles/themes/$THEME.xresources
 
-screenlayout="$HOME/.local/config/screenlayout"
+screenlayout="$HOME/.config/screenlayout"
 [[ -f $screenlayout ]] && $screenlayout
 
 source "$XDG_CONFIG_HOME/xorg/autostart.sh" > "$XDG_STATE_HOME/log/autostart.log" 2>&1

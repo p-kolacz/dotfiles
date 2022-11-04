@@ -15,5 +15,5 @@ source $($HOME/.local/script/theme current)
 
 # alias xdg-open=open
 
-[[ -f $HOME/.local/config/zsh/custom.zshenv ]] && source $HOME/.local/config/zsh/custom.zshenv
+[[ -f $ZDOTDIR/local/.zshenv ]] && source $ZDOTDIR/local/.zshenv
 

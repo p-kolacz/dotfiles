@@ -13,7 +13,6 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-[[ -f $HOME/.local/config/zsh/custom.zshrc ]] && source $HOME/.local/config/zsh/custom.zshrc
 
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zcompdump"
@@ -30,10 +29,13 @@ SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 setopt autocd
 
+[[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
+
 # [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
 [[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
 
-fortune confucius | lolcat
+# fortune confucius | lolcat
+fortune -s
 
 eval "$(starship init zsh)"
 

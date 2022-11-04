@@ -31,7 +31,7 @@ current() {
 	if [[ -f $CURRENT_THEME ]]; then
 		echo "$CURRENT_THEME"
 	else
-		find "$DOTFILES/share/themes" -type f | head -n 1
+		find "$THEMES" -type f | head -n 1
 	fi
 }
 

@@ -25,7 +25,7 @@ zsh() {
 }
 
 if [[ $# == 0 ]]; then
-	_git status
+	cd && _git status
 elif [[ $(typeset -f "$1") ]]; then
 	$1
 else
