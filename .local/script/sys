@@ -1,13 +1,28 @@
 #!/bin/bash
 
+export TMPFILE=/tmp/sys_mode
 SHELL=/bin/bash
 export SYSTEMD_COLORS=true
 
+list() {
+	read -r MODE < $TMPFILE
+	echo "Mode: $MODE" && systemctl list-units --type=service --all --plain --no-pager --legend=false "$MODE"
+}
 preview() {
-	echo $MODE
 	systemctl status "$@"
 }
-
+mode() {
+	read -r MODE < $TMPFILE
+}
+toggle-mode() {
+	mode
+	if [[ $MODE == "--system" ]]; then
+		MODE=--user
+	else
+		MODE=--system
+	fi
+	echo $MODE > $TMPFILE
+}
 toggle-enable() {
 	if systemctl is-enabled "$MODE" "$1" ; then
 		systemctl disable "$MODE" "$1"
@@ -24,20 +39,25 @@ toggle-run() {
 }
 restart() {
 	systemctl restart "$MODE" "$1"
+	# pause
 }
 
+export -f mode
+export -f list
 export -f preview
+export -f toggle-mode
 export -f toggle-enable
 export -f toggle-run
 export -f restart
-export MODE=--system
+echo --system > $TMPFILE
 
-systemctl list-units --type=service --all --plain --no-pager --legend=false $MODE \
-	| fzf                                      \
-	--preview "preview $1 {1}"                 \
-	--preview-window=top,70%                   \
-	--bind="ctrl-e:execute(toggle-enable {1})" \
-	--bind="ctrl-s:execute(toggle-run {1})"    \
-	--bind="ctrl-r:execute(restart {1})"       \
+list | fzf												\
+	--header-lines 1									\
+	--preview "preview $1 {1}"							\
+	--preview-window=top,70%							\
+	--bind="ctrl-e:execute(toggle-enable {1})+reload(list)"			\
+	--bind="ctrl-s:execute(toggle-run {1})+reload(list)"				\
+	--bind="ctrl-r:execute(restart {1})+reload(list)"				\
+	--bind="ctrl-u:execute(toggle-mode)+reload(list)"	\
 
 # | sed -r -e "s/loaded\s+/🤖 /" -e "s/not-found/💔/" -e "s/dead\s+/☠️ /" -e "s/running/🏃/" -e "s/inactive/祿/" -e "s/active\s+/綠 /" \
