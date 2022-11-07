@@ -28,6 +28,8 @@ case $FILE_EXTENSION in
 		gnumeric "$FILE_PATH" ;;
 	doc|docx|odp|odt|ppt|pptx|xls|xlsx)
 		libreoffice "$FILE_PATH" ;;
+	gnumeric)
+		gnumeric "$FILE_PATH" ;;
 	jar)
 		java --jar "$FILE_PATH" ;;
 	bz2|gz|tar|tgz|xz)

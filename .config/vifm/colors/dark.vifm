@@ -3,11 +3,11 @@
 highlight clear
 
 highlight Win         cterm=none    ctermfg=default     ctermbg=none
-highlight Border      cterm=none    ctermfg=default     ctermbg=green
+highlight Border      cterm=none    ctermfg=default     ctermbg=none
 
 highlight TopLine     cterm=none    ctermfg=white       ctermbg=black
 highlight TopLineSel  cterm=none    ctermfg=lightwhite  ctermbg=black
 
 highlight StatusLine  cterm=none    ctermfg=white       ctermbg=black
-" highlight CmdLine     cterm=none    ctermfg=white       ctermbg=none
+highlight CmdLine     cterm=none    ctermfg=default     ctermbg=default
 

@@ -4,16 +4,40 @@ SHELL=/bin/bash
 export SYSTEMD_COLORS=true
 
 preview() {
+	echo $MODE
 	systemctl status "$@"
 }
 
+toggle-enable() {
+	if systemctl is-enabled "$MODE" "$1" ; then
+		systemctl disable "$MODE" "$1"
+	else
+		systemctl enable "$MODE" "$1"
+	fi
+}
+toggle-run() {
+	if systemctl is-active "$MODE" "$1"; then
+		systemctl stop "$MODE" "$1"
+	else
+		systemctl start "$MODE" "$1"
+	fi
+}
+restart() {
+	systemctl restart "$MODE" "$1"
+}
+
 export -f preview
+export -f toggle-enable
+export -f toggle-run
+export -f restart
+export MODE=--system
 
-systemctl list-units --type=service --all --plain --no-pager --legend=false "$1" \
-	| sed -r -e "s/loaded\s+/🤖 /" -e "s/not-found/💔/" -e "s/dead\s+/☠️ /" -e "s/running/🏃/" -e "s/inactive/祿/" -e "s/active\s+/綠 /" \
-	| fzf \
-	--preview "preview $1 {1}" \
-	--preview-window=top,70% \
+systemctl list-units --type=service --all --plain --no-pager --legend=false $MODE \
+	| fzf                                      \
+	--preview "preview $1 {1}"                 \
+	--preview-window=top,70%                   \
+	--bind="ctrl-e:execute(toggle-enable {1})" \
+	--bind="ctrl-s:execute(toggle-run {1})"    \
+	--bind="ctrl-r:execute(restart {1})"       \
 
-	# --bind "F1:reload(_installed)" \
-
+# | sed -r -e "s/loaded\s+/🤖 /" -e "s/not-found/💔/" -e "s/dead\s+/☠️ /" -e "s/running/🏃/" -e "s/inactive/祿/" -e "s/active\s+/綠 /" \
