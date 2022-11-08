@@ -12,7 +12,7 @@ edit() {
 	$EDITOR "$HOME/.gitignore"
 }
 fonts() {
-	$EDITOR -O ~/.local/config/fonts.conf ~/.config/fontconfig/fonts.conf
+	$EDITOR -O ~/.config/fontconfig/conf.d/99-local.conf ~/.config/fontconfig/fonts.conf
 }
 puda() {
 	cd "$HOME" || exit 1

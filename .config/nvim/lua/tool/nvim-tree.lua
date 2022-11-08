@@ -15,7 +15,7 @@ require'nvim-tree'.setup {
 		-- staged = "✓",
 		-- unmerged = "",
 		-- renamed = "➜",
-		untracked = "",
+		untracked = "",
 		-- deleted = "",
 		-- ignored = "◌",
 	}}}},

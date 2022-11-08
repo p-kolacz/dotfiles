@@ -37,6 +37,10 @@ def plchars():
 def ligatures():
 	print("Ligatures: == === => ->")
 
+def icons():
+	print("Icons:     ")
+
+
 codes(3)
 foreground(3,1)
 foreground(9,2)
@@ -53,3 +57,5 @@ font()
 styles()
 plchars()
 ligatures()
+icons()
+

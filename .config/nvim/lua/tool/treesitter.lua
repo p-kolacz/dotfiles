@@ -2,6 +2,7 @@
 Plugin {
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 }
 
 mapgroup("<leader>ct", "+Treesitter")
@@ -33,20 +34,10 @@ require"nvim-treesitter.configs".setup {
 			set_jumps = true,
 			goto_next_start = {
 				[']]'] = '@function.outer',
-				-- [']]'] = '@class.outer'
 			},
-			-- goto_next_end = {
-			-- 	[']M'] = '@function.outer',
-			-- 	[']['] = '@class.outer'
-			-- },
 			goto_previous_start = {
 				['[['] = '@function.outer',
-				-- ['[['] = '@class.outer'
 			},
-			-- goto_previous_end = {
-			-- 	['[M'] = '@function.outer',
-			-- 	['[]'] = '@class.outer'
-			-- }
 		},
 		swap = {
 			enable = true,
@@ -55,4 +46,6 @@ require"nvim-treesitter.configs".setup {
 		}
 	}
 }
+
+require"treesitter-context".setup()
 

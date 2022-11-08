@@ -62,3 +62,4 @@ vim.cmd("highlight Folded gui='italic'")
         -- "IndentBlanklineIndent6",
     -- },
 -- }
+

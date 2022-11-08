@@ -32,6 +32,10 @@ efuncs() {
 	source $file
 }
 
+fman() {
+	man -k . | fzf -q "$1" --prompt="man> " | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man 
+}
+
 kk() {
 	# local pid=$(ps -f -u $(whoami) | sed 1d | fzf --no-hscroll | awk '{print $2}')
 	# [[ -n $pid ]] && kill -9 $pid

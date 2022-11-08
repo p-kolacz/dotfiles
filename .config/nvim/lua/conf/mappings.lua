@@ -90,7 +90,8 @@ mapgroup("<leader>i", "+Insert")
 ---------------------------------- Options ---------------------------------
 mapgroup("<leader>o", "+Options")
 nnoremap("<leader>ol", ":setlocal list!<CR>", 'toggle invisible chars')
-nnoremap("<leader>on", ":set relativenumber! number!<CR>", 'toggle line numbers')
+nnoremap("<leader>on", ":set number!<CR>", 'toggle line numbers')
+nnoremap("<leader>or", ":set relativenumber!<CR>", 'toggle relative numbers')
 nnoremap("<leader>ow", ":setlocal wrap!<CR>", 'toggle wrap')
 
 ---------------------------------- Project ---------------------------------

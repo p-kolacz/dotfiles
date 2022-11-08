@@ -10,3 +10,5 @@ nnoremap_buffer("<localleader>sc", ":Console<cr>")
 
 Help.map(Help.Type.API, "https://api.rubyonrails.org/")
 Help.map(Help.Type.CHEATSHEET, "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o")
+
+setlocal.foldcolumn='0'

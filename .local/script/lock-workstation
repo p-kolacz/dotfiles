@@ -1,12 +1,25 @@
 #!/bin/bash
 
-IMAGE_DIR=$HOME/.local/share/lockimages
-CACHE_FILE=$HOME/.cache/lock.png
+if command -v i3lock-multimonitor &> /dev/null; then
+	i3lock-multimonitor
+	exit 0
+fi
 
-IMAGE=$(find "$IMAGE_DIR"/* -type f | shuf -n1)
+if command -v i3lock &> /dev/null; then
+	IMAGE_DIR=$HOME/.local/share/lockimages
+	CACHE_FILE=$HOME/.cache/lock.png
 
-[[ ! -f $IMAGE ]] && { i3lock; exit; }
+	IMAGE=$(find "$IMAGE_DIR"/* -type f | shuf -n1)
 
-convert "$IMAGE" -resize 1920x1080^ "$CACHE_FILE"
-i3lock -i "$CACHE_FILE"
+	[[ ! -f $IMAGE ]] && { i3lock; exit; }
+
+	convert "$IMAGE" -resize 1920x1080^ "$CACHE_FILE"
+	i3lock -i "$CACHE_FILE"
+	exit 0
+fi
+
+if command -v slock &> /dev/null; then
+	slock
+	exit 0
+fi
 
