@@ -287,11 +287,6 @@ snippet remove_last_file_line "Remove last line from file"
 sed -i '$ d' ${1:filename}
 endsnippet
 
-snippet run_function "Run script function or 'usage'"
-[[ ! $(typeset -f "\$1") ]] && { usage; exit 1; }
-$1
-endsnippet
-
 snippet script_name
 ${0##*/}
 endsnippet
@@ -342,9 +337,11 @@ endsnippet
 
 snippet runfunc
 usage() {
-	printf "Usage: ${0##*/} [%s]\n" $(declare -F | cut -d" " -f3 | tr "\n" "|")
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|")"
 }
 
-[[ $# -eq 0 || ! $(typeset -f $1) ]] && { usage; exit 1; } || $1
+[[ $# -eq 0 || ! $(typeset -f "\$1") ]] && { usage; exit 1; }
+\$1
+$0
 endsnippet
 

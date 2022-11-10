@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#git
+
+FZF_DEFAULT_OPTS="--ansi $FZF_DEFAULT_OPTS"
+FZF_INLINE="--height=30% --reverse $FZF_DEFAULT_OPTS"
+
+lb() {
+	FZF_DEFAULT_OPTS=$FZF_INLINE
+	local branch
+	branch=$(git branch -vv --color=always | sed -e "/^* /d" -e "s/^  //" | fzf) &&
+		git switch "$(echo "$branch" | cut -d' ' -f1 )"
+}
+ab() {
+	FZF_DEFAULT_OPTS=$FZF_INLINE
+	local branch
+	branch=$(git branch --all | sed -e "/^* /d" -e "s/^  //" | fzf) &&
+		git switch "$(echo "$branch" | cut -d' ' -f1 )"
+}
+
+diff() {
+	git diff "$@" --name-only | fzf --preview "git diff $@ --color=always -- {}"
+}
+
+usage() {
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|")"
+}
+
+[[ $# -eq 0 || ! $(typeset -f "$1") ]] && { usage; exit 1; }
+func=$1 && shift
+$func "$@"
+
+

@@ -10,15 +10,18 @@ require'nvim-tree'.setup {
           error = Icons.diagnostics.error,
 		},
 	},
-	renderer = { icons = { glyphs = { git = {
-		unstaged = "*",
-		-- staged = "✓",
-		-- unmerged = "",
-		-- renamed = "➜",
-		untracked = "",
-		-- deleted = "",
-		-- ignored = "◌",
-	}}}},
+	renderer = {
+		full_name = true,
+		icons = { glyphs = { git = {
+			unstaged = "*",
+			-- staged = "✓",
+			-- unmerged = "",
+			-- renamed = "➜",
+			untracked = "",
+			-- deleted = "",
+			-- ignored = "◌",
+		}}}
+	},
 	view = {
 		mappings = {
 			custom_only = false,

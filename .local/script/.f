@@ -5,7 +5,7 @@ _git() {
 }
 conf() {
 	cd "$HOME" || exit 1
-	file=$(_git ls-files | fzf --preview "view {}")
+	file=$(_git ls-files | fzf --query "$1" --preview "view {}")
 	[[ -f $file ]] && $EDITOR "$file"
 }
 edit() {
@@ -27,11 +27,10 @@ zsh() {
 if [[ $# == 0 ]]; then
 	cd && _git status
 elif [[ $(typeset -f "$1") ]]; then
-	$1
+	func=$1 && shift
+	$func "$@"
 else
 	_git "$@"
 fi
 
-
-# config config --local status.showUntrackedFiles no
 # https://www.atlassian.com/git/tutorials/dotfiles
