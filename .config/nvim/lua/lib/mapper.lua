@@ -1,6 +1,6 @@
 -- TODO: add table as lhs
 local function set(mode, lhs, rhs, desc, opts)
-	if desc ~= "" and WK then
+	if desc and desc ~= "" and WK then
 		opts.silent = false
 		opts.mode = mode
 		-- desc = desc == "" and "which_key_ignore" or desc
