@@ -1,9 +1,12 @@
 let.mapleader = " "
 let.maplocalleader = "\\"
 
+local yanka = require "lib/yanka"
+
 ----------------------------------- Code -----------------------------------
 mapgroup("<leader>c", "+Code")
 mapgroup("<leader>e", "+Edit")
+mapgroup("<leader>y", "+Yank")
 vnoremap("/", "<ESC>/\\%V")
 local i = "i" local n = "n" local v = "v" local c = "c"
 mapall {
@@ -44,6 +47,9 @@ mapall {
 	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
 	n,  "<leader>es" , ":%s/",               "substitute",
 	v,  "<leader>es" , ":s/",                "substitute",
+	n,  "<leader>yf",  ":lua require'lib/yanka'.filename()<cr>", "filename",
+	n,  "<leader>yr",  ":lua require'lib/yanka'.relative_path()<cr>", "relative path",
+	n,  "<leader>yp",  ":lua require'lib/yanka'.full_path()<cr>", "full path",
 }
 
 
@@ -57,8 +63,8 @@ xnoremap("<leader>ed", "\"sy:let @/=@s<cr>cgn")
 nnoremap("<leader>er", ":g/^/m0<CR>", "reverse lines")
 vnoremap("<leader>er", ":'<,'>!tac<CR>", "reverse lines")
 
-nmap('<leader>"', 'ysiw"', '"cword"')
-nmap("<leader>'", "ysiw'", "'cword'")
+nmap('<leader>"', 'ysiW"', '"cWord"')
+nmap("<leader>'", "ysiW'", "'cWord'")
 
 ----------------------------------- File -----------------------------------
 mapgroup("<leader>f", "+File")
