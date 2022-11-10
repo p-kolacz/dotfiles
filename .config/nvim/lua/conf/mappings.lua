@@ -140,6 +140,12 @@ nnoremap("<C-h>", "<C-w>h", "left window")
 nnoremap("<C-j>", "<C-w>j", "bottom window")
 nnoremap("<C-k>", "<C-w>k", "up window")
 nnoremap("<C-l>", "<C-w>l", "right window")
+
+nnoremap("<C-A-h>", "<C-w>h<C-w>|", "left window")
+nnoremap("<C-A-j>", "<C-w>j<C-w>_", "bottom window")
+nnoremap("<C-A-k>", "<C-w>k<C-w>_", "up window")
+nnoremap("<C-A-l>", "<C-w>l<C-w>|", "right window")
+
 -- nnoremap("<a-h>", "<C-w><", "resize window")
 -- nnoremap("<a-l>", "<C-w>>", "resize window")
 

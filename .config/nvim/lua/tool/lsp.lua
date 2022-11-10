@@ -35,7 +35,7 @@ LSP_ON_ATTACH = function(client, bufnr)
 	-- nnoremap_buffer('<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
 	nnoremap_buffer('<leader>cd', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition')
 	nnoremap_buffer('<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename')
-	-- nnoremap_buffer('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+	nnoremap_buffer('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,

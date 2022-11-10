@@ -13,6 +13,7 @@ Plugin {
 }
 
 local actions = require('telescope.actions')
+local trouble = require "trouble.providers.telescope"
 require('telescope').setup {
 	defaults = {
 		prompt_prefix = "🔭",
@@ -21,16 +22,20 @@ require('telescope').setup {
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["<C-t>"] = trouble.open_with_trouble,
+			},
+			n = {
+				["<c-t>"] = trouble.open_with_trouble
 			},
 		},
 	},
 	pickers = {
-		find_files	= { theme = "ivy", initial_mode = "normal" },
-		git_files	= { theme = "ivy", initial_mode = "normal"},
+		find_files	= { theme = "ivy", initial_mode = "insert" },
+		git_files	= { theme = "ivy", initial_mode = "insert"},
 		grep_string	= { theme = "ivy" },
 		live_grep	= { theme = "ivy" },
-		buffers		= { theme = "ivy", initial_mode = "normal" },
-		oldfiles	= { theme = "ivy", initial_mode = "normal" },
+		buffers		= { theme = "ivy", initial_mode = "insert" },
+		oldfiles	= { theme = "ivy", initial_mode = "insert" },
 		current_buffer_fuzzy_find	= { theme = "ivy" },
 		symbols		= { theme = "cursor" },
 	},

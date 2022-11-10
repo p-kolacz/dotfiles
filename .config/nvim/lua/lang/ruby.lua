@@ -5,7 +5,7 @@
 --               |___|
 
 Plugin {
-	"https://github.com/vim-ruby/vim-ruby",
+	-- "https://github.com/vim-ruby/vim-ruby",
 	"https://github.com/tpope/vim-rails",
 	"https://github.com/tpope/vim-bundler",
 	"https://github.com/tpope/vim-dispatch",
