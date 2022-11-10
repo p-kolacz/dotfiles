@@ -1,58 +1,54 @@
 let.mapleader = " "
 let.maplocalleader = "\\"
 
-vnoremap("/", "<ESC>/\\%V")
---------------------------------- Navigation -------------------------------
-inoremap("jj", "<ESC>")
-inoremap("kk", "<ESC>")
-inoremap("jk", "<ESC>")
-nnoremap("H", "^")
-vnoremap("H", "^")
-vnoremap("L", "$")
-nnoremap("L", "$")
-nnoremap("[q", ":cprevious<cr>", "next quickfix entry")
-nnoremap("]q", ":cnext<cr>", "previous quickfix entry")
-nnoremap("[l", ":lprevious<cr>", "next loclist entry")
-nnoremap("]l", ":lnext<cr>", "previous loclist entry")
-
-nnoremap("<F12>", ":execute 'e' stdpath('config').'/init.lua'<CR>")
-nnoremap("<F11>", ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>")
-
----------------------------------- Buffer ----------------------------------
-nnoremap("<leader>w", ":w<CR>", "")
-
 ----------------------------------- Code -----------------------------------
 mapgroup("<leader>c", "+Code")
--- TODO: tab == c-i so change tab to somehing else
--- nnoremap("<tab>", "za")
+mapgroup("<leader>e", "+Edit")
+vnoremap("/", "<ESC>/\\%V")
+local i = "i" local n = "n" local v = "v" local c = "c"
+mapall {
+--------------------------------- Navigation -------------------------------
+	i,  "jj",    "<ESC>", "",
+	i,  "kk",    "<ESC>", "",
+	i,  "jk",    "<ESC>", "",
+	n,  "H",     "^", "",
+	v,  "H",     "^", "",
+	v,  "L",     "$", "",
+	n,  "L",     "$", "",
+	n,  "[q",    ":cprevious<cr>", "next quickfix entry",
+	n,  "]q",    ":cnext<cr>",     "previous quickfix entry",
+	n,  "[l",    ":lprevious<cr>", "next loclist entry",
+	n,  "]l",    ":lnext<cr>",     "previous loclist entry",
+	n,  "<F12>", ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
+	n,  "<F11>", ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
+
+---------------------------------- Buffer ----------------------------------
+	n,  "<leader>w",   ":w<CR>",    "which_key_ignore",
 
 --------------------------------- Command Mode --------------------------------
-cnoremap("<c-a>", "<home>")
-cnoremap("<a-f>", "<s-right>")
-cnoremap("<c-b>", "<left>")
-cnoremap("<a-b>", "<s-left>")
+	c,  "<C-a>",       "<home>",    "",
+	c,  "<A-f>",       "<S-right>", "",
+	c,  "<C-b>",       "<left>",    "",
+	c,  "<A-b>",       "<S-left>",  "",
 
 ----------------------------------- Edit -----------------------------------
-mapgroup("<leader>e", "+Edit")
+	i,  "<C-f>",       "<right>",            "",
+	i,  "<A-f>",       "<s-right>",          "",
+	i,  "<C-b>",       "<left>",             "",
+	i,  "<A-b>",       "<s-left>",           "",
+	v,  "<C-c>",       '"*y :let @+=@*<CR>', "",
+	n,  "<A-j>",       ":m .+1<cr>==",       "", -- Move line
+	n,  "<A-k>",       ":m .-2<cr>==",       "",
+	v,  "<A-j>",       ":m '>+1<cr>gv=gv",   "", -- Move selection
+	v,  "<A-k>",       ":m '<-2<cr>gv=gv",   "",
+	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
+	n,  "<leader>es" , ":%s/",               "substitute",
+	v,  "<leader>es" , ":s/",                "substitute",
+}
 
-inoremap("<c-f>", "<right>")
-inoremap("<a-f>", "<s-right>")
-inoremap("<c-b>", "<left>")
-inoremap("<a-b>", "<s-left>")
 
 -- Clipboard
-vnoremap("<C-c>", '"*y :let @+=@*<CR>')
 map("<C-v>", '"+P')
--- Move line
-nnoremap("<a-j>", ":m .+1<cr>==")
-nnoremap("<a-k>", ":m .-2<cr>==")
--- Move selection
-vnoremap("<a-j>", ":m '>+1<cr>gv=gv")
-vnoremap("<a-k>", ":m '<-2<cr>gv=gv")
-
-nnoremap("<leader>et", ":%s/\\s\\+$//e<CR>", "remove trailing spaces")
-nnoremap("<leader>es" , ":%s/", "substitute")
-vnoremap("<leader>es" , ":s/", "substitute")
 
 -- change cword and press . to repeat change on next, n to goto next
 nnoremap("<leader>ed", ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat")
