@@ -1,9 +1,9 @@
 -- TODO: add table as lhs
 local function set(mode, lhs, rhs, desc, opts)
-	if desc and WK then
+	if desc ~= "" and WK then
 		opts.silent = false
 		opts.mode = mode
-		desc = desc == "" and "which_key_ignore" or desc
+		-- desc = desc == "" and "which_key_ignore" or desc
 		WK.register({ [lhs] = { rhs, desc }}, opts)
 	elseif type(rhs) == "string" then
 		if opts.buffer then
@@ -14,6 +14,13 @@ local function set(mode, lhs, rhs, desc, opts)
 		end
 	-- else
 		-- print("invalid rhs for: "..lhs)
+	end
+end
+
+function _G.mapall(maps)
+	for i = 1, #maps, 4 do
+		-- print(i, maps[i+1])
+		set(maps[i], maps[i+1], maps[i+2], maps[i+3], { noremap = true  })
 	end
 end
 
