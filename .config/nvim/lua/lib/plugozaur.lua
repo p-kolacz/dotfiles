@@ -21,10 +21,14 @@ function Plugin(repos)
 end
 
 function PlugUpdate()
-	-- vim.cmd(string.format([[!ls -d %s* | xargs -I{} sh -c "echo Updating: $(basename '{}'); git -C {} pull;"]], PLUGIN_HOME))
-	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P1 -I{} sh -c "echo -n 'Updating: '; basename {}; git -C {} pull;"]], PLUGIN_HOME))
-	-- vim.cmd(string.format([[!find %s* -prune -type d | xargs -P10 -I{} git -C {} pull]], PLUGIN_HOME))
+	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P10 -I{} git -C {} pull]], PLUGIN_HOME))
 	vim.cmd('helptags ALL')
 end
 vim.cmd("command! PlugUpdate lua PlugUpdate()")
+
+function PlugUpdateDebug()
+	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P1 -I{} sh -c "echo -n 'Updating: '; basename {}; git -C {} pull;"]], PLUGIN_HOME))
+	vim.cmd('helptags ALL')
+end
+vim.cmd("command! PlugUpdateDebug lua PlugUpdateDebug()")
 

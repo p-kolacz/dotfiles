@@ -6,7 +6,7 @@ if [[ $# -eq 0 ]]; then
 	dbfile=$(find "$DBDIR/db" -type f | fzf)
 	[[ -z $dbfile ]] && exit
 else
-	dbfile="$DBDIR/db/$1.rec"
+	dbfile="$DBDIR/db/$1"
 fi
 
 [[ -f $dbfile ]] || { echo "Invalid file: $dbfile"; exit 1; }

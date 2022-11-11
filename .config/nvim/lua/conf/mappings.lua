@@ -1,8 +1,6 @@
 let.mapleader = " "
 let.maplocalleader = "\\"
 
-local yanka = require "lib/yanka"
-
 ----------------------------------- Code -----------------------------------
 mapgroup("<leader>c", "+Code")
 mapgroup("<leader>e", "+Edit")
@@ -47,9 +45,12 @@ mapall {
 	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
 	n,  "<leader>es" , ":%s/",               "substitute",
 	v,  "<leader>es" , ":s/",                "substitute",
+
 	n,  "<leader>yf",  ":lua require'lib/yanka'.filename()<cr>", "filename",
 	n,  "<leader>yr",  ":lua require'lib/yanka'.relative_path()<cr>", "relative path",
 	n,  "<leader>yp",  ":lua require'lib/yanka'.full_path()<cr>", "full path",
+	n,  "<leader>yd",  ":lua require'lib/yanka'.full_dir()<cr>", "full dir",
+	n,  "<leader>yc",  ":lua require'lib/yanka'.cfile()<cr>", "file under cursor",
 }
 
 

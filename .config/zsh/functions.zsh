@@ -12,7 +12,7 @@ resmod() {
 	find "$1" -type f -exec chmod 644 {} \;
 }
 
-sheet () {
+sheet() {
 	curl cheat.sh/"$1"
 }
 

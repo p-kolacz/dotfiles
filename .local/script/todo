@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case $1 in
+	edit) ;;
+	*)
+	entry="$(date +%F) - $1"
+	echo -e "$entry\n$(cat "$FILE")" > "$FILE"
+esac
+

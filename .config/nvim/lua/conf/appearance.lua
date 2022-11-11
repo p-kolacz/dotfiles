@@ -17,7 +17,6 @@ set.foldcolumn     = "auto"
 -- set.shortmess:remove("F")
 
 -- Highlight yank
--- vim.cmd([[autocmd vimrc TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500}]])
 autocmd("TextYankPost", { group = "vimrc", pattern = "*", callback =
 	function()
 		vim.highlight.on_yank {higroup="IncSearch", timeout=500}
@@ -26,17 +25,20 @@ autocmd("TextYankPost", { group = "vimrc", pattern = "*", callback =
 -- vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
 -- vim.cmd[[match ExtraWhitespace /\s\+$/]]
 
+
 Plugin "kyazdani42/nvim-web-devicons"
 require "nvim-web-devicons".setup()
 require "lib/iconz"
 require "conf/themes"
+-- Highlight words under cursor
+-- Plugin "https://github.com/xiyaowong/nvim-cursorword"
 set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
 colorscheme "rose-pine"
 -- colorscheme "solarized-flat"
 -- colorscheme "PaperColorSlim"
 
--- Highlight words under cursor
-Plugin "https://github.com/xiyaowong/nvim-cursorword"
+Plugin "https://github.com/petertriho/nvim-scrollbar"
+require"scrollbar".setup()
 
 
 -- Highlights must be after colorscheme

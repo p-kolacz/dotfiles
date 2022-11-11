@@ -3,7 +3,7 @@
 DBNAME=$1
 # KEY_NO=${2:-1}
 # BASE=$(dirname "$0")
-BASE="$HOME/Cloud/Exocortex/Databases"
+BASE="$HOME/Exocortex/Databases"
 export DB=$BASE/db/$DBNAME.rec
 export TEMPL=$BASE/templ/$DBNAME
 SHELL=/bin/bash
