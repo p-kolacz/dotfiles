@@ -17,11 +17,12 @@ ab() {
 	branch=$(git branch --all | sed -e "/^* /d" -e "s/^  //" | fzf) &&
 		git switch "$(echo "$branch" | cut -d' ' -f1 )"
 }
-
-diff() {
-	git diff "$@" --name-only | fzf --preview "git diff $@ --color=always -- {}"
+loc() {
+	git ls-files -z | wc -l --files0-from=-
 }
-
+diff() {
+	git diff "$@" --name-only | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
+}
 usage() {
 	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|")"
 }

@@ -48,8 +48,8 @@ require"scrollbar".setup()
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")
-vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
-vim.cmd[[match ExtraWhitespace /\s\+$/]]
+-- vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
+-- vim.cmd[[match ExtraWhitespace /\s\+$/]]
 
 -- Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
 -- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
