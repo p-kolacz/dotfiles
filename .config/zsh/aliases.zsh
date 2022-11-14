@@ -13,10 +13,8 @@ alias batman="nmcli device wifi connect 'Batman'"
 alias myip="curl ipinfo.io/ip"
 alias nv="nvim"
 alias weather="curl 'wttr.in/?Fqn&lang=pl'"
-alias todo="~/src/todofzf/todofzf ~/Exocortex/TODO/todo.txt"
 (( $+commands[host] )) || alias host="drill ANY"
 alias webcam="qv4l2"
-alias vodo="nvim ~/Exocortex/TODO/todo.txt"
 
 # Browsers ----------------------------
 alias cursors="find /usr/share/icons ~/.local/share/icons -type d -name \"cursors\""

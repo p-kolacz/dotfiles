@@ -1,4 +1,12 @@
 Icons = {
+	listchars = {
+		space = "⋅", tab = "|->", eol = "↲", nbsp = "+", trail = "•", extends = "⟩", precedes = "⟨",
+	},
+	fillchars = {
+		fold = " ", foldopen = "", foldclose = "",
+		horiz = "═", horizdown = "╦", horizup = "╩",
+		vert = "║", vertright = "╠", verthoriz = "╬", vertleft = "╣",
+	},
 	diagnostics = {
 		error = " ", warn = " ", hint = " ", info = " "
 	},
@@ -7,10 +15,3 @@ Icons = {
 	sources = {
 		buffer = "﬘", nvim_lsp = "", ultisnips = "", emoji = "", calc = "", latex_symbols = "[LaTeX]", luasnip = "[LuaSnip]", nvim_lua = "[Lua]", },
 }
-
--- Define icons highlights for diagnostics
-for name, icon in pairs(Icons.diagnostics) do
-	name = name:sub(1,1):upper()..name:sub(2)	-- capitalize name
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end

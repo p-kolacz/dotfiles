@@ -1,9 +1,19 @@
 #!/bin/bash
 
-case $1 in
-	edit) ;;
-	*)
-	entry="$(date +%F) - $1"
-	echo -e "$entry\n$(cat "$FILE")" > "$FILE"
+TODO="$HOME/Exocortex/TODO/todo.txt"
+
+add() {
+	entry="$(date +%F) $*"
+	echo "$entry"  >> "$TODO"
+}
+
+case $# in
+	0) ~/src/todofzf/todofzf "$TODO" ;;
+	1)
+		case $1 in
+			edit) $EDITOR "$TODO" ;;
+			*) add "$@"
+		esac ;;
+	*) add "$@"
 esac
 
