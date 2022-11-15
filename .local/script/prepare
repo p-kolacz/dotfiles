@@ -86,6 +86,10 @@ dev/rails() {
 	dev/ruby
 	# gem install rails --conservative
 }
+dev/rust() {
+	install rustup rust-analyzer
+	rustup default stable
+}
 
 dotfiles() {
 	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
@@ -148,7 +152,7 @@ photo() {
 }
 
 terminal() {
-	install git lsof man-db man-pages htop p7zip polkit ripgrep starship
+	install git lsof man-db man-pages htop p7zip polkit ripgrep rsync starship
 	install catdoc hexyl python-pygments mediainfo odt2txt
 	install fzf lazygit smartmontools trash-cli
 	install bash-language-server shellcheck

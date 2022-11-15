@@ -3,13 +3,6 @@
 export GIT_DIR="$HOME/.config/dotfiles"
 export GIT_WORK_TREE="$HOME"
 
-# git() {
-# 	/usr/bin/git --git-dir="$HOME/.config/dotfiles" --work-tree="$HOME" "$@"
-# }
-# export -f git
-
-# alias git="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
-
 conf() {
 	cd "$HOME" || exit 1
 	file=$(git ls-files | fzf --query "$1" --preview "view {}")
@@ -22,9 +15,6 @@ diff() {
 edit() {
 	$EDITOR "$HOME/.gitignore"
 }
-# fonts() {
-# 	$EDITOR -O ~/.config/fontconfig/conf.d/99-local.conf ~/.config/fontconfig/fonts.conf
-# }
 puda() {
 	cd "$HOME" || exit 1
 	git add .

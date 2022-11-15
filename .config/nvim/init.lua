@@ -41,6 +41,7 @@ Require {
 	"lang/python",
 	"lang/recutils",
 	"lang/ruby",
+	"lang/rust",
 	"lang/sql",
 	"lang/sxhkd",
 	"lang/webdev",

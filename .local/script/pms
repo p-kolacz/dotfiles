@@ -43,7 +43,7 @@ _info() {
 
 _installed() {
 	echo query > /tmp/pms_mode
-	_header $1
+	_header "$1"
 	pacman -Qq$1
 }
 
