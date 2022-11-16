@@ -35,7 +35,7 @@ bspc desktop G -l monocle
 
 bspc config border_width			1
 bspc config borderless_monocle		true
-bspc config focused_border_color	"$THEME_BLACK"
+bspc config focused_border_color	"$THEME_ACCENT"
 bspc config active_border_color		"$THEME_BG"
 bspc config normal_border_color		"$THEME_BG"
 bspc config window_gap				16
