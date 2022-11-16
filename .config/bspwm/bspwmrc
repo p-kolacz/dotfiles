@@ -67,7 +67,8 @@ bspc rule -r "*"
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad state=floating sticky=on rectangle=1200x800+220+260
 bspc rule -a Gimp desktop=G follow=on
-set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal thunderbird:Mailnews
+set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal
+set_rule floating thunderbird:Msgcompose thunderbird:Mailnews
 # set_rule tiled Zathura Emacs
 # set_rule fullscreen Meld
 
