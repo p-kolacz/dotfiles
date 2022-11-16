@@ -38,7 +38,7 @@ colorscheme "rose-pine"
 
 Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
-	filetypes_allowlist = {"lua", "ruby", },
+	filetypes_allowlist = {"lua", "ruby", "sh", },
 	filetypes_denylist = {},
 	min_count_to_highlight = 2,
 }

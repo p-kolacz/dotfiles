@@ -1,21 +1,22 @@
 #!/bin/bash
 
-export TMPFILE=/tmp/sys_mode
-SHELL=/bin/bash
+TMPFILE=/tmp/sys_mode
 export SYSTEMD_COLORS=true
 
-list() {
+get-mode() {
+	[[ -f $TMPFILE ]] || echo --system > $TMPFILE
 	read -r MODE < $TMPFILE
+}
+list() {
+	get-mode
 	echo "Mode: $MODE" && systemctl list-units --type=service --all --plain --no-pager --legend=false "$MODE"
 }
 preview() {
-	systemctl status "$@"
-}
-mode() {
-	read -r MODE < $TMPFILE
+	get-mode
+	systemctl status "$MODE" "$1"
 }
 toggle-mode() {
-	mode
+	get-mode
 	if [[ $MODE == "--system" ]]; then
 		MODE=--user
 	else
@@ -24,40 +25,43 @@ toggle-mode() {
 	echo $MODE > $TMPFILE
 }
 toggle-enable() {
-	if systemctl is-enabled "$MODE" "$1" ; then
+	get-mode
+	if systemctl is-enabled --quiet "$MODE" "$1" ; then
 		systemctl disable "$MODE" "$1"
 	else
 		systemctl enable "$MODE" "$1"
 	fi
 }
 toggle-run() {
-	if systemctl is-active "$MODE" "$1"; then
+	get-mode
+	if systemctl is-active --quiet "$MODE" "$1"; then
 		systemctl stop "$MODE" "$1"
 	else
 		systemctl start "$MODE" "$1"
 	fi
 }
 restart() {
+	get-mode
 	systemctl restart "$MODE" "$1"
-	# pause
 }
 
-export -f mode
-export -f list
-export -f preview
-export -f toggle-mode
-export -f toggle-enable
-export -f toggle-run
-export -f restart
-echo --system > $TMPFILE
+browse() {
+	local THIS=${0##*/}
+	list | fzf																\
+		--header-lines=1													\
+		--preview="$THIS preview {1}"										\
+		--preview-window=top,70%											\
+		--bind="ctrl-e:execute($THIS toggle-enable {1})+reload($THIS list)"	\
+		--bind="ctrl-s:execute($THIS toggle-run {1})+reload($THIS list)"	\
+		--bind="ctrl-r:execute($THIS restart {1})+reload($THIS list)"		\
+		--bind="ctrl-u:execute-silent($THIS toggle-mode)+reload($THIS list)"		
+}
 
-list | fzf												\
-	--header-lines 1									\
-	--preview "preview $1 {1}"							\
-	--preview-window=top,70%							\
-	--bind="ctrl-e:execute(toggle-enable {1})+reload(list)"			\
-	--bind="ctrl-s:execute(toggle-run {1})+reload(list)"				\
-	--bind="ctrl-r:execute(restart {1})+reload(list)"				\
-	--bind="ctrl-u:execute(toggle-mode)+reload(list)"	\
+if [[ $# -eq 0 ]]; then
+	browse
+elif [[ $(typeset -f "$1") ]]; then
+	fun=$1 && shift && $fun "$@"
+else
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|")"
+fi
 
-# | sed -r -e "s/loaded\s+/🤖 /" -e "s/not-found/💔/" -e "s/dead\s+/☠️ /" -e "s/running/🏃/" -e "s/inactive/祿/" -e "s/active\s+/綠 /" \

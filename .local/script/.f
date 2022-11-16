@@ -21,6 +21,9 @@ puda() {
 	git commit -m "$(date +%F_%T)"
 	git push
 }
+pull() {
+	git pull
+}
 zsh() {
 	$EDITOR -o ~/.config/zsh/.zshenv ~/.config/zsh/.zprofile ~/.config/zsh/.zshrc
 }

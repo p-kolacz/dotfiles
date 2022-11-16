@@ -287,11 +287,11 @@ snippet remove_last_file_line "Remove last line from file"
 sed -i '$ d' ${1:filename}
 endsnippet
 
-snippet script_name
+snippet script_name "Filename of current script" i
 ${0##*/}
 endsnippet
 
-snippet script_dir
+snippet script_dir "Dir name of current script" i
 $(dirname "$0")
 endsnippet
 
