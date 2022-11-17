@@ -29,6 +29,8 @@ SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 setopt autocd
 
+[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+
 [[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
 
 # [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
