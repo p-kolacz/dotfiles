@@ -341,7 +341,8 @@ usage() {
 }
 
 [[ $# -eq 0 || ! $(typeset -f "\$1") ]] && { usage; exit 1; }
-\$1
+func=\$1 && shift
+\$func "$@"
 $0
 endsnippet
 
