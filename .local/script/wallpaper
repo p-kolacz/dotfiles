@@ -1,12 +1,13 @@
 #!/bin/bash
 
-FILE="$HOME/.cache/wallpaper"
-# WALLSET="feh --no-fehbg --bg-fill"
+FILE=~/.cache/wallpaper
+WALLPAPERS=~/Images/wallpapers
 WALLSET="xwallpaper --zoom"
+# WALLSET="feh --no-fehbg --bg-fill"
 
 browse() {
 	# recursive thumbnail fullscreen
-	$IMGVIEWER -rtf ~/Cloud/Images/Wallpapers &
+	$IMGVIEWER -rtf "$WALLPAPERS" &
 }
 
 setwp() {
