@@ -69,7 +69,7 @@ nmap("<leader>'", "ysiW'", "'cWord'")
 
 ----------------------------------- File -----------------------------------
 mapgroup("<leader>f", "+File")
-nnoremap("<leader>fx", ":silent !chmod +x %<cr>", "chmod +x")
+nnoremap("<leader>fx", ":silent !chmod +x %<cr>:e<cr>", "chmod +x")
 
 ------------------------------------ Git -----------------------------------
 mapgroup("<leader>g", "+Git")
