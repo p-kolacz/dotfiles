@@ -98,7 +98,6 @@ dotfiles() {
 	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
 	core/yay
 	# TODO: git clone dotfiles
-	copy "$DOTFILES/share/git/config" "$HOME/.config/git"
 }
 
 fonts() {
@@ -187,38 +186,31 @@ xorg() {
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
 install() {
-	[[ $DRYRUN ]] && { echo "DRYRUN installing:" "$@"; return; }
 	sudo pacman -S --needed --noconfirm "$@" 
 }
 ynstall() {
-	[[ $DRYRUN ]] && { echo "DRYRUN installing from AUR:" "$@"; return; }
 	yay -S --needed --nodiffmenu --nocleanmenu "$@" 
 }
 copy() {
 	sudo cp -v --no-clobber "$1" "$2"
 }
 startenable() {
-	[[ $DRYRUN ]] && { echo "DRYRUN start & enable: $1"; return; }
 	sudo systemctl enable "$1"
 	sudo systemctl start "$1"
 }
 startenableuser() {
-	[[ $DRYRUN ]] && { echo "DRYRUN start & enable --user: $1"; return; }
 	systemctl --user enable "$1"
 	systemctl --user start "$1"
 }
 usage() {
 	local funcs
 	funcs=$(declare -F | cut -d" " -f3 | grep -Ev "install|ynstall|startenable|usage" | column) # | tr "\n" ",")
+	SCRIPT=${0##*/}
 	cat << EOF
 $SCRIPT: Install/configure packages
 
 SYNOPSIS:
-	$SCRIPT [OPTION ...] TARGET
-
-OPTIONS:
-	-n, --dry-run       Don't do just show
-	-h, --help          Display help
+	$SCRIPT TARGET
 
 TARGETS:
 $funcs
@@ -230,29 +222,6 @@ EOF
 # ║                                   Run                                    ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
-SCRIPT=${0##*/}
-OPTS=$(getopt --options n,h --longoptions dry-run,help --name "$SCRIPT" -- "$@") || exit 1
-eval set -- "$OPTS"
-
-while true; do
-	case "$1" in
-		-n|--dry-run)
-			DRYRUN=true
-			shift
-			;;
-		-h|--help)
-			usage
-			exit
-			;;
-		--)
-			shift
-			break
-			;;
-		*)
-			echo "Invalid argument: $1"
-			exit 1
-	esac
-done
 
 case $# in
 	0) usage; exit 2 ;;

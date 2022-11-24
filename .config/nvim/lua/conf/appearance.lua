@@ -40,6 +40,7 @@ Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
 	filetypes_allowlist = {"lua", "rails", "ruby", "sh", },
 	filetypes_denylist = {},
+	providers = { 'treesitter', 'regex' },
 	min_count_to_highlight = 2,
 }
 Plugin "https://github.com/petertriho/nvim-scrollbar"
