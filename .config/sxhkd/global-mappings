@@ -65,6 +65,8 @@ super + parenleft
 super + parenright
 	rofi-bluetooth
 
+super + p
+	keepassxc
 
 #---------------------------------------------------------------------------------------#
 								   # Mouse #
