@@ -1,38 +1,39 @@
 let.mapleader = " "
 let.maplocalleader = "\\"
 
------------------------------------ Code -----------------------------------
-mapgroup("<leader>c", "+Code")
-mapgroup("<leader>e", "+Edit")
-mapgroup("<leader>y", "+Yank")
+local m = require"lib/mapper"
 vnoremap("/", "<ESC>/\\%V")
-local i = "i" local n = "n" local v = "v" local c = "c"
-mapall {
---------------------------------- Navigation -------------------------------
-	i,  "jj",    "<ESC>", "",
-	i,  "kk",    "<ESC>", "",
-	i,  "jk",    "<ESC>", "",
-	n,  "H",     "^", "",
-	v,  "H",     "^", "",
-	v,  "L",     "$", "",
-	n,  "L",     "$", "",
-	n,  "[q",    ":cprevious<cr>", "next quickfix entry",
-	n,  "]q",    ":cnext<cr>",     "previous quickfix entry",
-	n,  "[l",    ":lprevious<cr>", "next loclist entry",
-	n,  "]l",    ":lnext<cr>",     "previous loclist entry",
-	n,  "<F12>", ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
-	n,  "<F11>", ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
-
----------------------------------- Buffer ----------------------------------
-	n,  "<leader>w",   ":w<CR>",    "which_key_ignore",
-
---------------------------------- Command Mode --------------------------------
+local i = "i" local n = "n" local v = "v" local c = "c" local G = "G"
+m.map {
+	--------------------------------- Navigation -------------------------------
+	i,  "jj",          "<ESC>", "",
+	i,  "kk",          "<ESC>", "",
+	i,  "jk",          "<ESC>", "",
+	n,  "H",           "^", "",
+	v,  "H",           "^", "",
+	v,  "L",           "$", "",
+	n,  "L",           "$", "",
+	n,  "[q",          ":cprevious<cr>", "next quickfix entry",
+	n,  "]q",          ":cnext<cr>",     "previous quickfix entry",
+	n,  "[l",          ":lprevious<cr>", "next loclist entry",
+	n,  "]l",          ":lnext<cr>",     "previous loclist entry",
+	n,  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
+	n,  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
+	---------------------------------- Buffer ----------------------------------
+	n,	"<leader>w",	":w<CR>",				nil,
+	----------------------------------- Code -----------------------------------
+	G,	"<leader>c",   "+Code",               nil,
+	--------------------------------- Command Mode --------------------------------
 	c,  "<C-a>",       "<home>",    "",
 	c,  "<A-f>",       "<S-right>", "",
 	c,  "<C-b>",       "<left>",    "",
 	c,  "<A-b>",       "<S-left>",  "",
-
------------------------------------ Edit -----------------------------------
+	----------------------------------- Diff -----------------------------------
+	G,  "<leader>d",    "+Diff", "",
+	n,  "<leader>dd",  ":diffthis<cr>",      "diff this",
+	n,  "<leader>do",  ":diffoff!<cr>",       "diff off",
+	----------------------------------- Edit -----------------------------------
+	G,  "<leader>e",   "+Edit",              "",
 	i,  "<C-f>",       "<right>",            "",
 	i,  "<A-f>",       "<s-right>",          "",
 	i,  "<C-b>",       "<left>",             "",
@@ -45,7 +46,8 @@ mapall {
 	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
 	n,  "<leader>es" , ":%s/",               "substitute",
 	v,  "<leader>es" , ":s/",                "substitute",
-
+	----------------------------------- Yank -----------------------------------
+	G,  "<leader>y",   "+Yank",              nil,
 	n,  "<leader>yf",  ":lua require'lib/yanka'.filename()<cr>", "filename",
 	n,  "<leader>yr",  ":lua require'lib/yanka'.relative_path()<cr>", "relative path",
 	n,  "<leader>yp",  ":lua require'lib/yanka'.full_path()<cr>", "full path",
@@ -138,7 +140,7 @@ nnoremap("<leader>vg", function ()
 end, "toggle background")
 
 ---------------------------------- Windows ---------------------------------
-nnoremap("<leader>q", ":q<CR>", "")
+nnoremap("<leader>q", ":q<CR>", "which_key_ignore")
 nnoremap("<C-h>", "<C-w>h", "left window")
 nnoremap("<C-j>", "<C-w>j", "bottom window")
 nnoremap("<C-k>", "<C-w>k", "up window")

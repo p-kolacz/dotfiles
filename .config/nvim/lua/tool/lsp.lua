@@ -6,11 +6,11 @@ vim.o.updatetime = 250
 -- LSP_DATA_HOME = vim.fn.stdpath('data') .. '/lsp/'
 -- LSP_NODE_BIN = LSP_DATA_HOME .. 'node_modules/.bin/'
 
-mapgroup("<leader>d", "+Diagnostics")
-nnoremap('<leader>df', '<cmd>lua vim.diagnostic.open_float()<CR>', "open float")
-nnoremap('<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<CR>', "set loclist")
-nnoremap('<leader>dh', '<cmd>lua vim.diagnostic.hide()<CR>', "hide")
-nnoremap('<leader>ds', '<cmd>lua vim.diagnostic.show()<CR>', "show")
+mapgroup("<leader>D", "+Diagnostics")
+nnoremap('<leader>Df', '<cmd>lua vim.diagnostic.open_float()<CR>', "open float")
+nnoremap('<leader>Dl', '<cmd>lua vim.diagnostic.setloclist()<CR>', "set loclist")
+nnoremap('<leader>Dh', '<cmd>lua vim.diagnostic.hide()<CR>', "hide")
+nnoremap('<leader>Ds', '<cmd>lua vim.diagnostic.show()<CR>', "show")
 nnoremap('[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 nnoremap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
@@ -19,7 +19,8 @@ nnoremap('<leader>li', ':LspInfo<cr>', 'info')
 nnoremap('<leader>ls', ':LspStart<cr>', 'start')
 nnoremap('<leader>lS', ':LspStop<cr>', 'stop')
 nnoremap('<leader>lr', ':LspRestart<cr>', 'restart')
-nnoremap("<leader>ll", ":lua vim.cmd('e'..vim.lsp.get_log_path())<cr>", "logs")
+-- nnoremap("<leader>ll", ":lua vim.cmd('e'..vim.lsp.get_log_path())<cr>", "logs")
+nnoremap("<leader>ll", ":tabnew<cr>:e "..vim.lsp.get_log_path().."<cr>", "logs")
 
 LSP_ON_ATTACH = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

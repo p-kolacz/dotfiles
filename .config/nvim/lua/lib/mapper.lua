@@ -1,5 +1,5 @@
 -- TODO: add table as lhs
-local function set(mode, lhs, rhs, desc, opts)
+local function _set(mode, lhs, rhs, desc, opts)
 	if desc and desc ~= "" and WK then
 		opts.silent = false
 		opts.mode = mode
@@ -17,11 +17,11 @@ local function set(mode, lhs, rhs, desc, opts)
 	end
 end
 
-function _G.mapall(maps)
-	for i = 1, #maps, 4 do
-		-- print(i, maps[i+1])
-		set(maps[i], maps[i+1], maps[i+2], maps[i+3], { noremap = true  })
-	end
+local function set(mode, lhs, rhs, desc, opts)
+	opts.desc = desc
+	opts.remap = not opts.nnoremap
+	opts.nnoremap = nil
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 function _G.mapgroup(key, desc)
@@ -41,4 +41,21 @@ function _G.vnoremap(lhs, rhs, desc)         set("v", lhs, rhs, desc, { noremap 
 function _G.vnoremap_buffer(lhs, rhs, desc)  set("v", lhs, rhs, desc, { noremap = true, buffer = 0  }) end
 function _G.xnoremap(lhs, rhs, desc)         set("x", lhs, rhs, desc, { noremap = true  })             end
 function _G.xnoremap_buffer(lhs, rhs, desc)  set("x", lhs, rhs, desc, { noremap = true, buffer = 0  }) end
+
+local M = {
+	-- n = "n", i = "i", v = "v", c = "c",
+}
+
+function M.map(maps)
+	for i = 1, #maps, 4 do
+		if maps[i] == "G" then
+			mapgroup(maps[i+1], maps[i+2])
+		else
+			-- set(maps[i], maps[i+1], maps[i+2], maps[i+3])
+			vim.keymap.set(maps[i], maps[i+1], maps[i+2], { desc = maps[i+3] })
+		end
+	end
+end
+
+return M
 
