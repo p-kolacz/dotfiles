@@ -16,9 +16,9 @@ limit() {
 }
 
 syn_highlight() {
-	# highlight -O xterm256 -s "base16/nord" --force "$1"
+	highlight -O xterm256 -s "base16/summerfruit-$THEME_VARIANT" --force "$1"
 	# highlight -O xterm256  --force "$1"
-	pygmentize -g "$1"
+	# pygmentize -g "$1"
 }
 
 binary() {
