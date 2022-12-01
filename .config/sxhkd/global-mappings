@@ -65,7 +65,7 @@ super + parenleft
 super + parenright
 	rofi-bluetooth
 
-super + p
+super + slash
 	keepassxc
 
 #---------------------------------------------------------------------------------------#
