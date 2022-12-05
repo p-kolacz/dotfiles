@@ -88,6 +88,6 @@ button10
 @button10
 	long-press.sh release 10 ctrl+w
 
-button11
-	xdotool key ctrl+shift+m
+# button11
+	# xdotool key ctrl+shift+m
 

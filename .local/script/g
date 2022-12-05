@@ -21,7 +21,13 @@ loc() {
 	git ls-files -z | wc -l --files0-from=-
 }
 diff() {
-	git diff "$@" --name-only | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
+	local files
+	files=$(git diff "$@" --name-only)
+	if [[ -n $files ]]; then 
+		echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
+	else
+		echo "Everthing up to date"
+	fi
 }
 usage() {
 	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed "s/usage|//")"

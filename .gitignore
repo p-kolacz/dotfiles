@@ -26,6 +26,7 @@
 !/.config/xorg/
 !/.config/zathura/
 !/.config/zsh/
+!/.config/starship.toml
 !/.zshenv
 
 !/.local/

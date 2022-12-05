@@ -1,0 +1,5 @@
+# https://starship.rs/config/
+
+[status]
+disabled = false
+
