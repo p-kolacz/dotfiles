@@ -2,6 +2,8 @@
 
 restart() {
 	stop
+	MONITOR=$(monitors primary)
+	export MONITOR
 	polybar --reload --log=warning primary &
 	for m in $(monitors secondary); do
 		export MONITOR="$m"
