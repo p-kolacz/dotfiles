@@ -26,7 +26,7 @@ diff() {
 	if [[ -n $files ]]; then 
 		echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
 	else
-		echo "Everthing up to date"
+		git status
 	fi
 }
 usage() {
