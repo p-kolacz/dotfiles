@@ -7,28 +7,33 @@ query() {
 }
 
 tables() {
-	query "\dt" | fzf \
-	--preview="$THIS $CONNECTION columns {3}" \
-	--preview-window="top,75%"
+	query "\dt"
 }
 
 columns() {
 	query "\d+ $1"
 }
 
+main() {
+	tables | fzf 										\
+	--preview="$THIS $CONNECTION columns {3}"			\
+	--preview-window="top,75%"							\
+	--bind "ctrl-r:reload($THIS $CONNECTION tables)"	\
+	--header "Press CTRL-R to reload"
+}
+
 usage() {
-	echo "Usage: $THIS "
+	echo "Usage: $THIS postgresql://user@host:/database"
 }
 
 [[ $# -gt 0 ]] && CONNECTION=$1
 
 case $# in
-	1) 
-		tables ;;
-	3)
-		$2 "$3" ;;
+	0) usage	;;
+	1) main		;;
 	*)
-		usage
+		fun=$2 && shift 2
+		$fun "$@"
+		;;
 esac
-
 
