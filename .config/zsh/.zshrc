@@ -34,7 +34,7 @@ setopt autocd
 [[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
 
 # [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
-[[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
+# [[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
 
 # fortune confucius | lolcat
 fortune -as

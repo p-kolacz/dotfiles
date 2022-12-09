@@ -1,7 +1,7 @@
 #!/bin/sh
 
 nodecount() {
-	bspc query --nodes --desktop .active --monitor "$MONITOR" --node .leaf | wc -l
+	bspc query --nodes --desktop .active --monitor "$MONITOR" --node .leaf.!hidden | wc -l
 }
 
 nodecount

@@ -2,16 +2,18 @@
 
 LAYOUTS="$HOME/.local/script/screenlayout"
 HOSTNAME=$(cat /etc/hostname)
+CONFIG="$HOME/.config/screenlayout"
 
 label=$(find "$LAYOUTS/$HOSTNAME"-*sh | xargs -n 1 basename | sed "s/.sh$//" | $VMENU)
 
-file="$LAYOUTS$label.sh"
+file="$LAYOUTS/$label.sh"
 
 [ -f "$file" ] || exit
 
 "$file" || exit 1
 
-ln -s "$file" "$HOME/.config/screenlayout"
+rm "$CONFIG"
+ln -s "$file" "$CONFIG"
 kbrate.sh
 wallpaper restore 
 
