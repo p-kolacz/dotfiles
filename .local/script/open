@@ -24,7 +24,7 @@ case $FILE_EXTENSION in
 		deadbeef "$FILE_PATH" ;;
 	it|mod|s3m|xm)
 		deadbeef "$FILE_PATH" ;;
-	ods)
+	ods|xls|xlsx)
 		gnumeric "$FILE_PATH" ;;
 	doc|docx|odp|odt|ppt|pptx|xls|xlsx)
 		libreoffice "$FILE_PATH" ;;

@@ -79,7 +79,7 @@ super + {n,p}
 	bspc node -f {next,prev}.local.leaf
 
 super + {comma,period}
-	bspc node @parent -R {-90,90}
+	bspc node @parent -R {90,-90}
 
 # scratchpad
 super + grave
