@@ -56,6 +56,7 @@ RewriteRule ^(.*)$ /old/\$1 [L]
 endsnippet
 
 snippet rewrite
+RewriteEngine On
 RewriteRule \.(js|css|gif|png|jpg|swf)$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

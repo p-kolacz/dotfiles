@@ -32,7 +32,7 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/startup.py
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SOLARGRAPH_CACHE="$XDG_CACHE_HOME"/solargraph
 export SQLITE_HISTORY="$XDG_STATE_HOME"/sqlite_history
-export WGETRC="$XDG_CONFIG_HOME"/wgetrc
+# export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"

@@ -68,6 +68,8 @@ bspc rule -r "*"
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad state=floating sticky=on rectangle=1200x800+220+260
 bspc rule -a Gimp desktop=G follow=on
+bspc rule -a Brave-browser desktop=W
+bspc rule -a thunderbird desktop=C
 set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal KeePassXC
 set_rule floating thunderbird:Msgcompose thunderbird:Mailnews
 # set_rule tiled Zathura Emacs
