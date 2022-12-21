@@ -39,7 +39,7 @@ bspwm() {
 # }
 
 apps() {
-	install kitty syncthing
+	install kitty syncthing udisks2
 	startenableuser syncthing.service
 	install arc-gtk-theme gtk-engines gtk-engine-murrine
 	install gimp gnome-font-viewer qalculate-gtk gnumeric pcmanfm	# GTK apps
