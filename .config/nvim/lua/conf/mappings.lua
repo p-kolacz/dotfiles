@@ -44,8 +44,13 @@ m.map {
 	v,  "<A-j>",       ":m '>+1<cr>gv=gv",   "", -- Move selection
 	v,  "<A-k>",       ":m '<-2<cr>gv=gv",   "",
 	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
-	n,  "<leader>es" , ":%s/",               "substitute",
-	v,  "<leader>es" , ":s/",                "substitute",
+	n,  "<leader>es",  ":%s/",               "substitute",
+	v,  "<leader>es",  ":s/",                "substitute",
+	----------------------------------- File -----------------------------------
+	n,  "<leader>fp",  ":hardcopy",          "print file",
+	G,  "<leader>ft",  "convert",            nil,
+	n,  "<leader>fth", ":TOhtml<cr>",        "to HTML",
+	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
 	----------------------------------- Yank -----------------------------------
 	G,  "<leader>y",   "+Yank",              nil,
 	n,  "<leader>yf",  ":lua require'lib/yanka'.filename()<cr>", "filename",
