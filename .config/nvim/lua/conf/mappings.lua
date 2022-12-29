@@ -13,25 +13,25 @@ m.map {
 	v,  "H",           "^", "",
 	v,  "L",           "$", "",
 	n,  "L",           "$", "",
-	n,  "[q",          ":cprevious<cr>", "next quickfix entry",
-	n,  "]q",          ":cnext<cr>",     "previous quickfix entry",
-	n,  "[l",          ":lprevious<cr>", "next loclist entry",
-	n,  "]l",          ":lnext<cr>",     "previous loclist entry",
+	n,  "[q",          ":cprevious<cr>",     "next quickfix entry",
+	n,  "]q",          ":cnext<cr>",         "previous quickfix entry",
+	n,  "[l",          ":lprevious<cr>",     "next loclist entry",
+	n,  "]l",          ":lnext<cr>",         "previous loclist entry",
 	n,  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
 	n,  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
 	---------------------------------- Buffer ----------------------------------
-	n,	"<leader>w",	":w<CR>",				nil,
+	n,	"<leader>w",   ":w<CR>",			 nil,
 	----------------------------------- Code -----------------------------------
-	G,	"<leader>c",   "+Code",               nil,
-	--------------------------------- Command Mode --------------------------------
-	c,  "<C-a>",       "<home>",    "",
-	c,  "<A-f>",       "<S-right>", "",
-	c,  "<C-b>",       "<left>",    "",
-	c,  "<A-b>",       "<S-left>",  "",
+	G,	"<leader>c",   "+Code",              nil,
+	------------------------------- Command Mode -------------------------------
+	c,  "<C-a>",       "<home>",             "",
+	c,  "<A-f>",       "<S-right>",          "",
+	c,  "<C-b>",       "<left>",             "",
+	c,  "<A-b>",       "<S-left>",           "",
 	----------------------------------- Diff -----------------------------------
-	G,  "<leader>d",    "+Diff", "",
+	G,  "<leader>d",    "+Diff",             "",
 	n,  "<leader>dd",  ":diffthis<cr>",      "diff this",
-	n,  "<leader>do",  ":diffoff!<cr>",       "diff off",
+	n,  "<leader>do",  ":diffoff!<cr>",      "diff off",
 	----------------------------------- Edit -----------------------------------
 	G,  "<leader>e",   "+Edit",              "",
 	i,  "<C-f>",       "<right>",            "",
@@ -48,7 +48,7 @@ m.map {
 	v,  "<leader>es",  ":s/",                "substitute",
 	----------------------------------- File -----------------------------------
 	n,  "<leader>fp",  ":hardcopy",          "print file",
-	G,  "<leader>ft",  "convert",            nil,
+	G,  "<leader>ft",  "+Convert",            nil,
 	n,  "<leader>fth", ":TOhtml<cr>",        "to HTML",
 	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
 	----------------------------------- Yank -----------------------------------
@@ -129,14 +129,14 @@ nnoremap("<leader>1", "1gt", "tab 1")
 nnoremap("<leader>2", "2gt", "tab 2")
 nnoremap("<leader>3", "3gt", "tab 3")
 nnoremap("<leader>4", "4gt", "tab 4")
-nnoremap("<leader>5", "5gt", "tab 5")
+nnoremap("<leader>5", "5gt", "")
 
 
 ----------------------------------- Tools ----------------------------------
-mapgroup("<leader>t", "+Tools")
+-- mapgroup("<leader>t", "+Tools")
 -- nnoremap("gi", ":OpenImg<CR>", "open image")
 -- https://vi.stackexchange.com/questions/2299/how-to-translate-unicode-escape-sequences-to-the-unicode-character
-nnoremap("<leader>tu", [[:%s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/g<cr>]], 'unicode chars from \\uXXXX')
+-- nnoremap("<leader>tu", [[:%s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/g<cr>]], 'unicode chars from \\uXXXX')
 
 ------------------------------------ Vim -----------------------------------
 mapgroup("<leader>v", "+Vim")

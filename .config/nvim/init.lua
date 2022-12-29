@@ -28,6 +28,8 @@ Require {
 	"tool/figlet",
 	"tool/rest",
 	"tool/dashboard",
+	-- "tool/neotest",
+	"tool/vim-test",
 
 -- Languages ---------------------------
 	"lang/bash",

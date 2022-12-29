@@ -80,7 +80,7 @@ nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
 nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 
 --Treesitter
-nnoremap('<leader>tt', ':Telescope treesitter<cr>', 'treesitter')
+nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
 
 --Symbols
 nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emoji'}   }<cr>", 'emoji')
