@@ -1,11 +1,10 @@
 #!/bin/bash
 
-FILE="$HOME/Exocortex/Notes/Waga.md"
+FILE="$HOME/Exocortex/Databases/waga.txt"
 
 if [[ $# -eq 0 ]]; then
-	vim "$FILE"
+	$EDITOR "$FILE"
 else
-	entry="$(date +%F) - $1"
-	echo -e "$entry\n$(cat "$FILE")" > "$FILE"
+	echo "$(date +%F) $1" >> "$FILE"
 fi
 
