@@ -27,4 +27,12 @@ function M.cfile()
 	yank_expanded_expr("<cfile>")
 end
 
+function M.enable_highlight()
+	autocmd("TextYankPost", { group = "vimrc", pattern = "*", callback =
+		function()
+			vim.highlight.on_yank {higroup="IncSearch", timeout=500}
+		end
+	})
+end
+
 return M

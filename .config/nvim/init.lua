@@ -30,6 +30,7 @@ Require {
 	"tool/dashboard",
 	-- "tool/neotest",
 	"tool/vim-test",
+	"tool/indent-guides",
 
 -- Languages ---------------------------
 	"lang/bash",
