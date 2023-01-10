@@ -162,8 +162,7 @@ terminal() {
 	asdf plugin add shellcheck
 	asdf install shellcheck latest
 	asdf global schellcheck latest
-	# TODO: remove simple-mtpfs?
-	ynstall gotop nerdfetch recutils simple-mtpfs wordnet-cli
+	ynstall gotop nerdfetch recutils go-mtpfs wordnet-cli
 	nvim
 	vifm
 }
