@@ -24,23 +24,18 @@ require "lib/yanka".enable_highlight()
 
 Plugin "kyazdani42/nvim-web-devicons"
 require "nvim-web-devicons".setup()
-require "conf/themes"
--- set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
-set.background = "dark"
-colorscheme "everforest"
--- colorscheme "solarized-flat"
--- colorscheme "PaperColorSlim"
 
 Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
 	filetypes_allowlist = {"lua", "rails", "ruby", "sh", },
--- 	filetypes_denylist = {},
--- 	providers = { 'treesitter', 'regex' },
 	min_count_to_highlight = 2,
 }
 Plugin "https://github.com/petertriho/nvim-scrollbar"
 require"scrollbar".setup()
 
+require "conf/themes"
+set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
+colorscheme "everforest"
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")

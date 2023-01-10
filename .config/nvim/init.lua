@@ -1,9 +1,10 @@
 require "lib/helpers"
-require "lib/plugozaur"
-require "lib/mapper"
 Help = require "lib/helpozor"
 
 Require {
+-- Libs --------------------------------
+	"lib/plugozaur",
+	"lib/mapper",
 
 -- Configuration -----------------------
 	"conf/options",

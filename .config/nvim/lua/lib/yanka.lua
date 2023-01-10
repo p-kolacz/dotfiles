@@ -28,7 +28,7 @@ function M.cfile()
 end
 
 function M.enable_highlight()
-	autocmd("TextYankPost", { group = "vimrc", pattern = "*", callback =
+	vim.api.nvim_create_autocmd("TextYankPost", { group = "vimrc", pattern = "*", callback =
 		function()
 			vim.highlight.on_yank {higroup="IncSearch", timeout=500}
 		end

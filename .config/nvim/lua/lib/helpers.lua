@@ -8,10 +8,6 @@ function _G.colorscheme(name)
 	vim.cmd("colorscheme "..name)
 end
 
--- function highlight(values)
--- 	vim.cmd("highlight "..values)
--- end
-
 function _G.v(x)
 	print(vim.inspect(x))
 end
