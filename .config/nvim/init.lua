@@ -1,19 +1,20 @@
-require "lib/helpers"
 Help = require "lib/helpozor"
+Icons = require "lib/iconz"
+Yanka = require "lib/yanka"
+require "lib/bootstrap" {
 
-Require {
--- Libs --------------------------------
+	-- Libs --------------------------------
 	"lib/plugozaur",
-	"lib/mapper",
 
--- Configuration -----------------------
+	-- Configuration -----------------------
 	"conf/options",
+	"conf/foldotron",
 	"conf/which-key",
 	"conf/mappings",
 	"conf/appearance",
 	"conf/statusline",
 
--- Tools -------------------------------
+	-- Tools -------------------------------
 	"tool/neovide",
 	"tool/tpope",
 	"tool/lsp",
@@ -33,7 +34,7 @@ Require {
 	"tool/vim-test",
 	"tool/indent-guides",
 
--- Languages ---------------------------
+	-- Languages ---------------------------
 	"lang/bash",
 	"lang/csv",
 	"lang/gdscript",
@@ -50,7 +51,6 @@ Require {
 	"lang/sxhkd",
 	"lang/webdev",
 	"lang/yaml",
-
 }
 
 -- Load project specific configuration

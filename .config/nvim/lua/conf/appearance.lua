@@ -1,4 +1,4 @@
-require "lib/iconz"
+-- require "lib/iconz"
 set.listchars      = Icons.listchars
 set.fillchars      = Icons.fillchars
 set.cursorline     = true

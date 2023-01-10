@@ -1,22 +1,3 @@
--- TODO: add table as lhs
-local function _set(mode, lhs, rhs, desc, opts)
-	if desc and desc ~= "" and WK then
-		opts.silent = false
-		opts.mode = mode
-		-- desc = desc == "" and "which_key_ignore" or desc
-		WK.register({ [lhs] = { rhs, desc }}, opts)
-	elseif type(rhs) == "string" then
-		if opts.buffer then
-			opts.buffer = nil
-			vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-		else
-			vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
-		end
-	-- else
-		-- print("invalid rhs for: "..lhs)
-	end
-end
-
 local function set(mode, lhs, rhs, desc, opts)
 	opts.desc = desc
 	opts.remap = not opts.nnoremap
@@ -42,20 +23,13 @@ function _G.vnoremap_buffer(lhs, rhs, desc)  set("v", lhs, rhs, desc, { noremap 
 function _G.xnoremap(lhs, rhs, desc)         set("x", lhs, rhs, desc, { noremap = true  })             end
 function _G.xnoremap_buffer(lhs, rhs, desc)  set("x", lhs, rhs, desc, { noremap = true, buffer = 0  }) end
 
-local M = {
-	-- n = "n", i = "i", v = "v", c = "c",
-}
-
-function M.map(maps)
+return function(maps)
 	for i = 1, #maps, 4 do
 		if maps[i] == "G" then
 			mapgroup(maps[i+1], maps[i+2])
 		else
-			-- set(maps[i], maps[i+1], maps[i+2], maps[i+3])
 			vim.keymap.set(maps[i], maps[i+1], maps[i+2], { desc = maps[i+3] })
 		end
 	end
 end
-
-return M
 

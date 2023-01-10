@@ -1,161 +1,129 @@
 let.mapleader = " "
 let.maplocalleader = "\\"
 
-local m = require"lib/mapper"
-vnoremap("/", "<ESC>/\\%V")
-local i = "i" local n = "n" local v = "v" local c = "c" local G = "G"
-m.map {
+local _ = "" local i = "i" local n = "n" local v = "v" local c = "c" local x = "x" local G = "G"
+require "lib/mapper" {
+	---------------------------------- Buffer ----------------------------------
+	n,	"<leader>w",   ":w<CR>",			               "",
+	----------------------------------- Code -----------------------------------
+	G,	"<leader>c",   "+Code",                            "",
+	------------------------------- Command Mode -------------------------------
+	c,  "<C-a>",       "<home>",                           "",
+	c,  "<A-f>",       "<S-right>",                        "",
+	c,  "<C-b>",       "<left>",                           "",
+	c,  "<A-b>",       "<S-left>",                         "",
+	----------------------------------- Diff -----------------------------------
+	G,  "<leader>d",   "+Diff",                            "",
+	n,  "<leader>dd",  ":diffthis<cr>",                    "diff this",
+	n,  "<leader>do",  ":diffoff!<cr>",                    "diff off",
+	----------------------------------- Edit -----------------------------------
+	i,  "<C-f>",       "<right>",                          "",
+	i,  "<A-f>",       "<s-right>",                        "",
+	i,  "<C-b>",       "<left>",                           "",
+	i,  "<A-b>",       "<s-left>",                         "",
+	v,  "<C-c>",       '"*y :let @+=@*<CR>',               "",
+	n,  "<A-j>",       ":m .+1<cr>==",                     "move line",
+	n,  "<A-k>",       ":m .-2<cr>==",                     "",
+	v,  "<A-j>",       ":m '>+1<cr>gv=gv",                 "move selection",
+	v,  "<A-k>",       ":m '<-2<cr>gv=gv",                 "",
+
+	G,  "<leader>e",   "+Edit",                            "",
+	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>",               "remove trailing spaces",
+	n,  "<leader>es",  ":%s/",                             "substitute",
+	v,  "<leader>es",  ":s/",                              "substitute",
+	n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
+	v,  "<leader>er",  ":'<,'>!tac<CR>",                   "reverse lines",
+	-- change cword and press . to repeat change on next, n to goto next
+	n,  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat",
+	x,  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "",
+	----------------------------------- File -----------------------------------
+	G,  "<leader>f",   "+File", "",
+	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
+	n,  "<leader>fp",  ":hardcopy",                        "print file",
+	G,  "<leader>ft",  "+Convert",                         "",
+	n,  "<leader>fth", ":TOhtml<cr>",                      "to HTML",
+	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
+	------------------------------------ Git -----------------------------------
+	G,  "<leader>g",  "+Git", "",
+	n,  "<leader>gg",  ":silent !$TERMINAL lazygit &<cr>", "LazyGit",
+	G,  "<leader>gc",  "+Commit", "",
+	n,  "<leader>gcc",  ':!git add .; git commit -m ',     "commit",
+	n,  "<leader>gcd",  ':!git add .; git commit -m "$(date +\\%F)"<cr>', "with current date",
+	G,  "<leader>gp",  '+Push', "",
+	n,  "<leader>gpp",  ':!git push<cr>', "push",
+	n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
+	----------------------------------- Help -----------------------------------
+	n,  "gy",          Help.search_cword,                  "online search cword",
+	v,  "gy",          Help.search_selection,              "online search selection",
+	G,  "<leader>h",   "+Help",                             "",
+	n,  "<leader>hn",  Help.edit_ft_notes,                 "filetype notes",
+
+	---------------------------------- Insert ----------------------------------
+	G,  "<leader>i",   "+Insert",                           "",
 	--------------------------------- Navigation -------------------------------
-	i,  "jj",          "<ESC>", "",
-	i,  "kk",          "<ESC>", "",
-	i,  "jk",          "<ESC>", "",
-	n,  "H",           "^", "",
-	v,  "H",           "^", "",
-	v,  "L",           "$", "",
-	n,  "L",           "$", "",
-	n,  "[q",          ":cprevious<cr>",     "next quickfix entry",
-	n,  "]q",          ":cnext<cr>",         "previous quickfix entry",
-	n,  "[l",          ":lprevious<cr>",     "next loclist entry",
-	n,  "]l",          ":lnext<cr>",         "previous loclist entry",
+	i,  "jj",          "<ESC>",                            "",
+	i,  "kk",          "<ESC>",                            "",
+	i,  "jk",          "<ESC>",                            "",
+	n,  "H",           "^",                                "",
+	v,  "H",           "^",                                "",
+	v,  "L",           "$",                                "",
+	n,  "L",           "$",                                "",
+	n,  "[q",          ":cprevious<cr>",                   "next quickfix entry",
+	n,  "]q",          ":cnext<cr>",                       "previous quickfix entry",
+	n,  "[l",          ":lprevious<cr>",                   "next loclist entry",
+	n,  "]l",          ":lnext<cr>",                       "previous loclist entry",
 	n,  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
 	n,  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
-	---------------------------------- Buffer ----------------------------------
-	n,	"<leader>w",   ":w<CR>",			 nil,
-	----------------------------------- Code -----------------------------------
-	G,	"<leader>c",   "+Code",              nil,
-	------------------------------- Command Mode -------------------------------
-	c,  "<C-a>",       "<home>",             "",
-	c,  "<A-f>",       "<S-right>",          "",
-	c,  "<C-b>",       "<left>",             "",
-	c,  "<A-b>",       "<S-left>",           "",
-	----------------------------------- Diff -----------------------------------
-	G,  "<leader>d",    "+Diff",             "",
-	n,  "<leader>dd",  ":diffthis<cr>",      "diff this",
-	n,  "<leader>do",  ":diffoff!<cr>",      "diff off",
-	----------------------------------- Edit -----------------------------------
-	G,  "<leader>e",   "+Edit",              "",
-	i,  "<C-f>",       "<right>",            "",
-	i,  "<A-f>",       "<s-right>",          "",
-	i,  "<C-b>",       "<left>",             "",
-	i,  "<A-b>",       "<s-left>",           "",
-	v,  "<C-c>",       '"*y :let @+=@*<CR>', "",
-	n,  "<A-j>",       ":m .+1<cr>==",       "", -- Move line
-	n,  "<A-k>",       ":m .-2<cr>==",       "",
-	v,  "<A-j>",       ":m '>+1<cr>gv=gv",   "", -- Move selection
-	v,  "<A-k>",       ":m '<-2<cr>gv=gv",   "",
-	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>", "remove trailing spaces",
-	n,  "<leader>es",  ":%s/",               "substitute",
-	v,  "<leader>es",  ":s/",                "substitute",
-	----------------------------------- File -----------------------------------
-	n,  "<leader>fp",  ":hardcopy",          "print file",
-	G,  "<leader>ft",  "+Convert",            nil,
-	n,  "<leader>fth", ":TOhtml<cr>",        "to HTML",
-	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
+	---------------------------------- Options ---------------------------------
+	G,  "<leader>o",   "+Options",  "",
+	n,  "<leader>ol",  ":setlocal list!<CR>",            "toggle invisible chars",
+	n,  "<leader>on",  ":set number!<CR>",          "toggle line numbers",
+	n,  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers",
+	n,  "<leader>ow",  ":setlocal wrap!<CR>",            "toggle wrap",
+	----------------------------------- Search ---------------------------------
+	v,  "/",  "<ESC>/\\%V", "",
+	----------------------------------- Spell ----------------------------------
+	G,  "<leader>s",  "+Spell", "",
+	n,  "<leader>ss",  ":setlocal spell!<CR>",             "spell check",
+	n,  "<leader>sc",  ":setlocal complete+=kspell<CR>",   "spell complete",
+	n,  "<leader>sn",  ":setlocal complete-=kspell<CR>",   "spell no complete",
+	n,  "<leader>se",  ":setlocal spelllang=en_us<CR>",    "lang en_us",
+	n,  "<leader>sp",  ":setlocal spelllang=pl<CR>",       "lang pl",
+	------------------------------------- Tabs ---------------------------------
+	-- nnoremap("<c-t>", ":tabnew<cr>")
+	n,  "<c-tab>",  ":tabnext<cr>", "",
+	n,  "<c-s-tab>",  ":tabprevious<cr>", "",
+	n,  "<leader>1",  "1gt", "tab 1",
+	n,  "<leader>2",  "2gt", "tab 2",
+	n,  "<leader>3",  "3gt", "tab 3",
+	n,  "<leader>4",  "4gt", "tab 4",
+	n,  "<leader>5",  "5gt", "",
+	------------------------------------ Vim -----------------------------------
+	G,  "<leader>v",  "+Vim", "",
+	---------------------------------- Windows ---------------------------------
+	n,  "<leader>q",  ":q<CR>", "which_key_ignore",
+	n,  "<C-h>",  "<C-w>h", "left window",
+	n,  "<C-j>",  "<C-w>j", "bottom window",
+	n,  "<C-k>",  "<C-w>k", "up window",
+	n,  "<C-l>",  "<C-w>l", "right window",
+	n,  "<C-A-h>",  "<C-w>h<C-w>|", "left window",
+	n,  "<C-A-j>",  "<C-w>j<C-w>_", "bottom window",
+	n,  "<C-A-k>",  "<C-w>k<C-w>_", "up window",
+	n,  "<C-A-l>",  "<C-w>l<C-w>|", "right window",
 	----------------------------------- Yank -----------------------------------
-	G,  "<leader>y",   "+Yank",              nil,
-	n,  "<leader>yf",  ":lua require'lib/yanka'.filename()<cr>", "filename",
-	n,  "<leader>yr",  ":lua require'lib/yanka'.relative_path()<cr>", "relative path",
-	n,  "<leader>yp",  ":lua require'lib/yanka'.full_path()<cr>", "full path",
-	n,  "<leader>yd",  ":lua require'lib/yanka'.full_dir()<cr>", "full dir",
-	n,  "<leader>yc",  ":lua require'lib/yanka'.cfile()<cr>", "file under cursor",
+	_,  "<C-v>",       '"+P',                              "",
+	G,  "<leader>y",   "+Yank",                            "",
+	n,  "<leader>yf",  ":lua Yanka.filename()<cr>",        "filename",
+	n,  "<leader>yr",  ":lua Yanka.relative_path()<cr>",   "relative path",
+	n,  "<leader>yp",  ":lua Yanka.full_path()<cr>",       "full path",
+	n,  "<leader>yd",  ":lua Yanka.full_dir()<cr>",        "full dir",
+	n,  "<leader>yc",  ":lua Yanka.cfile()<cr>",           "file under cursor",
 }
-
-
--- Clipboard
-map("<C-v>", '"+P')
-
--- change cword and press . to repeat change on next, n to goto next
-nnoremap("<leader>ed", ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat")
-xnoremap("<leader>ed", "\"sy:let @/=@s<cr>cgn")
-
-nnoremap("<leader>er", ":g/^/m0<CR>", "reverse lines")
-vnoremap("<leader>er", ":'<,'>!tac<CR>", "reverse lines")
 
 nmap('<leader>"', 'ysiW"', '"cWord"')
 nmap("<leader>'", "ysiW'", "'cWord'")
 
------------------------------------ File -----------------------------------
-mapgroup("<leader>f", "+File")
-nnoremap("<leader>fx", ":silent !chmod +x %<cr>:e<cr>", "chmod +x")
-
------------------------------------- Git -----------------------------------
-mapgroup("<leader>g", "+Git")
-nnoremap("<leader>gg", ":silent !$TERMINAL lazygit &<cr>", "LazyGit")
-mapgroup("<leader>gc", "+Commit")
-nnoremap("<leader>gcc", ':!git add . && git commit -m ', "commit")
-nnoremap("<leader>gcd", ':!git add . && git commit -m "$(date +\\%F)"<cr>', "with current date")
--- mapgroup("<leader>gp", '+Push')
--- nnoremap("<leader>gpp", ':!git push<cr>', "push")
--- nnoremap("<leader>gpd", ':!git add . && git commit -m "$(date +\\%F)" && git push<cr>', "with current date")
-
------------------------------------ Help -----------------------------------
-nnoremap("gy", [[:silent execute "!xdg-open 'https://www.startpage.com/sp/search?query=" . expand("<cword>") . "'"<cr>]], "online search cword")
-vnoremap("gy", [[y:silent execute "!xdg-open 'https://www.startpage.com/sp/search?query=" . expand("<C-r>0") . "'"<cr>]], "online search selection")
-mapgroup("<leader>h", "+Help")
-nnoremap("<leader>hn", Help.edit_ft_notes, 'filetype notes')
-
----------------------------------- Insert ----------------------------------
-mapgroup("<leader>i", "+Insert")
-
----------------------------------- Options ---------------------------------
-mapgroup("<leader>o", "+Options")
-nnoremap("<leader>ol", ":setlocal list!<CR>", 'toggle invisible chars')
-nnoremap("<leader>on", ":set number!<CR>", 'toggle line numbers')
-nnoremap("<leader>or", ":set relativenumber!<CR>", 'toggle relative numbers')
-nnoremap("<leader>ow", ":setlocal wrap!<CR>", 'toggle wrap')
-
----------------------------------- Project ---------------------------------
--- https://vi.stackexchange.com/questions/2776/vim-search-replace-all-files-in-current-project-folder
-vim.cmd('command! -nargs=1 ProjGrep :vimgrep /<args>/gj ** | copen')
-vim.cmd('command! -nargs=1 ProjSubstitute :cfdo %s/<args>/gc | update')
-mapgroup('<leader>p', '+Project')
-nnoremap('<leader>pg', ':ProjGrep<space>', 'grep')
-nnoremap('<leader>ps', ':ProjSubstitute<space>', 'substitute')
-nnoremap('<leader>pt', ':vimgrep /TODO:/j ** | copen<cr>', 'TODOs')
-
------------------------------------ Spell ----------------------------------
-mapgroup("<leader>s", "+Spell")
-nnoremap("<leader>ss", ":setlocal spell!<CR>", "spell check")
-nnoremap("<leader>sc", ":setlocal complete+=kspell<CR>", 'spell complete')
-nnoremap("<leader>sn", ":setlocal complete-=kspell<CR>", 'spell no complete')
-nnoremap("<leader>se", ":setlocal spelllang=en_us<CR>", 'lang en_us')
-nnoremap("<leader>sp", ":setlocal spelllang=pl<CR>", 'lang pl')
-
-------------------------------------- Tabs ---------------------------------
--- nnoremap("<c-t>", ":tabnew<cr>")
-nnoremap("<c-tab>", ":tabnext<cr>")
-nnoremap("<c-s-tab>", ":tabprevious<cr>")
-nnoremap("<leader>1", "1gt", "tab 1")
-nnoremap("<leader>2", "2gt", "tab 2")
-nnoremap("<leader>3", "3gt", "tab 3")
-nnoremap("<leader>4", "4gt", "tab 4")
-nnoremap("<leader>5", "5gt", "")
-
-
------------------------------------ Tools ----------------------------------
--- mapgroup("<leader>t", "+Tools")
--- nnoremap("gi", ":OpenImg<CR>", "open image")
--- https://vi.stackexchange.com/questions/2299/how-to-translate-unicode-escape-sequences-to-the-unicode-character
--- nnoremap("<leader>tu", [[:%s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/g<cr>]], 'unicode chars from \\uXXXX')
-
------------------------------------- Vim -----------------------------------
-mapgroup("<leader>v", "+Vim")
 nnoremap("<leader>vg", function ()
 	vim.o.background = vim.o.background == "light" and "dark" or "light"
 end, "toggle background")
-
----------------------------------- Windows ---------------------------------
-nnoremap("<leader>q", ":q<CR>", "which_key_ignore")
-nnoremap("<C-h>", "<C-w>h", "left window")
-nnoremap("<C-j>", "<C-w>j", "bottom window")
-nnoremap("<C-k>", "<C-w>k", "up window")
-nnoremap("<C-l>", "<C-w>l", "right window")
-
-nnoremap("<C-A-h>", "<C-w>h<C-w>|", "left window")
-nnoremap("<C-A-j>", "<C-w>j<C-w>_", "bottom window")
-nnoremap("<C-A-k>", "<C-w>k<C-w>_", "up window")
-nnoremap("<C-A-l>", "<C-w>l<C-w>|", "right window")
-
--- nnoremap("<a-h>", "<C-w><", "resize window")
--- nnoremap("<a-l>", "<C-w>>", "resize window")
 

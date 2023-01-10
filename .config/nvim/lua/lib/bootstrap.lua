@@ -12,7 +12,7 @@ function _G.v(x)
 	print(vim.inspect(x))
 end
 
-function Require(t)
+return function(t)
 	for _,v in pairs(t) do
 		require(v)
 	end

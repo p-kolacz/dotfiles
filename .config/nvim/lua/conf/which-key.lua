@@ -2,12 +2,7 @@ Plugin "https://github.com/folke/which-key.nvim"
 
 WK = require("which-key")
 WK.setup {
-	icons = {
-		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-		-- separator = "➜", -- symbol used between a key and it's label
-		separator = "→", -- symbol used between a key and it's label
-		group = "+", -- symbol prepended to a group
-	},
+	icons = Icons.whichkey,
 	popup_mappings = {
 		scroll_down = '<c-d>', -- binding to scroll down inside the popup
 		scroll_up = '<c-u>', -- binding to scroll up inside the popup
