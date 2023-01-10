@@ -17,6 +17,9 @@ apply() {
 	ln -s --force "$file" "$CURRENT_THEME"
 	source "$CURRENT_THEME"
 
+	# BSPWM
+	~/.config/bspwm/theme.sh
+
 	# Kitty
 	envsubst < "$CONFIG/kitty/colors/template.conf" > "$CONFIG/kitty/colors/local.conf"
 

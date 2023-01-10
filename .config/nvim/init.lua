@@ -1,9 +1,10 @@
 require "lib/helpers"
-require "lib/plugozaur"
-require "lib/mapper"
 Help = require "lib/helpozor"
 
 Require {
+-- Libs --------------------------------
+	"lib/plugozaur",
+	"lib/mapper",
 
 -- Configuration -----------------------
 	"conf/options",
@@ -28,6 +29,9 @@ Require {
 	"tool/figlet",
 	"tool/rest",
 	"tool/dashboard",
+	-- "tool/neotest",
+	"tool/vim-test",
+	"tool/indent-guides",
 
 -- Languages ---------------------------
 	"lang/bash",

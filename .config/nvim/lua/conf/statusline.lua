@@ -24,10 +24,8 @@ local random = math.random(#section_separators)
 
 require "lualine".setup {
 	options = {
-		theme = "auto",
-		-- theme = "papercolor_light",
-		-- theme = "solarized",
 		-- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md#available-themes
+		theme = "auto",
 		component_separators = component_separators[random],
 		section_separators = section_separators[random],
 		globalstatus = true,

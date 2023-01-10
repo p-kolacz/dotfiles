@@ -31,14 +31,12 @@ for desktop_name in W C G; do
 done
 
 #------------------------------------------------------------------------------#
-								 # Distances #
+								 # Appearance #
 #------------------------------------------------------------------------------#
 
+~/.config/bspwm/theme.sh
 bspc config border_width			1
 bspc config borderless_monocle		true
-bspc config focused_border_color	"$THEME_ACCENT"
-bspc config active_border_color		"$THEME_BG"
-bspc config normal_border_color		"$THEME_BG"
 bspc config window_gap				16
 bspc config gapless_monocle			true
 bspc config split_ratio				0.52

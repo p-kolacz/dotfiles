@@ -3,8 +3,14 @@
  --  | | | ' \/ -_) '  \/ -_|_-<
  --  |_| |_||_\___|_|_|_\___/__/
 
+----------------------------------- Everforest ---------------------------------
+Plugin "https://github.com/sainnhe/everforest"
+let.everforest_background = 'hard'	-- hard medium soft
 
------------------------------------ Rose Pine ---------------------------------
+------------------------------------ Nightfox ----------------------------------
+Plugin "https://github.com/EdenEast/nightfox.nvim"
+
+----------------------------------- Rose Pine ----------------------------------
 Plugin "https://github.com/rose-pine/neovim"
 require"rose-pine".setup {
 	dark_variant = "moon",
@@ -12,16 +18,8 @@ require"rose-pine".setup {
 }
 
 ---------------------------------- Solarized -----------------------------------
--- Plugin "https://github.com/shaunsingh/solarized.nvim"
--- let.solarized_italic_comments = true
--- let.solarized_italic_keywords = true
--- let.solarized_italic_functions = false
--- let.solarized_italic_variables = false
--- let.solarized_contrast = false
--- let.solarized_borders = true
--- let.solarized_disable_background = false
-
 Plugin "https://github.com/ishan9299/nvim-solarized-lua"
+
 ----------------------------------- Tokyonight --------------------------------
 Plugin "https://github.com/folke/tokyonight.nvim"
 let.tokyonight_style = 'storm'		-- available: night, storm, day
