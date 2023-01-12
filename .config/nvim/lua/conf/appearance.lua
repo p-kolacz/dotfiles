@@ -31,7 +31,11 @@ require "illuminate".configure {
 	min_count_to_highlight = 2,
 }
 Plugin "https://github.com/petertriho/nvim-scrollbar"
-require"scrollbar".setup()
+require"scrollbar".setup{
+	handlers = {
+		cursor = false
+	}
+}
 
 require "conf/themes"
 set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
