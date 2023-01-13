@@ -53,9 +53,9 @@ require "lib/mapper" {
 	n,  "<leader>gpp",  ':!git push<cr>', "push",
 	n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
 	----------------------------------- Help -----------------------------------
+	G,  "<leader>h",   "+Help",                            "",
 	n,  "gy",          Help.search_cword,                  "online search cword",
 	v,  "gy",          Help.search_selection,              "online search selection",
-	G,  "<leader>h",   "+Help",                             "",
 	n,  "<leader>hn",  Help.edit_ft_notes,                 "filetype notes",
 
 	---------------------------------- Insert ----------------------------------
@@ -113,11 +113,11 @@ require "lib/mapper" {
 	----------------------------------- Yank -----------------------------------
 	_,  "<C-v>",       '"+P',                              "",
 	G,  "<leader>y",   "+Yank",                            "",
-	n,  "<leader>yf",  ":lua Yanka.filename()<cr>",        "filename",
-	n,  "<leader>yr",  ":lua Yanka.relative_path()<cr>",   "relative path",
-	n,  "<leader>yp",  ":lua Yanka.full_path()<cr>",       "full path",
-	n,  "<leader>yd",  ":lua Yanka.full_dir()<cr>",        "full dir",
-	n,  "<leader>yc",  ":lua Yanka.cfile()<cr>",           "file under cursor",
+	n,  "<leader>yf",  Yanka.filename,        "filename",
+	n,  "<leader>yr",  Yanka.relative_path,   "relative path",
+	n,  "<leader>yp",  Yanka.full_path,       "full path",
+	n,  "<leader>yd",  Yanka.full_dir,        "full dir",
+	n,  "<leader>yc",  Yanka.cfile,           "file under cursor",
 }
 
 nmap('<leader>"', 'ysiW"', '"cWord"')

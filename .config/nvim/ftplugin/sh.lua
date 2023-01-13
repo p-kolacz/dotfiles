@@ -7,3 +7,7 @@ Help.map(Help.Type.MANUAL, "https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html")
 Help.map(Help.Type.CHEATSHEET, "https://devhints.io/bash")
 Help.map(Help.Type.CUSTOM1, "https://devhints.io/bash#conditionals")
 
+LaSerPro.attach {
+	name = "bashLS",
+	cmd = { "bash-language-server", "start" },
+}

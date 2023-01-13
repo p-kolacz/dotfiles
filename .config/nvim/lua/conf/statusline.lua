@@ -1,4 +1,5 @@
 Plugin "https://github.com/nvim-lualine/lualine.nvim"
+-- Plugin "https://github.com/doums/lsp_spinner.nvim"
 
 local separators = Icons:random_separators()
 
@@ -12,7 +13,8 @@ require "lualine".setup {
 	},
 	sections = {
 		lualine_c = {},
-		lualine_x = {'encoding', 'fileformat', 'filetype'},
+		-- lualine_x = {'encoding', 'fileformat', 'filetype', require('lsp_spinner').status },
+		lualine_x = {'encoding', 'fileformat', 'filetype' },
 	},
 	winbar = {
 		lualine_b = { {

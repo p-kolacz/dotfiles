@@ -4,3 +4,15 @@ Help.map(Help.Type.CUSTOM1, "https://github.github.io/actions-cheat-sheet/action
 
 -- set.foldmethod = "indent"
 
+LaSerPro.attach {
+	name = "YAML",
+	cmd = { "yaml-language-server", "--stdio" },
+	settings = {
+		redhat = {
+			telemetry = {
+				enabled = false
+			}
+		}
+	},
+}
+

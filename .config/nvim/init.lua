@@ -1,6 +1,7 @@
 Help = require "lib/helpozor"
 Icons = require "lib/iconz"
 Yanka = require "lib/yanka"
+LaSerPro = require"lib/laserpro"
 require "lib/bootstrap" {
 
 	-- Libs --------------------------------
@@ -35,23 +36,20 @@ require "lib/bootstrap" {
 	"tool/indent-guides",
 
 	-- Languages ---------------------------
-	"lang/bash",
 	"lang/csv",
 	"lang/gdscript",
 	"lang/go",
-	"lang/lua",
 	"lang/markdown",
 	"lang/org-mode",
-	"lang/php",
 	"lang/python",
 	"lang/recutils",
 	"lang/ruby",
-	"lang/rust",
 	"lang/sql",
 	"lang/sxhkd",
 	"lang/webdev",
-	"lang/yaml",
 }
+
+LaSerPro.setup(LSP_ON_ATTACH, LSP_CAPABILITIES)
 
 -- Load project specific configuration
 if vim.fn.filereadable("project.lua") > 0 then
