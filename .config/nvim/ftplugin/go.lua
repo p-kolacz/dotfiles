@@ -7,3 +7,8 @@ nnoremap("<localleader>r", ":!go run .<cr>", "run file")
 nnoremap("<localleader>t", ":!go mod tidy<cr>", "mod tidy")
 nnoremap("<localleader>b", ':!go build -ldflags "-s -w"<cr>', "build")
 
+-- https://github.com/golang/tools/tree/master/gopls
+
+LaSerPro.attach {
+	cmd = { "gopls" },
+}

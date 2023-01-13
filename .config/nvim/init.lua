@@ -36,18 +36,24 @@ require "lib/bootstrap" {
 	"tool/indent-guides",
 
 	-- Languages ---------------------------
-	"lang/csv",
-	"lang/gdscript",
-	"lang/go",
-	"lang/markdown",
-	"lang/org-mode",
-	"lang/python",
-	"lang/recutils",
 	"lang/ruby",
 	"lang/sql",
-	"lang/sxhkd",
 	"lang/webdev",
 }
+
+-- Languages
+-- CSV
+Plugin "https://github.com/mechatroner/rainbow_csv"
+-- Plugin "https://github.com/habamax/vim-godot"
+-- markdown
+let.markdown_fenced_languages = { 'gdscript', 'html', 'css', 'php', 'sh', 'vim' }
+vim.cmd[[hi markdownH1 gui=bold,underline]]
+vim.cmd[[hi markdownH2 gui=bold,undercurl]]
+
+Plugin "https://github.com/nvim-orgmode/orgmode"
+
+Plugin "https://github.com/zaid/vim-rec"
+Plugin 'https://github.com/kovetskiy/sxhkd-vim'
 
 LaSerPro.setup(LSP_ON_ATTACH, LSP_CAPABILITIES)
 

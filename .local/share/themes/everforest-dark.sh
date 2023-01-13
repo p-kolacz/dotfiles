@@ -1,10 +1,13 @@
+# https://github.com/sainnhe/everforest/blob/master/palette.md
+
 export THEME_NAME=everforest-dark
 export THEME_VARIANT=dark
 
 export THEME_BG=#272E33
+# export THEME_BG=#1E2326
 export THEME_FG=#D3C6AA
 export THEME_BLACK=#272E33
-export THEME_BLACK2=#374145
+export THEME_BLACK2=#414B50
 export THEME_RED=#E67E80
 export THEME_RED2=#F85552
 export THEME_GREEN=#A7C080

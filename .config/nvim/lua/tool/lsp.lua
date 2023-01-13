@@ -3,9 +3,6 @@ Plugin "https://github.com/neovim/nvim-lspconfig"
 
 vim.o.updatetime = 250
 
--- LSP_DATA_HOME = vim.fn.stdpath('data') .. '/lsp/'
--- LSP_NODE_BIN = LSP_DATA_HOME .. 'node_modules/.bin/'
-
 mapgroup("<leader>D", "+Diagnostics")
 -- nnoremap('<leader>Df', '<cmd>lua vim.diagnostic.open_float()<CR>', "open float")
 nnoremap('<leader>Dl', '<cmd>lua vim.diagnostic.setloclist()<CR>', "set loclist")

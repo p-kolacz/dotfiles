@@ -15,6 +15,15 @@ M.Type = {
 	CUSTOM3    = { "h3", "3" },
 }
 
+-- TODO: search in manual/api/etc
+-- TODO: create opener module
+
+function M.setup(table)
+	for help_type,uri in pairs(table) do
+		local action = string.format(":silent !xdg-open '%s'<cr>", uri:gsub("#", "\\#"))
+		nnoremap_buffer("<leader>"..help_type[1], action, help_type[2])
+	end
+end
 function M.map(help_type, uri, desc)
 	local action = string.format(":silent !xdg-open '%s'<cr>", uri:gsub("#", "\\#"))
 	nnoremap_buffer("<leader>"..help_type[1], action, desc or help_type[2])

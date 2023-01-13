@@ -13,6 +13,7 @@ function M.query(keywords)
 end
 
 function M.setup()
+	-- TODO: convert to native noevim cmd
 	vim.cmd('command! -nargs=0 CaniuseCword lua require"lib/caniuse".cword()')
 	vim.cmd('command! -nargs=+ Caniuse lua require"lib/caniuse".query(<q-args>)')
 end

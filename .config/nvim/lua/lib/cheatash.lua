@@ -17,6 +17,7 @@ function M.query(keywords)
 end
 
 function M.setup()
+	-- TODO: convert to native noevim cmd
 	vim.cmd('command! -nargs=0 CheatshCword lua require"lib/cheatash".cword()')
 	vim.cmd('command! -nargs=+ Cheatsh lua require"lib/cheatash".query(<q-args>)')
 end
