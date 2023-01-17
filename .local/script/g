@@ -23,11 +23,11 @@ loc() {
 diff() {
 	local files
 	files=$(git diff "$@" --name-only)
-	if [[ -n $files ]]; then 
+	# if [[ -n $files ]]; then 
 		echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
-	else
-		git status
-	fi
+	# else
+		# git status
+	# fi
 }
 usage() {
 	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed "s/usage|//")"

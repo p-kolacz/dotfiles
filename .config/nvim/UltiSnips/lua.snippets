@@ -67,3 +67,7 @@ snippet round
 math.floor($1 + 0.5)$0
 endsnippet
 
+snippet unload_module
+package.loaded["${1:module}"] = nil
+$0
+endsnippet

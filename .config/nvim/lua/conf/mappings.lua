@@ -21,7 +21,6 @@ require "lib/mapper" {
 	i,  "<A-f>",       "<s-right>",                        "",
 	i,  "<C-b>",       "<left>",                           "",
 	i,  "<A-b>",       "<s-left>",                         "",
-	v,  "<C-c>",       '"*y :let @+=@*<CR>',               "",
 	n,  "<A-j>",       ":m .+1<cr>==",                     "move line",
 	n,  "<A-k>",       ":m .-2<cr>==",                     "",
 	v,  "<A-j>",       ":m '>+1<cr>gv=gv",                 "move selection",
@@ -111,6 +110,7 @@ require "lib/mapper" {
 	n,  "<C-A-k>",  "<C-w>k<C-w>_", "up window",
 	n,  "<C-A-l>",  "<C-w>l<C-w>|", "right window",
 	----------------------------------- Yank -----------------------------------
+	v,  "<C-c>",       '"*y :let @+=@*<CR>',               "",
 	_,  "<C-v>",       '"+P',                              "",
 	G,  "<leader>y",   "+Yank",                            "",
 	n,  "<leader>yf",  Yanka.filename,        "filename",

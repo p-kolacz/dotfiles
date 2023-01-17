@@ -8,6 +8,9 @@ Help.map(Help.Type.API,        "https://www.lua.org/manual/5.1/#index")
 Help.map(Help.Type.CHEATSHEET, "https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/")
 Help.map(Help.Type.STYLEGUIDE, "https://github.com/luarocks/lua-style-guide")
 
+-- package.loaded["lib/lua-live-tests"] = nil
+require"lib/lua-live-tests"
+
 LaSerPro.attach {
 	name = "Sumneko",
 	cmd = { "lua-language-server" },
