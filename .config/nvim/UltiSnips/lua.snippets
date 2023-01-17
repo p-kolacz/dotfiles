@@ -47,6 +47,14 @@ snippet file_root_path
 expand('%:p:h')
 endsnippet
 
+snippet module
+local M = {}
+
+$0
+
+return M
+endsnippet
+
 snippet randomize "initialize random generator"
 math.randomseed(os.time())
 endsnippet

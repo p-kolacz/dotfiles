@@ -11,6 +11,7 @@ conf() {
 diff() {
 	cd "$HOME" || exit 1
 	g diff
+	git status
 }
 edit() {
 	$EDITOR "$HOME/.gitignore"
