@@ -54,3 +54,5 @@ end
 Plugin "https://github.com/j-hui/fidget.nvim"
 require"fidget".setup{}
 
+Plugin "https://github.com/ray-x/lsp_signature.nvim"
+require "lsp_signature".setup()
