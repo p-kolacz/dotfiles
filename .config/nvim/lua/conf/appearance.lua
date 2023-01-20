@@ -5,6 +5,7 @@ set.cursorline     = true
 set.wrap           = false
 set.number         = true
 set.scrolloff      = 5		-- top and bottom margin in rows
+set.sidescrolloff  = 5
 set.showmatch      = true
 set.signcolumn     = "yes"
 set.splitbelow     = true

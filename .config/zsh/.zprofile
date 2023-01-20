@@ -4,7 +4,7 @@ source $ZDOTDIR/plugins/ssh-agent.zsh
 
 path+="$HOME/.local/bin"
 path+="$HOME/.local/script"
-path+="$HOME/.local/lib/node_modules/bin"
+# path+="$HOME/.local/lib/node_modules/bin"
 
 export CALIBRE_USE_SYSTEM_THEME=1
 export QT_QPA_PLATFORMTHEME="qt5ct"
