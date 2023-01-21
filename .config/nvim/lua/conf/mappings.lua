@@ -37,8 +37,9 @@ require "lib/mapper" {
 	x,  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "",
 	----------------------------------- File -----------------------------------
 	G,  "<leader>f",   "+File", "",
-	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
+	n,  "<leader>fn",  ":new<cr>",                         "new file",
 	n,  "<leader>fp",  ":hardcopy",                        "print file",
+	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
 	G,  "<leader>ft",  "+Convert",                         "",
 	n,  "<leader>fth", ":TOhtml<cr>",                      "to HTML",
 	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",

@@ -1,4 +1,3 @@
--- require "lib/iconz"
 set.listchars      = Icons.listchars
 set.fillchars      = Icons.fillchars
 set.cursorline     = true
@@ -13,17 +12,9 @@ set.termguicolors  = true
 set.foldcolumn     = "auto"
 -- set.shortmess:remove("F")
 
--- Define icons highlights for diagnostics
-for name, icon in pairs(Icons.diagnostics) do
-	name = name:sub(1,1):upper()..name:sub(2)	-- capitalize name
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
-require "lib/yanka".enable_highlight()
-
-Plugin "kyazdani42/nvim-web-devicons"
-require "nvim-web-devicons".setup()
+Yanka.enable_highlight()
+Icons.setup_diagnostics()
+Icons.setup_devicons()
 
 Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
@@ -45,4 +36,7 @@ colorscheme "everforest"
 vim.cmd("highlight Folded gui='italic'")
 -- vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
 -- vim.cmd[[match ExtraWhitespace /\s\+$/]]
+
+-- https://neovide.dev/configuration.html
+let.neovide_cursor_animation_length = 0.03
 

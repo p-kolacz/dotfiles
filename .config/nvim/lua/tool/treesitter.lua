@@ -5,8 +5,8 @@ Plugin {
 	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 }
 
-mapgroup("<leader>ct", "+Treesitter")
-mapgroup("<leader>cth", "+Highlight")
+mapgroup("<leader>ct",   "+Treesitter")
+mapgroup("<leader>cth",  "+Highlight")
 nnoremap("<leader>cthe", ":TSBufEnable highlight<cr>", "enable buffer highlight")
 nnoremap("<leader>cthd", ":TSBufDisable highlight<cr>", "disable buffer highlight")
 nnoremap("<leader>ctht", ":TSBufToggle highlight<cr>", "toggle buffer highlight")

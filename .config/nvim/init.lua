@@ -1,7 +1,7 @@
 Help = require "lib/helpozor"
 Icons = require "lib/iconz"
 Yanka = require "lib/yanka"
-LaSerPro = require"lib/laserpro"
+LaSerPro = require "lib/laserpro"
 require "lib/bootstrap" {
 
 	-- Libs --------------------------------
@@ -16,7 +16,6 @@ require "lib/bootstrap" {
 	"conf/statusline",
 
 	-- Tools -------------------------------
-	"tool/neovide",
 	"tool/tpope",
 	"tool/lsp",
 	"tool/completion",
@@ -41,19 +40,27 @@ require "lib/bootstrap" {
 	"lang/webdev",
 }
 
--- Languages
--- CSV
-Plugin "https://github.com/mechatroner/rainbow_csv"
--- Plugin "https://github.com/habamax/vim-godot"
 -- markdown
 let.markdown_fenced_languages = { 'gdscript', 'html', 'css', 'php', 'sh', 'vim' }
 vim.cmd[[hi markdownH1 gui=bold,underline]]
 vim.cmd[[hi markdownH2 gui=bold,undercurl]]
 
-Plugin "https://github.com/nvim-orgmode/orgmode"
 
-Plugin "https://github.com/zaid/vim-rec"
-Plugin 'https://github.com/kovetskiy/sxhkd-vim'
+Plugin {
+	-- CSV
+	"https://github.com/mechatroner/rainbow_csv",
+	-- Plugin "https://github.com/habamax/vim-godot",
+	"https://github.com/nvim-orgmode/orgmode",
+
+	-- Ruby
+	-- "https://github.com/vim-ruby/vim-ruby",
+	"https://github.com/tpope/vim-rails",
+	"https://github.com/tpope/vim-bundler",
+	"https://github.com/tpope/vim-dispatch",
+
+	"https://github.com/zaid/vim-rec",
+	"https://github.com/kovetskiy/sxhkd-vim",
+}
 
 LaSerPro.setup(LSP_ON_ATTACH, LSP_CAPABILITIES)
 

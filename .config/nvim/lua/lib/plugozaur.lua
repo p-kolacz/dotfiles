@@ -1,5 +1,4 @@
-local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/all/opt/'
-local GIHUB_URL = 'https://github.com/'
+local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
 function Plugin(repos)
 	repos = type(repos) == "table" and repos or {repos}
@@ -8,12 +7,9 @@ function Plugin(repos)
 		local name = t[#t]
 		local dir = PLUGIN_HOME..name
 		if vim.fn.isdirectory(dir) == 0 then
-			repo = repo:find("https://") == 1 and repo or GIHUB_URL..repo
 			vim.cmd(string.format('!git clone --depth 1 %s.git %s', repo, dir))
 			vim.cmd('packadd! '..name)
 			vim.cmd('helptags ALL')
-			-- TODO: add after
-			-- if after then after() end
 		else
 			vim.cmd('packadd! '..name)
 		end

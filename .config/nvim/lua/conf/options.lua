@@ -25,7 +25,6 @@ autocmd("BufWinEnter", {
 
 vim.cmd("language messages en_US.utf8")
 
--- set.shell          = "bash"
 set.fileformats    = "unix"
 set.autowrite      = true
 set.mouse          = "a"

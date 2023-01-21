@@ -1,7 +1,6 @@
 Plugin "https://github.com/nvim-lualine/lualine.nvim"
--- Plugin "https://github.com/doums/lsp_spinner.nvim"
 
-local separators = Icons:random_separators()
+local separators = Icons.random_separators()
 
 require "lualine".setup {
 	options = {

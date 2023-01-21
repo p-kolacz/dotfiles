@@ -8,6 +8,12 @@ function _G.colorscheme(name)
 	vim.cmd("colorscheme "..name)
 end
 
+function _G.global(table)
+	for k,v in pairs(table) do
+		vim.g[k] = v
+	end
+end
+
 function _G.v(x)
 	print(vim.inspect(x))
 end

@@ -7,7 +7,9 @@ mapgroup("<leader>u", "+Snippets")
 nnoremap("<leader>uf", ":UltiSnipsEdit<CR>", "edit filetype snippets")
 nnoremap("<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets")
 
-let.UltiSnipsExpandTrigger       = '<tab>'
-let.UltiSnipsJumpForwardTrigger  = '<tab>'
-let.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+global {
+	UltiSnipsExpandTrigger       = '<tab>',
+	UltiSnipsJumpForwardTrigger  = '<tab>',
+	UltiSnipsJumpBackwardTrigger = '<s-tab>',
+}
 
