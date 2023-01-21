@@ -17,10 +17,14 @@ require "lib/mapper" {
 	n,  "<leader>dd",  ":diffthis<cr>",                    "diff this",
 	n,  "<leader>do",  ":diffoff!<cr>",                    "diff off",
 	----------------------------------- Edit -----------------------------------
+	i,  "<C-a>",       "<home>",                           "",
+	i,  "<C-b>",       "<left>",                           "",
+	i,  "<C-e>",       "<end>",                            "",
+	i,  "<C-d>",       "<delete>",                         "",
 	i,  "<C-f>",       "<right>",                          "",
 	i,  "<A-f>",       "<s-right>",                        "",
-	i,  "<C-b>",       "<left>",                           "",
 	i,  "<A-b>",       "<s-left>",                         "",
+
 	n,  "<A-j>",       ":m .+1<cr>==",                     "move line",
 	n,  "<A-k>",       ":m .-2<cr>==",                     "",
 	v,  "<A-j>",       ":m '>+1<cr>gv=gv",                 "move selection",
