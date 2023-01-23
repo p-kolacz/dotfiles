@@ -16,6 +16,9 @@ setlocal.foldcolumn='0'
 LaSerPro.start {
 	name = "Solargraph",
 	cmd = { "solargraph", "stdio" },
+	init_options = {
+		formatting = true
+	},
 	settings = {
 		solargraph = {
 			diagnostics = true

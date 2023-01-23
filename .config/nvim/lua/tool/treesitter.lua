@@ -1,4 +1,3 @@
--- Run :TSUpdate after install
 Plugin {
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -12,9 +11,16 @@ nnoremap("<leader>cthd", ":TSBufDisable highlight<cr>", "disable buffer highligh
 nnoremap("<leader>ctht", ":TSBufToggle highlight<cr>", "toggle buffer highlight")
 
 require"nvim-treesitter.configs".setup {
+	-- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = {
+		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
+		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
+		"help", "hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "latex", "lua", "make",
+		"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
+		"sql", "toml", "typescript", "vhs", "vim", "yaml",
+	},
 
-	ensure_installed = "all" , -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-	ignore_install = { "phpdoc" },
+	-- ignore_install = { "phpdoc" },
 
 	highlight = { enable = true },
 

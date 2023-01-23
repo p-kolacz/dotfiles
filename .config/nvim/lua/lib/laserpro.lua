@@ -1,6 +1,6 @@
 local M = {
 	defaults = {
-		root_dir = vim.fn.getcwd()
+		-- root_dir = vim.fn.getcwd()
 	}
 }
 
@@ -8,6 +8,7 @@ function M.start(config)
 	for k,v in pairs(M.defaults) do
 		config[k] = config[k] or v
 	end
+	config.root_dir = config.root_dir or vim.fn.getcwd()
 	return vim.lsp.start(config)
 end
 
