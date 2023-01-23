@@ -12,3 +12,14 @@ Help.map(Help.Type.API, "https://api.rubyonrails.org/")
 Help.map(Help.Type.CHEATSHEET, "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o")
 
 setlocal.foldcolumn='0'
+
+LaSerPro.start {
+	name = "Solargraph",
+	cmd = { "solargraph", "stdio" },
+	settings = {
+		solargraph = {
+			diagnostics = true
+		}
+	},
+}
+

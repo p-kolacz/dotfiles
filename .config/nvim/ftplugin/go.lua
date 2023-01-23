@@ -9,6 +9,6 @@ nnoremap("<localleader>b", ':!go build -ldflags "-s -w"<cr>', "build")
 
 -- https://github.com/golang/tools/tree/master/gopls
 
-LaSerPro.attach {
+LaSerPro.start {
 	cmd = { "gopls" },
 }

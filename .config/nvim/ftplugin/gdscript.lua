@@ -12,7 +12,7 @@ Help.setup {
 	[Help.Type.CUSTOM2]    = "https://docs.godotengine.org/en/stable/tutorials/gui/bbcode_in_richtextlabel.html", -- "BBCode",
 }
 
-LaSerPro.attach {
+LaSerPro.start {
 	name = "GodotLS",
 	cmd = {"nc", "localhost", "6008"},
 }

@@ -8,7 +8,7 @@ Help.setup {
 	[Help.Type.CHEATSHEET] = "https://cheatography.com/davechild/cheat-sheets/python/",
 }
 
-LaSerPro.attach {
+LaSerPro.start {
 	cmd = { "pyright-langserver", "--stdio" },
 	settings = {
 		python = {

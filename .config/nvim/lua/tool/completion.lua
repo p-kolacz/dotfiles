@@ -118,6 +118,6 @@ cmp.setup.cmdline({ '/', '?' }, {
 -- Setup lspconfig, add capabilities = LSP_CAPABILITIES to all LSP setups
 -- LSP_CAPABILITIES = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- turn on `window/workDoneProgress` capability
-LSP_CAPABILITIES = require('cmp_nvim_lsp').default_capabilities()
+LaSerPro.defaults.capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- require('lsp_spinner').init_capabilities(LSP_CAPABILITIES)
 

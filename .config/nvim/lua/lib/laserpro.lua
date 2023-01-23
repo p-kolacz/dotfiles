@@ -1,16 +1,11 @@
-local M = {}
-
-local defaults = {
-	root_dir = vim.fn.getcwd()
+local M = {
+	defaults = {
+		root_dir = vim.fn.getcwd()
+	}
 }
 
-function M.setup(on_attach, capabilities)
-	defaults.on_attach = on_attach
-	defaults.capabilities = capabilities
-end
-
-function M.attach(config)
-	for k,v in pairs(defaults) do
+function M.start(config)
+	for k,v in pairs(M.defaults) do
 		config[k] = config[k] or v
 	end
 	return vim.lsp.start(config)

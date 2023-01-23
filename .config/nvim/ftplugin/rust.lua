@@ -1,4 +1,4 @@
-LaSerPro.attach {
+LaSerPro.start {
 	cmd = { "rust-analyzer" },
 }
 

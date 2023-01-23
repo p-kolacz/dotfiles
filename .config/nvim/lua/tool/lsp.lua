@@ -21,7 +21,7 @@ nnoremap("<leader>ll", ":tabnew<cr>:e "..vim.lsp.get_log_path().."<cr>", "logs")
 
 -- local lsp_spinner = require('lsp_spinner')
 
-LSP_ON_ATTACH = function(client, bufnr)
+LaSerPro.defaults.on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	nnoremap_buffer('gd', vim.lsp.buf.definition, "goto definition")

@@ -12,7 +12,7 @@ Help.map(Help.Type.STYLEGUIDE, "https://github.com/luarocks/lua-style-guide")
 -- package.loaded["lib/lua-live-tests"] = nil
 require"lib/lua-live-tests"
 
-LaSerPro.attach {
+LaSerPro.start {
 	name = "Sumneko",
 	cmd = { "lua-language-server" },
 	settings = {
