@@ -1,3 +1,5 @@
+# https://github.com/catppuccin
+
 export THEME_NAME=catpuccin-macchiato
 export THEME_VARIANT=dark
 
