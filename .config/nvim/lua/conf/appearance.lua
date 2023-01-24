@@ -10,7 +10,6 @@ set.signcolumn     = "yes"
 set.splitbelow     = true
 set.splitright     = true
 set.termguicolors  = true
-set.foldcolumn     = "auto"
 -- set.shortmess:remove("F")
 
 Yanka.enable_highlight()
@@ -31,7 +30,7 @@ require"scrollbar".setup{
 
 require "conf/themes"
 set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
-colorscheme "everforest"
+colorscheme "catppuccin-macchiato"
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")

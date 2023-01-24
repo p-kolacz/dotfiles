@@ -3,6 +3,9 @@
  --  | | | ' \/ -_) '  \/ -_|_-<
  --  |_| |_||_\___|_|_|_\___/__/
 
+
+Plugin "https://github.com/catppuccin/nvim"
+
 ----------------------------------- Everforest ---------------------------------
 Plugin "https://github.com/sainnhe/everforest"
 let.everforest_background = 'hard'	-- hard medium soft
