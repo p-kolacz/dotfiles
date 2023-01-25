@@ -13,10 +13,12 @@ function M.start(config)
 end
 
 function M.stop()
+	print("Stopping LS...")
 	vim.lsp.stop_client(vim.lsp.get_active_clients({ bufnr = 0 }))
 end
 
 function M.restart()
+	print("Restarting LS...")
 	M.stop()
 	vim.cmd("edit")
 end

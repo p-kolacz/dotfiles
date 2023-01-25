@@ -38,6 +38,8 @@ require "lib/bootstrap" {
 	"tool/indent-guides",
 }
 
+-- require "lib/animate".setup()
+
 -- Load project specific configuration
 if vim.fn.filereadable("project.lua") > 0 then
 	require "project"
