@@ -16,6 +16,9 @@ local actions = require('telescope.actions')
 local trouble = require "trouble.providers.telescope"
 local telescope = require "telescope"
 telescope.setup {
+	-- extensions = {
+		-- commander = { commands = "test123" },
+	-- },
 	defaults = {
 		prompt_prefix = "🔭",
 		mappings = {
@@ -107,3 +110,13 @@ Plugin "https://github.com/LinArcX/telescope-env.nvim"
 telescope.load_extension('env')
 -- TODO: add to menu
 
+telescope.setup {
+	extensions = {
+		commander = {
+			{ "Environmental variables", "Telescope env"},
+		}
+	}
+}
+
+telescope.load_extension("commander")
+nnoremap("<A-x>", ":Telescope commander<cr>", "commander")
