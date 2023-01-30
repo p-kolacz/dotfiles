@@ -101,7 +101,7 @@ dotfiles() {
 }
 
 fonts() {
-	install noto-fonts-emoji ttf-roboto ttf-ubuntu-font-family ttf-nerd-fonts-symbols-2048-em
+	install noto-fonts-emoji ttf-ubuntu-font-family ttf-ubuntu-nerd
 	# ynstall nerd-fonts-victor-mono 
 }
 

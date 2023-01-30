@@ -20,8 +20,7 @@ M.Type = {
 
 function M.setup(table)
 	for help_type,uri in pairs(table) do
-		local action = string.format(":silent !xdg-open '%s'<cr>", uri:gsub("#", "\\#"))
-		nnoremap_buffer("<leader>"..help_type[1], action, help_type[2])
+		M.map(help_type, uri)
 	end
 end
 function M.map(help_type, uri, desc)

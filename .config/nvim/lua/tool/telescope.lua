@@ -14,7 +14,8 @@ Plugin {
 
 local actions = require('telescope.actions')
 local trouble = require "trouble.providers.telescope"
-require('telescope').setup {
+local telescope = require "telescope"
+telescope.setup {
 	defaults = {
 		prompt_prefix = "🔭",
 		mappings = {
@@ -67,10 +68,13 @@ nnoremap('<leader>su', ':Telescope spell_suggest theme=cursor<cr>', 'suggest')
 nnoremap('<leader>vk', ':Telescope keymaps<cr>', 'keymaps')
 nnoremap('<leader>vf', ':Telescope filetypes theme=get_dropdown<cr>', 'filetypes')
 nnoremap('<leader>vh', ':Telescope highlights<cr>', 'highlights')
+nnoremap('<leader>vh', ':Telescope reloader<cr>', 'lua modules')
 nnoremap('<leader>vs', ':Telescope colorscheme theme=dropdown<cr>', 'colorschemes')
 nnoremap('<leader>/',  ':Telescope current_buffer_fuzzy_find<cr>', 'search')
 
 --LSP Pickers
+nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
+nnoremap('<leader>Dt', ':Telescope diagnostics<cr>', 'diagnostics')
 
 --Git Pickers
 mapgroup('<leader>gs',  '+Show')
@@ -91,11 +95,15 @@ nnoremap('<leader>il', ":lua require'telescope.builtin'.symbols{ sources = {'lat
 
 --  Ultisnips
 Plugin "https://github.com/fhill2/telescope-ultisnips.nvim"
-require("telescope").load_extension("ultisnips")
+telescope.load_extension("ultisnips")
 nnoremap('<leader>us', ":Telescope ultisnips ultisnips theme=get_ivy<cr>", "snippets")
 
 -- Project management
 Plugin "https://github.com/nvim-telescope/telescope-project.nvim"
-require"telescope".load_extension("project")
+telescope.load_extension("project")
 nnoremap("<leader>po", ":lua require'telescope'.extensions.project.project{}<cr>", "open")
+
+Plugin "https://github.com/LinArcX/telescope-env.nvim"
+telescope.load_extension('env')
+-- TODO: add to menu
 

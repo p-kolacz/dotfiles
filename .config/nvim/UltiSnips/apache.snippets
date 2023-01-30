@@ -68,3 +68,7 @@ RewriteEngine On
 RewriteRule ^(.*)$ /public/\$1 [L]
 endsnippet
 
+snippet wp_diable_search "WP: disables search capability"
+RewriteCond %{QUERY_STRING} ^s=([^&]+)$ [NC]
+RewriteRule ^(.*)$ - [F,L]
+endsnippet
