@@ -1,6 +1,11 @@
 local telescope = require "telescope"
 
 telescope.setup { extensions = { commander = {
+
+	-- Diagnostics ------------------------------------------------------------
+	{ "Show diagnostics",            vim.diagnostic.show },
+	{ "Hide diagnostics",            vim.diagnostic.hide },
+
 	{ "Update plugins",              Perun.update },
 	{ "Update plugins (debug)",      Perun.debug_update },
 
@@ -12,7 +17,7 @@ telescope.setup { extensions = { commander = {
 	{ "Edit all snippets",           "UltiSnipsEdit!all" },
 
 	{ "Enable Treesitter highlight", "TSBufEnable highlight" },
-	{ "Disable Treesitter highlight","TSBufEnable highlight" },
+	{ "Disable Treesitter highlight","TSBufDisable highlight" },
 
 	{ "Environmental variables",     "Telescope env"},
 
@@ -24,12 +29,14 @@ telescope.setup { extensions = { commander = {
 	{ "Convert to HTML",             "TOhtml" },
 	{ "Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
 
-	{ "Commit with current date",    '!git add .; git commit -m "$(date +\\%F)' },
+	{ "Commit with current date",    '!git add .; git commit -m "$(date +\\%F)"' },
 	{ "Git push",                    "!git push" },
 
-	{ "Show diagnostics",            vim.diagnostic.show },
-	{ "Hide diagnostics",            vim.diagnostic.hide },
 
+	-- Telescope --------------------------------------------------------------
+	{ "User commands",               "" },
+
+	-- Yanka ------------------------------------------------------------------
 	{ "Yank filename",               Yanka.filename },
 	{ "Yank relative path",          Yanka.relative_path },
 	{ "Yank full path",              Yanka.full_path },

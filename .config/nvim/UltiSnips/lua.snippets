@@ -31,6 +31,23 @@ function table.deep_copy(original)
 end
 endsnippet
 
+snippet deepcopy
+function deepcopy(orig)
+	local orig_type = type(orig)
+	copy
+	if orig_type == 'table' then
+		copy = {}
+		for orig_key, orig_value in next, orig, nil do
+			copy[deepcopy(orig_key)] = deepcopy(orig_value)
+		end
+		setmetatable(copy, deepcopy(getmetatable(orig)))
+	else -- number, string, boolean, etc
+		copy = orig
+	end
+	return copy
+end
+endsnippet
+
 snippet shallow_copy "shallow copy of a table"
 function table.shallow_copy(original)
 	local copy = {}

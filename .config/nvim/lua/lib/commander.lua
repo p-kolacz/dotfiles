@@ -27,6 +27,16 @@ local function attach_mappings(prompt_bufnr)
 end
 
 local commands = {}
+
+local function add_commands(new_commands)
+	for _,v in ipairs(new_commands) do
+		table.insert(commands,v)
+	end
+	table.sort(commands, function (a, b)
+		return a[1] < b[1]
+	end)
+end
+
 local picker_defaults = {
 	prompt_title = "Your wish is my :command",
 	attach_mappings = attach_mappings,
@@ -35,11 +45,7 @@ local picker_defaults = {
 local M = {}
 
 function M.setup(user_commands)
-	commands = user_commands
-	table.sort(commands, function (a, b)
-		return a[1] < b[1]
-	end)
-	-- commands = #commands == 0 or {{ "Please provide commands", function() print("Example command") end }}
+	add_commands(user_commands)
 	local finders = require "telescope.finders"
 	local themes = require "telescope.themes"
 	picker_defaults.finder = finders.new_table {
