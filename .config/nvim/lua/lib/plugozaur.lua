@@ -1,6 +1,8 @@
 local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
-function Plugin(repos)
+local M = {}
+
+function M.Plugin(repos)
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do
 		local t = vim.fn.split(repo, '/')
@@ -16,15 +18,16 @@ function Plugin(repos)
 	end
 end
 
-function PlugUpdate()
+function M.update()
 	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P10 -I{} git -C {} pull]], PLUGIN_HOME))
 	vim.cmd('helptags ALL')
 end
-vim.cmd("command! PlugUpdate lua PlugUpdate()")
+-- vim.cmd("command! PlugUpdate lua PlugUpdate()")
 
-function PlugUpdateDebug()
+function M.debug_update()
 	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P1 -I{} sh -c "echo -n 'Updating: '; basename {}; git -C {} pull;"]], PLUGIN_HOME))
 	vim.cmd('helptags ALL')
 end
-vim.cmd("command! PlugUpdateDebug lua PlugUpdateDebug()")
+-- vim.cmd("command! PlugUpdateDebug lua PlugUpdateDebug()")
 
+return M

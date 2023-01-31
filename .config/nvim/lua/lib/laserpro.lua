@@ -1,8 +1,4 @@
-local M = {
-	defaults = {
-		-- root_dir = vim.fn.getcwd()
-	}
-}
+local M = { defaults = {} }
 
 function M.start(config)
 	for k,v in pairs(M.defaults) do

@@ -31,10 +31,10 @@ require "lib/mapper" {
 	v,  "<A-k>",       ":m '<-2<cr>gv=gv",                 "",
 
 	G,  "<leader>e",   "+Edit",                            "",
-	n,  "<leader>et",  ":%s/\\s\\+$//e<CR>",               "remove trailing spaces",
+	-- n,  "<leader>et",  ":%s/\\s\\+$//e<CR>",               "remove trailing spaces",
 	n,  "<leader>es",  ":%s/",                             "substitute",
 	v,  "<leader>es",  ":s/",                              "substitute",
-	n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
+	-- n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
 	v,  "<leader>er",  ":'<,'>!tac<CR>",                   "reverse lines",
 	-- change cword and press . to repeat change on next, n to goto next
 	n,  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat",
@@ -43,21 +43,21 @@ require "lib/mapper" {
 	G,  "<leader>f",   "+File", "",
 	n,  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir",
 	n,  "<leader>fn",  ":new<cr>",                         "new file",
-	n,  "<leader>fp",  ":hardcopy",                        "print file",
+	-- n,  "<leader>fp",  ":hardcopy",                        "print file",
 	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
 
 	G,  "<leader>ft",  "+Convert",                         "",
-	n,  "<leader>fth", ":TOhtml<cr>",                      "to HTML",
-	n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
+	-- n,  "<leader>fth", ":TOhtml<cr>",                      "to HTML",
+	-- n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
 	------------------------------------ Git -----------------------------------
 	G,  "<leader>g",  "+Git", "",
 	n,  "<leader>gg",  ":silent !$TERMINAL lazygit &<cr>", "LazyGit",
 	G,  "<leader>gc",  "+Commit", "",
-	n,  "<leader>gcc",  ':!git add .; git commit -m ',     "commit",
-	n,  "<leader>gcd",  ':!git add .; git commit -m "$(date +\\%F)"<cr>', "with current date",
-	G,  "<leader>gp",  '+Push', "",
-	n,  "<leader>gpp",  ':!git push<cr>', "push",
-	n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
+	-- n,  "<leader>gcc",  ':!git add .; git commit -m ',     "commit",
+	-- n,  "<leader>gcd",  ':!git add .; git commit -m "$(date +\\%F)"<cr>', "with current date",
+	-- G,  "<leader>gp",  '+Push', "",
+	-- n,  "<leader>gpp",  ':!git push<cr>', "push",
+	-- n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
 	n,  "gy",          Help.search_cword,                  "online search cword",
@@ -107,7 +107,7 @@ require "lib/mapper" {
 	------------------------------------ Vim -----------------------------------
 	G,  "<leader>v",  "+Vim", "",
 	---------------------------------- Windows ---------------------------------
-	n,  "<leader>q",  ":q<CR>", "which_key_ignore",
+	n,  "<leader>q",  ":q<CR>", "quit",
 	n,  "<C-h>",  "<C-w>h", "left window",
 	n,  "<C-j>",  "<C-w>j", "bottom window",
 	n,  "<C-k>",  "<C-w>k", "up window",
@@ -119,12 +119,12 @@ require "lib/mapper" {
 	----------------------------------- Yank -----------------------------------
 	v,  "<C-c>",       '"*y :let @+=@*<CR>',               "",
 	_,  "<C-v>",       '"+P',                              "",
-	G,  "<leader>y",   "+Yank",                            "",
-	n,  "<leader>yf",  Yanka.filename,        "filename",
-	n,  "<leader>yr",  Yanka.relative_path,   "relative path",
-	n,  "<leader>yp",  Yanka.full_path,       "full path",
-	n,  "<leader>yd",  Yanka.full_dir,        "full dir",
-	n,  "<leader>yc",  Yanka.cfile,           "file under cursor",
+	-- G,  "<leader>y",   "+Yank",                            "",
+	-- n,  "<leader>yf",  Yanka.filename,        "filename",
+	-- n,  "<leader>yr",  Yanka.relative_path,   "relative path",
+	-- n,  "<leader>yp",  Yanka.full_path,       "full path",
+	-- n,  "<leader>yd",  Yanka.full_dir,        "full dir",
+	-- n,  "<leader>yc",  Yanka.cfile,           "file under cursor",
 }
 
 nmap('<leader>"', 'ysiW"', '"cWord"')

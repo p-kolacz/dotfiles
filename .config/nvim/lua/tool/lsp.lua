@@ -6,17 +6,17 @@ vim.o.updatetime = 250
 mapgroup("<leader>D", "+Diagnostics")
 -- nnoremap('<leader>Df', '<cmd>lua vim.diagnostic.open_float()<CR>', "open float")
 nnoremap('<leader>Dl', vim.diagnostic.setloclist, "set loclist")
-nnoremap('<leader>Dh', vim.diagnostic.hide, "hide")
-nnoremap('<leader>Ds', vim.diagnostic.show, "show")
+-- nnoremap('<leader>Dh', vim.diagnostic.hide, "hide")
+-- nnoremap('<leader>Ds', vim.diagnostic.show, "show")
 nnoremap('[d',         vim.diagnostic.goto_prev, "prev diagnostic")
 nnoremap(']d',         vim.diagnostic.goto_next, "next diagnostic")
 
 mapgroup("<leader>l", "+LSP")
 -- nnoremap('<leader>li', ':LspInfo<cr>', 'info')
 nnoremap('<leader>li', LaSerPro.print_name, 'info')
-nnoremap('<leader>ls', LaSerPro.stop, 'stop')
+-- nnoremap('<leader>ls', LaSerPro.stop, 'stop')
 -- nnoremap('<leader>lS', ':LspStop<cr>', 'stop')
-nnoremap('<leader>lr', LaSerPro.restart, 'restart')
+-- nnoremap('<leader>lr', LaSerPro.restart, 'restart')
 nnoremap("<leader>ll", ":tabnew<cr>:e "..vim.lsp.get_log_path().."<cr>", "logs")
 
 -- local lsp_spinner = require('lsp_spinner')
@@ -56,3 +56,4 @@ require"fidget".setup{}
 
 Plugin "https://github.com/ray-x/lsp_signature.nvim"
 require "lsp_signature".setup()
+

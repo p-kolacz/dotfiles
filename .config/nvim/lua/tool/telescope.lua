@@ -12,13 +12,11 @@ Plugin {
 	"https://github.com/nvim-telescope/telescope-symbols.nvim",
 }
 
-local actions = require('telescope.actions')
-local trouble = require "trouble.providers.telescope"
+local actions   = require "telescope.actions"
+local trouble   = require "trouble.providers.telescope"
 local telescope = require "telescope"
+
 telescope.setup {
-	-- extensions = {
-		-- commander = { commands = "test123" },
-	-- },
 	defaults = {
 		prompt_prefix = "🔭",
 		mappings = {
@@ -95,7 +93,6 @@ nnoremap('<leader>ik', ":lua require'telescope.builtin'.symbols{ sources = {'kao
 nnoremap('<leader>im', ":lua require'telescope.builtin'.symbols{ sources = {'math'}    }<cr>", 'math')
 nnoremap('<leader>il', ":lua require'telescope.builtin'.symbols{ sources = {'latex'}   }<cr>", 'latex')
 
-
 --  Ultisnips
 Plugin "https://github.com/fhill2/telescope-ultisnips.nvim"
 telescope.load_extension("ultisnips")
@@ -108,15 +105,7 @@ nnoremap("<leader>po", ":lua require'telescope'.extensions.project.project{}<cr>
 
 Plugin "https://github.com/LinArcX/telescope-env.nvim"
 telescope.load_extension('env')
--- TODO: add to menu
 
-telescope.setup {
-	extensions = {
-		commander = {
-			{ "Environmental variables", "Telescope env"},
-		}
-	}
-}
+Plugin "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
+telescope.load_extension('fzy_native')
 
-telescope.load_extension("commander")
-nnoremap("<A-x>", ":Telescope commander<cr>", "commander")

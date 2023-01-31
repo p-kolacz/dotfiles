@@ -1,12 +1,12 @@
+-- Perun Weles Dazhbog Dola Zemlya Zorya Zvezda Devana Morana
 Help     = require "lib/helpozor"
 Icons    = require "lib/iconz"
 Yanka    = require "lib/yanka"
 LaSerPro = require "lib/laserpro"
+Perun    = require "lib/plugozaur"
+Plugin   = Perun.Plugin
 
 require "lib/bootstrap" {
-
-	-- Libs --------------------------------
-	"lib/plugozaur",
 
 	-- Configuration -----------------------
 	"conf/options",
@@ -26,6 +26,7 @@ require "lib/bootstrap" {
 	"tool/treesitter",
 	"tool/trouble",
 	"tool/telescope",
+	"tool/commander",
 	"tool/nvim-tree",
 	"tool/gitsigns",
 	"tool/cheatash",

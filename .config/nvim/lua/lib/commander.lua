@@ -16,6 +16,7 @@ local function attach_mappings(prompt_bufnr)
 		actions.close(prompt_bufnr)
 		local selection = action_state.get_selected_entry()
 		local cmd = selection.value[2]
+		-- vim.cmd("normal")
 		if type(cmd) == "function" then
 			cmd()
 		else
@@ -35,6 +36,9 @@ local M = {}
 
 function M.setup(user_commands)
 	commands = user_commands
+	table.sort(commands, function (a, b)
+		return a[1] < b[1]
+	end)
 	-- commands = #commands == 0 or {{ "Please provide commands", function() print("Example command") end }}
 	local finders = require "telescope.finders"
 	local themes = require "telescope.themes"
