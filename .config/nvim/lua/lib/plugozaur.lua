@@ -2,7 +2,7 @@ local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
 local M = {}
 
-function M.Plugin(repos)
+function M.Plugin(repos, after)
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do
 		local t = vim.fn.split(repo, '/')
@@ -12,6 +12,7 @@ function M.Plugin(repos)
 			vim.cmd(string.format('!git clone --depth 1 %s.git %s', repo, dir))
 			vim.cmd('packadd! '..name)
 			vim.cmd('helptags ALL')
+			if after then after(dir) end
 		else
 			vim.cmd('packadd! '..name)
 		end

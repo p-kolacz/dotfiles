@@ -14,14 +14,13 @@ require "lib/commander".add {
 	{ "Enable Treesitter highlight", "TSBufEnable highlight" },
 	{ "Disable Treesitter highlight","TSBufDisable highlight" },
 
-	{ "New tab",                     "tabnew" },
-
 	{ "Remove trailing spaces",      "%s/\\s\\+$//e"},
 	{ "Reverse all lines",           "g/^/m0" },
 	{ "Print file",                  "hardcopy" },
 	{ "Convert to HTML",             "TOhtml" },
 	{ "Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
 
+	-- Git --------------------------------------------------------------------
 	{ "Commit with current date",    '!git add .; git commit -m "$(date +\\%F)"' },
 	{ "Git push",                    "!git push" },
 

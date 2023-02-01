@@ -21,6 +21,7 @@ require "lib/bootstrap" {
 	"conf/languages",
 
 	-- Tools -------------------------------
+	"tool/commander",
 	"tool/tpope",
 	"tool/lsp",
 	"tool/completion",
@@ -28,7 +29,6 @@ require "lib/bootstrap" {
 	"tool/treesitter",
 	"tool/trouble",
 	"tool/telescope",
-	"tool/commander",
 	"tool/nvim-tree",
 	"tool/gitsigns",
 	"tool/cheatash",
@@ -37,8 +37,8 @@ require "lib/bootstrap" {
 	"tool/rest",
 	"tool/dashboard",
 	-- "tool/neotest",
-	"tool/vim-test",
-	"tool/indent-guides",
+	-- "tool/vim-test",
+	-- "tool/indent-guides",
 }
 
 -- require "lib/animate".setup()

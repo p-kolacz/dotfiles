@@ -99,11 +99,14 @@ require "lib/mapper" {
 	-- nnoremap("<c-t>", ":tabnew<cr>")
 	n,  "<c-tab>",  ":tabnext<cr>", "",
 	n,  "<c-s-tab>",  ":tabprevious<cr>", "",
+	G,  "<leader>t",  "+Tabs",            "",
+	n,  "<leader>tt", ":tabnew<cr>",       "new tab",
+	n,  "<leader>tc", ":tabclose<cr>",     "close tab",
 	n,  "<leader>1",  "1gt", "tab 1",
 	n,  "<leader>2",  "2gt", "tab 2",
 	n,  "<leader>3",  "3gt", "tab 3",
-	n,  "<leader>4",  "4gt", "tab 4",
-	n,  "<leader>5",  "5gt", "",
+	-- n,  "<leader>4",  "4gt", "tab 4",
+	-- n,  "<leader>5",  "5gt", "tab 5",
 	------------------------------------ Vim -----------------------------------
 	G,  "<leader>v",  "+Vim", "",
 	n,  "<leader>vg", Zorya.toggle_background,             "toggle_background",
@@ -120,12 +123,6 @@ require "lib/mapper" {
 	----------------------------------- Yank -----------------------------------
 	v,  "<C-c>",       '"*y :let @+=@*<CR>',               "",
 	_,  "<C-v>",       '"+P',                              "",
-	-- G,  "<leader>y",   "+Yank",                            "",
-	-- n,  "<leader>yf",  Yanka.filename,        "filename",
-	-- n,  "<leader>yr",  Yanka.relative_path,   "relative path",
-	-- n,  "<leader>yp",  Yanka.full_path,       "full path",
-	-- n,  "<leader>yd",  Yanka.full_dir,        "full dir",
-	-- n,  "<leader>yc",  Yanka.cfile,           "file under cursor",
 }
 
 nmap('<leader>"', 'ysiW"', '"cWord"')

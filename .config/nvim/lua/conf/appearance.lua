@@ -29,6 +29,8 @@ require"scrollbar".setup {
 	}
 }
 
+Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
+
 require "conf/themes"
 colorscheme "catppuccin-macchiato"
 
