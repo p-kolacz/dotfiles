@@ -79,14 +79,14 @@ nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
 -- nnoremap('<leader>Dt', ':Telescope diagnostics<cr>', 'diagnostics')
 
 --Git Pickers
-mapgroup('<leader>gs',  '+Show')
-nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
-nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
-nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
-nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
+-- mapgroup('<leader>gs',  '+Show')
+-- nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
+-- nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
+-- nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
+-- nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 
 --Treesitter
-nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
+-- nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
 
 --Symbols
 nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emoji'}   }<cr>", 'emoji')
@@ -113,17 +113,31 @@ telescope.load_extension('fzy_native')
 local builtin = require "telescope.builtin"
 
 Cmdr.add {
-	{ "Env variables",     "Telescope env"      },
-	{ "Lua reloader",      builtin.reloader     },
-	{ "Vim commands",      builtin.commands     },
-	{ "Vim filetypes",     builtin.filetypes    },
-	{ "Vim highlights",    builtin.highlights   },
-	{ "Vim keymaps",       builtin.keymaps      },
-	{ "Vim options",       builtin.vim_options  },
-	{ "Vim registers",     builtin.registers    },
-	{ "Diagnostics",       builtin.diagnostics  },
-	-- { "", "" },
-	-- { "", "" },
+	{ "Diagnostics",        builtin.diagnostics  },
+	{ "Env variables",      "Telescope env"      },
+
+	{ "Git branches",       builtin.git_branches },
+	{ "Git buffer commits", builtin.git_bcommits },
+	{ "Git commits",        builtin.git_commits  },
+	{ "Git status",         builtin.git_status   },
+
+	{ "Lua reloader",       builtin.reloader     },
+
+	{ "Insert emoji",       function() builtin.symbols{sources={'emoji'}} end },
+	{ "Insert gitmoji",     function() builtin.symbols{sources={'gitmoji'}} end },
+	{ "Insert kamoji",      function() builtin.symbols{sources={'kamoji'}} end },
+	{ "Insert latex",       function() builtin.symbols{sources={'latex'}} end },
+	{ "Insert math",        function() builtin.symbols{sources={'math'}} end },
+	{ "Insert nerd",        function() builtin.symbols{sources={'nerd'}} end },
+
+	{ "Treesitter fun&var", builtin.treesitter   },
+
+	{ "Vim commands",       builtin.commands     },
+	{ "Vim filetypes",      builtin.filetypes    },
+	{ "Vim highlights",     builtin.highlights   },
+	{ "Vim keymaps",        builtin.keymaps      },
+	{ "Vim options",        builtin.vim_options  },
+	{ "Vim registers",      builtin.registers    },
 	-- { "", "" },
 	-- { "", "" },
 }
