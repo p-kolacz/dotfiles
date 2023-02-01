@@ -13,7 +13,7 @@ set.completeopt = "menu,menuone,noselect"
 set.pumheight = 10
 
 local cmp = require'cmp'
-if not cmp then return end
+-- if not cmp then return end
 
 local fields = {
 	cmp.ItemField.Kind,

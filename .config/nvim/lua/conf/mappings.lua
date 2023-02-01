@@ -106,6 +106,7 @@ require "lib/mapper" {
 	n,  "<leader>5",  "5gt", "",
 	------------------------------------ Vim -----------------------------------
 	G,  "<leader>v",  "+Vim", "",
+	n,  "<leader>vg", Zorya.toggle_background,             "toggle_background",
 	---------------------------------- Windows ---------------------------------
 	n,  "<leader>q",  ":q<CR>", "quit",
 	n,  "<C-h>",  "<C-w>h", "left window",
@@ -129,8 +130,4 @@ require "lib/mapper" {
 
 nmap('<leader>"', 'ysiW"', '"cWord"')
 nmap("<leader>'", "ysiW'", "'cWord'")
-
-nnoremap("<leader>vg", function ()
-	vim.o.background = vim.o.background == "light" and "dark" or "light"
-end, "toggle background")
 

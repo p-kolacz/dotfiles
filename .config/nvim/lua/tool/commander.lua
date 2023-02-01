@@ -1,6 +1,4 @@
-local telescope = require "telescope"
-
-telescope.setup { extensions = { commander = {
+require "lib/commander".add {
 
 	-- Diagnostics ------------------------------------------------------------
 	{ "Show diagnostics",            vim.diagnostic.show },
@@ -13,13 +11,8 @@ telescope.setup { extensions = { commander = {
 	{ "Restart language server",     LaSerPro.restart },
 	{ "LSP logs",                    LaSerPro.logs },
 
-	{ "Edit filetype snippets",      "UltiSnipsEdit" },
-	{ "Edit all snippets",           "UltiSnipsEdit!all" },
-
 	{ "Enable Treesitter highlight", "TSBufEnable highlight" },
 	{ "Disable Treesitter highlight","TSBufDisable highlight" },
-
-	{ "Environmental variables",     "Telescope env"},
 
 	{ "New tab",                     "tabnew" },
 
@@ -48,8 +41,5 @@ telescope.setup { extensions = { commander = {
 	-- { "Rsync",   Rsync },
 	-- { "Toggle background",         Colorozor.toggle_background },
 
-} } }
-
-telescope.load_extension("commander")
-nnoremap("<A-x>", ":Telescope commander<cr>", "commander")
+}
 

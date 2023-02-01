@@ -40,6 +40,7 @@ telescope.setup {
 		oldfiles	= { theme = "ivy", initial_mode = "insert" },
 		current_buffer_fuzzy_find	= { theme = "ivy" },
 		symbols		= { theme = "cursor" },
+		vim_options = { theme = "dropdown" },
 	},
 }
 
@@ -58,24 +59,24 @@ nnoremap('<leader>ff', ':Telescope live_grep<cr>', 'find in files')
 nnoremap('<leader>vb', ':Telescope buffers<cr>', 'buffers')
 nnoremap('<leader>fh', ':Telescope oldfiles<cr>', 'history')
 nnoremap('<leader>vc', ':Telescope commands<cr>', 'commands')
-nnoremap('<C-p>',      ':Telescope commands theme=get_dropdown<cr>')
-nnoremap('<leader>vx', ':Telescope command_history theme=get_dropdown<cr>', 'cmd history')
+-- nnoremap('<C-p>',      ':Telescope commands theme=get_dropdown<cr>')
+-- nnoremap('<leader>vx', ':Telescope command_history theme=get_dropdown<cr>', 'cmd history')
 nnoremap('<leader>hh', ':Telescope help_tags<cr>', 'help tags')
 nnoremap('<leader>vq', ':Telescope quickfix<cr>', 'quickfix list')
 nnoremap('<leader>vl', ':Telescope loclist<cr>', 'loc list')
-nnoremap('<leader>vo', ':Telescope vim_options theme=get_dropdown<cr>', 'options')
-nnoremap('<leader>vr', ':Telescope registers<cr>', 'registers')
+-- nnoremap('<leader>vo', ':Telescope vim_options theme=get_dropdown<cr>', 'options')
+-- nnoremap('<leader>vr', ':Telescope registers<cr>', 'registers')
 nnoremap('<leader>su', ':Telescope spell_suggest theme=cursor<cr>', 'suggest')
-nnoremap('<leader>vk', ':Telescope keymaps<cr>', 'keymaps')
-nnoremap('<leader>vf', ':Telescope filetypes theme=get_dropdown<cr>', 'filetypes')
-nnoremap('<leader>vh', ':Telescope highlights<cr>', 'highlights')
-nnoremap('<leader>vh', ':Telescope reloader<cr>', 'lua modules')
+-- nnoremap('<leader>vk', ':Telescope keymaps<cr>', 'keymaps')
+-- nnoremap('<leader>vf', ':Telescope filetypes theme=get_dropdown<cr>', 'filetypes')
+-- nnoremap('<leader>vh', ':Telescope highlights<cr>', 'highlights')
+-- nnoremap('<leader>vh', ':Telescope reloader<cr>', 'lua modules')
 nnoremap('<leader>vs', ':Telescope colorscheme theme=dropdown<cr>', 'colorschemes')
 nnoremap('<leader>/',  ':Telescope current_buffer_fuzzy_find<cr>', 'search')
 
 --LSP Pickers
 nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
-nnoremap('<leader>Dt', ':Telescope diagnostics<cr>', 'diagnostics')
+-- nnoremap('<leader>Dt', ':Telescope diagnostics<cr>', 'diagnostics')
 
 --Git Pickers
 mapgroup('<leader>gs',  '+Show')
@@ -108,4 +109,27 @@ telescope.load_extension('env')
 
 Plugin "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
 telescope.load_extension('fzy_native')
+
+local builtin = require "telescope.builtin"
+
+Cmdr.add {
+	{ "Env variables",     "Telescope env"      },
+	{ "Lua reloader",      builtin.reloader     },
+	{ "Vim commands",      builtin.commands     },
+	{ "Vim filetypes",     builtin.filetypes    },
+	{ "Vim highlights",    builtin.highlights   },
+	{ "Vim keymaps",       builtin.keymaps      },
+	{ "Vim options",       builtin.vim_options  },
+	{ "Vim registers",     builtin.registers    },
+	{ "Diagnostics",       builtin.diagnostics  },
+	-- { "", "" },
+	-- { "", "" },
+	-- { "", "" },
+	-- { "", "" },
+}
+
+-- local telescope = require "telescope"
+telescope.load_extension("commander")
+nnoremap("<A-x>", ":Telescope commander<cr>", "commander")
+nnoremap("<C-P>", ":Telescope commander<cr>", "commander")
 

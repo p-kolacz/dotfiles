@@ -15,6 +15,7 @@ set.termguicolors  = true
 Yanka.enable_highlight()
 Icons.setup_diagnostics()
 Icons.setup_devicons()
+Zorya.auto_background()
 
 Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
@@ -29,13 +30,10 @@ require"scrollbar".setup {
 }
 
 require "conf/themes"
-set.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or "dark"
 colorscheme "catppuccin-macchiato"
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")
--- vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
--- vim.cmd[[match ExtraWhitespace /\s\+$/]]
 
 -- https://neovide.dev/configuration.html
 let.neovide_cursor_animation_length = 0.03

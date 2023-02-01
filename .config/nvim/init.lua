@@ -4,6 +4,8 @@ Icons    = require "lib/iconz"
 Yanka    = require "lib/yanka"
 LaSerPro = require "lib/laserpro"
 Perun    = require "lib/plugozaur"
+Cmdr     = require "lib/commander"
+Zorya    = require "zorya"
 Plugin   = Perun.Plugin
 
 require "lib/bootstrap" {
