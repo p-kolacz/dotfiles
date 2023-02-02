@@ -25,8 +25,9 @@ require "lib/commander".add {
 	{ "Git push",                    "!git push" },
 
 
-	-- Telescope --------------------------------------------------------------
-	{ "User commands",               "" },
+	-- Windows ----------------------------------------------------------------
+	{ "Open quicfix",                "copen" },
+	{ "Close quicfix",               "cclose" },
 
 	-- Yanka ------------------------------------------------------------------
 	{ "Yank filename",               Yanka.filename },
