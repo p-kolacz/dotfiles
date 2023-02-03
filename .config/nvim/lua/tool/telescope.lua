@@ -83,7 +83,7 @@ nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
 -- nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
 -- nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
 -- nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
--- nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
+nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 
 --Treesitter
 -- nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
