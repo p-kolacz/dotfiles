@@ -1,12 +1,13 @@
 -- Perun Weles Dazhbog Dola Zemlya Zorya Zvezda Devana Morana
-Help     = require "lib/helpozor"
-Icons    = require "lib/iconz"
-Yanka    = require "lib/yanka"
-LaSerPro = require "lib/laserpro"
-Perun    = require "lib/plugozaur"
-Cmdr     = require "lib/commander"
-Zorya    = require "zorya"
-Plugin   = Perun.Plugin
+Helper = require "lib/helpozor"
+Icons  = require "lib/iconz"
+Laser  = require "lib/laserpro"
+Mapper = require "lib/mapper"
+Perun  = require "lib/plugozaur"
+Cmdr   = require "lib/commander"
+Yanka  = require "lib/yanka"
+Zorya  = require "zorya"
+Plugin = Perun.Plugin
 
 require "lib/bootstrap" {
 
@@ -16,12 +17,12 @@ require "lib/bootstrap" {
 	"conf/foldotron",
 	"conf/which-key",
 	"conf/mappings",
+	"conf/commander",
 	"conf/appearance",
 	"conf/statusline",
 	"conf/languages",
 
 	-- Tools -------------------------------
-	"tool/commander",
 	"tool/tpope",
 	"tool/lsp",
 	"tool/completion",

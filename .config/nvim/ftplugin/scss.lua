@@ -1,4 +1,4 @@
-LaSerPro.start {
+Laser.start {
 	name = "VSCode CSS LS",
 	cmd = { "vscode-css-languageserver", "--stdio" },
 	settings = {

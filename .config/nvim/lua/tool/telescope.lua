@@ -128,7 +128,7 @@ Cmdr.add {
 
 	{ "Insert emoji",       function() builtin.symbols{sources={'emoji'}} end },
 	{ "Insert gitmoji",     function() builtin.symbols{sources={'gitmoji'}} end },
-	{ "Insert kamoji",      function() builtin.symbols{sources={'kamoji'}} end },
+	{ "Insert kamoji",      function() builtin.symbols{sources={'kaomoji'}} end },
 	{ "Insert latex",       function() builtin.symbols{sources={'latex'}} end },
 	{ "Insert math",        function() builtin.symbols{sources={'math'}} end },
 	{ "Insert nerd",        function() builtin.symbols{sources={'nerd'}} end },

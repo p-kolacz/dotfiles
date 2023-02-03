@@ -8,12 +8,12 @@ nnoremap_buffer("<localleader>ss", ":Server<cr>", "start")
 nnoremap_buffer("<localleader>sr", ":Rails restart<cr>", "restart")
 nnoremap_buffer("<localleader>sc", ":Console<cr>")
 
-Help.map(Help.Type.API, "https://api.rubyonrails.org/")
-Help.map(Help.Type.CHEATSHEET, "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o")
+Helper.map(Helper.Type.API, "https://api.rubyonrails.org/")
+Helper.map(Helper.Type.CHEATSHEET, "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o")
 
 setlocal.foldcolumn='0'
 
-LaSerPro.start {
+Laser.start {
 	name = "Solargraph",
 	cmd = { "solargraph", "stdio" },
 	init_options = {

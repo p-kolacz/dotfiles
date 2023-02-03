@@ -1,4 +1,4 @@
-LaSerPro.start {
+Laser.start {
 	name = "SQLLS",
 	cmd = { "sql-language-server", "up", "--method", "stdio" },
 	settings = {

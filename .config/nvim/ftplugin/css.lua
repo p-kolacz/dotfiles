@@ -4,10 +4,10 @@ mapgroup("<leader>hu", "+Can I Use")
 nnoremap_buffer('<leader>huc', ':CaniuseCword<cr>', 'caniuse cword')
 nnoremap_buffer('<leader>huq', ':Caniuse ', 'caniuse query')
 
-Help.map(Help.Type.CHEATSHEET, "https://devhints.io/css")
-Help.map(Help.Type.CUSTOM1, "https://devhints.io/css-flexbox")
+Helper.map(Helper.Type.CHEATSHEET, "https://devhints.io/css")
+Helper.map(Helper.Type.CUSTOM1, "https://devhints.io/css-flexbox")
 
-LaSerPro.start {
+Laser.start {
 	name = "VSCode CSS LS",
 	cmd = { "vscode-css-languageserver", "--stdio" },
 	settings = {

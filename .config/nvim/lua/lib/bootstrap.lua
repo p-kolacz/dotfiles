@@ -19,7 +19,7 @@ function _G.v(x)
 end
 
 return function(t)
-	for _,v in pairs(t) do
+	for _,v in ipairs(t) do
 		require(v)
 	end
 end

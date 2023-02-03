@@ -12,7 +12,7 @@ nnoremap("<localleader>l", ":!livereload -p 8000 &<cr>", "livereload server")
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
-LaSerPro.start {
+Laser.start {
 	name = "VSCode HTML LS",
 	cmd = { "vscode-html-languageserver", "--stdio" },
 	-- capabilities = capabilities,

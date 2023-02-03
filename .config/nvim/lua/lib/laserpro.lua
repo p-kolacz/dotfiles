@@ -13,12 +13,6 @@ function M.stop()
 	vim.lsp.stop_client(vim.lsp.get_active_clients({ bufnr = 0 }))
 end
 
-function M.restart()
-	print("Restarting LS...")
-	M.stop()
-	vim.cmd("edit")
-end
-
 function M.print_name()
 	local clients = vim.lsp.get_active_clients({ bufnr = 0 })
 	print(#clients > 0 and clients[1].name or "No LS attached")

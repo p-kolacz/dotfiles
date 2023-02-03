@@ -2,7 +2,7 @@ let.mapleader = " "
 let.maplocalleader = "\\"
 
 local _ = "" local i = "i" local n = "n" local v = "v" local c = "c" local x = "x" local G = "G"
-require "lib/mapper" {
+Mapper.map {
 	---------------------------------- Buffer ----------------------------------
 	n,	"<leader>w",   ":w<CR>",			               "",
 	----------------------------------- Code -----------------------------------
@@ -60,9 +60,9 @@ require "lib/mapper" {
 	-- n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
-	n,  "gy",          Help.search_cword,                  "online search cword",
-	v,  "gy",          Help.search_selection,              "online search selection",
-	n,  "<leader>hn",  Help.edit_ft_notes,                 "filetype notes",
+	n,  "gy",          Helper.search_cword,                  "online search cword",
+	v,  "gy",          Helper.search_selection,              "online search selection",
+	n,  "<leader>hn",  Helper.edit_ft_notes,                 "filetype notes",
 
 	---------------------------------- Insert ----------------------------------
 	G,  "<leader>i",   "+Insert",                           "",
@@ -89,7 +89,7 @@ require "lib/mapper" {
 	----------------------------------- Search ---------------------------------
 	v,  "/",  "<ESC>/\\%V", "",
 	----------------------------------- Spell ----------------------------------
-	G,  "<leader>s",  "+Spell", "",
+	G,  "<leader>s",   "+Spell", "",
 	n,  "<leader>ss",  ":setlocal spell!<CR>",             "spell check",
 	n,  "<leader>sc",  ":setlocal complete+=kspell<CR>",   "spell complete",
 	n,  "<leader>sn",  ":setlocal complete-=kspell<CR>",   "spell no complete",
@@ -97,14 +97,14 @@ require "lib/mapper" {
 	n,  "<leader>sp",  ":setlocal spelllang=pl<CR>",       "lang pl",
 	------------------------------------- Tabs ---------------------------------
 	-- nnoremap("<c-t>", ":tabnew<cr>")
-	n,  "<c-tab>",  ":tabnext<cr>", "",
-	n,  "<c-s-tab>",  ":tabprevious<cr>", "",
-	G,  "<leader>t",  "+Tabs",            "",
-	n,  "<leader>tt", ":tabnew<cr>",       "new tab",
-	n,  "<leader>tc", ":tabclose<cr>",     "close tab",
-	n,  "<leader>1",  "1gt", "tab 1",
-	n,  "<leader>2",  "2gt", "tab 2",
-	n,  "<leader>3",  "3gt", "tab 3",
+	-- n,  "<c-tab>",  ":tabnext<cr>", "",
+	-- n,  "<c-s-tab>",  ":tabprevious<cr>", "",
+	G,  "<leader>t",   "+Tabs",             "",
+	n,  "<leader>tt",  ":tabnew<cr>",       "new tab",
+	n,  "<leader>tc",  ":tabclose<cr>",     "close tab",
+	n,  "<leader>1",   "1gt",               "tab 1",
+	n,  "<leader>2",   "2gt",               "tab 2",
+	n,  "<leader>3",   "3gt",               "tab 3",
 	-- n,  "<leader>4",  "4gt", "tab 4",
 	-- n,  "<leader>5",  "5gt", "tab 5",
 	------------------------------------ Vim -----------------------------------

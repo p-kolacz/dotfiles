@@ -19,8 +19,8 @@ M.Type = {
 -- TODO: create opener module
 
 function M.setup(table)
-	for help_type,uri in pairs(table) do
-		M.map(help_type, uri)
+	for help_type, uri in pairs(table) do
+		M.map(M.Type[help_type], uri)
 	end
 end
 function M.map(help_type, uri, desc)
@@ -45,3 +45,4 @@ end
 
 return M
 
+-- nnoremap("<leader>x", ':call netrw#BrowseX("https://onet.pl", netrw#CheckIfRemote())<cr>')

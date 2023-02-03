@@ -13,7 +13,7 @@ nnoremap(']d',         vim.diagnostic.goto_next, "next diagnostic")
 
 mapgroup("<leader>l", "+LSP")
 -- nnoremap('<leader>li', ':LspInfo<cr>', 'info')
-nnoremap('<leader>li', LaSerPro.print_name, 'info')
+nnoremap('<leader>li', Laser.print_name, 'info')
 -- nnoremap('<leader>ls', LaSerPro.stop, 'stop')
 -- nnoremap('<leader>lS', ':LspStop<cr>', 'stop')
 -- nnoremap('<leader>lr', LaSerPro.restart, 'restart')
@@ -21,7 +21,7 @@ nnoremap("<leader>ll", ":tabnew<cr>:e "..vim.lsp.get_log_path().."<cr>", "logs")
 
 -- local lsp_spinner = require('lsp_spinner')
 
-LaSerPro.defaults.on_attach = function(client, bufnr)
+Laser.defaults.on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	nnoremap_buffer('gd', vim.lsp.buf.definition, "goto definition")

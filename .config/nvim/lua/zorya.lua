@@ -1,8 +1,7 @@
 local M = {}
 
 function M.auto_background(default)
-	default = default or "dark"
-	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or default
+	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or (default or "dark")
 end
 
 function M.toggle_background()

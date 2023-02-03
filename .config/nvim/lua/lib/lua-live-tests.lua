@@ -1,4 +1,5 @@
 -- https://github.com/smjonas/live-tests-busted.nvim
+-- package.loaded["lib/lua-live-tests"] = nil
 
 local ns = vim.api.nvim_create_namespace("live-tests")
 

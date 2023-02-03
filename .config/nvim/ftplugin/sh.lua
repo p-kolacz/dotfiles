@@ -3,11 +3,11 @@ setlocal.formatoptions:remove("t")
 nnoremap_buffer("<localleader>s", ":!./%<CR>", "source file")
 nnoremap_buffer("<localleader>x", ":.w !$SHELL<CR>", "execute line")
 
-Help.map(Help.Type.MANUAL, "https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html")
-Help.map(Help.Type.CHEATSHEET, "https://devhints.io/bash")
-Help.map(Help.Type.CUSTOM1, "https://devhints.io/bash#conditionals")
+Helper.map(Helper.Type.MANUAL, "https://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html")
+Helper.map(Helper.Type.CHEATSHEET, "https://devhints.io/bash")
+Helper.map(Helper.Type.CUSTOM1, "https://devhints.io/bash#conditionals")
 
-LaSerPro.start {
+Laser.start {
 	name = "bashLS",
 	cmd = { "bash-language-server", "start" },
 }

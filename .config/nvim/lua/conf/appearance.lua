@@ -12,9 +12,9 @@ set.splitright     = true
 set.termguicolors  = true
 -- set.shortmess:remove("F")
 
-Yanka.enable_highlight()
-Icons.setup_diagnostics()
 Icons.setup_devicons()
+Icons.setup_diagnostics()
+Yanka.enable_highlight()
 Zorya.auto_background()
 
 Plugin "https://github.com/RRethy/vim-illuminate"
@@ -23,11 +23,7 @@ require "illuminate".configure {
 	min_count_to_highlight = 2,
 }
 Plugin "https://github.com/petertriho/nvim-scrollbar"
-require"scrollbar".setup {
-	handlers = {
-		cursor = false
-	}
-}
+require"scrollbar".setup { handlers = { cursor = false } }
 
 Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
 
@@ -36,7 +32,4 @@ colorscheme "catppuccin-macchiato"
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")
-
--- https://neovide.dev/configuration.html
-let.neovide_cursor_animation_length = 0.03
 

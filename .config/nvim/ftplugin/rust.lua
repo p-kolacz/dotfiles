@@ -1,4 +1,4 @@
-LaSerPro.start {
+Laser.start {
 	cmd = { "rust-analyzer" },
 }
 

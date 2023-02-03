@@ -1,2 +1,2 @@
-Help.map(Help.Type.CHEATSHEET, "https://devhints.io/csharp7")
+Helper.map(Helper.Type.CHEATSHEET, "https://devhints.io/csharp7")
 
