@@ -1,4 +1,5 @@
-local M = {}
+
+local SEARCH_URL = "https://www.startpage.com/sp/search?query="
 
 local Types = {
 	API        = { "ha", "API" },
@@ -17,7 +18,15 @@ local Types = {
 }
 
 -- TODO: search in manual/api/etc
--- TODO: create opener module
+
+local function search_cmd(query)
+	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(SEARCH_URL..query))
+end
+
+-- local function search_api(query)
+-- end
+
+local M = {}
 
 function M.map(map)
 	for type, url in pairs(map) do
@@ -32,14 +41,15 @@ function M.edit_ft_notes()
 end
 
 function M.search_cword()
-	vim.cmd [[silent execute "!xdg-open 'https://www.startpage.com/sp/search?query=" . expand("<cword>") . "'"]]
+	local cword = vim.fn.expand("<cword>")
+	search_cmd(cword)
 end
 
 function M.search_selection()
 	vim.cmd("visual")
 	vim.cmd("normal gvy")
 	local selection = vim.fn.getreg(0)
-	vim.cmd("silent !xdg-open 'https://www.startpage.com/sp/search?query="..selection.."'")
+	search_cmd(selection)
 end
 
 return M
