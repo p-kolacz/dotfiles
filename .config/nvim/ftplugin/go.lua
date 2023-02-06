@@ -1,7 +1,9 @@
-Helper.map(Helper.Type.CHEATSHEET, "https://devhints.io/go")
-Helper.map(Helper.Type.MANUAL,     "https://go.dev/doc/effective_go")
-Helper.map(Helper.Type.STDLIB,     "https://pkg.go.dev/std")
-Helper.map(Helper.Type.TOOLS,      "https://go.dev/doc/cmd")
+Helper.map {
+	CHEATSHEET = "https://devhints.io/go",
+	MANUAL     = "https://go.dev/doc/effective_go",
+	STDLIB     = "https://pkg.go.dev/std",
+	TOOLS      = "https://go.dev/doc/cmd",
+}
 
 nnoremap("<localleader>r", ":!go run .<cr>", "run file")
 nnoremap("<localleader>t", ":!go mod tidy<cr>", "mod tidy")

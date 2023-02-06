@@ -1,6 +1,6 @@
 local M = {}
 
-M.Type = {
+local Types = {
 	API        = { "ha", "API" },
 	CHEATSHEET = { "hc", "cheat sheet" },
 	FUNCTIONS  = { "hf", "functions" },
@@ -10,6 +10,7 @@ M.Type = {
 	STYLEGUIDE = { "hg", "style guide" },
 	TOOLS      = { "ho", "tools" },
 	TUTORIAL   = { "ht", "tutorial" },
+	WIKI       = { "hw", "wiki" },
 	CUSTOM1    = { "h1", "1" },
 	CUSTOM2    = { "h2", "2" },
 	CUSTOM3    = { "h3", "3" },
@@ -18,14 +19,12 @@ M.Type = {
 -- TODO: search in manual/api/etc
 -- TODO: create opener module
 
-function M.setup(table)
-	for help_type, uri in pairs(table) do
-		M.map(M.Type[help_type], uri)
+function M.map(map)
+	for type, url in pairs(map) do
+		local action = ":silent !xdg-open "..url:gsub("#", "\\#").."<cr>"
+		local key, desc = unpack(Types[type])
+		vim.keymap.set("n", "<leader>"..key, action, { desc = desc, buffer = true })
 	end
-end
-function M.map(help_type, uri, desc)
-	local action = string.format(":silent !xdg-open '%s'<cr>", uri:gsub("#", "\\#"))
-	nnoremap_buffer("<leader>"..help_type[1], action, desc or help_type[2])
 end
 
 function M.edit_ft_notes()
@@ -38,7 +37,7 @@ end
 
 function M.search_selection()
 	vim.cmd("visual")
-	vim.cmd('normal gvy')
+	vim.cmd("normal gvy")
 	local selection = vim.fn.getreg(0)
 	vim.cmd("silent !xdg-open 'https://www.startpage.com/sp/search?query="..selection.."'")
 end

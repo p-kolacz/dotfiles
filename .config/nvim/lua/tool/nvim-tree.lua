@@ -1,5 +1,12 @@
 Plugin "https://github.com/kyazdani42/nvim-tree.lua"
 
+local function grep_in_dir(node)
+	-- v(node.absolute_path)
+	local path = node.absolute_path
+	path = node.type == "file" and path or path.."/**"
+	vim.api.nvim_input(":vimgrep //j "..path.." | copen<home><s-right><right><right>")
+end
+
 require'nvim-tree'.setup {
 	diagnostics = {
 		enable = true,
@@ -12,15 +19,15 @@ require'nvim-tree'.setup {
 	},
 	renderer = {
 		full_name = true,
-		icons = { glyphs = { git = {
-			unstaged = "*",
+		-- icons = { glyphs = { git = {
+			-- unstaged = "*",
 			-- staged = "✓",
 			-- unmerged = "",
 			-- renamed = "➜",
-			untracked = "",
+			-- untracked = "",
 			-- deleted = "",
 			-- ignored = "◌",
-		}}}
+		-- }}}
 	},
 	view = {
 		width = 40,
@@ -29,7 +36,8 @@ require'nvim-tree'.setup {
 			list = {
 				{ key = "l", action = "edit" },
 				{ key = "h", action = "close_node" },
-				{ key = "H", action = "collapse_all" }
+				{ key = "H", action = "collapse_all" },
+				{ key = "<C-F>", action = "grep in dir", action_cb = grep_in_dir },
 			},
 		},
 	},
@@ -63,4 +71,6 @@ autocmd({"BufLeave", "WinClosed"}, {
 		vim.opt.guicursor = { "n-v-c-sm:block", "i-ci-ve:ver25", "r-cr-o:hor20" }
 	end,
 })
+
+Cmdr.add {{ "Close NvimTree", "NvimTreeClose" }}
 

@@ -8,8 +8,10 @@ nnoremap_buffer("<localleader>ss", ":Server<cr>", "start")
 nnoremap_buffer("<localleader>sr", ":Rails restart<cr>", "restart")
 nnoremap_buffer("<localleader>sc", ":Console<cr>")
 
-Helper.map(Helper.Type.API, "https://api.rubyonrails.org/")
-Helper.map(Helper.Type.CHEATSHEET, "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o")
+Helper.map {
+	API        = "https://api.rubyonrails.org/",
+	CHEATSHEET = "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o",
+}
 
 setlocal.foldcolumn='0'
 

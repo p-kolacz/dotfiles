@@ -1,3 +1,3 @@
 set.commentstring='"%s'
-Helper.map(Helper.Type.MANUAL, "https://vifm.info/manual.shtml")
+Helper.map{ MANUAL = "https://vifm.info/manual.shtml" }
 

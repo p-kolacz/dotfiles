@@ -82,6 +82,7 @@ Mapper.map {
 	n,  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
 	---------------------------------- Options ---------------------------------
 	G,  "<leader>o",   "+Options",  "",
+	n,  "<leader>oh",  ":setlocal hlsearch!<CR>",            "toggle higlight search",
 	n,  "<leader>ol",  ":setlocal list!<CR>",            "toggle invisible chars",
 	n,  "<leader>on",  ":set number!<CR>",          "toggle line numbers",
 	n,  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers",

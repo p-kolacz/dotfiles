@@ -6,8 +6,8 @@ Mapper.map_buffer {
 	"n", "<localleader>r",  ":w<cr>:!lua %<cr>",                "run file",
 }
 
-Helper.setup {
-	MANUAL     = "https://www.lua.org/manual/5.1/",
+Helper.map {
+	MANUAL     = "https://www.lua.org/pil/contents.html",
 	API        = "https://www.lua.org/manual/5.1/#index",
 	CHEATSHEET = "https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/",
 	STYLEGUIDE = "https://github.com/luarocks/lua-style-guide",

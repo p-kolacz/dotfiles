@@ -1,9 +1,9 @@
-Helper.map(Helper.Type.MANUAL, "https://yaml.org/")
-Helper.map(Helper.Type.CHEATSHEET, "https://devhints.io/yaml")
-Helper.map(Helper.Type.TUTORIAL, "https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started")
-Helper.map(Helper.Type.CUSTOM1, "https://github.github.io/actions-cheat-sheet/actions-cheat-sheet.pdf")
-
--- set.foldmethod = "indent"
+Helper.map {
+	MANUAL     = "https://yaml.org/",
+	CHEATSHEET = "https://devhints.io/yaml",
+	TUTORIAL   = "https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started",
+	CUSTOM1    = "https://github.github.io/actions-cheat-sheet/actions-cheat-sheet.pdf",
+}
 
 Laser.start {
 	name = "YAML",

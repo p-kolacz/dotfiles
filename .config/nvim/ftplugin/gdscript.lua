@@ -4,7 +4,7 @@
 nnoremap_buffer("<F5>", ":wa<cr>:GodotRun<CR>")
 nnoremap_buffer("<F6>", ":wa<cr>:GodotRunCurrent<CR>")
 
-Helper.setup {
+Helper.map {
 	MANUAL     = "https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_basics.html",
 	API        = "https://docs.godotengine.org/en/stable/classes/index.html",
 	STYLEGUIDE = "https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html?highlight=style",
