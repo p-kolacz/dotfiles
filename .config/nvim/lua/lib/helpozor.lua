@@ -15,29 +15,32 @@ local Types = {
 	CUSTOM1    = { "h1", "1" },
 	CUSTOM2    = { "h2", "2" },
 	CUSTOM3    = { "h3", "3" },
-	DOCSEARCH  = { "K", "documentation search" },
+	DOCSEARCH  = { "hk", "documentation search", true },
 }
 
--- TODO: search in manual/api/etc
+-- TODO: search this with mode detection
 
-local function open_cmd(url, query)
-	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(url..query))
+local function open_url(url)
+	local full = url:gsub("#","\\#"):gsub("%%","\\%%")
+	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(full))
 end
-
-local function docsearch(query)
-	
-end
-
--- local function search_api(query)
--- end
 
 local M = {}
 
 function M.map(map)
 	for type, url in pairs(map) do
-		local action = ":silent !xdg-open "..url:gsub("#", "\\#").."<cr>"
-		local key, desc = unpack(Types[type])
-		vim.keymap.set("n", "<leader>"..key, action, { desc = desc, buffer = true })
+		local key, desc, querable = unpack(Types[type])
+		key = "<leader>"..key
+		if querable then
+			vim.keymap.set("n", key, function()
+				M.search_cword(url)
+			end, { desc = desc, buffer = true })
+			vim.keymap.set("x", key, function()
+				M.search_selection(url)
+			end, { desc = desc, buffer = true })
+		else
+			vim.keymap.set("n", key, function() open_url(url) end, { desc = desc, buffer = true })
+		end
 	end
 end
 
@@ -45,17 +48,18 @@ function M.edit_ft_notes()
 	vim.cmd(string.format("edit %s/doc/%s.md", vim.fn.stdpath("config"), vim.bo.filetype))
 end
 
-function M.search_cword()
+function M.search_cword(url)
+	url = url or SEARCH_URL
 	local cword = vim.fn.expand("<cword>")
-	open_cmd(SEARCH_URL, cword)
+	open_url(url..cword)
 end
 
-function M.search_selection()
-	-- vim.cmd("visual")
-	-- vim.cmd("normal gvy")
-	vim.api.nvim_input("<ESC>gvy")
+function M.search_selection(url)
+	url = url or SEARCH_URL
+	vim.cmd("visual")
+	vim.cmd("normal gvy")
 	local selection = vim.fn.getreg(0)
-	open_cmd(SEARCH_URL, selection)
+	open_url(url..selection)
 end
 
 return M
