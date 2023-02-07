@@ -11,6 +11,7 @@ Helper.map {
 	API        = "https://www.lua.org/manual/5.1/#index",
 	CHEATSHEET = "https://cheatography.com/srgmc/cheat-sheets/lua-scripting-5-1/",
 	STYLEGUIDE = "https://github.com/luarocks/lua-style-guide",
+	DOCSEARCH  = "https://devdocs.io/#q=lua%20",
 }
 
 Laser.start {

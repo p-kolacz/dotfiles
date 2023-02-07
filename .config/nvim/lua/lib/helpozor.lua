@@ -15,12 +15,17 @@ local Types = {
 	CUSTOM1    = { "h1", "1" },
 	CUSTOM2    = { "h2", "2" },
 	CUSTOM3    = { "h3", "3" },
+	DOCSEARCH  = { "K", "documentation search" },
 }
 
 -- TODO: search in manual/api/etc
 
-local function search_cmd(query)
-	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(SEARCH_URL..query))
+local function open_cmd(url, query)
+	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(url..query))
+end
+
+local function docsearch(query)
+	
 end
 
 -- local function search_api(query)
@@ -42,14 +47,15 @@ end
 
 function M.search_cword()
 	local cword = vim.fn.expand("<cword>")
-	search_cmd(cword)
+	open_cmd(SEARCH_URL, cword)
 end
 
 function M.search_selection()
-	vim.cmd("visual")
-	vim.cmd("normal gvy")
+	-- vim.cmd("visual")
+	-- vim.cmd("normal gvy")
+	vim.api.nvim_input("<ESC>gvy")
 	local selection = vim.fn.getreg(0)
-	search_cmd(selection)
+	open_cmd(SEARCH_URL, selection)
 end
 
 return M
