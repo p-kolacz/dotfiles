@@ -60,8 +60,8 @@ Mapper.map {
 	-- n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
-	n,  "gy",          Helper.search_cword,                  "online search cword",
-	v,  "gy",          Helper.search_selection,              "online search selection",
+	n,  "gy",          Helper.search_this,                  "online search cword",
+	v,  "gy",          Helper.search_this,              "online search selection",
 	n,  "<leader>hn",  Helper.edit_ft_notes,                 "filetype notes",
 
 	---------------------------------- Insert ----------------------------------
