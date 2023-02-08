@@ -17,8 +17,6 @@ local Types = {
 	DOCSEARCH  = { "hk", "documentation search", true },
 }
 
--- TODO: search this with mode detection
-
 local function open_url(url)
 	local full = url:gsub("#","\\#"):gsub("%%","\\%%")
 	vim.cmd("silent !xdg-open ".. vim.fn.shellescape(full))

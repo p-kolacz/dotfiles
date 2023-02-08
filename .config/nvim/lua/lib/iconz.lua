@@ -41,7 +41,7 @@ local M = {
 }
 
 function M.random_separators()
-	-- math.randomseed(os.time())
+	math.randomseed(os.time())
 	local random = math.random(#M.section_separators)
 	return {
 		section_separators = M.section_separators[random],

@@ -1,8 +1,6 @@
 -- Run after install 'make hexokinase'
 
-Plugin("https://github.com/RRethy/vim-hexokinase", function(dir)
-	vim.cmd("!cd "..dir.." && make hexokinase")
-end)
+Plugin("https://github.com/RRethy/vim-hexokinase", "make hexokinase")
 
 -- 'virtual', 'sign_column', 'background', 'backgroundfull', 'foreground', 'foregroundfull'
 let.Hexokinase_highlighters = { 'backgroundfull' }

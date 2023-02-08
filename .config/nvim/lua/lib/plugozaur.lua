@@ -12,7 +12,10 @@ function M.Plugin(repos, after)
 			vim.cmd(string.format('!git clone --depth 1 %s.git %s', repo, dir))
 			vim.cmd('packadd! '..name)
 			vim.cmd('helptags ALL')
-			if after then after(dir) end
+			-- if after then after(dir) end
+			if after then
+				vim.cmd("!cd "..dir.." && "..after)
+			end
 		else
 			vim.cmd('packadd! '..name)
 		end
