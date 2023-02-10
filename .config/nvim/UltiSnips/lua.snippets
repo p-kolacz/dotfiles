@@ -66,6 +66,13 @@ $0
 return M
 endsnippet
 
+snippet str2lines
+lines = {}
+for s in str:gmatch("[^\r\n]+") do
+	table.insert(lines, s)
+end
+endsnippet
+
 snippet randomize "initialize random generator"
 math.randomseed(os.time())
 endsnippet
