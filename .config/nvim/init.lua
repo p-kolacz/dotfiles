@@ -3,11 +3,11 @@ Helper = require "lib/helpozor"
 Icons  = require "lib/iconz"
 Laser  = require "lib/laserpro"
 Mapper = require "lib/mapper"
-Perun  = require "lib/plugozaur"
+Plugger = require "lib/plugozaur"
 Cmdr   = require "lib/commander"
 Yanka  = require "lib/yanka"
 Zorya  = require "zorya"
-Plugin = Perun.Plugin
+Plugin = Plugger.plugin
 
 require "lib/bootstrap" {
 

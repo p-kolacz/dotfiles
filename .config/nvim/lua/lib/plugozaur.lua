@@ -2,7 +2,7 @@ local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
 local M = {}
 
-function M.Plugin(repos, after)
+function M.plugin(repos, after)
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do
 		local t = vim.fn.split(repo, '/')

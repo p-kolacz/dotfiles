@@ -17,8 +17,8 @@ Cmdr.add {
 	{ "Language servers logs",       Laser.logs },
 
 	-- Plugins ----------------------------------------------------------------
-	{ "Update plugins",              Perun.update },
-	{ "Update plugins (debug)",      Perun.debug_update },
+	{ "Update plugins",              Plugger.update },
+	{ "Update plugins (debug)",      Plugger.debug_update },
 
 	-- Printing ---------------------------------------------------------------
 	{ "Print file",                  "hardcopy" },

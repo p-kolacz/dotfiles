@@ -1,5 +1,9 @@
 local M = {}
 
+function M.colorscheme(name)
+	vim.cmd("colorscheme "..name)
+end
+
 function M.auto_background(default)
 	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or (default or "dark")
 end

@@ -28,7 +28,7 @@ require"scrollbar".setup { handlers = { cursor = false } }
 Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
 
 require "conf/themes"
-colorscheme "catppuccin-macchiato"
+Zorya.colorscheme "catppuccin-macchiato"
 
 -- Highlights must be after colorscheme
 vim.cmd("highlight Folded gui='italic'")
