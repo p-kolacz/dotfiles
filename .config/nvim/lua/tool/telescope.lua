@@ -151,3 +151,6 @@ telescope.load_extension("commander")
 nnoremap("<A-x>", ":Telescope commander<cr>", "commander")
 nnoremap("<C-P>", ":Telescope commander<cr>", "commander")
 
+telescope.load_extension("figlet")
+Cmdr.add { "Figlet", "Telescope figlet" }
+

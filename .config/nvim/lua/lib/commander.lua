@@ -40,6 +40,7 @@ function M.setup()
 end
 
 function M.add(new_commands)
+	new_commands = type(new_commands[1]) == "table" and new_commands or {new_commands}
 	for _,v in ipairs(new_commands) do
 		table.insert(commands,v)
 	end
