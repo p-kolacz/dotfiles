@@ -72,5 +72,8 @@ autocmd({"BufLeave", "WinClosed"}, {
 	end,
 })
 
-Cmdr.add {{ "Close NvimTree", "NvimTreeClose" }}
+Cmdr.add {
+	{ "Open NvimTree",  "NvimTreeOpen"  },
+	{ "Close NvimTree", "NvimTreeClose" },
+}
 

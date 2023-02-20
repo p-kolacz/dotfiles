@@ -25,13 +25,16 @@ Cmdr.add {
 	{ "Convert to HTML",             "TOhtml" },
 	{ "Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
 
+	-- Tabs -------------------------------------------------------------------
+	{ "New tab",                     "tabnew" },
+
 	-- Treesitter -------------------------------------------------------------
 	{ "Enable Treesitter highlight", "TSBufEnable highlight" },
 	{ "Disable Treesitter highlight","TSBufDisable highlight" },
 
 	-- Windows ----------------------------------------------------------------
-	{ "Open quickfix",                "copen" },
-	{ "Close quickfix",               "cclose" },
+	{ "Open quickfix",               "copen" },
+	{ "Close quickfix",              "cclose" },
 
 	-- Yanka ------------------------------------------------------------------
 	{ "Yank filename",               Yanka.filename },
@@ -40,10 +43,7 @@ Cmdr.add {
 	{ "Yank full dir",               Yanka.full_dir },
 	{ "Yank <cfile>",                Yanka.cfile },
 
-
-	-- { "Highlight trailing spaces", ""},
-	-- { "Rsync",   Rsync },
-	-- { "Toggle background",         Colorozor.toggle_background },
-
+	-- Zorya ------------------------------------------------------------------
+	{ "Toggle background",           Zorya.toggle_background },
 }
 
