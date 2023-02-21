@@ -1,0 +1,1 @@
+- NvimTree sync with tabs
