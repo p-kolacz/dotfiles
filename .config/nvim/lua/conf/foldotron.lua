@@ -8,6 +8,8 @@ function Foldtext()
 	local fs = vim.api.nvim_get_vvar("foldstart")
 	local line = vim.fn.trim(vim.fn.getline(fs))
 	local indent = vim.fn.indent(fs)
-	return string.rep(" ", indent) .. line .. "..."
+	-- return string.rep(" ", indent) .. line .. "..."
+	local indent_spaces = string.rep(" ", indent)
+	return string.format("%s▶ %s...", indent_spaces, line)
 end
 

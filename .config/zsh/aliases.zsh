@@ -1,3 +1,4 @@
+alias freeh="free -h"
 alias ls="ls --color=auto"
 alias ll="ls -lhv --group-directories-first"
 alias la="ll -A"

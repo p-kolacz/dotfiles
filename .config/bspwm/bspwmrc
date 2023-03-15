@@ -71,8 +71,6 @@ bspc rule -a thunderbird desktop=C
 set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal KeePassXC
 set_rule floating thunderbird:Msgcompose thunderbird:Mailnews
 set_rule floating Mojosetup qv4l2
-# set_rule tiled Zathura Emacs
-# set_rule fullscreen Meld
 
 #------------------------------------------------------------------------------#
 								   # Panel #

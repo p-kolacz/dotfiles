@@ -17,6 +17,9 @@ require'nvim-tree'.setup {
           error = Icons.diagnostics.error,
 		},
 	},
+	live_filter = {
+		always_show_folders = false,
+	},
 	renderer = {
 		full_name = true,
 		-- icons = { glyphs = { git = {
