@@ -6,6 +6,10 @@ query() {
 	psql -t "$CONNECTION" -c "$1" | sed "s/|/│/g"
 }
 
+query_data() {
+	psql "$CONNECTION" -c "$1" | sed "s/|/│/g"
+}
+
 tables() {
 	query "\dt"
 }
@@ -14,12 +18,23 @@ columns() {
 	query "\d+ $1"
 }
 
+data() {
+	echo -n "$1 count: "
+	query "SELECT COUNT(*) FROM $1"
+	query_data "SELECT * FROM $1 LIMIT 10"
+}
+
+preview() {
+	data "$1"
+	columns "$1"
+}
+
 main() {
 	tables | fzf 										\
-	--preview="$THIS $CONNECTION columns {3}"			\
+	--preview="$THIS $CONNECTION preview {3}"			\
 	--preview-window="top,75%"							\
 	--bind "ctrl-r:reload($THIS $CONNECTION tables)"	\
-	--header "Press CTRL-R to reload"
+	--header "Press CTRL-R to reload | ? - view data"
 }
 
 usage() {

@@ -60,6 +60,7 @@ core/yay() {
 
 dev/docker() {
 	install docker docker-compose
+	ynstall lazydocker-bin
 	startenable docker.service
 	sudo groupadd docker
 	sudo usermod --append --groups docker "$USER"

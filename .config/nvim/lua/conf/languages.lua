@@ -4,6 +4,9 @@ vim.cmd[[hi markdownH1 gui=bold,underline]]
 vim.cmd[[hi markdownH2 gui=bold,undercurl]]
 
 Plugin {
+	-- CofeeScript
+	"https://github.com/kchmck/vim-coffee-script",
+
 	-- CSV
 	"https://github.com/mechatroner/rainbow_csv",
 
