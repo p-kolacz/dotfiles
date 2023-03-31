@@ -6,35 +6,27 @@ Cmdr.add {
 
 	-- Edit -------------------------------------------------------------------
 	{ "Remove trailing spaces",      "%s/\\s\\+$//e"},
-	{ "Reverse all lines",           "g/^/m0" },
+	{ "🔃Reverse all lines",           "g/^/m0" },
 
 	-- Git --------------------------------------------------------------------
-	{ "Commit with current date",    '!git add .; git commit -m "$(date +\\%F)"' },
-	{ "Git push",                    "!git push" },
-
-	-- LSP --------------------------------------------------------------------
-	{ "Stop language server",        Laser.stop },
-	{ "Language servers logs",       Laser.logs },
+	{ " Commit with current date",    '!git add .; git commit -m "$(date +\\%F)"' },
+	{ " Git push",                    "!git push" },
 
 	-- Plugins ----------------------------------------------------------------
 	{ "Update plugins",              Plugger.update },
 	{ "Update plugins (debug)",      Plugger.debug_update },
 
 	-- Printing ---------------------------------------------------------------
-	{ "Print file",                  "hardcopy" },
+	{ "🖨Print file",                  "hardcopy" },
 	{ "Convert to HTML",             "TOhtml" },
 	{ "Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
 
 	-- Tabs -------------------------------------------------------------------
-	{ "New tab",                     "tabnew" },
-
-	-- Treesitter -------------------------------------------------------------
-	{ "Enable Treesitter highlight", "TSBufEnable highlight" },
-	{ "Disable Treesitter highlight","TSBufDisable highlight" },
+	{ "裡New tab",                     "tabnew" },
 
 	-- Windows ----------------------------------------------------------------
-	{ "Open quickfix",               "copen" },
-	{ "Close quickfix",              "cclose" },
+	{ "✏️ Open quickfix",               "copen" },
+	{ "✏️ Close quickfix",              "cclose" },
 
 	-- Yanka ------------------------------------------------------------------
 	{ "Yank filename",               Yanka.filename },
