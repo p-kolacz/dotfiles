@@ -51,6 +51,12 @@ Laser.defaults.on_attach = function(client, bufnr)
 	-- lsp_spinner.on_attach(client, bufnr)
 end
 
+Cmdr.add {
+	-- LSP --------------------------------------------------------------------
+	{ " Stop language server",        Laser.stop },
+	{ " Language servers logs",       Laser.logs },
+}
+
 Plugin "https://github.com/j-hui/fidget.nvim"
 require"fidget".setup{}
 

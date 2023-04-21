@@ -27,9 +27,9 @@ gs.setup{
 }
 
 Cmdr.add {
-	{ "  Git stage buffer", gs.stage_buffer },
-	{ "  Git reset buffer", gs.reset_buffer },
-	{ "  Git set quickfix", "Gitsigns setqflist" },
-	{ "  Git set loclist",  "Gitsigns setloclist" },
+	{ " Git stage buffer", gs.stage_buffer },
+	{ " Git reset buffer", gs.reset_buffer },
+	{ " Git set quickfix", "Gitsigns setqflist" },
+	{ " Git set loclist",  "Gitsigns setloclist" },
 }
 
