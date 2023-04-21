@@ -6,7 +6,7 @@ function usage() {
 
 case $1 in
 	orph)        pacman -Qdt ;;
-	remorph)     sudo pacman -Rs "$(pacman -Qqdt)" ;;
+	remorph)     sudo pacman -Rs $(pacman -Qqdt) ;;		# Don't quote
 	up)          sudo pacman -Syu ;;
 	sync)        sudo pacman -Sy ;;
 	lastup)      grep "starting full system upgrade" /var/log/pacman.log | tail ;;

@@ -1,5 +1,5 @@
 -- Markdown
-let.markdown_fenced_languages = { 'gdscript', 'html', 'css', 'php', 'sh', 'vim' }
+-- let.markdown_fenced_languages = { 'gdscript', 'html', 'css', 'php', 'sh', 'vim' }
 vim.cmd[[hi markdownH1 gui=bold,underline]]
 vim.cmd[[hi markdownH2 gui=bold,undercurl]]
 

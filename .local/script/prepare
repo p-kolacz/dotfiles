@@ -64,7 +64,7 @@ dev/docker() {
 	startenable docker.service
 	sudo groupadd docker
 	sudo usermod --append --groups docker "$USER"
-	echo "Relogin for adding to gorup to take effect" 
+	echo "Relogin for adding to group to take effect" 
 }
 dev/go() {
 	install go gopls
@@ -102,7 +102,8 @@ dotfiles() {
 }
 
 fonts() {
-	install noto-fonts-emoji ttf-ubuntu-font-family ttf-ubuntu-nerd
+	# CJK = Chinese-Japanese-Korean
+	install noto-fonts-emoji noto-fonts-cjk ttf-ubuntu-font-family ttf-ubuntu-nerd
 	# ynstall nerd-fonts-victor-mono 
 }
 
@@ -226,8 +227,7 @@ EOF
 case $# in
 	0) usage; exit 2 ;;
 	1) ;;
-	*)
-		echo "Too many targets $#"; exit 3 ;;
+	*) echo "Too many targets $#"; exit 3 ;;
 esac
 
 [[ ! $(typeset -f "$1") ]] && { echo "Invalid target: $1"; exit 4; }

@@ -15,9 +15,9 @@ require"nvim-treesitter.configs".setup {
 	ensure_installed = {
 		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
 		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
-		"help", "hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "latex", "lua", "make",
+		"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "latex", "lua", "make",
 		"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
-		"sql", "toml", "typescript", "vhs", "vim", "yaml",
+		"sql", "toml", "typescript", "vhs", "vim", "vimdoc", "yaml",
 	},
 
 	-- ignore_install = { "phpdoc" },
@@ -53,8 +53,18 @@ require"nvim-treesitter.configs".setup {
 			enable = true,
 			swap_next = {["<a-l>"] = "@parameter.inner"},
 			swap_previous = {["<a-h>"] = "@parameter.inner"}
-		}
-	}
+		},
+	},
+
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "vv", -- set to `false` to disable one of the mappings
+			scope_incremental = "<cr>",
+			node_incremental = "<tab>",
+			node_decremental = "<s-tab>",
+		},
+	},
 }
 
 require"treesitter-context".setup()

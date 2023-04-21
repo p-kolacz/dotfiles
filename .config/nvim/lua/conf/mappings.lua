@@ -4,7 +4,7 @@ let.maplocalleader = "\\"
 local _ = "" local i = "i" local n = "n" local v = "v" local c = "c" local x = "x" local G = "G"
 Mapper.map {
 	---------------------------------- Buffer ----------------------------------
-	n,	"<leader>w",   ":w<CR>",			               "",
+	n,	"<leader>w",   ":w<CR>",			               nil,
 	----------------------------------- Code -----------------------------------
 	G,	"<leader>c",   "+Code",                            "",
 	------------------------------- Command Mode -------------------------------
