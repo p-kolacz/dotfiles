@@ -71,7 +71,7 @@ require"treesitter-context".setup()
 
 Cmdr.add {
 	-- Treesitter -------------------------------------------------------------
-	{ "🌳Enable Treesitter highlight", "TSBufEnable highlight" },
-	{ "🌳Disable Treesitter highlight","TSBufDisable highlight" },
+	{ "  Enable Treesitter highlight", "TSBufEnable highlight" },
+	{ "  Disable Treesitter highlight","TSBufDisable highlight" },
 
 }

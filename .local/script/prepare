@@ -156,7 +156,7 @@ photo() {
 }
 
 terminal() {
-	install git lsof man-db man-pages htop p7zip polkit ripgrep rsync starship
+	install fd git lsof man-db man-pages htop p7zip polkit ripgrep rsync starship
 	install catdoc hexyl python-pygments mediainfo odt2txt
 	install fzf lazygit smartmontools trash-cli
 	install bash-language-server

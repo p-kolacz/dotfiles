@@ -53,8 +53,8 @@ end
 
 Cmdr.add {
 	-- LSP --------------------------------------------------------------------
-	{ " Stop language server",        Laser.stop },
-	{ " Language servers logs",       Laser.logs },
+	{ "  Stop language server",        Laser.stop },
+	{ "  Language servers logs",       Laser.logs },
 }
 
 Plugin "https://github.com/j-hui/fidget.nvim"

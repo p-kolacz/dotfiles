@@ -3,11 +3,11 @@ Helper = require "lib/helpozor"
 Icons  = require "lib/iconz"
 Laser  = require "lib/laserpro"
 Mapper = require "lib/mapper"
-Plugger = require "lib/plugozaur"
+Pluger = require "lib/plugozaur"
 Cmdr   = require "lib/commander"
 Yanka  = require "lib/yanka"
 Zorya  = require "zorya"
-Plugin = Plugger.plugin
+Plugin = Pluger.plugin
 
 require "lib/bootstrap" {
 
@@ -37,6 +37,7 @@ require "lib/bootstrap" {
 	"tool/figlet",
 	"tool/rest",
 	"tool/dashboard",
+
 	-- "tool/neotest",
 	-- "tool/vim-test",
 	-- "tool/indent-guides",

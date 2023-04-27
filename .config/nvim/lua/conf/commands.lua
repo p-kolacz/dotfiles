@@ -5,11 +5,12 @@ autocmd("FocusLost", {
 	pattern = "*",
 	command = "wall",
 })
-autocmd("BufRead", {
+autocmd("BufWinEnter", {
 	group = "vimrc",
 	pattern = { "*/.config/nvim/init.lua", "*/.config/nvim/lua/conf/appearance.lua" },
 	command = "setlocal includeexpr=stdpath('config').'/lua/'.v:fname"
 })
+
 -- Remeber foldings and stuff...
 set.viewoptions = "cursor,folds"
 autocmd("BufWinLeave", {

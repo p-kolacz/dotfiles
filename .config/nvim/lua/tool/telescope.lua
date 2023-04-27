@@ -117,31 +117,31 @@ telescope.load_extension('fzy_native')
 local builtin = require "telescope.builtin"
 
 Cmdr.add {
-	{ "Diagnostics",        builtin.diagnostics  },
-	{ "Env variables",      "Telescope env"      },
+	{ "  Diagnostics",            builtin.diagnostics  },
+	{ "  Env variables",          "Telescope env"      },
 
-	{ " branches",           builtin.git_branches },
-	{ " buffer commits",     builtin.git_bcommits },
-	{ " commits",            builtin.git_commits  },
-	{ " Git status",         builtin.git_status   },
+	{ "  Git branches",        builtin.git_branches },
+	{ "  Git buffer commits",  builtin.git_bcommits },
+	{ "  Git commits",         builtin.git_commits  },
+	{ "  Git status",          builtin.git_status   },
 
-	{ " Lua reloader",       builtin.reloader     },
+	{ "  Lua reloader",         builtin.reloader     },
 
-	{ "Insert emoji",       function() builtin.symbols{sources={'emoji'}} end },
-	{ "Insert gitmoji",     function() builtin.symbols{sources={'gitmoji'}} end },
-	{ "Insert kamoji",      function() builtin.symbols{sources={'kaomoji'}} end },
-	{ "Insert latex",       function() builtin.symbols{sources={'latex'}} end },
-	{ "Insert math",        function() builtin.symbols{sources={'math'}} end },
-	{ "Insert nerd",        function() builtin.symbols{sources={'nerd'}} end },
+	{ "  Insert emoji",           function() builtin.symbols{sources={'emoji'}} end },
+	{ "  Insert gitmoji",         function() builtin.symbols{sources={'gitmoji'}} end },
+	{ "  Insert kamoji",          function() builtin.symbols{sources={'kaomoji'}} end },
+	{ "  Insert latex",           function() builtin.symbols{sources={'latex'}} end },
+	{ "  Insert math",            function() builtin.symbols{sources={'math'}} end },
+	{ "  Insert nerd",            function() builtin.symbols{sources={'nerd'}} end },
 
-	{ "🌳Telescope Treesitter", builtin.treesitter   },
+	{ "  Telescope Treesitter", builtin.treesitter   },
 
-	{ " Vim commands",       builtin.commands     },
-	{ " Vim filetypes",      builtin.filetypes    },
-	{ " Vim highlights",     builtin.highlights   },
-	{ " Vim keymaps",        builtin.keymaps      },
-	{ " Vim options",        builtin.vim_options  },
-	{ " Vim registers",      builtin.registers    },
+	{ "  Vim commands",         builtin.commands     },
+	{ "  Vim filetypes",        builtin.filetypes    },
+	{ "  Vim highlights",       builtin.highlights   },
+	{ "  Vim keymaps",          builtin.keymaps      },
+	{ "  Vim options",          builtin.vim_options  },
+	{ "  Vim registers",        builtin.registers    },
 }
 
 -- local telescope = require "telescope"
@@ -150,5 +150,5 @@ nnoremap("<A-x>", ":Telescope commander<cr>", "commander")
 nnoremap("<C-P>", ":Telescope commander<cr>", "commander")
 
 telescope.load_extension("figlet")
-Cmdr.add { "Figlet", "Telescope figlet" }
+Cmdr.add { "  Figlet", "Telescope figlet" }
 
