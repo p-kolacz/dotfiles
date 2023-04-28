@@ -17,6 +17,10 @@ fix-package-db() {
 	pacman --dbonly -S
 }
 
+last-logs() {
+	journalctl -b -1
+}
+
 usage() {
 	declare -F | cut -d" " -f3
 }
