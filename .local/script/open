@@ -26,7 +26,7 @@ case $FILE_EXTENSION in
 		deadbeef "$FILE_PATH" ;;
 	ods|xls|xlsx)
 		gnumeric "$FILE_PATH" ;;
-	doc|docx|odp|odt|ppt|pptx|xls|xlsx)
+	doc|docx|odp|odt|ppt|pptx)
 		libreoffice "$FILE_PATH" ;;
 	gnumeric)
 		gnumeric "$FILE_PATH" ;;
@@ -34,9 +34,6 @@ case $FILE_EXTENSION in
 		java --jar "$FILE_PATH" ;;
 	bz2|gz|tar|tgz|xz)
 		# archivemount
-		;;
-	ftp)
-		# curlftpfs
 		;;
 	ssh)
 		# sshfs
@@ -49,9 +46,7 @@ case $FILE_EXTENSION in
 		sha256sum -c -- "$FILE_PATH" ;;
 	sha512)
 		sha512sum -c -- "$FILE_PATH" ;;
-	lego)
-		;;
 	*)
-		[[ -x $FILE_PATH ]] && { $TERMINAL --hold sh -c "$FILE_PATH"; exit 0; }
+		[[ -x $FILE_PATH ]] && { $TERMINAL --hold sh -c "./$FILE_PATH"; exit 0; }
 esac
 

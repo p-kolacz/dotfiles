@@ -16,8 +16,11 @@ local function attach_mappings(prompt_bufnr)
 	actions.select_default:replace(function()
 		actions.close(prompt_bufnr)
 		local cmd = action_state.get_selected_entry().value[2]
-		if type(cmd) == "function" then cmd()
-		else vim.cmd(cmd) end
+		if type(cmd) == "function" then
+			cmd()
+		else
+			vim.cmd(cmd)
+		end
 	end)
 	return true
 end

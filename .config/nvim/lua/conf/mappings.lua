@@ -43,21 +43,13 @@ Mapper.map {
 	G,  "<leader>f",   "+File", "",
 	n,  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir",
 	n,  "<leader>fn",  ":new<cr>",                         "new file",
-	-- n,  "<leader>fp",  ":hardcopy",                        "print file",
 	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
 
-	-- G,  "<leader>ft",  "+Convert",                         "",
-	-- n,  "<leader>fth", ":TOhtml<cr>",                      "to HTML",
-	-- n,  "<leader>ftp", ":hardcopy > %.ps | !ps2pdf %.ps && rm %.ps<cr>",        "to PDF",
 	------------------------------------ Git -----------------------------------
 	G,  "<leader>g",  "+Git", "",
 	n,  "<leader>gg",  ":silent !$TERMINAL lazygit &<cr>", "LazyGit",
 	G,  "<leader>gc",  "+Commit", "",
-	-- n,  "<leader>gcc",  ':!git add .; git commit -m ',     "commit",
-	-- n,  "<leader>gcd",  ':!git add .; git commit -m "$(date +\\%F)"<cr>', "with current date",
-	-- G,  "<leader>gp",  '+Push', "",
-	-- n,  "<leader>gpp",  ':!git push<cr>', "push",
-	-- n,  "<leader>gpd",  ':!git add .; git commit -m "$(date +\\%F)"; git push<cr>', "with current date",
+
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
 	n,  "gy",          Helper.search_this,                  "online search cword",
@@ -80,6 +72,7 @@ Mapper.map {
 	n,  "]l",          ":lnext<cr>",                       "previous loclist entry",
 	n,  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "",
 	n,  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "",
+
 	---------------------------------- Options ---------------------------------
 	G,  "<leader>o",   "+Options",  "",
 	n,  "<leader>oh",  ":setlocal hlsearch!<CR>",            "toggle higlight search",

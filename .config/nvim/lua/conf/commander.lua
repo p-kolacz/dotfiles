@@ -21,7 +21,8 @@ Cmdr.add {
 	{ "  Convert to HTML",             "TOhtml" },
 	{ "  Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
 
-	-- Tabs -------------------------------------------------------------------
+	-- Files&Tabs -------------------------------------------------------------
+	{ "  New file",                    "new" },
 	{ "裡 New tab",                     "tabnew" },
 
 	-- Windows ----------------------------------------------------------------
@@ -34,6 +35,9 @@ Cmdr.add {
 	{ "  Yank full path",              Yanka.full_path },
 	{ "  Yank full dir",               Yanka.full_dir },
 	{ "  Yank <cfile>",                Yanka.cfile },
+	{ "  Yank buffer content",         Yanka.buffer },
+	{ "  Yank set clipboard",          Yanka.set_clipboard },
+	{ "  Yank unset clipboard",        Yanka.unset_clipboard },
 
 	-- Zorya ------------------------------------------------------------------
 	{ "  Toggle background",           Zorya.toggle_background },
