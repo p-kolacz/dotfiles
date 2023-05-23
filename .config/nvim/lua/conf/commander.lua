@@ -7,6 +7,8 @@ Cmdr.add {
 	-- Edit -------------------------------------------------------------------
 	{ "  Remove trailing spaces",      "%s/\\s\\+$//e"},
 	{ "  Reverse all lines",           "g/^/m0" },
+	-- https://vi.stackexchange.com/questions/2299/how-to-translate-unicode-escape-sequences-to-the-unicode-character
+	{ "  Unicode chars from \\uXXXX",  [[%s/\\\(\x\+\)/\=nr2char('0x'.submatch(1),1)/g]] },
 
 	-- Git --------------------------------------------------------------------
 	{ "  Commit with current date",    '!git add .; git commit -m "$(date +\\%F)"' },
