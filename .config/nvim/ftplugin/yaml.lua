@@ -9,6 +9,9 @@ Laser.start {
 	name = "YAML",
 	cmd = { "yaml-language-server", "--stdio" },
 	settings = {
+		yaml = {
+			keyOrdering = false,
+		},
 		redhat = {
 			telemetry = {
 				enabled = false

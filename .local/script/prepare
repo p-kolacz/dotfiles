@@ -51,6 +51,7 @@ apps() {
 cron() {
 	install cronie
 	startenable cronie.service
+	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
 }
 
 core/yay() {

@@ -3,6 +3,7 @@
 !/.config/
 /.config/*
 
+!/.config/anacron/
 !/.config/aseprite/
 !/.config/bspwm/
 !/.config/etc/
