@@ -32,7 +32,6 @@ bspwm() {
 # ║                                 Targets                                  ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
-# stow -v --no-folding aseprite xnview 
 # devops() {
 	# install rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
 	# ynstall xsv-bin sql-language-server
@@ -49,9 +48,11 @@ apps() {
 }
 
 cron() {
+	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
 	install cronie
 	startenable cronie.service
-	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
+	echo "crontab -e"
+	echo '@hourly /usr/bin/anacron -s -t $HOME/.config/anacron/anacrontab -S $HOME/.local/spool/anacron'
 }
 
 core/yay() {
