@@ -4,6 +4,9 @@
 								  # Monitors #
 #------------------------------------------------------------------------------#
 
+# bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
 case $(monitors count) in
 	1)
 		bspc monitor "$(monitors primary)"   --reset-desktops F Q W E R T A S D G C V
@@ -18,9 +21,6 @@ case $(monitors count) in
 		bspc monitor "$(monitors right)"     --reset-desktops Q E T
 		;;
 esac
-
-# bspc config remove_disabled_monitors true
-# bspc config remove_unplugged_monitors true
 
 #------------------------------------------------------------------------------#
 								  # Desktops #

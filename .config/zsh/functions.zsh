@@ -52,8 +52,8 @@ mkd() {
 n() {
 	export LC_COLLATE="C"
 	export NNN_TRASH=1		# trash-cli
-	# nnn -n
-	nnn
+	nnn -n
+	# nnn
 }
 
 notes() {
