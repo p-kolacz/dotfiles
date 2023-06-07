@@ -31,6 +31,7 @@ require "lib/bootstrap" {
 	"tool/trouble",
 	"tool/telescope",
 	"tool/nvim-tree",
+	"tool/oil",
 	"tool/gitsigns",
 	"tool/cheatash",
 	"tool/colorizer",
@@ -43,6 +44,7 @@ require "lib/bootstrap" {
 	-- "tool/indent-guides",
 }
 
+Jumper = require "lib/jumper"
 -- require "lib/animate".setup()
 
 -- Load project specific configuration
