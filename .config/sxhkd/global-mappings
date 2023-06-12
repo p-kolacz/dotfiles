@@ -18,8 +18,8 @@ super + Delete
 super + Escape
 	lock-workstation
 
-Pause
-	lock-workstation
+# Pause
+	# lock-workstation
 
 super + {F1,F2,F3,F4,F10}
 	{strselecta icons,strselecta emoji,strselecta entities,strselecta boxes,mnter.sh}
