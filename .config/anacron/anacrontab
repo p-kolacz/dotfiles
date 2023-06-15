@@ -6,7 +6,7 @@
 # MAILTO=root
 
 # the maximal random delay added to the base delay of the jobs
-RANDOM_DELAY=45
+# RANDOM_DELAY=45
 # the jobs will be started during the following hours only
 # START_HOURS_RANGE=3-22
 
