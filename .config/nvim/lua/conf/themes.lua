@@ -9,6 +9,8 @@ Plugin "https://github.com/catppuccin/nvim"
 ----------------------------------- Everforest ---------------------------------
 Plugin "https://github.com/sainnhe/everforest"
 let.everforest_background = 'hard'	-- hard medium soft
+let.everforest_enable_italic = 1
+let.everforest_transparent_background = 2
 
 ------------------------------------ Nightfox ----------------------------------
 Plugin "https://github.com/EdenEast/nightfox.nvim"

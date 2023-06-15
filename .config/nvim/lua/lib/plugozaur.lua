@@ -23,7 +23,7 @@ function M.plugin(repos, after)
 end
 
 function M.update()
-	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P10 -I{} git -C {} pull]], PLUGIN_HOME))
+	vim.cmd(string.format([[!find %s* -prune -type d | xargs -P10 -I{} git -C {} pull --quiet]], PLUGIN_HOME))
 	vim.cmd('helptags ALL')
 end
 -- vim.cmd("command! PlugUpdate lua PlugUpdate()")

@@ -6,7 +6,7 @@ local Oil = require "oil"
 function M.add(items)
 	for key,path in pairs(items) do
 		nnoremap(Prefix..key, function ()
-			Oil.open_float(path)
+			Oil.open(path)
 		end, path)
 	end
 end

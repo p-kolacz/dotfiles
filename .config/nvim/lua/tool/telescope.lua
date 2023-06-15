@@ -79,7 +79,7 @@ nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
 -- nnoremap('<leader>Dt', ':Telescope diagnostics<cr>', 'diagnostics')
 
 --Git Pickers
--- mapgroup('<leader>gs',  '+Show')
+mapgroup('<leader>gs',  '+Show')
 -- nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
 -- nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
 -- nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')

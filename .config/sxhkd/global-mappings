@@ -48,6 +48,9 @@ super + 6
 plusminus
 	bluetoothctl power on
 
+super + 0
+	echo "ᕋK" | xclip -selection clipboard
+
 # Apps --------------------------------
 
 Print

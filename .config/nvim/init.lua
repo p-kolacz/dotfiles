@@ -30,7 +30,8 @@ require "lib/bootstrap" {
 	"tool/treesitter",
 	"tool/trouble",
 	"tool/telescope",
-	"tool/nvim-tree",
+	-- "tool/telescope-file-browser",
+	-- "tool/nvim-tree",
 	"tool/oil",
 	"tool/gitsigns",
 	"tool/cheatash",
@@ -38,10 +39,6 @@ require "lib/bootstrap" {
 	"tool/figlet",
 	"tool/rest",
 	"tool/dashboard",
-
-	-- "tool/neotest",
-	-- "tool/vim-test",
-	-- "tool/indent-guides",
 }
 
 Jumper = require "lib/jumper"
