@@ -1,5 +1,11 @@
 local M = {}
 
+local config = { colorschemes = {} }
+
+function M.setup(user_config)
+	config = user_config
+end
+
 function M.colorscheme(name)
 	vim.cmd("colorscheme "..name)
 end
@@ -12,9 +18,10 @@ function M.toggle_background()
 	vim.o.background = vim.o.background == "light" and "dark" or "light"
 end
 
-function M.toggle_trailing_whitespaces()
--- vim.cmd[[highlight ExtraWhitespace ctermbg=red guibg=red]]
--- vim.cmd[[match ExtraWhitespace /\s\+$/]]
+function M.list_colorschemes()
+	-- for k,v in pairs(config.colorschemes) do
+	-- end
 end
 
-return M
+ return M
+

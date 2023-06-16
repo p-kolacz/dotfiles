@@ -1,6 +1,7 @@
 Plugin "https://github.com/stevearc/oil.nvim"
 
 require"oil".setup {
+	delete_to_trash = true,
 	float = {
 		padding = 5,	-- Padding around the floating window
 		max_width = 80,
@@ -20,7 +21,7 @@ require"oil".setup {
 	},
 }
 
-nnoremap("<leader>fo", ":Oil --float<CR>", "Oil (float)")
+nnoremap("<leader>fo", ":Oil<CR>", "Oil")
 
 Cmdr.add {
 	{ "  Open Oil", "Oil" },
