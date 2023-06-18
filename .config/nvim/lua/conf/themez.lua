@@ -1,63 +1,49 @@
 return {
 
 	catppuccin = {
-		URL = "https://github.com/catppuccin/nvim",
+		url = "https://github.com/catppuccin/nvim",
 		flavors = { "latte", "frappe", "macchiato", "mocha" },
 	},
 
-	everforest_hard = {
-		URL = "https://github.com/sainnhe/everforest",
-		globals = {
-			everforest_background = 'hard',
+	everforest = {
+		url = "https://github.com/sainnhe/everforest",
+		setup = {
 			everforest_enable_italic = 1,
+		},
+		transparency = {
 			everforest_transparent_background = 2,
 		},
-	},
-
-	everforest_medium = {
-		URL = "https://github.com/sainnhe/everforest",
-		globals = {
-			everforest_background = 'medium',
-			everforest_enable_italic = 1,
-			everforest_transparent_background = 2,
-		},
-	},
-
-	everforest_soft = {
-		URL = "https://github.com/sainnhe/everforest",
-		globals = {
-			everforest_background = 'soft',
-			everforest_enable_italic = 1,
-			everforest_transparent_background = 2,
-		},
+		flavor_var = "everforest_background",
+		flavors = { "hard", "medium", "soft" },
 	},
 
 	gruvbox = {
-		URL = "https://github.com/luisiacc/gruvbox-baby",
+		url = "https://github.com/luisiacc/gruvbox-baby",
 	},
 
 	halcyon = {
-		URL = "https://github.com/kwsp/halcyon-neovim",
+		url = "https://github.com/kwsp/halcyon-neovim",
 	},
 
 	nightfly = {
-		URL = "https://github.com/bluz71/vim-nightfly-guicolors",
-		globals = {
-			nightflyTerminalColors = 0,			-- Use colorscheme in embeded teminal
-			nightflyUnderlineMatchParen = 1,	-- Underline matching parens
-			-- let.nightflyTransparent = 1,		-- Use transparent background
-			-- nightflyCursorColor = 1,
+		url = "https://github.com/bluz71/vim-nightfly-guicolors",
+		setup = {
+			nightflyTerminalColors = 0,
+			nightflyUnderlineMatchParen = 1,
+		},
+		transparency = {
+			nightflyTransparent = 1,
 		},
 	},
 
 	nightfox = {
-		URL = "https://github.com/EdenEast/nightfox.nvim",
+		url = "https://github.com/EdenEast/nightfox.nvim",
 	},
 
+	-- https://www.nordtheme.com/docs/ports/vim/configuration
 	nord = {
-		URL = 'https://github.com/arcticicestudio/nord-vim',
-		-- https://www.nordtheme.com/docs/ports/vim/configuration
-		globals = {
+		url = 'https://github.com/arcticicestudio/nord-vim',
+		setup = {
 			nord_cursor_line_number_background = 1,
 			nord_bold_vertical_split_line = 1,
 			nord_italic = 1,
@@ -67,47 +53,48 @@ return {
 	},
 
 	oceanic_next = {
-		URL = 'https://github.com/mhartington/oceanic-next',
-		globals = {
+		url = 'https://github.com/mhartington/oceanic-next',
+		setup = {
 			oceanic_next_terminal_bold = 1,
 			oceanic_next_terminal_italic = 1,
 		},
 	},
 
 	onedark = {
-		URL = "https://github.com/joshdick/onedark.vim",
+		url = "https://github.com/joshdick/onedark.vim",
 	},
 
 	papercolorslim = {
-		URL = "https://github.com/pappasam/papercolor-theme-slim",
+		url = "https://github.com/pappasam/papercolor-theme-slim",
 	},
 
-	rosepine = {
-		URL = "https://github.com/rose-pine/neovim",
-		-- require"rose-pine".setup {
-			-- 	dark_variant = "moon",
-			-- 	disable_italics = true,
-			-- }
+	["rose-pine"] = {
+		url = "https://github.com/rose-pine/neovim",
+		flavors = { "dawn", "main", "moon" },
 	},
 
 	solarized = {
-		URL = "https://github.com/ishan9299/nvim-solarized-lua"
+		url = "https://github.com/ishan9299/nvim-solarized-lua",
+		flavors = { "low", "flat", "high" },
 	},
 
 	sonokai = {
-		URL = "https://github.com/sainnhe/sonokai",
-		globals = {
-			sonokai_style = 'atlantis',
+		url = "https://github.com/sainnhe/sonokai",
+		setup = {
 			sonokai_enable_italic = 1,
+		},
+		flavor_var = "sonokai_style",
+		flavors = {
+			"default", "atlantis", "andromeda", "shusia", "maia", "espresso"
 		},
 	},
 
 	tokyonight = {
-		URL = "https://github.com/folke/tokyonight.nvim",
-		globals = {
-			tokyonight_style = 'storm',		-- available: night, storm, day
+		url = "https://github.com/folke/tokyonight.nvim",
+		transparency = {
 			tokyonight_transparent = 1,
-		}
+		},
+		flavors = { "storm", "night", "moon", "day" },
 	},
 
 }

@@ -7,6 +7,9 @@ Pluger = require "lib/plugozaur"
 Cmdr   = require "lib/commander"
 Yanka  = require "lib/yanka"
 Zorya  = require "zorya"
+Zorya.setup { colorschemes = require "conf/themez" }
+
+
 Plugin = Pluger.plugin
 
 require "lib/bootstrap" {

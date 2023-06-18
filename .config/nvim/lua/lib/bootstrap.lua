@@ -15,8 +15,7 @@ function _G.global(table)
 end
 
 function _G.v(x)
-	-- print(vim.inspect(x))
-	vim.pretty_print(x)
+	vim.print(x)
 end
 
 return function(t)

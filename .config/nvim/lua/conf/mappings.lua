@@ -125,3 +125,6 @@ Mapper.map {
 nmap('<leader>"', 'ysiW"', '"cWord"')
 nmap("<leader>'", "ysiW'", "'cWord'")
 
+nmap("<leader>e'",  [[cs"']], "change surrounding to '")
+nmap('<leader>e"',  [[cs'"]], 'change surrounding to "')
+
