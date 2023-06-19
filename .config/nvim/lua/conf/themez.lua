@@ -11,7 +11,8 @@ return {
 			everforest_enable_italic = 1,
 		},
 		transparency = {
-			everforest_transparent_background = 2,
+			global = "everforest_transparent_background",
+			value = 2,
 		},
 		flavor_var = "everforest_background",
 		flavors = { "hard", "medium", "soft" },
@@ -32,7 +33,7 @@ return {
 			nightflyUnderlineMatchParen = 1,
 		},
 		transparency = {
-			nightflyTransparent = 1,
+			global = "nightflyTransparent",
 		},
 	},
 
@@ -92,7 +93,7 @@ return {
 	tokyonight = {
 		url = "https://github.com/folke/tokyonight.nvim",
 		transparency = {
-			tokyonight_transparent = 1,
+			global = "tokyonight_transparent",
 		},
 		flavors = { "storm", "night", "moon", "day" },
 	},

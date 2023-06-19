@@ -1,10 +1,14 @@
 package.loaded["zorya"] = nil
 
 local M = {}
-local config = { colorschemes = {} }
+local config -- = { colorschemes = {} }
+
+if not vim.g.ZORYA then
+	vim.g.ZORYA = { colorscheme = nil, flavor = nil, transparency = false }
+end
 
 local function current_scheme_config()
-	return config.colorschemes[vim.g.ZORYA].colorscheme
+	return config.colorschemes[vim.g.ZORYA.colorscheme]
 end
 
 function M.setup(user_config)
@@ -27,6 +31,17 @@ function M.toggle_background()
 end
 
 function M.toggle_transparency()
+	local current_config = current_scheme_config()
+	if current_config and current_config.transparency then
+		local transparency_global = current_config.transparency.global
+		local current_value = vim.g[transparency_global]
+		vim.g[transparency_global] =
+			(current_value == nil or current_value == 0)
+			and (current_config.transparency.value or 1)
+			or 0
+	else
+		vim.notify("Scheme ".." doesn't support transparency", vim.log.levels.INFO)
+	end
 end
 
 function M.list_colorschemes()
@@ -59,7 +74,7 @@ function M.select_colorscheme()
 end
 
 function M.set_colorscheme(scheme, flavor, transparency)
-	-- transparency = transparency or false
+	-- TODO: check for valid scheme name and flavor
 	local scheme_config = config.colorschemes[scheme]
 	Plugin(scheme_config.url)
 	if scheme_config.setup then
@@ -75,9 +90,8 @@ function M.set_colorscheme(scheme, flavor, transparency)
 		end
 	end
 	if scheme_config.transparency then
-		for k,v in pairs(scheme_config.transparency) do
-			vim.g[k] = transparency and v or 0
-		end
+		local trans_conf = scheme_config.transparency
+		vim.g[trans_conf.global] = transparency and (trans_conf.value or 1) or 0
 	else
 		transparency = false
 	end

@@ -16,3 +16,9 @@ a_lua_module/
         some_file.lua
 ```
 
+## What is false?
+
+* false
+* nil
+
+

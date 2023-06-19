@@ -26,6 +26,7 @@ require "lib/bootstrap" {
 	"conf/languages",
 
 	-- Tools -------------------------------
+	"tool/notify",
 	"tool/tpope",
 	"tool/lsp",
 	"tool/completion",
@@ -33,7 +34,6 @@ require "lib/bootstrap" {
 	"tool/treesitter",
 	"tool/trouble",
 	"tool/telescope",
-	"tool/notify",
 	"tool/nvim-tree",
 	"tool/oil",
 	"tool/gitsigns",
