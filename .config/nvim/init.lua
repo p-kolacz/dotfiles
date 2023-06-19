@@ -33,6 +33,7 @@ require "lib/bootstrap" {
 	"tool/treesitter",
 	"tool/trouble",
 	"tool/telescope",
+	"tool/notify",
 	"tool/nvim-tree",
 	"tool/oil",
 	"tool/gitsigns",
@@ -42,6 +43,10 @@ require "lib/bootstrap" {
 	"tool/rest",
 	"tool/dashboard",
 }
+
+--[[
+Zorya
+--]]
 
 Jumper = require "lib/jumper"
 -- require "lib/animate".setup()

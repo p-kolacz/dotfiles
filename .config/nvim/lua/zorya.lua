@@ -1,8 +1,11 @@
 package.loaded["zorya"] = nil
 
 local M = {}
-
 local config = { colorschemes = {} }
+
+local function current_scheme_config()
+	return config.colorschemes[vim.g.ZORYA].colorscheme
+end
 
 function M.setup(user_config)
 	config = user_config
@@ -24,7 +27,6 @@ function M.toggle_background()
 end
 
 function M.toggle_transparency()
-
 end
 
 function M.list_colorschemes()
@@ -51,13 +53,13 @@ function M.select_colorscheme()
 			end,
 		},
 		function(choice)
-			M.set_colorscheme(choice[1], choice[2])
+			return choice and M.set_colorscheme(choice[1], choice[2])
 		end
 	)
 end
 
 function M.set_colorscheme(scheme, flavor, transparency)
-	transparency = transparency or false
+	-- transparency = transparency or false
 	local scheme_config = config.colorschemes[scheme]
 	Plugin(scheme_config.url)
 	if scheme_config.setup then
@@ -83,5 +85,6 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	vim.cmd.colorscheme(scheme)
 end
 
+M.setup { colorschemes = require "conf/themez" }
 return M
 
