@@ -12,7 +12,7 @@ require"oil".setup {
 		},
 	},
 	keymaps = {
-		["q"] = "actions.close",
+		-- ["q"] = "actions.close",
 		["<ESC>"] = "actions.close",
 		["~"] = "actions.open_cwd",
 		["gh"] = "actions.open_cwd",
