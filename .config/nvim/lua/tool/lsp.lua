@@ -57,7 +57,7 @@ Cmdr.add {
 	{ "  Language servers logs",       Laser.logs },
 }
 
-Plugin "https://github.com/j-hui/fidget.nvim"
+Plugin "--branch legacy https://github.com/j-hui/fidget.nvim"
 require"fidget".setup{}
 
 Plugin "https://github.com/ray-x/lsp_signature.nvim"

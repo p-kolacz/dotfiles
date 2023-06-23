@@ -1,4 +1,4 @@
-package.loaded["zorya"] = nil
+-- package.loaded["zorya"] = nil
 
 local M = {}
 local config -- = { colorschemes = {} }
@@ -99,6 +99,6 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	vim.cmd.colorscheme(scheme)
 end
 
-M.setup { colorschemes = require "conf/themez" }
+-- M.setup { colorschemes = require "conf/themez" }
 return M
 

@@ -1,9 +1,6 @@
 local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
-local M = {
-	-- ["http://asdf.pl"] = { branch = "asdf", after = "asdf" },
-	-- "https://github.com/asdfgg/answer",
-}
+local M = {}
 
 -- string
 -- string, function
