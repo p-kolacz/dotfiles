@@ -15,7 +15,6 @@ set.termguicolors  = true
 Icons.setup_devicons()
 Icons.setup_diagnostics()
 Yanka.enable_highlight()
-Zorya.auto_background()
 
 Plugin "https://github.com/RRethy/vim-illuminate"
 require "illuminate".configure {
@@ -26,10 +25,4 @@ Plugin "https://github.com/petertriho/nvim-scrollbar"
 require"scrollbar".setup { handlers = { cursor = false } }
 
 Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
-
-require "conf/themes"
-Zorya.colorscheme "catppuccin-macchiato"
-
--- Highlights must be after colorscheme
-vim.cmd("highlight Folded gui='italic'")
 

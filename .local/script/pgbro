@@ -1,17 +1,18 @@
 #!/bin/bash
 
 THIS=${0##*/}
+OPTIONS="--pset=linestyle=unicode --pset=border=2"
 
 query() {
-	psql -t "$CONNECTION" -c "$1" | sed "s/|/│/g"
+	psql $OPTIONS "$CONNECTION" -c "$@"
 }
 
-query_data() {
-	psql "$CONNECTION" -c "$1" | sed "s/|/│/g"
+query_tuples() {
+	psql -t $OPTIONS "$CONNECTION" -c "$@"
 }
 
 tables() {
-	query "\dt"
+	query_tuples "\dt"
 }
 
 columns() {
@@ -19,9 +20,9 @@ columns() {
 }
 
 data() {
-	echo -n "$1 count: "
-	query "SELECT COUNT(*) FROM $1"
-	query_data "SELECT * FROM $1 LIMIT 10"
+	# echo -n "$1 count: "
+	# query_tuples "SELECT COUNT(*) FROM $1"
+	query "SELECT * FROM $1 LIMIT 10"
 }
 
 preview() {
@@ -31,14 +32,14 @@ preview() {
 
 main() {
 	tables | fzf 										\
-	--preview="$THIS $CONNECTION preview {3}"			\
+	--preview="$THIS $CONNECTION preview {4}"			\
 	--preview-window="top,75%"							\
 	--bind "ctrl-r:reload($THIS $CONNECTION tables)"	\
-	--header "Press CTRL-R to reload | ? - view data"
+	--header "Press CTRL-R to reload"
 }
 
 usage() {
-	echo "Usage: $THIS postgresql://user@host:/database"
+	echo "Usage: $THIS postgresql://user:password@host:/database"
 }
 
 [[ $# -gt 0 ]] && CONNECTION=$1

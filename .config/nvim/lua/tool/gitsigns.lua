@@ -26,7 +26,7 @@ gs.setup{
 	end,
 }
 
-Cmdr.add {
+Perun.add {
 	{ "  Git stage buffer", gs.stage_buffer },
 	{ "  Git reset buffer", gs.reset_buffer },
 	{ "  Git set quickfix", "Gitsigns setqflist" },

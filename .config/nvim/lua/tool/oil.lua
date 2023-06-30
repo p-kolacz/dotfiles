@@ -23,7 +23,7 @@ require"oil".setup {
 
 nnoremap("<leader>fo", ":Oil<CR>", "Oil")
 
-Cmdr.add {
+Perun.add {
 	{ "  Open Oil", "Oil" },
 	{ "  Float Oil", "Oil --float" },
 }

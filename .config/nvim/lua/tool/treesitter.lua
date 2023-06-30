@@ -69,7 +69,7 @@ require"nvim-treesitter.configs".setup {
 
 require"treesitter-context".setup()
 
-Cmdr.add {
+Perun.add {
 	-- Treesitter -------------------------------------------------------------
 	{ "  Enable Treesitter highlight", "TSBufEnable highlight" },
 	{ "  Disable Treesitter highlight","TSBufDisable highlight" },

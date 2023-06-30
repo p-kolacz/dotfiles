@@ -2,11 +2,6 @@ local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 
 local M = {}
 
--- string
--- string, function
--- { string }
--- { {string = {} }}
--- Plugin { 
 function M.plugin(repos, after)
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do

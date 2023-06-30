@@ -1,4 +1,5 @@
-Cmdr.add {
+Perun = require "perun"
+Perun.add {
 
 	-- Diagnostics ------------------------------------------------------------
 	{ "  Show diagnostics",            vim.diagnostic.show },
@@ -40,8 +41,5 @@ Cmdr.add {
 	{ "  Yank buffer content",         Yanka.buffer },
 	{ "  Yank set clipboard",          Yanka.set_clipboard },
 	{ "  Yank unset clipboard",        Yanka.unset_clipboard },
-
-	-- Zorya ------------------------------------------------------------------
-	{ "  Toggle background",           Zorya.toggle_background },
 }
 

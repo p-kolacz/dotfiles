@@ -1,10 +1,10 @@
-local commander = require("lib/commander")
+local perun = require("perun")
 
 return require("telescope").register_extension {
 	setup = function()
-		commander.setup()
+		perun.setup()
 	end,
 	exports = {
-		commander = commander.run
+		perun = perun.run
 	},
 }

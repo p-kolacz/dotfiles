@@ -13,7 +13,7 @@ mapgroup("<leader>u", "+Snippets")
 nnoremap("<leader>uf", ":UltiSnipsEdit<CR>", "edit filetype snippets")
 nnoremap("<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets")
 
-Cmdr.add {
+Perun.add {
 	{ "  Edit filetype snippets",      "UltiSnipsEdit" },
 	{ "  Edit all snippets",           "UltiSnipsEdit!all" },
 }

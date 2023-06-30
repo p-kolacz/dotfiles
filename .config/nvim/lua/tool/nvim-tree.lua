@@ -92,7 +92,7 @@ autocmd({"BufLeave", "WinClosed"}, {
 	end,
 })
 
--- Cmdr.add {
+-- Perun.add {
 -- 	{ "Open NvimTree",  "NvimTreeOpen"  },
 -- 	{ "Close NvimTree", "NvimTreeClose" },
 -- }

@@ -51,7 +51,7 @@ Laser.defaults.on_attach = function(client, bufnr)
 	-- lsp_spinner.on_attach(client, bufnr)
 end
 
-Cmdr.add {
+Perun.add {
 	-- LSP --------------------------------------------------------------------
 	{ "  Stop language server",        Laser.stop },
 	{ "  Language servers logs",       Laser.logs },

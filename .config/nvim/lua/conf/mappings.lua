@@ -106,7 +106,6 @@ Mapper.map {
 	-- n,  "<leader>5",  "5gt", "tab 5",
 	------------------------------------ Vim -----------------------------------
 	G,  "<leader>v",  "+Vim", "",
-	n,  "<leader>vg", Zorya.toggle_background,             "toggle_background",
 	---------------------------------- Windows ---------------------------------
 	n,  "<leader>q",  ":q<CR>", "quit",
 	n,  "<C-h>",  "<C-w>h", "left window",
