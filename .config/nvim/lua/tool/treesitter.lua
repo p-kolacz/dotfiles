@@ -43,10 +43,10 @@ require"nvim-treesitter.configs".setup {
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
-				[']]'] = '@function.outer',
+				[']f'] = '@function.outer',
 			},
 			goto_previous_start = {
-				['[['] = '@function.outer',
+				['[f'] = '@function.outer',
 			},
 		},
 		swap = {
@@ -73,5 +73,6 @@ Perun.add {
 	-- Treesitter -------------------------------------------------------------
 	{ "  Enable Treesitter highlight", "TSBufEnable highlight" },
 	{ "  Disable Treesitter highlight","TSBufDisable highlight" },
+	{ "  Context toggle", "TSContextToggle" },
 
 }
