@@ -29,3 +29,16 @@ Laser.start {
 	},
 }
 
+-- local function rspec()
+-- 	vim.fn.system('docker-compose exec app bundle exec rspec --require='..vim.fn.stdpath('config')..'/bridges/VIM_formatter.rb --format VimFormatter --out /tmp/quickfix.out  --format progress spec/domains')
+-- 	vim.cmd.cgetfile('/tmp/quickfix.out')
+-- 	vim.cmd.cwindow()
+-- end
+
+nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow<cr>')
+
+-- Run the specs, and open the updated quickfix on `<leader>s`
+-- :map <leader>s :call system('rspec --require=support/formatters/VIM_formatter.rb --format VimFormatter --out quickfix.out  --format progress') \| cg quickfix.out \| cwindow
+
+-- or, without the temp file:
+-- :map <leader>s :cgete system('rspec --require=support/formatters/vim_formatter.rb --format VimFormatter') \| cwindow

@@ -26,8 +26,8 @@ data() {
 }
 
 preview() {
-	data "$1"
 	columns "$1"
+	data "$1"
 }
 
 main() {

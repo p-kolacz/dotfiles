@@ -72,3 +72,11 @@ snippet wp_diable_search "WP: disables search capability"
 RewriteCond %{QUERY_STRING} ^s=([^&]+)$ [NC]
 RewriteRule ^(.*)$ - [F,L]
 endsnippet
+
+snippet allow_origin
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+</IfModule>
+$0
+endsnippet
+
