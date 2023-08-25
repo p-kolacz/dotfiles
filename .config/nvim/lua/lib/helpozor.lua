@@ -1,4 +1,5 @@
-local SEARCH_URL = "https://www.startpage.com/sp/search?query="
+-- local SEARCH_URL = "https://www.startpage.com/sp/search?query="
+local SEARCH_URL = "https://www.google.com/search?q="
 
 local Types = {
 	API        = { "ha", "API" },

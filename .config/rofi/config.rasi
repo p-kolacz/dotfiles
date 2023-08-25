@@ -5,7 +5,6 @@ configuration {
 	modi: "drun,run,filebrowser";
 	matching: "fuzzy";
 	sorting-method: "fzf";
-	/* case-sensitive: false; */
 
 	font: "monospace 16";
 	show-icons: true;
