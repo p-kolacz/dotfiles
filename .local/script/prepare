@@ -33,8 +33,8 @@ bspwm() {
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
 # devops() {
-	# install rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
-	# ynstall xsv-bin sql-language-server
+	# install xsv rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
+	# ynstall sql-language-server
 # }
 
 apps() {
