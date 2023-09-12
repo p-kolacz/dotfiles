@@ -10,7 +10,7 @@ super + Return
 	$TERMINAL
 
 super + space
-	rofi -show drun -theme-str 'window \{width:33%;\}'
+	rofi -show combi -modes combi -combi-modes "drun,run" -theme-str 'window \{width:33%;\}'
 
 super + Delete
 	power.sh

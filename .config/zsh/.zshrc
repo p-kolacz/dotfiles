@@ -37,7 +37,7 @@ setopt autocd
 # [[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
 
 # fortune confucius | lolcat
-fortune -as
+fortune -a hitchhiker | lolcat
 
 eval "$(starship init zsh)"
 
