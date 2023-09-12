@@ -4,6 +4,6 @@
 kbreset
 wallpaper restore &
 picom -b
-bluetoothctl power on &
+# bluetoothctl power on &
 xplugd &
 automount.sh &
