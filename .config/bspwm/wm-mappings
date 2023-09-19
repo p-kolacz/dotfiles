@@ -1,6 +1,7 @@
 # vim:ft=sxhkd
 # https://github.com/baskerville/sxhkd
 
+#------------------------------------------------------------------------------#
 									 # WM #
 #------------------------------------------------------------------------------#
 
@@ -11,6 +12,7 @@ super + shift + y
 super + y
 	polybarctl restart
 
+#------------------------------------------------------------------------------#
 								  # Monitors #
 #------------------------------------------------------------------------------#
 
@@ -18,6 +20,7 @@ super + y
 	# bspc monitor {main,left,right} -f
 
 
+#------------------------------------------------------------------------------#
 								  # Desktops #
 #------------------------------------------------------------------------------#
 
@@ -34,9 +37,6 @@ super + b
 super + Tab
 	bspc desktop -f last
 
-alt + Tab
-	bspc node -f next.local.leaf
-
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
@@ -48,6 +48,7 @@ super + bracket{left,right}
 super + {plus,minus}
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 4))
 
+#------------------------------------------------------------------------------#
 								   # Nodes #
 #------------------------------------------------------------------------------#
 
@@ -78,8 +79,12 @@ super + shift + {h,j,k,l}
 super + {n,p}
 	bspc node -f {next,prev}.local.leaf
 
+# rotate
 super + {comma,period}
 	bspc node @parent -R {90,-90}
+
+alt + Tab
+	bspc node -f next.local.leaf
 
 # scratchpad
 super + grave
@@ -108,6 +113,10 @@ super + ctrl + shift + space
 #
 # move/resize
 #
+
+# set parent split ratio
+super + {1-9}
+	bspc node @parent --ratio 0.{1-9}
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
