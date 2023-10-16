@@ -1,6 +1,9 @@
 Plugin "https://github.com/rcarriga/nvim-notify"
 
 vim.notify = require("notify")
+vim.notify.setup {
+	top_down = false
+}
 
 -- vim.cmd [[
 -- 	highlight link NotifyERRORBody Normal
