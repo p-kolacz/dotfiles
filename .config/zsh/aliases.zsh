@@ -15,7 +15,7 @@ alias batman="nmcli device wifi connect 'Batman'"
 alias myip="curl ipinfo.io/ip"
 alias nv="nvim"
 alias weather="curl 'wttr.in/?Fqn&lang=pl'"
-(( $+commands[host] )) || alias host="drill ANY"
+(( $+commands[host] )) || alias host="drill ANY -t"
 alias webcam="qv4l2"
 
 # Browsers ----------------------------
