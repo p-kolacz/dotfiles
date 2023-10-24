@@ -179,9 +179,9 @@ nnoremap <f12> :cmpdirs<cr>
 
 " Views
 nnoremap <a-s> :set viewcolumns=""<cr>
-nnoremap <a-c> :set viewcolumns=-{name}..,11{perms}<cr>
+nnoremap <a-c> :set viewcolumns=-{name}..,{uid},11{perms}<cr>
 nnoremap <a-d> :set viewcolumns=-{name}..,17{mtime}<cr>
-nnoremap <a-f> :set viewcolumns=-{name}..,6{size},17{mtime}<cr>
+nnoremap <a-f> :set viewcolumns=-{name}..,6{size},17{mtime},6{uname},6{gname},11{perms}<cr>
 
 nnoremap <c-]> :wincmd o<cr>:set millerview<cr>
 nnoremap <c-[> :wincmd v<cr>:set nomillerview<cr>

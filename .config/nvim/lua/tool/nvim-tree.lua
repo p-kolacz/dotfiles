@@ -1,5 +1,9 @@
 Plugin "https://github.com/kyazdani42/nvim-tree.lua"
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local function grep_in_dir(node)
 	-- v(node.absolute_path)
 	local path = node.absolute_path
@@ -22,27 +26,9 @@ require'nvim-tree'.setup {
 	},
 	renderer = {
 		full_name = true,
-		-- icons = { glyphs = { git = {
-			-- unstaged = "*",
-			-- staged = "✓",
-			-- unmerged = "",
-			-- renamed = "➜",
-			-- untracked = "",
-			-- deleted = "",
-			-- ignored = "◌",
-		-- }}}
 	},
 	view = {
 		width = 40,
-		-- mappings = {
-		-- 	custom_only = false,
-		-- 	list = {
-		-- 		{ key = "l", action = "edit" },
-		-- 		{ key = "h", action = "close_node" },
-		-- 		{ key = "H", action = "collapse_all" },
-		-- 		{ key = "<C-F>", action = "grep in dir", action_cb = grep_in_dir },
-		-- 	},
-		-- },
 	},
 	actions = {
 		open_file = {
@@ -73,7 +59,7 @@ nnoremap('<leader>fb', ':NvimTreeToggle<cr>', 'file browser')
 nnoremap('<leader>fl', ':NvimTreeFindFile<cr>', 'locate in tree')
 
 -- hide cursor
-require("nvim-tree.view").View.winopts.cursorline = true
+-- require("nvim-tree.view").View.winopts.cursorline = true
 autocmd({"WinEnter", "BufWinEnter"}, {
 	group = "vimrc",
 	pattern = "NvimTree_1",
@@ -91,9 +77,4 @@ autocmd({"BufLeave", "WinClosed"}, {
 		vim.opt.guicursor = { "n-v-c-sm:block", "i-ci-ve:ver25", "r-cr-o:hor20" }
 	end,
 })
-
--- Perun.add {
--- 	{ "Open NvimTree",  "NvimTreeOpen"  },
--- 	{ "Close NvimTree", "NvimTreeClose" },
--- }
 
