@@ -1,8 +1,8 @@
 Plugin "https://github.com/kyazdani42/nvim-tree.lua"
 
 -- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 local function grep_in_dir(node)
 	-- v(node.absolute_path)

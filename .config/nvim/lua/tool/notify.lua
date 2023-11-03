@@ -5,6 +5,8 @@ vim.notify.setup {
 	top_down = false
 }
 
+Perun.add { "  Notification history", "Telescope notify" }
+
 -- vim.cmd [[
 -- 	highlight link NotifyERRORBody Normal
 -- 	highlight link NotifyWARNBody Normal

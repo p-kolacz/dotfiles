@@ -22,8 +22,8 @@ require "lib/bootstrap" {
 
 	-- Tools -------------------------------
 	"tool/perun",
-	"tool/zorya",
 	"tool/notify",
+	"tool/zorya",
 	"tool/tpope",
 	"tool/lsp",
 	"tool/completion",
