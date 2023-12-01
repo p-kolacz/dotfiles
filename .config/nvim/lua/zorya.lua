@@ -1,32 +1,36 @@
--- package.loaded["zorya"] = nil
-
 local M = {}
+local STATE_FILE = vim.fn.stdpath("state") .. "/zorya"
 local config
+local state = { scheme = "", flavor = "" }
 
-local function restore_colorscheme()
-	-- if vim.g.ZORYA.colorscheme ~= "" then
-	local lines = io.lines(vim.fn.stdpath("data") .. "/zorya.conf")
-	local scheme = lines()
-	local flavor = lines()
-	M.set_colorscheme(scheme, flavor)
-	-- end
+local function load_state()
+	local file = io.open(STATE_FILE)
+	if file then
+		local lines = file:lines()
+		state.scheme = lines()
+		state.flavor = lines()
+		file:close()
+	end
 end
 
+local function save_state()
+	local file = io.open(STATE_FILE, "w")
+	if file then
+		file:write(state.scheme, "\n", state.flavor)
+		file:close()
+	else
+		vim.notify(string.format("Unable to open file: %s for writing", STATE_FILE), vim.log.levels.ERROR)
+	end
+end
 
--- vim.api.nvim_create_augroup("zorya", { clear = true} )
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	group = "zorya",
--- 	callback = function()
--- 		-- if not vim.g.ZORYA then
--- 			-- vim.g.ZORYA = { colorscheme = "", flavor = "", transparency = false }
--- 		-- end
--- 		restore_colorscheme()
--- 	end
--- })
+local function restore_colorscheme()
+	if state.scheme ~= "" then
+		M.set_colorscheme(state.scheme, state.flavor)
+	end
+end
 
 local function setup_colorscheme(conf)
 	if not conf.initialized then
-		-- vim.notify("Initializing scheme")
 		if conf.url then
 			Plugin(conf.url)
 		end
@@ -34,31 +38,25 @@ local function setup_colorscheme(conf)
 			conf.setup()
 		end
 		conf.initialized = true
-	-- else
-		-- vim.notify("Already initialized")
 	end
 end
 
 function M.setup(user_config)
 	config = user_config
+	load_state()
 
-	restore_colorscheme()
-	-- for key, value in pairs(user_config) do
-	-- 	config[key] = value
-	-- end
+	if config.restore_colorscheme then
+		restore_colorscheme()
+	end
 end
-
--- function M.colorscheme(name)
--- 	vim.cmd("colorscheme "..name)
--- end
 
 -- function M.auto_background(default)
 -- 	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or (default or "dark")
 -- end
 
--- function M.toggle_background()
--- 	vim.o.background = vim.o.background == "light" and "dark" or "light"
--- end
+function M.toggle_background()
+	vim.o.background = vim.o.background == "light" and "dark" or "light"
+end
 
 -- function M.toggle_transparency()
 -- 	local current_config = current_scheme_config()
@@ -112,10 +110,9 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	else
 		vim.cmd.colorscheme(scheme)
 	end
-	vim.g.ZORYA = {
-		colorscheme = scheme,
-		flavor = flavor,
-	}
+	state.scheme = scheme
+	state.flavor = flavor or ""
+	save_state()
 	-- if scheme_config.transparency then
 	-- 	local trans_conf = scheme_config.transparency
 	-- 	vim.g[trans_conf.global] = transparency and (trans_conf.value or 1) or 0
@@ -126,6 +123,4 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	-- vim.notify("Setting colorscheme: "..scheme.." "..flavor)
 end
 
--- M.setup { colorschemes = require "conf/themez" }
 return M
-

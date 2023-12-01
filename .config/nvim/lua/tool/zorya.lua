@@ -1,6 +1,8 @@
 local zorya  = require "zorya"
-zorya.setup { colorschemes = require "conf/themez" }
--- zorya.restore_colorscheme()
+zorya.setup {
+	restore_colorscheme = true,
+	colorschemes = require "conf/themez",
+}
 
 -- zorya.auto_background()
 

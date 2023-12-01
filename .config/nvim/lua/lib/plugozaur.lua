@@ -17,6 +17,7 @@ function M.plugin(repos, after)
 			end
 		else
 			vim.cmd("packadd! "..name)
+			-- vim.cmd("packadd "..name)
 		end
 	end
 end

@@ -14,7 +14,7 @@ Helper.map {
 	DOCSEARCH  = "https://devdocs.io/#q=ruby%20",
 }
 
-setlocal.foldcolumn='0'
+setlocal.foldcolumn = "0"
 
 Laser.start {
 	name = "Solargraph",
@@ -42,3 +42,4 @@ nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow<cr>')
 
 -- or, without the temp file:
 -- :map <leader>s :cgete system('rspec --require=support/formatters/vim_formatter.rb --format VimFormatter') \| cwindow
+

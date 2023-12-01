@@ -26,3 +26,5 @@ require"scrollbar".setup { handlers = { cursor = false } }
 
 Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
 
+vim.cmd.colorscheme("darkblue")
+

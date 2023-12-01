@@ -26,4 +26,4 @@ Plugin {
 	"https://github.com/kovetskiy/sxhkd-vim",
 }
 
-require"lib/lua-live-tests"
+-- require"lib/lua-live-tests"
