@@ -83,6 +83,12 @@ snippet is_binary "Is file binary"
 file --dereference --mime-encoding ${1:filename} | grep -q binary
 endsnippet
 
+snippet iterate_file_lines
+while read -r line; do
+	echo "$line"
+done <${1:filename}
+endsnippet
+
 snippet last_exit
 $?
 endsnippet

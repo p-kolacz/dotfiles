@@ -1,4 +1,4 @@
-vim.cmd("language messages en_US.utf8")
+vim.cmd.language("messages en_US.utf8")
 
 set.fileformats    = "unix"
 set.autowrite      = true

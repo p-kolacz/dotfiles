@@ -27,9 +27,9 @@ require'nvim-tree'.setup {
 	renderer = {
 		full_name = true,
 	},
-	view = {
-		width = 40,
-	},
+	-- view = {
+		-- width = 40,
+	-- },
 	actions = {
 		open_file = {
 			resize_window = false,

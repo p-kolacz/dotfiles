@@ -1,48 +1,78 @@
 -- package.loaded["zorya"] = nil
 
 local M = {}
-local config -- = { colorschemes = {} }
+local config
 
-if not vim.g.ZORYA then
-	vim.g.ZORYA = { colorscheme = nil, flavor = nil, transparency = false }
+local function restore_colorscheme()
+	-- if vim.g.ZORYA.colorscheme ~= "" then
+	local lines = io.lines(vim.fn.stdpath("data") .. "/zorya.conf")
+	local scheme = lines()
+	local flavor = lines()
+	M.set_colorscheme(scheme, flavor)
+	-- end
 end
 
-local function current_scheme_config()
-	return config.colorschemes[vim.g.ZORYA.colorscheme]
+
+-- vim.api.nvim_create_augroup("zorya", { clear = true} )
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	group = "zorya",
+-- 	callback = function()
+-- 		-- if not vim.g.ZORYA then
+-- 			-- vim.g.ZORYA = { colorscheme = "", flavor = "", transparency = false }
+-- 		-- end
+-- 		restore_colorscheme()
+-- 	end
+-- })
+
+local function setup_colorscheme(conf)
+	if not conf.initialized then
+		-- vim.notify("Initializing scheme")
+		if conf.url then
+			Plugin(conf.url)
+		end
+		if conf.setup then
+			conf.setup()
+		end
+		conf.initialized = true
+	-- else
+		-- vim.notify("Already initialized")
+	end
 end
 
 function M.setup(user_config)
 	config = user_config
+
+	restore_colorscheme()
 	-- for key, value in pairs(user_config) do
 	-- 	config[key] = value
 	-- end
 end
 
-function M.colorscheme(name)
-	vim.cmd("colorscheme "..name)
-end
+-- function M.colorscheme(name)
+-- 	vim.cmd("colorscheme "..name)
+-- end
 
-function M.auto_background(default)
-	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or (default or "dark")
-end
+-- function M.auto_background(default)
+-- 	vim.o.background = vim.env.THEME_VARIANT and vim.env.THEME_VARIANT or (default or "dark")
+-- end
 
-function M.toggle_background()
-	vim.o.background = vim.o.background == "light" and "dark" or "light"
-end
+-- function M.toggle_background()
+-- 	vim.o.background = vim.o.background == "light" and "dark" or "light"
+-- end
 
-function M.toggle_transparency()
-	local current_config = current_scheme_config()
-	if current_config and current_config.transparency then
-		local transparency_global = current_config.transparency.global
-		local current_value = vim.g[transparency_global]
-		vim.g[transparency_global] =
-			(current_value == nil or current_value == 0)
-			and (current_config.transparency.value or 1)
-			or 0
-	else
-		vim.notify("Scheme ".." doesn't support transparency", vim.log.levels.INFO)
-	end
-end
+-- function M.toggle_transparency()
+-- 	local current_config = current_scheme_config()
+-- 	if current_config and current_config.transparency then
+-- 		local transparency_global = current_config.transparency.global
+-- 		local current_value = vim.g[transparency_global]
+-- 		vim.g[transparency_global] =
+-- 			(current_value == nil or current_value == 0)
+-- 			and (current_config.transparency.value or 1)
+-- 			or 0
+-- 	else
+-- 		vim.notify("Scheme ".." doesn't support transparency", vim.log.levels.INFO)
+-- 	end
+-- end
 
 function M.list_colorschemes()
 	local schemes = {}
@@ -76,27 +106,24 @@ end
 function M.set_colorscheme(scheme, flavor, transparency)
 	-- TODO: check for valid scheme name and flavor
 	local scheme_config = config.colorschemes[scheme]
-	Plugin(scheme_config.url)
-	if scheme_config.setup then
-		for k,v in pairs(scheme_config.setup) do
-			vim.g[k] = v
-		end
-	end
-	if flavor then
-		if scheme_config.flavor_var then
-			vim.g[scheme_config.flavor_var] = flavor
-		else
-			scheme = string.format("%s-%s", scheme, flavor)
-		end
-	end
-	if scheme_config.transparency then
-		local trans_conf = scheme_config.transparency
-		vim.g[trans_conf.global] = transparency and (trans_conf.value or 1) or 0
+	setup_colorscheme(scheme_config)
+	if scheme_config.flavor then
+		scheme_config.flavor(flavor)
 	else
-		transparency = false
+		vim.cmd.colorscheme(scheme)
 	end
-	vim.notify("Setting colorscheme "..scheme.." with "..(transparency and "transparent" or "opaque").." background")
-	vim.cmd.colorscheme(scheme)
+	vim.g.ZORYA = {
+		colorscheme = scheme,
+		flavor = flavor,
+	}
+	-- if scheme_config.transparency then
+	-- 	local trans_conf = scheme_config.transparency
+	-- 	vim.g[trans_conf.global] = transparency and (trans_conf.value or 1) or 0
+	-- else
+	-- 	transparency = false
+	-- end
+	-- vim.notify("Setting colorscheme "..scheme.." with "..(transparency and "transparent" or "opaque").." background")
+	-- vim.notify("Setting colorscheme: "..scheme.." "..flavor)
 end
 
 -- M.setup { colorschemes = require "conf/themez" }

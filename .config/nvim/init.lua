@@ -1,3 +1,4 @@
+-- vim:  foldmethod=marker
 -- Weles Dazhbog Dola Zemlya Zvezda Devana Morana
 Helper = require "lib/helpozor"
 Icons  = require "lib/iconz"
@@ -8,7 +9,8 @@ Yanka  = require "lib/yanka"
 
 Plugin = Pluger.plugin
 
-require "lib/bootstrap" {
+local requirer = require "lib/bootstrap"
+requirer {
 
 	-- Configuration -----------------------
 	"conf/options",
@@ -40,10 +42,6 @@ require "lib/bootstrap" {
 	"tool/rest",
 	"tool/dashboard",
 }
-
---[[
-Zorya
---]]
 
 Plugin "https://github.com/stevearc/dressing.nvim"
 

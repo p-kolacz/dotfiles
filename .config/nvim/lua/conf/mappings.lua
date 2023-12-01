@@ -32,10 +32,9 @@ Mapper.map {
 	v,  "<A-k>",       ":m '<-2<cr>gv=gv",                 "",
 
 	G,  "<leader>e",   "+Edit",                            "",
-	-- n,  "<leader>et",  ":%s/\\s\\+$//e<CR>",               "remove trailing spaces",
 	n,  "<leader>es",  ":%s/",                             "substitute",
 	v,  "<leader>es",  ":s/",                              "substitute",
-	-- n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
+	n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
 	v,  "<leader>er",  ":'<,'>!tac<CR>",                   "reverse lines",
 	-- change cword and press . to repeat change on next, n to goto next
 	n,  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat",
@@ -53,9 +52,9 @@ Mapper.map {
 
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
-	n,  "gy",          Helper.search_this,                  "online search cword",
-	v,  "gy",          Helper.search_this,              "online search selection",
-	n,  "<leader>hn",  Helper.edit_ft_notes,                 "filetype notes",
+	n,  "gy",          Helper.search_this,                 "online search cword",
+	v,  "gy",          Helper.search_this,                 "online search selection",
+	n,  "<leader>hn",  Helper.edit_ft_notes,               "filetype notes",
 
 	---------------------------------- Insert ----------------------------------
 	G,  "<leader>i",   "+Insert",                           "",

@@ -2,7 +2,8 @@ Plugin "https://github.com/nvim-lualine/lualine.nvim"
 
 local separators = Icons.random_separators()
 
-require "lualine".setup {
+local lualine = require "lualine"
+lualine.setup {
 	options = {
 		-- https://github.com/nvim-lualine/lualine.nvim/blob/master/THEMES.md#available-themes
 		theme = "auto",
@@ -34,3 +35,9 @@ require "lualine".setup {
 	}
 }
 
+autocmd("ColorScheme", {
+	group = "vimrc",
+	callback = function()
+		lualine.setup {}
+	end
+})

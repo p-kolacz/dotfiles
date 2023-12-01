@@ -54,23 +54,7 @@ bspc config pointer_follows_monitor true
 								   # Rules #
 #------------------------------------------------------------------------------#
 
-# class from xprop: 2nd:1st
-set_rule() {
-	state=$1 && shift
-	for class in "$@"; do
-		bspc rule -a "$class" state="$state"
-	done
-}
-
-bspc rule -r "*"
-bspc rule -a Screenkey manage=off
-bspc rule -a scratchpad state=floating sticky=on rectangle=1200x800+220+260
-bspc rule -a Gimp desktop=G follow=on
-bspc rule -a Brave-browser desktop=W
-bspc rule -a thunderbird desktop=C
-set_rule floating mpv Qalculate-gtk scummvm Pavucontrol Pidgin Hdajackretask Arandr "Seafile Client" Signal KeePassXC
-set_rule floating thunderbird:Msgcompose thunderbird:Mailnews
-set_rule floating Mojosetup qv4l2
+~/.config/bspwm/rules.sh
 
 #------------------------------------------------------------------------------#
 								   # Panel #

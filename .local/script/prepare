@@ -176,6 +176,12 @@ vifm() {
 	ynstall archivemount dragon-drop fuse3-p7zip-git
 }
 
+vm() {
+	install qemu-desktop virt-manager dnsmasq
+	startenable libvirtd.service
+	sudo usermod --append --groups libvirt "$USER"
+}
+
 xorg() {
 	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx i3lock
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/sleep@.service" /etc/systemd/system/
