@@ -5,13 +5,8 @@ Plugin {
 }
 
 mapgroup("<leader>ct",   "+Treesitter")
--- mapgroup("<leader>cth",  "+Highlight")
--- nnoremap("<leader>cthe", ":TSBufEnable highlight<cr>", "enable buffer highlight")
--- nnoremap("<leader>cthd", ":TSBufDisable highlight<cr>", "disable buffer highlight")
--- nnoremap("<leader>ctht", ":TSBufToggle highlight<cr>", "toggle buffer highlight")
 
 require"nvim-treesitter.configs".setup {
-	-- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ensure_installed = {
 		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
 		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
@@ -19,15 +14,13 @@ require"nvim-treesitter.configs".setup {
 		"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
 		"sql", "toml", "typescript", "vhs", "vim", "vimdoc", "xml", "yaml",
 	},
-
-	-- ignore_install = { "phpdoc" },
-
-	highlight = { enable = true },
-
+	highlight = {
+		enable = true,
+	},
 	textobjects = {
 		select = {
 			enable = true,
-			lookahead = true,		-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,	-- Automatically jump forward to textobj, similar to targets.vim
 			keymaps = {
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
@@ -71,8 +64,8 @@ require"treesitter-context".setup()
 
 Perun.add {
 	-- Treesitter -------------------------------------------------------------
-	{ "  Enable Treesitter highlight", "TSBufEnable highlight" },
-	{ "  Disable Treesitter highlight","TSBufDisable highlight" },
-	{ "  Context toggle", "TSContextToggle" },
+	{ "  TS: Enable highlight", "TSBufEnable highlight" },
+	{ "  TS: Disable highlight","TSBufDisable highlight" },
+	{ "  TS: Context toggle", "TSContextToggle" },
 
 }

@@ -8,6 +8,12 @@ _G.autocmd = vim.api.nvim_create_autocmd
 -- 	vim.cmd("colorscheme "..name)
 -- end
 
+function Globals(table)
+	for k,v in pairs(table) do
+		vim.g[k] = v
+	end
+end
+
 function _G.global(table)
 	for k,v in pairs(table) do
 		vim.g[k] = v

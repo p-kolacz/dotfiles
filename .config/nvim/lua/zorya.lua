@@ -2,15 +2,22 @@ local M = {}
 local STATE_FILE = vim.fn.stdpath("state") .. "/zorya"
 local config
 local state = { scheme = "", flavor = "" }
+local highlights = {}
+
+vim.api.nvim_create_augroup("zorya", {})
+vim.api.nvim_create_autocmd("ColorScheme", { group = "zorya", callback = function()
+	for k,v in pairs(highlights) do
+		vim.cmd(string.format("highlight %s %s", k, v))
+	end
+end})
 
 local function load_state()
 	local file = io.open(STATE_FILE)
-	if file then
-		local lines = file:lines()
-		state.scheme = lines()
-		state.flavor = lines()
-		file:close()
-	end
+	if not file then return end
+	local lines = file:lines()
+	state.scheme = lines()
+	state.flavor = lines()
+	file:close()
 end
 
 local function save_state()
@@ -24,15 +31,14 @@ local function save_state()
 end
 
 local function restore_colorscheme()
-	if state.scheme ~= "" then
-		M.set_colorscheme(state.scheme, state.flavor)
-	end
+	if state.scheme == "" then return end
+	M.set_colorscheme(state.scheme, state.flavor)
 end
 
 local function setup_colorscheme(conf)
 	if not conf.initialized then
 		if conf.url then
-			Plugin(conf.url)
+			Plugin(conf.url) -- TODO: decouple from Plugin
 		end
 		if conf.setup then
 			conf.setup()
@@ -48,6 +54,10 @@ function M.setup(user_config)
 	if config.restore_colorscheme then
 		restore_colorscheme()
 	end
+end
+
+function M.highlight(k, v)
+	highlights[k] = v
 end
 
 -- function M.auto_background(default)

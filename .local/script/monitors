@@ -1,10 +1,10 @@
 #!/bin/sh
 
 case $1 in
-	count)
-		xrandr --current | grep -E --count " connected" ;;
-		# xrandr --current --listmonitors | head -n 1 | cut -d" " -f2	;;
-	list)
+	active-count)
+		# xrandr --current | grep -E --count " connected" ;;
+		xrandr --current --listactivemonitors | head -n 1 | cut -d" " -f2 ;;
+	connected)
 		xrandr --current | grep -E " connected" | cut -d" " -f1 ;;
 	all)
 		xrandr --current | grep -E " connected" | cut -d" " -f1
@@ -20,6 +20,6 @@ case $1 in
 		# TODO: check cases when not 3 monitors
 		xrandr --current | grep -E " connected [0-9]+x[0-9]+\+[1-9]" | cut -d" " -f1 ;;
 	*)
-		echo "Usage: monitor [count|list|all|primary|secondary|left|right]"
+		echo "Usage: monitor [count|connected|all|primary|secondary|left|right]"
 esac
 

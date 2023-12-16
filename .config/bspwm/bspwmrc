@@ -7,7 +7,7 @@
 # bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
-case $(monitors count) in
+case $(monitors active-count) in
 	1)
 		bspc monitor "$(monitors primary)"   --reset-desktops F Q W E R T A S D G C V
 		;;

@@ -46,4 +46,13 @@ function M.map_buffer(maps)
 	map_table(maps, true)
 end
 
+function M.add(maps)
+	maps = type(maps[1]) == "table" and maps or {maps}
+	for _,v in ipairs(maps) do
+		local opts = {}
+		if v[4] then opts.desc = v[4] end
+		vim.keymap.set(v[1], v[2], v[3], opts)
+	end
+end
+
 return M

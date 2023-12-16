@@ -1,12 +1,7 @@
-let.mapleader = " "
-let.maplocalleader = "\\"
-
 local _ = "" local i = "i" local n = "n" local v = "v" local c = "c" local x = "x" local G = "G"
 Mapper.map {
 	---------------------------------- Buffer ----------------------------------
 	n,	"<leader>w",   ":w<CR>",			               nil,
-	----------------------------------- Code -----------------------------------
-	G,	"<leader>c",   "+Code",                            "",
 	------------------------------- Command Mode -------------------------------
 	n,  "<leader><leader>", ":",                           "command mode",
 	c,  "<C-a>",       "<home>",                           "",
@@ -17,37 +12,8 @@ Mapper.map {
 	G,  "<leader>d",   "+Diff",                            "",
 	n,  "<leader>dd",  ":diffthis<cr>",                    "diff this",
 	n,  "<leader>do",  ":diffoff!<cr>",                    "diff off",
-	----------------------------------- Edit -----------------------------------
-	i,  "<C-a>",       "<home>",                           "",
-	i,  "<C-b>",       "<left>",                           "",
-	i,  "<C-e>",       "<end>",                            "",
-	i,  "<C-d>",       "<delete>",                         "",
-	i,  "<C-f>",       "<right>",                          "",
-	i,  "<A-f>",       "<s-right>",                        "",
-	i,  "<A-b>",       "<s-left>",                         "",
-
-	n,  "<A-j>",       ":m .+1<cr>==",                     "move line",
-	n,  "<A-k>",       ":m .-2<cr>==",                     "",
-	v,  "<A-j>",       ":m '>+1<cr>gv=gv",                 "move selection",
-	v,  "<A-k>",       ":m '<-2<cr>gv=gv",                 "",
-
-	G,  "<leader>e",   "+Edit",                            "",
-	n,  "<leader>es",  ":%s/",                             "substitute",
-	v,  "<leader>es",  ":s/",                              "substitute",
-	n,  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines",
-	v,  "<leader>er",  ":'<,'>!tac<CR>",                   "reverse lines",
-	-- change cword and press . to repeat change on next, n to goto next
-	n,  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat",
-	x,  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "",
-	----------------------------------- File -----------------------------------
-	G,  "<leader>f",   "+File", "",
-	n,  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir",
-	n,  "<leader>fn",  ":new<cr>",                         "new file",
-	n,  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x",
 
 	------------------------------------ Git -----------------------------------
-	G,  "<leader>g",  "+Git", "",
-	n,  "<leader>gg",  ":silent !$TERMINAL lazygit &<cr>", "LazyGit",
 	-- G,  "<leader>gc",  "+Commit", "",
 
 	----------------------------------- Help -----------------------------------
@@ -77,7 +43,7 @@ Mapper.map {
 
 	---------------------------------- Options ---------------------------------
 	G,  "<leader>o",   "+Options",  "",
-	n,  "<leader>oh",  ":setlocal hlsearch!<CR>",            "toggle higlight search",
+	n,  "<leader>oh",  ":set hlsearch!<CR>",            "toggle higlight search",
 	n,  "<leader>ol",  ":setlocal list!<CR>",            "toggle invisible chars",
 	n,  "<leader>on",  ":set number!<CR>",          "toggle line numbers",
 	n,  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers",

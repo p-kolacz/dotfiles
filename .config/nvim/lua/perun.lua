@@ -1,50 +1,17 @@
-local pickers
-local finders
-local conf
-local actions
-local action_state
-
-local function entry_maker(entry)
-	return {
-		value = entry,
-		display = entry[1],
-		ordinal = entry[1],
-	}
-end
-
-local function attach_mappings(prompt_bufnr)
-	actions.select_default:replace(function()
-		actions.close(prompt_bufnr)
-		local cmd = action_state.get_selected_entry().value[2]
-		if type(cmd) == "function" then
-			cmd()
-		else
-			vim.cmd(cmd)
-		end
-	end)
-	return true
-end
-
-local commands = {}
-local picker_defaults = {
-	prompt_title = "Your wish is my :command",
-	attach_mappings = attach_mappings,
-}
-
 local M = {}
+local commands = {}
 
-function M.setup()
-	pickers = require "telescope.pickers"
-	finders = require "telescope.finders"
-	conf = require("telescope.config").values
-	actions = require "telescope.actions"
-	action_state = require "telescope.actions.state"
-	picker_defaults = vim.tbl_deep_extend("keep", picker_defaults, require("telescope.themes").get_dropdown{})
+local function execute(cmd)
+	if type(cmd) == "function" then
+		cmd()
+	else
+		vim.cmd(cmd)
+	end
 end
 
-function M.add(new_commands)
-	new_commands = type(new_commands[1]) == "table" and new_commands or {new_commands}
-	for _,v in ipairs(new_commands) do
+function M.add(cmds)
+	cmds = type(cmds[1]) == "table" and cmds or {cmds}
+	for _,v in ipairs(cmds) do
 		table.insert(commands,v)
 	end
 	table.sort(commands, function (a, b)
@@ -52,14 +19,19 @@ function M.add(new_commands)
 	end)
 end
 
-function M.run(opts)
-	opts = opts or {}
-	picker_defaults.finder = finders.new_table {
-		results = commands,
-		entry_maker = entry_maker,
-	}
-	picker_defaults.sorter = conf.generic_sorter(opts)
-	pickers.new(opts, picker_defaults):find()
+function M.run()
+	vim.ui.select(
+		commands,
+		{
+			prompt = "Your wish is my :command",
+			format_item = function(item)
+				return item[1]
+			end,
+		},
+		function(choice)
+			return choice and execute(choice[2])
+		end
+	)
 end
 
-return M
+return M -- LoC 65,37,33

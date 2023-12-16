@@ -16,14 +16,23 @@ setwp() {
 	$WALLSET "$FILE"
 }
 
+random() {
+	directory=$1
+	wallpaper=$(find "$directory" -type f | shuf -n 1)
+	[[ -f $wallpaper ]] && setwp "$wallpaper"
+}
+
 restorewp() {
 	[[ -f "$FILE" ]] || setwp "$HOME/.dotfiles/share/wallpapers/arch_layers.png"
 	$WALLSET "$FILE"
 }
 
-case "$1" in
+op=$1 && shift
+
+case "$op" in
 	"set") setwp "$2" ;;
 	"restore") restorewp ;;
+	"random") random "$@" ;;
 	*) browse
 esac
 

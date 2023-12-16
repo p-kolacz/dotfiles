@@ -35,6 +35,7 @@ telescope.setup {
 		find_files	= { theme = "ivy", initial_mode = "insert" },
 		git_files	= { theme = "ivy", initial_mode = "insert"},
 		grep_string	= { theme = "ivy" },
+		highlights	= { theme = "dropdown" },
 		live_grep	= { theme = "ivy" },
 		buffers		= { theme = "ivy", initial_mode = "insert" },
 		oldfiles	= { theme = "ivy", initial_mode = "insert" },
@@ -145,9 +146,9 @@ Perun.add {
 }
 
 -- local telescope = require "telescope"
-telescope.load_extension("perun")
+-- telescope.load_extension("perun")
 -- nnoremap("<A-x>", ":Telescope perun<cr>", "perun")
-nnoremap("<C-P>", ":Telescope perun<cr>", "perun")
+-- nnoremap("<C-P>", ":Telescope perun<cr>", "perun")
 
 telescope.load_extension("figlet")
 Perun.add { "  Figlet", "Telescope figlet" }

@@ -43,3 +43,10 @@ nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow<cr>')
 -- or, without the temp file:
 -- :map <leader>s :cgete system('rspec --require=support/formatters/vim_formatter.rb --format VimFormatter') \| cwindow
 
+Plugin {
+	-- "https://github.com/vim-ruby/vim-ruby",
+	"https://github.com/tpope/vim-rails",
+	"https://github.com/tpope/vim-bundler",
+	"https://github.com/tpope/vim-dispatch",
+}
+

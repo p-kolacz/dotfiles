@@ -1,3 +1,6 @@
+-- for jumper:
+-- lua require('nvim-tree.api').tree.find_file({buf="lua/telescope", open=true})
+
 Plugin "https://github.com/kyazdani42/nvim-tree.lua"
 
 -- Disable netrw
