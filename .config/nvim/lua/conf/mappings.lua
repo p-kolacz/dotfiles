@@ -1,20 +1,10 @@
 local _ = "" local i = "i" local n = "n" local v = "v" local c = "c" local x = "x" local G = "G"
 Mapper.map {
-	---------------------------------- Buffer ----------------------------------
-	n,	"<leader>w",   ":w<CR>",			               nil,
 	------------------------------- Command Mode -------------------------------
-	n,  "<leader><leader>", ":",                           "command mode",
-	c,  "<C-a>",       "<home>",                           "",
-	c,  "<A-f>",       "<S-right>",                        "",
-	c,  "<C-b>",       "<left>",                           "",
-	c,  "<A-b>",       "<S-left>",                         "",
 	----------------------------------- Diff -----------------------------------
 	G,  "<leader>d",   "+Diff",                            "",
 	n,  "<leader>dd",  ":diffthis<cr>",                    "diff this",
 	n,  "<leader>do",  ":diffoff!<cr>",                    "diff off",
-
-	------------------------------------ Git -----------------------------------
-	-- G,  "<leader>gc",  "+Commit", "",
 
 	----------------------------------- Help -----------------------------------
 	G,  "<leader>h",   "+Help",                            "",
@@ -22,8 +12,6 @@ Mapper.map {
 	v,  "gy",          Helper.search_this,                 "online search selection",
 	n,  "<leader>hn",  Helper.edit_ft_notes,               "filetype notes",
 
-	---------------------------------- Insert ----------------------------------
-	G,  "<leader>i",   "+Insert",                           "",
 	----------------------------------- Jump -----------------------------------
 	G,  "<leader>j",   "+Jump",                             "",
 	--------------------------------- Navigation -------------------------------
@@ -61,16 +49,6 @@ Mapper.map {
 	-- nnoremap("<c-t>", ":tabnew<cr>")
 	-- n,  "<c-tab>",  ":tabnext<cr>", "",
 	-- n,  "<c-s-tab>",  ":tabprevious<cr>", "",
-	G,  "<leader>t",   "+Tabs",             "",
-	n,  "<leader>tt",  ":tabnew<cr>",       "new tab",
-	n,  "<leader>tc",  ":tabclose<cr>",     "close tab",
-	n,  "<leader>1",   "1gt",               "tab 1",
-	n,  "<leader>2",   "2gt",               "tab 2",
-	n,  "<leader>3",   "3gt",               "tab 3",
-	n,  "<leader>4",   "4gt",               "tab 4",
-	n,  "<leader>5",   "5gt",               "tab 5",
-	------------------------------------ Vim -----------------------------------
-	G,  "<leader>v",  "+Vim", "",
 	---------------------------------- Windows ---------------------------------
 	n,  "<leader>q",  ":q<CR>", "quit",
 	n,  "<C-h>",  "<C-w>h", "left window",

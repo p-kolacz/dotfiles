@@ -167,7 +167,7 @@ nnoremap <f2> cW
 nnoremap <f3> :!$PAGER %c<cr>
 nnoremap <s-f4> :touch<space>
 nnoremap <f4> :edit<cr>
-nnoremap <f5> :copy &<cr>
+nnoremap <f5> :copy -skip &<cr>
 nnoremap <s-f5> :rlink<cr>
 nnoremap <c-f5> :copy!<cr>
 nnoremap <f6> :move &<cr>

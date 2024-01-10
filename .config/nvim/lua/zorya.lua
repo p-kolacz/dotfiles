@@ -133,4 +133,12 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	-- vim.notify("Setting colorscheme: "..scheme.." "..flavor)
 end
 
+function M.enable_highlight()
+	vim.api.nvim_create_autocmd("TextYankPost", { group = "zorya", pattern = "*", callback =
+		function()
+			vim.highlight.on_yank { higroup="IncSearch", timeout=500 }
+		end
+	})
+end
+
 return M

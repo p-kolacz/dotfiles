@@ -1,5 +1,6 @@
 -- Bootstrap {{{
-	local requirer = require "lib/bootstrap"
+
+	Require = require "lib/bootstrap"
 	Pluger = require "lib/plugozaur"
 	Plugin = Pluger.plugin
 	Icons  = require "lib/iconz"
@@ -8,7 +9,6 @@
 	Noremap = Mapper.add
 	Helper = require "lib/helpozor"
 	Laser  = require "lib/laserpro"
-	Yanka  = require "lib/yanka"
 
 	Plugin "https://github.com/folke/which-key.nvim"
 	WK = require("which-key")
@@ -24,20 +24,6 @@
 	let.maplocalleader = "\\"
 	augroup("vimrc", { clear = true })
 
--- }}}
--- Optionz {{{
-	vim.cmd.language("messages en_US.utf8")
-	set.autowrite      = true
-	set.fileformats    = "unix"
-	set.mouse          = "a"
-	set.shiftwidth     = 4
-	set.tabstop        = 4
-	set.ignorecase     = true
-	set.smartcase      = true
-	set.hlsearch       = false
--- }}}
--- AutoCommandz {{{
-
 	autocmd("BufWinEnter", {
 		group = "vimrc",
 		pattern = { "*/.config/nvim/init.lua", "*/.config/nvim/lua/conf/appearance.lua" },
@@ -45,24 +31,30 @@
 	})
 
 	vim.cmd("command! -nargs=1 Rsync :!rsync -avz --filter=':- .gitignore' ./ <args>")
+
+	Plugin "https://github.com/nvim-lua/plenary.nvim"
+
 -- }}}
 -- Appearance {{{
-	set.listchars      = Icons.listchars
-	set.fillchars      = Icons.fillchars
-	set.cursorline     = true
-	set.wrap           = false
-	set.number         = true
-	set.scrolloff      = 5
-	set.sidescrolloff  = 5
-	set.showmatch      = true
-	set.signcolumn     = "yes"
-	set.splitbelow     = true
-	set.splitright     = true
-	set.termguicolors  = true
+
+	vim.cmd.language("messages en_US.utf8")
+	Set {
+		listchars     = Icons.listchars,
+		fillchars     = Icons.fillchars,
+		cursorline    = true,
+		wrap          = false,
+		number        = true,
+		scrolloff     = 5,
+		sidescrolloff = 5,
+		showmatch     = true,
+		signcolumn    = "yes",
+		splitbelow    = true,
+		splitright    = true,
+		termguicolors = true,
+	}
 
 	Icons.setup_devicons()
 	Icons.setup_diagnostics()
-	Yanka.enable_highlight()
 
 	Plugin "https://github.com/RRethy/vim-illuminate"
 	require "illuminate".configure {
@@ -73,7 +65,10 @@
 	require"scrollbar".setup { handlers = { cursor = false } }
 
 	Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
-	require("ibl").setup()
+	require("ibl").setup {
+		indent = { char = " " },
+		scope =  { char = "▎" },
+	}
 
 	Plugin "https://github.com/stevearc/dressing.nvim"
 
@@ -84,129 +79,60 @@
 		restore_colorscheme = true,
 		colorschemes = require "conf/themez",
 	}
+	Zorya.enable_highlight()
 
 	-- Treesitter uses diffrent groups
 	-- Zorya.highlight("markdownH1", "gui=bold,underline")
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
 	Perun.add {
-		{ "  Colorschemes", Zorya.select_colorscheme },
-		{ "  Toggle background", Zorya.toggle_background },
+		{ "  Colorschemes",       Zorya.select_colorscheme },
+		{ "  Toggle background",  Zorya.toggle_background  },
 	}
 -- }}}
 -- Code {{{
-	-- Comments & Surround
-	mapgroup("<leader>c", "+Code")
+
+	Require {
+		"tool/completion",
+		"tool/lsp",
+		"tool/treesitter",
+	}
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
 		"https://github.com/tpope/vim-surround",
 		"https://github.com/tpope/vim-repeat",
 	}
+	Mapgroup("<leader>c", "+Code")
 	Noremap {
 		{ {"n","v"},  "<BS>",   ":Commentary<cr>" },
-		{ "n", "<C-/>", ":Commentary<cr><down>" }, -- C-_ means C-/ and C-? means backspace but <BS> also works
+		{ "n", "<C-/>", ":Commentary<cr><down>" },
 	}
 	nmap("<leader>cc", "yypkgccj", 'duplicomment')
-
-	-- Completion
-	Plugin {
-		"https://github.com/hrsh7th/nvim-cmp",
-		'https://github.com/hrsh7th/cmp-nvim-lsp',
-		'https://github.com/hrsh7th/cmp-buffer',
-		'https://github.com/hrsh7th/cmp-path',
-		'https://github.com/hrsh7th/cmp-cmdline',
-		'https://github.com/hrsh7th/cmp-calc',
-		'https://github.com/hrsh7th/cmp-emoji',
-		'https://github.com/quangnguyen30192/cmp-nvim-ultisnips',
-	}
-
-	set.completeopt = "menu,menuone,noselect"
-	set.pumheight = 10
-
-	local cmp = require'cmp'
-	local fields = {
-		cmp.ItemField.Kind,
-		cmp.ItemField.Abbr,
-		cmp.ItemField.Menu
-	}
-
-	local visible_buffers = {
-		name = "buffer",
-		keyword_length = 2,
-		get_bufnrs = function()
-			local bufs = {}
-			for _, win in ipairs(vim.api.nvim_list_wins()) do
-				bufs[vim.api.nvim_win_get_buf(win)] = true
-			end
-			return vim.tbl_keys(bufs)
-		end
-	}
-
-	cmp.setup {
-		experimental = { ghost_text = true, },
-
-		mapping = cmp.mapping.preset.insert({
-		  ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		  ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-		  ['<C-l>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		  ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		  ['<C-e>'] = cmp.mapping({ c = cmp.mapping.close(), }),
-		  ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		}),
-
-		sources = cmp.config.sources({
-			{ name = 'nvim_lsp' },
-			{ name = 'ultisnips' },
-			visible_buffers,
-			{ name = 'path' },
-			{ name = 'emoji' },
-			{ name = 'calc' },
-		}),
-		formatting = {
-			fields = fields,
-			format = function(entry, vim_item)
-				vim_item.kind = Icons.kinds[vim_item.kind]
-				vim_item.menu = Icons.sources[entry.source.name]
-				return vim_item
-			end
-		},
-		snippet = { -- REQUIRED - you must specify a snippet engine
-			expand = function(args)
-				vim.fn["UltiSnips#Anon"](args.body)
-			end,
-		},
-	}
-
-	-- Set configuration for specific filetype.
-	cmp.setup.filetype('gitcommit', {
-		sources = cmp.config.sources({
-			{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-		}, {
-			{ name = 'buffer' },
-		})
-	})
-
-	-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline({ '/', '?' }, {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = 'buffer' }
-		},
-	})
-
-	if Laser then
-		Laser.defaults.capabilities = require('cmp_nvim_lsp').default_capabilities()
-	end
-
--- }}}
--- Diagnostics {{{
 	Perun.add {
 		{ "  Show diagnostics",            vim.diagnostic.show },
 		{ "  Hide diagnostics",            vim.diagnostic.hide },
 	}
-	-- }}}
+
+-- }}}
+-- Command Mode {{{
+
+	Noremap {
+		{ "n",  "<leader><leader>",  ":",         "command mode", },
+		{ "c",  "<C-a>",             "<home>",                    },
+		{ "c",  "<A-f>",             "<S-right>",                 },
+		{ "c",  "<C-b>",             "<left>",                    },
+		{ "c",  "<A-b>",             "<S-left>",                  },
+	}
+
+--}}}
 -- Edit {{{
+
+	Set {
+		shiftwidth = 4,
+		tabstop    = 4,
+	}
 	mapgroup("<leader>e", "+Edit")
+	mapgroup("<leader>i", "+Insert")
 	Noremap {
 		{ "i",  "<C-a>",  "<home>",                                  },
 		{ "i",  "<C-b>",  "<left>",                                  },
@@ -226,6 +152,7 @@
 		-- change cword and press . to repeat change on next, n to goto next
 		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat" },
 		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "" },
+		{ "n",	"<leader>w",   ":w<CR>",			               "write", }
 	}
 	Perun.add {
 		{ "  Edit: Capitalize buffer",          [[%s/\<./\u&/g]]    },
@@ -234,12 +161,10 @@
 		{ "  Edit: Reverse all lines",          "g/^/m0"            },
 		{ "  Edit: Unicode chars from \\uXXXX", [[%s/\\\(\x\+\)/\=nr2char('0x'.submatch(1),1)/g]] },
 	}
--- }}}
--- File {{{
 
+	set.autowrite      = true
+	set.mouse          = "a"
 	mapgroup("<leader>f", "+File")
-	Plugin "https://github.com/goolord/alpha-nvim"
-	require'alpha'.setup(require'alpha.themes.startify'.config)
 	Noremap {
 		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
 		{ "n",  "<leader>fn",  ":new<cr>",                         "new file" },
@@ -268,22 +193,51 @@
 	-- }}}
 -- Git {{{
 
-	local gitgud = require "gitgud"
+	Plugin  "https://github.com/lewis6991/gitsigns.nvim"
+	local gg = require "gitgud"
+
 	mapgroup("<leader>g", "+Git")
-	Noremap {
-		{ "n",  "<leader>gg",  gitgud.lazygit },
+	Noremap { "n",  "<leader>gg",  gg.lazygit, "LazyGit" }
+
+
+	local gs = require "gitsigns"
+	gs.setup{
+		trouble = true,
+		on_attach = function()
+
+			nnoremap_buffer(']c', function()
+				gg.gitsigns_next_hunk(gs)
+			end, "next hunk", {expr=true})
+
+			nnoremap_buffer('[c', function()
+				gg.gitsigns_prev_hunk(gs)
+			end, "prev hunk",  {expr=true})
+
+			nnoremap_buffer("<leader>gb", gs.blame_line, "blame line")
+		end,
 	}
+
 	Perun.add {
-		{ "  Git: Commit with current date", gitgud.commit_with_date },
-		{ "  Git: push",                     gitgud.push },
+		{ "  Git: blame line",                gs.blame_line                },
+		{ "  Git: browse",                    gg.browse                    },
+		{ "  Git: commit with current date",  gg.commit_with_date          },
+		{ "  Git: commits",                   gg.commits                   },
+		{ "  Git: file commits",              gg.file_commits              },
+		{ "  Git: file versions",             gg.file_versions             },
+		{ "  Git: grep",                      gg.grep                      },
+		{ "  Git: preview hunk",              gs.preview_hunk              },
+		{ "  Git: push",                      gg.push                      },
+		{ "  Git: reset buffer",              gs.reset_buffer              },
+		{ "  Git: search 4 differences",      gg.search4differences        },
+		{ "  Git: set loclist",               gs.setloclist                },
+		{ "  Git: set quickfix",              gs.setqflist                 },
+		{ "  Git: stage buffer",              gs.stage_buffer              },
+		{ "  Git: toggle deleted",            gs.toggle_deleted            },
+		{ "  Git: toggle line blame",         gs.toggle_current_line_blame },
 	}
 
 -- }}}
 -- Help {{{
--- }}}
--- Insert {{{
--- }}}
--- Jump {{{
 -- }}}
 -- Navigation {{{
 -- }}}
@@ -296,7 +250,17 @@
 	}
 
 -- }}}
+-- Search {{{
+
+	Set {
+		ignorecase = true,
+		smartcase  = true,
+		hlsearch   = false,
+	}
+
+-- }}}
 -- Snippets {{{
+
 	Plugin {
 		"https://github.com/adriaanzon/vim-emmet-ultisnips",
 		"https://github.com/SirVer/ultisnips",
@@ -307,88 +271,41 @@
 		UltiSnipsJumpBackwardTrigger = '<s-tab>',
 	}
 	mapgroup("<leader>u",  "+Snippets")
-	nnoremap("<leader>uf", ":UltiSnipsEdit<CR>", "edit filetype snippets")
-	nnoremap("<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets")
-	Perun.add {
-		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit" },
-		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all" },
+	Noremap {
+		{ "n", "<leader>uf", ":UltiSnipsEdit<CR>",     "edit filetype snippets" },
+		{ "n", "<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets"      },
 	}
+	Perun.add {
+		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit"          },
+		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all"      },
+	}
+
 	-- }}}
 -- Tabs {{{
--- }}}
--- Treesitter {{{
-	Plugin {
-		"https://github.com/nvim-treesitter/nvim-treesitter",
-		"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-		"https://github.com/nvim-treesitter/nvim-treesitter-context",
-	}
 
-	require"nvim-treesitter.configs".setup {
-		ensure_installed = {
-			"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
-			"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
-			"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "latex", "lua", "make",
-			"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
-			"sql", "toml", "typescript", "vhs", "vim", "vimdoc", "xml", "yaml",
-		},
-		highlight = {
-			enable = true,
-		},
-		textobjects = {
-			select = {
-				enable = true,
-				lookahead = true,	-- Automatically jump forward to textobj, similar to targets.vim
-				keymaps = {
-					["ac"] = "@class.outer",
-					["ic"] = "@class.inner",
-					["af"] = "@function.outer",
-					["if"] = "@function.inner",
-					["ao"] = "@block.outer",
-					["io"] = "@block.inner",
-					["aa"] = "@parameter.outer",
-					["ia"] = "@parameter.inner",
-				}
-			},
-			move = {
-				enable = true,
-				set_jumps = true,
-				goto_next_start = {
-					[']f'] = '@function.outer',
-				},
-				goto_previous_start = {
-					['[f'] = '@function.outer',
-				},
-			},
-			swap = {
-				enable = true,
-				swap_next = {["<a-l>"] = "@parameter.inner"},
-				swap_previous = {["<a-h>"] = "@parameter.inner"}
-			},
-		},
-
-		incremental_selection = {
-			enable = true,
-			keymaps = {
-				init_selection = "vv", -- set to `false` to disable one of the mappings
-				scope_incremental = "<cr>",
-				node_incremental = "<tab>",
-				node_decremental = "<s-tab>",
-			},
-		},
-	}
-
-	require"treesitter-context".setup()
-
-	Perun.add {
-		{ "  TS: Enable highlight",  "TSBufEnable highlight"  },
-		{ "  TS: Disable highlight", "TSBufDisable highlight" },
-		{ "  TS: Context toggle",    "TSContextToggle"        },
-	}
---}}}
--- View {{{
+	mapgroup(
+		"<leader>t", "+Tabs"
+	)
 	Noremap {
-		{ "n", "<TAB>", "za" }
+		{ "n",  "<leader>tt",  ":tabnew<cr>",    "new tab"   },
+		{ "n",  "<leader>tc",  ":tabclose<cr>",  "close tab" },
+		{ "n",  "<leader>1",   "1gt",            "tab 1"     },
+		{ "n",  "<leader>2",   "2gt",            "tab 2"     },
+		{ "n",  "<leader>3",   "3gt",            "tab 3"     },
+		{ "n",  "<leader>4",   "4gt",            "tab 4"     },
+		{ "n",  "<leader>5",   "5gt",            "tab 5"     },
 	}
+	Perun.add {
+		{ "  New file",  "new"    },
+		{ "  New tab",   "tabnew" },
+	}
+
+
+-- }}}
+-- View {{{
+	-- Noremap {
+		-- { "n", "<TAB>", "za" }
+	-- }
 	set.foldlevelstart = 99
 	set.foldmethod     = "expr"
 	set.foldexpr       = "nvim_treesitter#foldexpr()"
@@ -404,8 +321,29 @@
 	-- end
 
 -- }}}
+-- Vim {{{
+
+	Mapgroup("<leader>v", "+Vim")
+
+	Perun.add {
+
+		-- Plugins ----------------------------------------------------------------
+		{ "  Update plugins",              Pluger.update },
+		{ "  Update plugins (debug)",      Pluger.debug_update },
+
+
+		-- Windows ----------------------------------------------------------------
+		{ "  Open quickfix",               "copen" },
+		{ "  Close quickfix",              "cclose" },
+	}
+
+-- }}}
 -- Widgets {{{
 ---[[
+
+	Plugin "https://github.com/goolord/alpha-nvim"
+	require'alpha'.setup(require'alpha.themes.startify'.config)
+
 	Plugin "https://github.com/rcarriga/nvim-notify"
 
 	vim.notify = require("notify")
@@ -413,9 +351,8 @@
 
 	Perun.add { "  Notification history", "Telescope notify" }
 -- }}}]]
--- Windows {{{
--- }}}
 -- Yank {{{
+	Yanka  = require "lib/yanka"
 	Perun.add {
 		{ "  Yank filename",               Yanka.filename },
 		{ "  Yank relative path",          Yanka.relative_path },
@@ -430,29 +367,28 @@
 
 
 nnoremap("<C-P>", Perun.run)
-requirer {
+Require {
 
 	-- Configuration -----------------------
 	"conf/mappings",
 	"conf/lualine",
 
 	-- Tools -------------------------------
-	"tool/perun",
-	"tool/lsp",
 	"tool/trouble",
 	"tool/telescope",
 	"tool/nvim-tree",
-	"tool/oil",
-	"tool/gitsigns",
+	-- "tool/oil",
 	"tool/cheatash",
 	"tool/colorizer",
 	"tool/figlet",
-	"tool/rest",
+	-- "tool/rest",
+
+	-- leave this in external files
+	-- "tool/completion",
 }
 
 
 Jumper = require "lib/jumper"
--- require "lib/animate".setup()
 
 -- Load project specific configuration
 if vim.fn.filereadable("project.lua") > 0 then

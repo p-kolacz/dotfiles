@@ -14,6 +14,7 @@ Helper.map {
 	DOCSEARCH  = "https://devdocs.io/#q=ruby%20",
 }
 
+set.hlsearch = false
 setlocal.foldcolumn = "0"
 
 Laser.start {

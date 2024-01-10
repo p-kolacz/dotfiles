@@ -30,7 +30,7 @@ restorewp() {
 op=$1 && shift
 
 case "$op" in
-	"set") setwp "$2" ;;
+	"set") setwp "$@" ;;
 	"restore") restorewp ;;
 	"random") random "$@" ;;
 	*) browse

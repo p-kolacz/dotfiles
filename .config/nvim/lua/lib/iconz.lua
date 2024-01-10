@@ -18,8 +18,8 @@ local M = {
 	},
 	whichkey = {
 		breadcrumb = "»",
-		separator = "➜",
-		-- separator = "→",
+		-- separator = "➜",
+		separator = "→",
 		group = "+",
 	},
 	section_separators= { '',

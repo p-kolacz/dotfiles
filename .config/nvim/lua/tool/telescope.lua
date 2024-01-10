@@ -121,10 +121,10 @@ Perun.add {
 	{ "  Diagnostics",            builtin.diagnostics  },
 	{ "  Env variables",          "Telescope env"      },
 
-	{ "  Git branches",        builtin.git_branches },
-	{ "  Git buffer commits",  builtin.git_bcommits },
-	{ "  Git commits",         builtin.git_commits  },
-	{ "  Git status",          builtin.git_status   },
+	{ "  Git: telescope branches",        builtin.git_branches },
+	{ "  Git: telescope buffer commits",  builtin.git_bcommits },
+	{ "  Git: telescope commits",         builtin.git_commits  },
+	{ "  Git: telescope status",          builtin.git_status   },
 
 	{ "  Lua reloader",         builtin.reloader     },
 

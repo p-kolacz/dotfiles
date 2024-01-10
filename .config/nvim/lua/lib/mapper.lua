@@ -10,6 +10,7 @@ function _G.mapgroup(key, desc)
 		WK.register({ [key] = { name = desc }})
 	end
 end
+Mapgroup = mapgroup
 
 function _G.map(lhs, rhs, desc, opts)              set("",  lhs, rhs, desc, { remap = true }, opts) end
 function _G.nmap(lhs, rhs, desc, opts)             set("n", lhs, rhs, desc, { remap = true }, opts) end
