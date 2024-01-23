@@ -1,12 +1,13 @@
-nnoremap_buffer("<localleader>m", ":Emodel<cr>", "model")
-nnoremap_buffer("<localleader>v", ":Eview<cr>", "view")
-nnoremap_buffer("<localleader>c", ":Econtroller<cr>", "controller")
-nnoremap_buffer("<localleader>r", ":e config/routes.rb<cr>", "routes")
-
 mapgroup("<localleader>s", "+Server")
-nnoremap_buffer("<localleader>ss", ":Server<cr>", "start")
-nnoremap_buffer("<localleader>sr", ":Rails restart<cr>", "restart")
-nnoremap_buffer("<localleader>sc", ":Console<cr>")
+BufferNoremap {
+	{ "n", "<localleader>ss", ":Server<cr>", "start" },
+	{ "n", "<localleader>sr", ":Rails restart<cr>", "restart" },
+	{ "n", "<localleader>sc", ":Console<cr>" },
+	{ "n", "<localleader>m", ":Emodel<cr>", "model" },
+	{ "n", "<localleader>v", ":Eview<cr>", "view" },
+	{ "n", "<localleader>c", ":Econtroller<cr>", "controller" },
+	{ "n", "<localleader>r", ":e config/routes.rb<cr>", "routes" },
+}
 
 Helper.map {
 	API        = "https://api.rubyonrails.org/",

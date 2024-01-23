@@ -1,3 +1,10 @@
+-- .__   __.  _______   ______   ____    ____  __  .___  ___. 
+-- |  \ |  | |   ____| /  __  \  \   \  /   / |  | |   \/   | 
+-- |   \|  | |  |__   |  |  |  |  \   \/   /  |  | |  \  /  | 
+-- |  . `  | |   __|  |  |  |  |   \      /   |  | |  |\/|  | 
+-- |  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  | 
+-- |__| \__| |_______| \______/      \__/     |__| |__|  |__| 
+
 -- Bootstrap {{{
 
 	Require = require "lib/bootstrap"
@@ -6,9 +13,7 @@
 	Icons  = require "lib/iconz"
 	Perun = require "perun"
 	Mapper = require "lib/mapper"
-	Noremap = Mapper.add
 	Helper = require "lib/helpozor"
-	Laser  = require "lib/laserpro"
 
 	Plugin "https://github.com/folke/which-key.nvim"
 	WK = require("which-key")
@@ -38,6 +43,10 @@
 -- Appearance {{{
 
 	vim.cmd.language("messages en_US.utf8")
+	Require {
+		"conf/lualine",
+		"tool/colorizer",
+	}
 	Set {
 		listchars     = Icons.listchars,
 		fillchars     = Icons.fillchars,
@@ -85,13 +94,22 @@
 	-- Zorya.highlight("markdownH1", "gui=bold,underline")
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
+	Noremap {
+		{ "G",  "<leader>o",   "+Options"                                             },
+		{ "n",  "<leader>ol",  ":setlocal list!<CR>",       "toggle invisible chars"  },
+		{ "n",  "<leader>on",  ":set number!<CR>",          "toggle line numbers"     },
+		{ "n",  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers" },
+		{ "n",  "<leader>ow",  ":setlocal wrap!<CR>",       "toggle wrap"             },
+	}
 	Perun.add {
 		{ "  Colorschemes",       Zorya.select_colorscheme },
 		{ "  Toggle background",  Zorya.toggle_background  },
 	}
+
 -- }}}
 -- Code {{{
 
+	Laser  = require "lib/laserpro"
 	Require {
 		"tool/completion",
 		"tool/lsp",
@@ -102,21 +120,27 @@
 		"https://github.com/tpope/vim-surround",
 		"https://github.com/tpope/vim-repeat",
 	}
-	Mapgroup("<leader>c", "+Code")
-	Noremap {
-		{ {"n","v"},  "<BS>",   ":Commentary<cr>" },
-		{ "n", "<C-/>", ":Commentary<cr><down>" },
-	}
 	nmap("<leader>cc", "yypkgccj", 'duplicomment')
+	Noremap {
+		{ "G",        "<leader>c",  "+Code"                                     },
+		{ {"n","v"},  "<BS>",       ":Commentary<cr>"                           },
+		{ "n",        "<C-/>",      ":Commentary<cr><down>"                     },
+		{ "n",        "[d",         vim.diagnostic.goto_prev, "prev diagnostic" },
+		{ "n",        "]d",         vim.diagnostic.goto_next, "next diagnostic" },
+	}
+	local function lspMappings()
+	end
 	Perun.add {
-		{ "  Show diagnostics",            vim.diagnostic.show },
-		{ "  Hide diagnostics",            vim.diagnostic.hide },
+		{ "  Diagnostics: Show",            vim.diagnostic.show       },
+		{ "  Diagnostics: Hide",            vim.diagnostic.hide       },
+		{ "  Diagnostics: Set Loclist",     vim.diagnostic.setloclist },
 	}
 
 -- }}}
--- Command Mode {{{
+-- Commands & Command Mode {{{
 
 	Noremap {
+		{ "n",  "<C-P>",             Perun.run                    },
 		{ "n",  "<leader><leader>",  ":",         "command mode", },
 		{ "c",  "<C-a>",             "<home>",                    },
 		{ "c",  "<A-f>",             "<S-right>",                 },
@@ -127,12 +151,15 @@
 --}}}
 -- Edit {{{
 
+	Require {
+		"tool/figlet"
+	}
 	Set {
 		shiftwidth = 4,
 		tabstop    = 4,
+		autowrite  = true,
+		mouse      = "a",
 	}
-	mapgroup("<leader>e", "+Edit")
-	mapgroup("<leader>i", "+Insert")
 	Noremap {
 		{ "i",  "<C-a>",  "<home>",                                  },
 		{ "i",  "<C-b>",  "<left>",                                  },
@@ -145,14 +172,25 @@
 		{ "n",  "<A-k>",  ":m .-2<cr>==",     "move line up"         },
 		{ "v",  "<A-j>",  ":m '>+1<cr>gv=gv", "move selection down"  },
 		{ "v",  "<A-k>",  ":m '<-2<cr>gv=gv", "move selection up"    },
-		{ "n",  "<leader>es",  ":%s/",                             "substitute" },
-		{ "v",  "<leader>es",  ":s/",                              "substitute" },
-		{ "n",  "<leader>er",  ":g/^/m0<CR>",                      "reverse lines" },
-		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",                   "reverse lines" },
+		{ "G",  "<leader>e",   "+Edit"                               },
+		{ "n",  "<leader>es",  ":%s/",            "substitute"       },
+		{ "v",  "<leader>es",  ":s/",             "substitute"       },
+		{ "n",  "<leader>er",  ":g/^/m0<CR>",     "reverse lines"    },
+		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"    },
 		-- change cword and press . to repeat change on next, n to goto next
 		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat" },
 		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "" },
-		{ "n",	"<leader>w",   ":w<CR>",			               "write", }
+		{ "n",	"<leader>w",   ":w<CR>",			               "write", },
+		{ "G",  "<leader>f", "+File" },
+		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
+		{ "n",  "<leader>fn",  ":new<cr>",                         "new file" },
+		{ "n",  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x" },
+	}
+	Map {
+		{ "n",  '<leader>"',   'ysiW"',  '"cWord"'                 },
+		{ "n",  "<leader>'",   "ysiW'",  "'cWord'"                 },
+		{ "n",  "<leader>e'",  [[cs"']], "change surrounding to '" },
+		{ "n",  '<leader>e"',  [[cs'"]], 'change surrounding to "' },
 	}
 	Perun.add {
 		{ "  Edit: Capitalize buffer",          [[%s/\<./\u&/g]]    },
@@ -162,21 +200,11 @@
 		{ "  Edit: Unicode chars from \\uXXXX", [[%s/\\\(\x\+\)/\=nr2char('0x'.submatch(1),1)/g]] },
 	}
 
-	set.autowrite      = true
-	set.mouse          = "a"
-	mapgroup("<leader>f", "+File")
-	Noremap {
-		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
-		{ "n",  "<leader>fn",  ":new<cr>",                         "new file" },
-		{ "n",  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x" },
-	}
-
 	autocmd("FocusLost", {
 		group = "vimrc",
 		pattern = "*",
 		command = "wall",
 	})
-
 	-- Remeber foldings and stuff...
 	set.viewoptions = "cursor,folds"
 	autocmd("BufWinLeave", {
@@ -238,8 +266,44 @@
 
 -- }}}
 -- Help {{{
+
+	require 'lib/cheatash'.setup()
+
+	Noremap {
+		{ "G", "<leader>h",    "+Help",                                         },
+		{ "n", "gy",           Helper.search_this,    "online search cword"     },
+		{ "v", "gy",           Helper.search_this,    "online search selection" },
+		{ "n", "<leader>hn",   Helper.edit_ft_notes,  "filetype notes"          },
+
+		{ "G", "<leader>hC",   "+Cheat.sh"                                      },
+		{ "n", "<leader>hCc",  ":CheatshCword<cr>",   "cheat.sh cword"          },
+		{ "n", "<leader>hCq",  ":Cheatsh ",           "cheat.sh query"          },
+	}
+
 -- }}}
 -- Navigation {{{
+
+	Require {
+		"tool/trouble",
+		"tool/telescope",
+		"tool/nvim-tree",
+	}
+	Jumper = require "lib/jumper" -- after nvim-tree
+	Noremap {
+		{ "i",  "jj",          "<ESC>",                                                                },
+		{ "i",  "kk",          "<ESC>",                                                                },
+		{ "i",  "jk",          "<ESC>",                                                                },
+		{ {"n", "v"},  "H",           "^",                                                                    },
+		{ {"n", "v"},  "L",           "$",                                                                    },
+		{ "n",  "[q",          ":cprevious<cr>",                   "next quickfix entry", },
+		{ "n",  "]q",          ":cnext<cr>",                       "previous quickfix entry", },
+		{ "n",  "[l",          ":lprevious<cr>",                   "next loclist entry", },
+		{ "n",  "]l",          ":lnext<cr>",                       "previous loclist entry", },
+		{ "n",  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "", },
+		{ "n",  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "", },
+		{ "G",  "<leader>j",  "+Jump" },
+	}
+
 -- }}}
 -- Print {{{
 
@@ -256,6 +320,10 @@
 		ignorecase = true,
 		smartcase  = true,
 		hlsearch   = false,
+	}
+	Noremap {
+		{ "v", "/", "<ESC>/\\%V" },
+		{ "n",  "<leader>oh",  ":set hlsearch!<CR>",        "toggle higlight search"  },
 	}
 
 -- }}}
@@ -287,13 +355,14 @@
 		"<leader>t", "+Tabs"
 	)
 	Noremap {
-		{ "n",  "<leader>tt",  ":tabnew<cr>",    "new tab"   },
-		{ "n",  "<leader>tc",  ":tabclose<cr>",  "close tab" },
-		{ "n",  "<leader>1",   "1gt",            "tab 1"     },
-		{ "n",  "<leader>2",   "2gt",            "tab 2"     },
-		{ "n",  "<leader>3",   "3gt",            "tab 3"     },
-		{ "n",  "<leader>4",   "4gt",            "tab 4"     },
-		{ "n",  "<leader>5",   "5gt",            "tab 5"     },
+		{ "n", "<c-t>",       ":tabnew<cr>"                 },
+		{ "n", "<leader>tt",  ":tabnew<cr>",    "new tab"   },
+		{ "n", "<leader>tq",  ":tabclose<cr>",  "close tab" },
+		{ "n", "<leader>1",   "1gt",            "tab 1"     },
+		{ "n", "<leader>2",   "2gt",            "tab 2"     },
+		{ "n", "<leader>3",   "3gt",            "tab 3"     },
+		{ "n", "<leader>4",   "4gt",            "tab 4"     },
+		{ "n", "<leader>5",   "5gt",            "tab 5"     },
 	}
 	Perun.add {
 		{ "  New file",  "new"    },
@@ -302,6 +371,30 @@
 
 
 -- }}}
+-- Tools & Widgets {{{
+---[[
+
+	Require "tool/rest"
+	Plugin "https://github.com/goolord/alpha-nvim"
+	require'alpha'.setup(require'alpha.themes.startify'.config)
+
+	Plugin "https://github.com/rcarriga/nvim-notify"
+
+	vim.notify = require("notify")
+	vim.notify.setup { top_down = false }
+
+	Noremap {
+		{ "G",  "<leader>s",   "+Spell",                                              },
+		{ "n",  "<leader>ss",  ":setlocal spell!<CR>",             "spell check", },
+		{ "n",  "<leader>sc",  ":setlocal complete+=kspell<CR>",   "spell complete", },
+		{ "n",  "<leader>sn",  ":setlocal complete-=kspell<CR>",   "spell no complete", },
+		{ "n",  "<leader>se",  ":setlocal spelllang=en_us<CR>",    "lang en_us", },
+		{ "n",  "<leader>sp",  ":setlocal spelllang=pl<CR>",       "lang pl", },
+	}
+
+	Perun.add { "  Notification history", "Telescope notify" }
+
+-- }}}]]
 -- View {{{
 	-- Noremap {
 		-- { "n", "<TAB>", "za" }
@@ -319,6 +412,22 @@
 	-- 	local indent_spaces = string.rep(" ", indent)
 	-- 	return string.format("%s▶ %s...", indent_spaces, line)
 	-- end
+
+	Noremap {
+		{ "G",  "<leader>d",   "+Diff",                      },
+		{ "n",  "<leader>dd",  ":diffthis<cr>",  "diff this" },
+		{ "n",  "<leader>do",  ":diffoff!<cr>",  "diff off"  },
+		---------------------------------- Windows ---------------------------------
+		{ "n",  "<leader>q",  ":q<CR>", "quit", },
+		{ "n",  "<C-h>",  "<C-w>h", "left window", },
+		{ "n",  "<C-j>",  "<C-w>j", "bottom window", },
+		{ "n",  "<C-k>",  "<C-w>k", "up window", },
+		{ "n",  "<C-l>",  "<C-w>l", "right window", },
+		{ "n",  "<C-A-h>",  "<C-w>h<C-w>|", "left window", },
+		{ "n",  "<C-A-j>",  "<C-w>j<C-w>_", "bottom window", },
+		{ "n",  "<C-A-k>",  "<C-w>k<C-w>_", "up window", },
+		{ "n",  "<C-A-l>",  "<C-w>l<C-w>|", "right window", },
+	}
 
 -- }}}
 -- Vim {{{
@@ -338,20 +447,11 @@
 	}
 
 -- }}}
--- Widgets {{{
----[[
-
-	Plugin "https://github.com/goolord/alpha-nvim"
-	require'alpha'.setup(require'alpha.themes.startify'.config)
-
-	Plugin "https://github.com/rcarriga/nvim-notify"
-
-	vim.notify = require("notify")
-	vim.notify.setup { top_down = false }
-
-	Perun.add { "  Notification history", "Telescope notify" }
--- }}}]]
 -- Yank {{{
+
+	Noremap { "v",  "<C-c>",       '"*y :let @+=@*<CR>' }
+	Map { "",   "<C-v>",       '"+P' }
+
 	Yanka  = require "lib/yanka"
 	Perun.add {
 		{ "  Yank filename",               Yanka.filename },
@@ -363,37 +463,15 @@
 		{ "  Yank set clipboard",          Yanka.set_clipboard },
 		{ "  Yank unset clipboard",        Yanka.unset_clipboard },
 	}
+
 -- }}}
-
-
-nnoremap("<C-P>", Perun.run)
-Require {
-
-	-- Configuration -----------------------
-	"conf/mappings",
-	"conf/lualine",
-
-	-- Tools -------------------------------
-	"tool/trouble",
-	"tool/telescope",
-	"tool/nvim-tree",
-	-- "tool/oil",
-	"tool/cheatash",
-	"tool/colorizer",
-	"tool/figlet",
-	-- "tool/rest",
-
-	-- leave this in external files
-	-- "tool/completion",
-}
-
-
-Jumper = require "lib/jumper"
+-- Project conf {{{
 
 -- Load project specific configuration
 if vim.fn.filereadable("project.lua") > 0 then
 	require "project"
 end
 
--- print("init.lua end")
--- Weles Dazhbog Dola Zemlya Zvezda Devana Morana
+-- }}}
+
+-- vim:foldmethod=marker

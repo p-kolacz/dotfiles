@@ -1,5 +1,9 @@
 local M = { defaults = {} }
 
+function M.logs()
+	vim.cmd("tabnew "..vim.lsp.get_log_path())
+end
+
 function M.start(config)
 	for k,v in pairs(M.defaults) do
 		config[k] = config[k] or v

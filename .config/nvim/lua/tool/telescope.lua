@@ -90,6 +90,7 @@ nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 -- nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
 
 --Symbols
+mapgroup("<leader>i", "+Insert")
 nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emoji'}   }<cr>", 'emoji')
 nnoremap('<leader>ik', ":lua require'telescope.builtin'.symbols{ sources = {'kaomoji'} }<cr>", 'kaomoji')
 nnoremap('<leader>im', ":lua require'telescope.builtin'.symbols{ sources = {'math'}    }<cr>", 'math')

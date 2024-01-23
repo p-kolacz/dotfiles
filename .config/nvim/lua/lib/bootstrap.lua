@@ -31,6 +31,7 @@ function Set(table)
 end
 
 return function(t)
+	t = type(t) == "table" and t or {t}
 	for _,v in ipairs(t) do
 		require(v)
 	end
