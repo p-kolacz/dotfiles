@@ -90,6 +90,7 @@ nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 -- nnoremap('<leader>vtt', ':Telescope treesitter<cr>', 'treesitter')
 
 --Symbols
+mapgroup("<leader>i", "+Insert")
 nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emoji'}   }<cr>", 'emoji')
 nnoremap('<leader>ik', ":lua require'telescope.builtin'.symbols{ sources = {'kaomoji'} }<cr>", 'kaomoji')
 nnoremap('<leader>im', ":lua require'telescope.builtin'.symbols{ sources = {'math'}    }<cr>", 'math')
@@ -121,10 +122,10 @@ Perun.add {
 	{ "  Diagnostics",            builtin.diagnostics  },
 	{ "  Env variables",          "Telescope env"      },
 
-	{ "  Git branches",        builtin.git_branches },
-	{ "  Git buffer commits",  builtin.git_bcommits },
-	{ "  Git commits",         builtin.git_commits  },
-	{ "  Git status",          builtin.git_status   },
+	{ "  Git: telescope branches",        builtin.git_branches },
+	{ "  Git: telescope buffer commits",  builtin.git_bcommits },
+	{ "  Git: telescope commits",         builtin.git_commits  },
+	{ "  Git: telescope status",          builtin.git_status   },
 
 	{ "  Lua reloader",         builtin.reloader     },
 

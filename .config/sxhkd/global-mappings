@@ -21,8 +21,11 @@ super + Escape
 # Pause
 	# lock-workstation
 
-super + {F1,F2,F3,F4,F10}
-	{strselecta icons,strselecta emoji,strselecta entities,strselecta boxes,mnter.sh}
+super + F1
+	rofi -modi emoji -show emoji -kb-custom-1 Ctrl+c
+
+super + {F2,F3,F4,F10}
+	{strselecta icons,strselecta entities,strselecta boxes,mnter.sh}
 
 XF86Audio{Play,Prev,Next}
 	playerctl {play-pause,previous,next}

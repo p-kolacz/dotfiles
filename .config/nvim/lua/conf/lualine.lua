@@ -2,6 +2,10 @@ Plugin "https://github.com/nvim-lualine/lualine.nvim"
 
 local separators = Icons.random_separators()
 
+local function cwd()
+	return vim.fn.getcwd()
+end
+
 local lualine = require "lualine"
 lualine.setup {
 	options = {
@@ -11,10 +15,10 @@ lualine.setup {
 		section_separators = separators.section_separators,
 		globalstatus = true,
 	},
-	sections = {
-		lualine_c = {},
-		-- lualine_x = {'encoding', 'fileformat', 'filetype', require('lsp_spinner').status },
-		lualine_x = {'encoding', 'fileformat', 'filetype' },
+
+	tabline = {
+		lualine_a = {"tabs"},
+		lualine_z = {cwd},
 	},
 	winbar = {
 		lualine_b = { {
@@ -30,9 +34,11 @@ lualine.setup {
 			},
 		},
 	},
-	tabline = {
-		lualine_z = {"tabs"},
-	}
+	sections = {
+		lualine_c = {},
+		-- lualine_x = {'encoding', 'fileformat', 'filetype', require('lsp_spinner').status },
+		lualine_x = {'encoding', 'fileformat', 'filetype' },
+	},
 }
 
 autocmd("ColorScheme", {

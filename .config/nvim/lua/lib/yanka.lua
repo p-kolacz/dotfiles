@@ -22,15 +22,6 @@ function M.buffer()
 	vim.cmd("let @+=@*")
 end
 
-function M.enable_highlight()
-	vim.api.nvim_create_augroup("yanka", { clear = true })
-	vim.api.nvim_create_autocmd("TextYankPost", { group = "yanka", pattern = "*", callback =
-		function()
-			vim.highlight.on_yank {higroup="IncSearch", timeout=500}
-		end
-	})
-end
-
 function M.set_clipboard()
 	vim.opt.clipboard = "unnamed,unnamedplus"
 	print(vim.cmd("set clipboard?"))

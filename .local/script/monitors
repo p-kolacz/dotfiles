@@ -20,6 +20,6 @@ case $1 in
 		# TODO: check cases when not 3 monitors
 		xrandr --current | grep -E " connected [0-9]+x[0-9]+\+[1-9]" | cut -d" " -f1 ;;
 	*)
-		echo "Usage: monitor [count|connected|all|primary|secondary|left|right]"
+		echo "Usage: monitors [active-count|connected|all|primary|secondary|left|right]"
 esac
 

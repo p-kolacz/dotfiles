@@ -7,6 +7,10 @@ Plugin {
 mapgroup("<leader>ct",   "+Treesitter")
 
 require"nvim-treesitter.configs".setup {
+	sync_install = false,
+	auto_install = true,
+	ignore_install = {},
+	modules = {},
 	ensure_installed = {
 		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
 		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
@@ -63,9 +67,8 @@ require"nvim-treesitter.configs".setup {
 require"treesitter-context".setup()
 
 Perun.add {
-	-- Treesitter -------------------------------------------------------------
-	{ "  TS: Enable highlight", "TSBufEnable highlight" },
-	{ "  TS: Disable highlight","TSBufDisable highlight" },
-	{ "  TS: Context toggle", "TSContextToggle" },
+	{ "  TS: Enable highlight",  "TSBufEnable highlight"  },
+	{ "  TS: Disable highlight", "TSBufDisable highlight" },
+	{ "  TS: Context toggle",    "TSContextToggle"        },
 
 }

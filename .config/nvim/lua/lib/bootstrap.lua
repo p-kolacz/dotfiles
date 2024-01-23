@@ -24,7 +24,14 @@ function _G.v(x)
 	vim.print(x)
 end
 
+function Set(table)
+	for k,v in pairs(table) do
+		vim.opt[k] = v
+	end
+end
+
 return function(t)
+	t = type(t) == "table" and t or {t}
 	for _,v in ipairs(t) do
 		require(v)
 	end

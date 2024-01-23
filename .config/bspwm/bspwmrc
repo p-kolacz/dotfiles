@@ -4,7 +4,7 @@
 								  # Monitors #
 #------------------------------------------------------------------------------#
 
-# bspc config remove_disabled_monitors true
+bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
 case $(monitors active-count) in

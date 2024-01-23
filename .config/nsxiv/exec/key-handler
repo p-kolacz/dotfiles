@@ -107,7 +107,7 @@ rotate() {
 }
 
 set_wallpaper() {
-	read file
+	read -r file
 	wallpaper set "$file"
 	notify "Wallpaper set:\n$file"
 }

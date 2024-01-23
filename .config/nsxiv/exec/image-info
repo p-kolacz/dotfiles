@@ -15,7 +15,7 @@ exec 2>/dev/null
 filename=$(basename -- "$1")
 filesize=$(du -Hh -- "$1" | cut -f 1)
 geometry="${2}x${3}"
-versions=$(find "${1%.*}".* -type f -maxdepth 0 | sed 's|.*\.||' | sort | tr '[:lower:]' '[:upper:]' | sed -E -e "s/JPE?G/ /" -e "s/DNG/ /" -e "s/SVG/縉/" -e "s/PNG/ /" -e "s/XMP/謹 /" | paste -sd " ")
+versions=$(find "${1%.*}".* -type f -maxdepth 0 | sed 's|.*\.||' | sort | tr '[:lower:]' '[:upper:]' | sed -E -e "s/JPE?G/ /" -e "s/DNG/ /" -e "s/SVG/󱣛 /" -e "s/PNG/ /" -e "s/XMP/󰗀 /" | paste -sd " ")
 
 echo "${prefix}${geometry}${s}${filesize}${s}${filename}${s}${versions}${postfix}"
 
