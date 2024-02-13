@@ -121,7 +121,7 @@ function M.set_colorscheme(scheme, flavor, transparency)
 		vim.cmd.colorscheme(scheme)
 	end
 	state.scheme = scheme
-	state.flavor = flavor or ""
+	state.flavor = (flavor == "" and "\n") or flavor or ""
 	save_state()
 	-- if scheme_config.transparency then
 	-- 	local trans_conf = scheme_config.transparency
