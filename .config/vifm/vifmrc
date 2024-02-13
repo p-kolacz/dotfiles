@@ -236,8 +236,8 @@ command! dragon dragon-drop -a -x %f &
 " command! zip zip -r %D/%c.zip %f
 command! zip 7z a -tzip %D/%c.zip %f
 command! sevenz 7z a %D/%c.7z %f
-command! backup 7z a %D/%c_$(date +%%F).zip %f
-command! tar tar cvf %D/%c_$(date +%%F).tar %f
+command! backup 7z a %D/%c.$(date +%%F).zip %f
+command! tar tar cvf %D/%c.$(date +%%F).tar %f
 command! extract extract %D %f
 
 " Compare
