@@ -16,17 +16,15 @@ vim.api.nvim_create_autocmd("VimEnter", { group = "plugozaur", callback = functi
 	end
 end})
 
-function M.plugin(repos, after)
+function M.add(repos, after)
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do
 		local name = string.match(repo, "[^/]+$")
 		local dir = PLUGIN_HOME..name
 		if vim.fn.isdirectory(dir) == 0 then
 			vim.cmd(string.format("!git clone --depth 1 %s.git %s", repo, dir))
-			if after then
-				vim.cmd("!cd "..dir.." && "..after)
-			end
 			enable(name)
+			if after then after(dir) end
 			vim.cmd("helptags ALL")
 		else
 			enable(name)

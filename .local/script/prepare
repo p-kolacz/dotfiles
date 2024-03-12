@@ -112,6 +112,7 @@ fonts() {
 hw/bluetooth() {
 	install bluez bluez-utils
 	startenable bluetooth.service
+	# sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/bluetooth-wakeup.rules" /etc/udev/rules.d/
 }
 hw/nvidia() {
 	install nvidia-dkms nvidia-prime

@@ -56,6 +56,17 @@ background:
 	url(../img/bg.png);
 endsnippet
 
+snippet blink
+blink {
+	animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+endsnippet
+
 snippet checkbox
 /* 
 <input type="checkbox" id="cb" name="cb" value="1">

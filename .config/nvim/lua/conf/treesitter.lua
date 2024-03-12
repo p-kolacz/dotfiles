@@ -16,7 +16,7 @@ require"nvim-treesitter.configs".setup {
 		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
 		"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "latex", "lua", "make",
 		"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
-		"sql", "toml", "typescript", "vhs", "vim", "vimdoc", "xml", "yaml",
+		"sql", "todotxt", "toml", "typescript", "vhs", "vim", "vimdoc", "xml", "yaml",
 	},
 	highlight = {
 		enable = true,
@@ -66,7 +66,7 @@ require"nvim-treesitter.configs".setup {
 
 require"treesitter-context".setup()
 
-Perun.add {
+Perun {
 	{ "  TS: Enable highlight",  "TSBufEnable highlight"  },
 	{ "  TS: Disable highlight", "TSBufDisable highlight" },
 	{ "  TS: Context toggle",    "TSContextToggle"        },

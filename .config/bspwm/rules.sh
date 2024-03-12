@@ -6,6 +6,7 @@ bspc rule -a scratchpad state=floating sticky=on rectangle=1200x600+0+0 center=t
 bspc rule -a Gimp desktop=G follow=on
 bspc rule -a Brave-browser desktop=W
 bspc rule -a thunderbird desktop=C
+bspc rule -a crx_cifhbcnohmdccbgoicgdjpfamggdegmo desktop=T
 
 # class from xprop: 2nd:1st
 while read -r class; do
@@ -23,6 +24,7 @@ qv4l2
 scummvm
 Seafile Client
 Signal
+Ted
 thunderbird:Mailnews
 thunderbird:Msgcompose
 Virt-manager

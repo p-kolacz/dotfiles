@@ -15,7 +15,7 @@ Noremap {
 	{ "n", "<leader>ll", Laser.logs,       "logs" },
 }
 
-Perun.add {
+Perun {
 	{ "  LSP: Stop", Laser.stop },
 	{ "  LSP: Logs", Laser.logs },
 }

@@ -10,7 +10,7 @@ super + Return
 	$TERMINAL
 
 super + space
-	rofi -show combi -modes combi -combi-modes "drun,run" -theme-str 'window \{width:33%;\}'
+	rofi -show combi -modes combi -combi-modes "drun,run" -theme-str 'window \{width:800px;\}'
 
 super + Delete
 	power.sh
@@ -49,7 +49,7 @@ plusminus
 	bluetoothctl power on
 
 super + 0
-	echo "ᕋK" | xclip -selection clipboard
+	echo -n "ᕋK" | xclip -selection clipboard
 
 # Apps --------------------------------
 
@@ -60,7 +60,7 @@ super + Print
 	flameshot gui
 
 super + equal
-	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '\{result\}' | xclip -selection clipboard" -theme-str 'window \{width:50%;height:20%;\}' -location 6
+	rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '\{result\}' | xclip -selection clipboard" -theme-str 'window \{width:600px;height:20%;\}' -location 6
 
 super + parenleft
 	networkmanager_dmenu

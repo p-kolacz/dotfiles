@@ -7,13 +7,12 @@
 
 -- Bootstrap {{{
 
-	Require = require "lib/bootstrap"
-	Pluger = require "lib/plugozaur"
-	Plugin = Pluger.plugin
-	Icons  = require "lib/iconz"
-	Perun = require "perun"
-	Mapper = require "lib/mapper"
-	Helper = require "lib/helpozor"
+	Require = require "bootstrap"
+	Plugin  = require "plugozaur".add
+	Icons   = require "iconz"
+	Perun   = require "perun".add
+	Mapper  = require "mapper"
+	Helper  = require "helpozor"
 
 	Plugin "https://github.com/folke/which-key.nvim"
 	WK = require("which-key")
@@ -31,7 +30,7 @@
 
 	autocmd("BufWinEnter", {
 		group = "vimrc",
-		pattern = { "*/.config/nvim/init.lua", "*/.config/nvim/lua/conf/appearance.lua" },
+		pattern = { "*/.config/nvim/init.lua" },
 		command = "setlocal includeexpr=stdpath('config').'/lua/'.v:fname"
 	})
 
@@ -39,13 +38,19 @@
 
 	Plugin "https://github.com/nvim-lua/plenary.nvim"
 
+	if vim.g.started_by_firenvim then
+		require "conf/firenvim"
+	else
+		NVIM_MODE = "standalone"
+	end
+
 -- }}}
 -- Appearance {{{
 
 	vim.cmd.language("messages en_US.utf8")
 	Require {
 		"conf/lualine",
-		"tool/colorizer",
+		"conf/colorizer",
 	}
 	Set {
 		listchars     = Icons.listchars,
@@ -89,6 +94,9 @@
 		colorschemes = require "conf/themez",
 	}
 	Zorya.enable_highlight()
+	if NVIM_MODE == "firenvim" then
+		Zorya.set_colorscheme("Rosé Pine", "dawn", false)
+	end
 
 	-- Treesitter uses diffrent groups
 	-- Zorya.highlight("markdownH1", "gui=bold,underline")
@@ -101,7 +109,7 @@
 		{ "n",  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers" },
 		{ "n",  "<leader>ow",  ":setlocal wrap!<CR>",       "toggle wrap"             },
 	}
-	Perun.add {
+	Perun {
 		{ "  Colorschemes",       Zorya.select_colorscheme },
 		{ "  Toggle background",  Zorya.toggle_background  },
 	}
@@ -109,11 +117,11 @@
 -- }}}
 -- Code {{{
 
-	Laser  = require "lib/laserpro"
+	Laser  = require "laserpro"
 	Require {
-		"tool/completion",
-		"tool/lsp",
-		"tool/treesitter",
+		"conf/completion",
+		"conf/lsp",
+		"conf/treesitter",
 	}
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
@@ -130,7 +138,7 @@
 	}
 	local function lspMappings()
 	end
-	Perun.add {
+	Perun {
 		{ "  Diagnostics: Show",            vim.diagnostic.show       },
 		{ "  Diagnostics: Hide",            vim.diagnostic.hide       },
 		{ "  Diagnostics: Set Loclist",     vim.diagnostic.setloclist },
@@ -140,7 +148,7 @@
 -- Commands & Command Mode {{{
 
 	Noremap {
-		{ "n",  "<C-P>",             Perun.run                    },
+		{ "n",  "<C-P>",             require"perun".run           },
 		{ "n",  "<leader><leader>",  ":",         "command mode", },
 		{ "c",  "<C-a>",             "<home>",                    },
 		{ "c",  "<A-f>",             "<S-right>",                 },
@@ -152,13 +160,14 @@
 -- Edit {{{
 
 	Require {
-		"tool/figlet"
+		"conf/figlet"
 	}
 	Set {
-		shiftwidth = 4,
-		tabstop    = 4,
-		autowrite  = true,
-		mouse      = "a",
+		shiftwidth  = 4,
+		tabstop     = 4,
+		autowrite   = true,
+		mouse       = "a",
+		viewoptions = "cursor,folds"
 	}
 	Noremap {
 		{ "i",  "<C-a>",  "<home>",                                  },
@@ -192,7 +201,7 @@
 		{ "n",  "<leader>e'",  [[cs"']], "change surrounding to '" },
 		{ "n",  '<leader>e"',  [[cs'"]], 'change surrounding to "' },
 	}
-	Perun.add {
+	Perun {
 		{ "  Edit: Capitalize buffer",          [[%s/\<./\u&/g]]    },
 		{ "  Edit: Capitalize line",            [[s/\<./\u&/g]]     },
 		{ "  Edit: Remove trailing spaces",     "%s/\\s\\+$//e"     },
@@ -205,9 +214,7 @@
 		pattern = "*",
 		command = "wall",
 	})
-	-- Remeber foldings and stuff...
-	set.viewoptions = "cursor,folds"
-	autocmd("BufWinLeave", {
+	autocmd("BufWinLeave", { -- Remeber foldings and stuff...
 		group = "vimrc",
 		pattern = "?*",			-- ?* ensures filename is not empty, for non-file buffers
 		command = "mkview",
@@ -245,7 +252,7 @@
 		end,
 	}
 
-	Perun.add {
+	Perun {
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },
 		{ "  Git: commit with current date",  gg.commit_with_date          },
@@ -267,7 +274,7 @@
 -- }}}
 -- Help {{{
 
-	require 'lib/cheatash'.setup()
+	require 'cheatash'.setup()
 
 	Noremap {
 		{ "G", "<leader>h",    "+Help",                                         },
@@ -284,11 +291,11 @@
 -- Navigation {{{
 
 	Require {
-		"tool/trouble",
-		"tool/telescope",
-		"tool/nvim-tree",
+		"conf/trouble",
+		"conf/telescope",
+		"conf/nvim-tree",
 	}
-	Jumper = require "lib/jumper" -- after nvim-tree
+	Jumper = require "jumper" -- after nvim-tree
 	Noremap {
 		{ "i",  "jj",          "<ESC>",                                                                },
 		{ "i",  "kk",          "<ESC>",                                                                },
@@ -307,7 +314,7 @@
 -- }}}
 -- Print {{{
 
-	Perun.add {
+	Perun {
 		{ "  Print file",                  "hardcopy" },
 		{ "  Convert to HTML",             "TOhtml" },
 		{ "  Convert to PDF",              "hardcopy > %.ps | !ps2pdf %.ps && rm %.ps" },
@@ -343,7 +350,7 @@
 		{ "n", "<leader>uf", ":UltiSnipsEdit<CR>",     "edit filetype snippets" },
 		{ "n", "<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets"      },
 	}
-	Perun.add {
+	Perun {
 		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit"          },
 		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all"      },
 	}
@@ -364,7 +371,7 @@
 		{ "n", "<leader>4",   "4gt",            "tab 4"     },
 		{ "n", "<leader>5",   "5gt",            "tab 5"     },
 	}
-	Perun.add {
+	Perun {
 		{ "  New file",  "new"    },
 		{ "  New tab",   "tabnew" },
 	}
@@ -374,7 +381,7 @@
 -- Tools & Widgets {{{
 ---[[
 
-	Require "tool/rest"
+	Require "conf/rest"
 	Plugin "https://github.com/goolord/alpha-nvim"
 	require'alpha'.setup(require'alpha.themes.startify'.config)
 
@@ -392,7 +399,7 @@
 		{ "n",  "<leader>sp",  ":setlocal spelllang=pl<CR>",       "lang pl", },
 	}
 
-	Perun.add { "  Notification history", "Telescope notify" }
+	Perun { "  Notification history", "Telescope notify" }
 
 -- }}}]]
 -- View {{{
@@ -434,11 +441,12 @@
 
 	Mapgroup("<leader>v", "+Vim")
 
-	Perun.add {
+	local plugger = require "plugozaur"
+	Perun {
 
 		-- Plugins ----------------------------------------------------------------
-		{ "  Update plugins",              Pluger.update },
-		{ "  Update plugins (debug)",      Pluger.debug_update },
+		{ "  Update plugins",              plugger.update },
+		{ "  Update plugins (debug)",      plugger.debug_update },
 
 
 		-- Windows ----------------------------------------------------------------
@@ -452,8 +460,8 @@
 	Noremap { "v",  "<C-c>",       '"*y :let @+=@*<CR>' }
 	Map { "",   "<C-v>",       '"+P' }
 
-	Yanka  = require "lib/yanka"
-	Perun.add {
+	Yanka  = require "yanka"
+	Perun {
 		{ "  Yank filename",               Yanka.filename },
 		{ "  Yank relative path",          Yanka.relative_path },
 		{ "  Yank full path",              Yanka.full_path },

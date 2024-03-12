@@ -118,7 +118,7 @@ telescope.load_extension('fzy_native')
 
 local builtin = require "telescope.builtin"
 
-Perun.add {
+Perun {
 	{ "  Diagnostics",            builtin.diagnostics  },
 	{ "  Env variables",          "Telescope env"      },
 
@@ -152,5 +152,5 @@ Perun.add {
 -- nnoremap("<C-P>", ":Telescope perun<cr>", "perun")
 
 telescope.load_extension("figlet")
-Perun.add { "  Figlet", "Telescope figlet" }
+Perun { "  Figlet", "Telescope figlet" }
 

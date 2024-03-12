@@ -106,12 +106,12 @@ function M.select_colorscheme()
 			end,
 		},
 		function(choice)
-			return choice and M.set_colorscheme(choice[1], choice[2])
+			return choice and M.set_colorscheme(choice[1], choice[2], true)
 		end
 	)
 end
 
-function M.set_colorscheme(scheme, flavor, transparency)
+function M.set_colorscheme(scheme, flavor, remember_state)
 	-- TODO: check for valid scheme name and flavor
 	local scheme_config = config.colorschemes[scheme]
 	setup_colorscheme(scheme_config)
@@ -122,7 +122,9 @@ function M.set_colorscheme(scheme, flavor, transparency)
 	end
 	state.scheme = scheme
 	state.flavor = (flavor == "" and "\n") or flavor or ""
-	save_state()
+	if remember_state then
+		save_state()
+	end
 	-- if scheme_config.transparency then
 	-- 	local trans_conf = scheme_config.transparency
 	-- 	vim.g[trans_conf.global] = transparency and (trans_conf.value or 1) or 0
