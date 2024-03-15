@@ -5,7 +5,7 @@ Plugin {
 local M = {}
 
 function M.browse()
-	vim.cmd.Gbrowse()
+	vim.cmd.GBrowse()
 end
 
 function M.commit_with_date()

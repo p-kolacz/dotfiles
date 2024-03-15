@@ -49,6 +49,9 @@ lualine.setup {
 			},
 		},
 	},
+	extensions = {
+		'fugitive', 'nvim-tree', 'quickfix',
+	},
 	sections = {
 		lualine_c = {},
 		-- lualine_x = {'encoding', 'fileformat', 'filetype', require('lsp_spinner').status },

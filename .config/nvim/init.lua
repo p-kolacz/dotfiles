@@ -136,8 +136,6 @@
 		{ "n",        "[d",         vim.diagnostic.goto_prev, "prev diagnostic" },
 		{ "n",        "]d",         vim.diagnostic.goto_next, "next diagnostic" },
 	}
-	local function lspMappings()
-	end
 	Perun {
 		{ "  Diagnostics: Show",            vim.diagnostic.show       },
 		{ "  Diagnostics: Hide",            vim.diagnostic.hide       },
@@ -249,6 +247,7 @@
 			end, "prev hunk",  {expr=true})
 
 			nnoremap_buffer("<leader>gb", gs.blame_line, "blame line")
+			nnoremap_buffer("<leader>gp", gs.preview_hunk, "preview hunk")
 		end,
 	}
 
@@ -306,8 +305,8 @@
 		{ "n",  "]q",          ":cnext<cr>",                       "previous quickfix entry", },
 		{ "n",  "[l",          ":lprevious<cr>",                   "next loclist entry", },
 		{ "n",  "]l",          ":lnext<cr>",                       "previous loclist entry", },
-		{ "n",  "<F12>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "", },
-		{ "n",  "<F11>",       ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "", },
+		{ "n",  "<F10>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "", },
+		{ "n",  "<F9>",        ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "", },
 		{ "G",  "<leader>j",  "+Jump" },
 	}
 
@@ -475,10 +474,10 @@
 -- }}}
 -- Project conf {{{
 
--- Load project specific configuration
-if vim.fn.filereadable("project.lua") > 0 then
-	require "project"
-end
+	-- Load project specific configuration
+	if vim.fn.filereadable("project.lua") > 0 then
+		require "project"
+	end
 
 -- }}}
 
