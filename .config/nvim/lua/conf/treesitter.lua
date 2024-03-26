@@ -20,7 +20,7 @@ require"nvim-treesitter.configs".setup {
 	},
 	highlight = {
 		enable = true,
-		disable = { "vimdoc" },
+		disable = { "markdown", "vimdoc" },
 	},
 	textobjects = {
 		select = {

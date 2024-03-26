@@ -57,7 +57,7 @@ cron() {
 
 core/yay() {
 	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
-	yay --nodiffmenu --nocleanmenu --save
+	yay --diffmenu=false --cleanmenu=false --save
 }
 
 dev/docker() {

@@ -1,13 +1,13 @@
 vim.filetype.add {
---     extension = {
---         foo = "fooscript",
---     },
+	extension = {
+		tid = "tiddlywiki",
+	},
 	filename = {
 		["todo.txt"] = "todotxt",
 		["done.txt"] = "todotxt",
 	},
---     pattern = {
---         ["~/%.config/foo/.*"] = "fooscript",
---     }
+	-- pattern = {
+		-- ["~/%.config/foo/.*"] = "fooscript",
+	-- }
 }
 

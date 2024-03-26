@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# kbrate.sh
-# xset r rate 250 40
+kbrate.sh
 setxkbmap -option caps:escape
 numlockx
 
