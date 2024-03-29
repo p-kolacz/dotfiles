@@ -7,6 +7,7 @@ bspc rule -a Gimp desktop=G follow=on
 bspc rule -a Brave-browser desktop=W
 bspc rule -a thunderbird desktop=C
 bspc rule -a Brave-browser:crx_cifhbcnohmdccbgoicgdjpfamggdegmo desktop=T
+bspc rule -a Brave-browser:crx_bkdiakkpagfhaafbmaikhaancfkmejkj desktop=E
 
 # class from xprop: 2nd:1st
 while read -r class; do
