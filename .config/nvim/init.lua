@@ -7,12 +7,12 @@
 
 -- Bootstrap {{{
 
-	Require = require "bootstrap"
-	Plugin  = require "plugozaur".add
-	Icons   = require "iconz"
-	Perun   = require "perun".add
-	Mapper  = require "mapper"
-	Helper  = require "helpozor"
+	Require  = require "bootstrap".require
+	Plugin   = require "plugozaur".add
+	Icons    = require "iconz"
+	Perun    = require "perun".add
+	Mapper   = require "mapper"
+	Helper   = require "helpozor"
 
 	Plugin "https://github.com/folke/which-key.nvim"
 	WK = require("which-key")
@@ -295,19 +295,24 @@
 		"conf/nvim-tree",
 	}
 	Jumper = require "jumper" -- after nvim-tree
+	Map {
+		{ "n",  "<X1Mouse>",  "<C-O>" },
+		{ "n",  "<X2Mouse>",  "<C-I>" },
+	}
+	local config = require"bootstrap"
 	Noremap {
-		{ "i",  "jj",          "<ESC>",                                                                },
-		{ "i",  "kk",          "<ESC>",                                                                },
-		{ "i",  "jk",          "<ESC>",                                                                },
-		{ {"n", "v"},  "H",           "^",                                                                    },
-		{ {"n", "v"},  "L",           "$",                                                                    },
-		{ "n",  "[q",          ":cprevious<cr>",                   "next quickfix entry", },
-		{ "n",  "]q",          ":cnext<cr>",                       "previous quickfix entry", },
-		{ "n",  "[l",          ":lprevious<cr>",                   "next loclist entry", },
-		{ "n",  "]l",          ":lnext<cr>",                       "previous loclist entry", },
-		{ "n",  "<F10>",       ":execute 'e' stdpath('config').'/init.lua'<CR>", "", },
-		{ "n",  "<F9>",        ":execute 'e' stdpath('config').'/ftplugin/'.&filetype.'.lua'<cr>", "", },
-		{ "G",  "<leader>j",  "+Jump" },
+		{ "i",  "jj",         "<ESC>",                                      },
+		{ "i",  "kk",         "<ESC>",                                      },
+		{ "i",  "jk",         "<ESC>",                                      },
+		{ {"n", "v"},  "H",  "^",                                           },
+		{ {"n", "v"},  "L",  "$",                                           },
+		{ "n",  "[q",         ":cprevious<cr>",  "next quickfix entry",     },
+		{ "n",  "]q",         ":cnext<cr>",      "previous quickfix entry", },
+		{ "n",  "[l",         ":lprevious<cr>",  "next loclist entry",      },
+		{ "n",  "]l",         ":lnext<cr>",      "previous loclist entry",  },
+		{ "n",  "<F10>",      config.edit_init                              },
+		{ "n",  "<F9>",       config.edit_ft                                },
+		{ "G",  "<leader>j",  "+Jump"                                       },
 	}
 
 -- }}}

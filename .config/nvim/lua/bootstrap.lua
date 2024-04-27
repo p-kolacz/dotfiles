@@ -26,10 +26,21 @@ function Set(table)
 	end
 end
 
-return function(t)
+local M = {}
+
+function M.require(t)
 	t = type(t) == "table" and t or {t}
 	for _,v in ipairs(t) do
 		require(v)
 	end
 end
 
+function M.edit_init()
+	vim.cmd.edit(vim.fn.stdpath('config')..'/init.lua')
+end
+
+function M.edit_ft()
+	vim.cmd.edit(string.format('%s/ftplugin/%s.lua', vim.fn.stdpath('config'), vim.o.filetype))
+end
+
+return M

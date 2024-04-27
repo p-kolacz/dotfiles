@@ -1,3 +1,5 @@
+NVIM_MODE = "firenvim"
+
 vim.g.firenvim_config = {
 	globalSettings = { alt = "all" },
 	localSettings = {
@@ -9,4 +11,5 @@ vim.g.firenvim_config = {
 Plugin("https://github.com/glacambre/firenvim", function()
 	vim.fn["firenvim#install"](0)
 end)
-NVIM_MODE = "firenvim"
+
+-- set.guifont = "Ubuntu_Mono:h20"

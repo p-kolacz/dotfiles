@@ -1,6 +1,6 @@
 setlocal.formatoptions:remove("o")
 
-Mapper.map_buffer {
+BufferNoremap {
 	"n", "<localleader>x",  ":call luaeval(getline('.'))<cr>",  "evaluate line in nvim",
 	"n", "<localleader>s",  ":w<cr>:luafile %<cr>",             "evaluate file in nvim",
 	"n", "<localleader>r",  ":w<cr>:!lua %<cr>",                "run file",

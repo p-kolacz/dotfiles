@@ -37,7 +37,7 @@ Laser.start {
 -- 	vim.cmd.cwindow()
 -- end
 
-nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow<cr> | cfirst<cr>')
+nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow | cfirst<cr>')
 
 -- Run the specs, and open the updated quickfix on `<leader>s`
 -- :map <leader>s :call system('rspec --require=support/formatters/VIM_formatter.rb --format VimFormatter --out quickfix.out  --format progress') \| cg quickfix.out \| cwindow
