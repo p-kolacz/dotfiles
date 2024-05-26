@@ -35,7 +35,7 @@ export SQLITE_HISTORY="$XDG_STATE_HOME"/sqlite_history
 # export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
-alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
+# alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias pidgin="pidgin --config=$XDG_DATA_HOME/purple"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"

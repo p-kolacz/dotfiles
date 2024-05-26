@@ -1,4 +1,4 @@
-require'lib/caniuse'.setup()
+require 'caniuse'.setup()
 
 mapgroup("<leader>hu", "+Can I Use")
 nnoremap_buffer('<leader>huc', ':CaniuseCword<cr>', 'caniuse cword')

@@ -29,9 +29,9 @@ TMP_FILE=/tmp/nsxiv-kh-operation
 # Open RAW version of file (or file itself) in $1 app
 develop() {
 	app=$1
-	while read file; do
+	while read -r file; do
 		rootname="${file%.*}"
-		filename="${rootname}.DNG"
+		# filename="${rootname}.DNG"
 		if [[ -f ${rootname}.DNG ]]; then
 			$app "${rootname}.DNG" &
 		elif [[ -f ${rootname}.PEF ]]; then
@@ -73,13 +73,13 @@ prompt_and_op() {
 # Repeat last operation if instructions fount in tmp file
 repeat() {
 	[[ -f $TMP_FILE ]] || return
-	read op dir < $TMP_FILE
+	read -r op dir < $TMP_FILE
 	operation $op "$dir"
 }
 
 resize() {
 	local i=0
-	while read file; do
+	while read -r file; do
 		local rootname=${file%.*}
 		local extension=${file##*.}
 		local new_name="${rootname}_$1.$extension"
@@ -98,7 +98,7 @@ prompt_resize() {
 
 rotate() {
 	degree="$1"
-	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read -r file; do
 		case "$(file -b -i "$file")" in
 		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
 		*)           mogrify  -rotate "$degree" "$file" ;;
@@ -116,18 +116,18 @@ case "$1" in
 	period)   repeat ;;
 	w)        set_wallpaper ;;
 	x)        xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
-	C-c)      while read file; do xclip -selection clipboard -target image/png "$file"; notify "$file content copied to clipboard"; done ;;
+	C-c)      while read -r file; do xclip -selection clipboard -target image/png "$file"; notify "$file content copied to clipboard"; done ;;
 	# "e")        while read file; do $TERMINAL -e sh -c "exiv2 '$file' | $PAGER" & done ;;
-	e)        while read file; do notify "$(exiv2 "$file" | column -t -s :)";  done ;;
-	i)        while read file; do notify "$(mediainfo "$file")"; done ;;
-	l)        while read file; do echo "$file"; done; kill $PPID ;; # dmenu imitation
+	e)        while read -r file; do notify "$(exiv2 "$file" | column -t -s :)";  done ;;
+	i)        while read -r file; do notify "$(mediainfo "$file")"; done ;;
+	l)        while read -r file; do echo "$file"; done; kill $PPID ;; # dmenu imitation
 	g)        tr '\n' '\0' | xargs -0 gimp & ;;
 	G)        tr '\n' '\0' | xargs -0 gthumb & ;;
 	t)        develop rawtherapee ;;
 	d)        develop darktable ;;
 	c)        prompt_and_op cp ;;
 	m)        prompt_and_op mv ;;
-	C-d)      while read file; do trash "${file%.*}".*; done ;;
+	C-d)      while read -r file; do trash "${file%.*}".*; done ;;
 	C-comma)  rotate 270 ;;
 	C-period) rotate  90 ;;
 	C-slash)  rotate 180 ;;

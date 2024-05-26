@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "WIP"
+
+# Open RAW version of file (or file itself) in $1 app
+develop() {
+	app=$1
+	while read -r file; do
+		rootname="${file%.*}"
+		# filename="${rootname}.DNG"
+		if [[ -f ${rootname}.DNG ]]; then
+			$app "${rootname}.DNG" &
+		elif [[ -f ${rootname}.PEF ]]; then
+			$app "${rootname}.PEF" &
+		else
+			$app "$file" &
+		fi
+	done
+}
+
+rotate() {
+	degree="$1"
+	# file=
+	case "$(file -b -i "$file")" in
+		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+		*)           mogrify  -rotate "$degree" "$file" ;;
+	esac
+}
+
+usage() {
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed 's/|usage|//')"
+}
+
+[[ $# -eq 0 || ! $(typeset -f "$1") ]] && { usage; exit 1; }
+func=$1 && shift
+$func "$@"
+
