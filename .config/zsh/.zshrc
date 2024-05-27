@@ -6,6 +6,7 @@ bindkey '\e' vi-cmd-mode
 
 source $ZDOTDIR/plugins/abbr.zsh
 source $ZDOTDIR/plugins/less.zsh
+source $ZDOTDIR/plugins/nnn.zsh
 source $ZDOTDIR/plugins/tldr.zsh
 source $ZDOTDIR/functions.zsh
 source $ZDOTDIR/aliases.zsh

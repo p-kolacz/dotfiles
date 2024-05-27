@@ -49,13 +49,6 @@ mkd() {
 	mkdir -p "$1" && cd "$1"
 }
 
-n() {
-	export LC_COLLATE="C"
-	export NNN_TRASH=1		# trash-cli
-	nnn -n
-	# nnn
-}
-
 notes() {
 	# local dir="$HOME/Cloud/Exocortex/Notes"
 	# local file=$(find $dir -name "*.md" -type f | fzf --preview "preview.sh {}")
