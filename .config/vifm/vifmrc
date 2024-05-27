@@ -174,7 +174,7 @@ nnoremap <f6> :move &<cr>
 nnoremap <c-f6> :move!<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
-nnoremap <f11> :cmpfiles<cr>
+nnoremap <f10> :cmpfiles<cr>
 nnoremap <f12> :cmpdirs<cr>
 
 " Views
