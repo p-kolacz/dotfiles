@@ -29,4 +29,6 @@ Ted
 thunderbird:Mailnews
 thunderbird:Msgcompose
 Virt-manager
+Yad
+zenity
 EOF
