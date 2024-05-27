@@ -18,5 +18,5 @@ configuration {
 	run   { display-name: " "; }
 	combi { display-name: ""; }
 }
-@theme "auto"
+@theme "rounded-blue-dark"
 

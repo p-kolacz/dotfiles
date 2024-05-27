@@ -33,10 +33,4 @@ setopt autocd
 
 [[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
 
-# [[ -d $DOTFILES/bin/diyfetch ]] && $(find .dotfiles/bin/diyfetch/* | shuf -n1)
-# [[ -d .local/script/diyfetch ]] && (".local/script/diyfetch/timefetch")
-
-fortune -a paradoxum cybersuntzu | cowsay | lolcat
-
 eval "$(starship init zsh)"
-

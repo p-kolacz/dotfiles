@@ -7,7 +7,7 @@ path+="$HOME/.local/script"
 # path+="$HOME/.local/lib/node_modules/bin"
 
 export CALIBRE_USE_SYSTEM_THEME=1
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME=qt6ct
 # export DE=gnome		# xdg-open fix
 
 [[ -f $ZDOTDIR/local/.zprofile ]] && source $ZDOTDIR/local/.zprofile
