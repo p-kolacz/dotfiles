@@ -186,7 +186,7 @@
 		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"    },
 		-- change cword and press . to repeat change on next, n to goto next
 		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat" },
-		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",            "" },
+		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",                        "change&repeat" },
 		{ "n",	"<leader>w",   ":w<CR>",			               "write", },
 		{ "G",  "<leader>f", "+File" },
 		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
@@ -462,7 +462,7 @@
 -- Yank {{{
 
 	Noremap { "v",  "<C-c>",       '"*y :let @+=@*<CR>' }
-	Map { "",   "<C-v>",       '"+P' }
+	Map     { "",   "<C-v>",       '"+P' }
 
 	Yanka  = require "yanka"
 	Perun {
