@@ -1,0 +1,14 @@
+[opener]
+open = [
+	{ run = 'open "$@"',                    desc = "Open", for = "linux" },
+]
+sysopen = [
+	{ run = 'xdg-open "$@"',                desc = "System Open", for = "linux" },
+	{ run = 'open "$@"',                    desc = "System Open", for = "macos" },
+	{ run = 'start "" "%1"', orphan = true, desc = "System Open", for = "windows" },
+]
+
+[open]
+rules = [
+	{ mime = "*", use = [ "open", "sysopen" ] },
+]

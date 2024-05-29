@@ -386,8 +386,8 @@
 ---[[
 
 	Require "conf/rest"
-	Plugin "https://github.com/goolord/alpha-nvim"
-	require'alpha'.setup(require'alpha.themes.startify'.config)
+	-- Plugin "https://github.com/goolord/alpha-nvim"
+	-- require'alpha'.setup(require'alpha.themes.startify'.config)
 
 	Plugin "https://github.com/rcarriga/nvim-notify"
 
