@@ -1,3 +1,6 @@
+[manager]
+linemode = 'size'
+
 [opener]
 open = [
 	{ run = 'open "$@"',                    desc = "Open", for = "linux" },
@@ -10,5 +13,5 @@ sysopen = [
 
 [open]
 rules = [
-	{ mime = "*", use = [ "open", "sysopen" ] },
+	{ mime = "*", use = [ "open", "edit", "sysopen" ] },
 ]

@@ -32,12 +32,10 @@ case $FILE_EXTENSION in
 		gnumeric "$FILE_PATH" ;;
 	jar)
 		java --jar "$FILE_PATH" ;;
-	bz2|gz|tar|tgz|xz)
-		# archivemount
-		;;
-	ssh)
-		# sshfs
-		;;
+	# bz2|gz|tar|tgz|xz)
+		# archivemount ;;
+	# ssh)
+		# sshfs ;;
 	md5)
 		md5sum -c -- "$FILE_PATH" ;;
 	sha1)
