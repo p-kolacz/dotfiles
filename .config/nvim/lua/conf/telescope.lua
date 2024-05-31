@@ -111,8 +111,8 @@ Plugin "https://github.com/LinArcX/telescope-env.nvim"
 telescope.load_extension('env')
 
 Plugin(
-	"https://github.com/nvim-telescope/telescope-fzy-native.nvim", function()
-		vim.cmd("!git submodule init && git submodule update")
+	"https://github.com/nvim-telescope/telescope-fzy-native.nvim", function(dir)
+		vim.cmd("!cd "..dir.. " && git submodule init && git submodule update")
 	end
 )
 telescope.load_extension('fzy_native')

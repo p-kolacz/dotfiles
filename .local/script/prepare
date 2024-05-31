@@ -191,6 +191,10 @@ xorg() {
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }
 
+yazi() {
+	install yazi fd ffmpegthumbnailer fzf jq ripgrep unarchiver
+}
+
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                  Utilz                                   ║
 # ╚══════════════════════════════════════════════════════════════════════════╝

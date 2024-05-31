@@ -21,13 +21,13 @@ edit_in_dir() {
 }
 
 ealias() {
-	local file=$ZDOTDIR/aliases.zsh
+	local file=$ZDOTDIR/plugins/aliases.zsh
 	$EDITOR $file
 	source $file
 }
 
 efuncs() {
-	local file=$ZDOTDIR/functions.zsh
+	local file=$ZDOTDIR/plugins/functions.zsh
 	$EDITOR $file
 	source $file
 }
