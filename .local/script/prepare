@@ -15,6 +15,7 @@ laptop() {
 }
 
 desktop() {
+	core/yay
 	bspwm
 	fonts
 	pipewire
