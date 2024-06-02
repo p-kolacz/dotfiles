@@ -16,6 +16,13 @@ diff() {
 edit() {
 	$EDITOR "$HOME/.gitignore"
 }
+install() {
+	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; exit 1; }
+	mkdir -p "$GIT_DIR"
+	cd &&
+	git clone --bare git@github.com:p-kolacz/dotfiles.git "$GIT_DIR" &&
+	git checkout
+}
 puda() {
 	cd "$HOME" || exit 1
 	git add .
@@ -30,7 +37,7 @@ zsh() {
 }
 
 if [[ $# == 0 ]]; then
-	cd && diff
+	cd && git status
 elif [[ $(typeset -f "$1") ]]; then
 	func=$1 && shift
 	$func "$@"
