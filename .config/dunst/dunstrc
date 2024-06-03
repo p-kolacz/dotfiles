@@ -47,12 +47,12 @@
     mouse_right_click = close_current
 
 [urgency_low]
-    default_icon = ~/.dotfiles/share/icons/arch.svg
+    default_icon = ~/.local/share/icons/arch.svg
 
 [urgency_normal]
-    default_icon = ~/.dotfiles/share/icons/arch.svg
+    default_icon = ~/.local/share/icons/arch.svg
 
 [urgency_critical]
-    default_icon = ~/.dotfiles/share/icons/arch.svg
+    default_icon = ~/.local/share/icons/arch.svg
 
 # vim: ft=cfg

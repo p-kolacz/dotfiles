@@ -13,7 +13,7 @@ Plugin {
 }
 
 local actions   = require "telescope.actions"
-local trouble   = require "trouble.providers.telescope"
+local trouble   = require "trouble.sources.telescope"
 local telescope = require "telescope"
 
 telescope.setup {
@@ -24,10 +24,10 @@ telescope.setup {
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
-				["<C-t>"] = trouble.open_with_trouble,
+				["<C-t>"] = trouble.open,
 			},
 			n = {
-				["<c-t>"] = trouble.open_with_trouble
+				["<c-t>"] = trouble.open,
 			},
 		},
 	},
