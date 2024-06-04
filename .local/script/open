@@ -46,8 +46,8 @@ case $FILE_EXTENSION in
 		sha512sum -c -- "$FILE_PATH" ;;
 	*)
 		if file --dereference "$FILE_PATH" | grep -q text; then
-			$TERMINAL $EDITOR "$FILE_PATH"
-		else
+			$TERMINAL "$EDITOR" "$FILE_PATH"
+		elif [[ -x $FILE_PATH ]]; then
 			"$FILE_PATH"
 		fi
 esac
