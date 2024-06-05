@@ -9,6 +9,17 @@ Helper.map {
 	CUSTOM1    = "https://devhints.io/bash#conditionals",
 }
 
+Laser.start {
+	name = "EFM",
+	cmd = { "efm-langserver" },
+	filetypes = { "sh" },
+	-- settings = {
+	-- 	languages = {
+
+	-- 	},
+	-- },
+}
+
 -- Laser.start {
 -- 	name = "bashLS",
 -- 	cmd = { "bash-language-server", "start" },

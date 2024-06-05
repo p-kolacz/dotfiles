@@ -1,0 +1,10 @@
+/*
+!/.gitignore
+!/script/
+!/share/
+/share/*
+!/share/icons/
+!/share/sounds/
+!/share/themes/
+!/share/txt/
+!/share/wallpapers/

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SUBSCRIBERS=$HOME/.config/bashbus/subscribers.conf
+[[ -s $SUBSCRIBERS ]] || exit 1
+[[ $# -eq 0 ]] && exit 2
+
+SIGNAL=$1 && shift
+
+while IFS='=' read -r key val; do
+	[ "${key##\#*}" ] || continue	# Skip over lines containing comments.
+	# printf '%s: %s\n' "$key" "$val"
+	[[ $key = "$SIGNAL" ]] && $val "$@"
+done < "$SUBSCRIBERS"
+

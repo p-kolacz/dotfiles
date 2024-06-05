@@ -121,11 +121,8 @@ snippet parse_key_values
 # Setting 'IFS' tells 'read' where to split the string.
 while IFS='=' read -r key val; do
 	# Skip over lines containing comments.
-	# (Lines starting with '#').
 	[ "${key##\#*}" ] || continue
 
-	# '$key' stores the key.
-	# '$val' stores the value.
 	printf '%s: %s\n' "$key" "$val"
 
 	# Alternatively replacing 'printf' with the following
