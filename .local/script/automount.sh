@@ -4,12 +4,21 @@ pathtoname() {
     udevadm info -p /sys/"$1" | awk -v FS== '/DEVNAME/ {print $2}'
 }
 
+onmount() {
+	signal usb-mounted "$1"
+	notify-send "UDisks" "$1 mounted"
+}
+
+onremove() {
+	notify-send "UDisks" "$devname removed"
+}
+
 stdbuf -oL -- udevadm monitor --udev -s block | while read -r -- _ _ event devpath _; do
 	if [ "$event" = add ]; then
 		devname=$(pathtoname "$devpath")
-		udisksctl mount --block-device "$devname" --no-user-interaction && notify-send "UDisks" "$devname mounted"
+		udisksctl mount --block-device "$devname" --no-user-interaction && onmount "$devname"
 	elif [ "$event" = remove ]; then
-		notify-send "UDisks" "$devname removed"
+		onremove
 	fi
 done
 

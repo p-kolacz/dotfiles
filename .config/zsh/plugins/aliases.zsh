@@ -26,7 +26,7 @@ alias paths='sed "s/:/\n/g" <<< $PATH'
 
 # Disk utils --------------------------
 alias disks="lsblk --nodeps --output NAME,MODEL,SIZE"
-alias parts="lsblk --output NAME,LABEL,FSTYPE,MOUNTPOINTS,SIZE,MODEL"
+alias parts="lsblk --output NAME,FSTYPE,FSVER,LABEL,MOUNTPOINTS,SIZE,MODEL"
 alias dispeed="sudo hdparm -t"
 alias spindown="sudo hdparm -y"
 

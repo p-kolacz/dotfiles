@@ -13,9 +13,6 @@ diff() {
 	g diff
 	git status
 }
-edit() {
-	$EDITOR "$HOME/.gitignore"
-}
 install() {
 	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; exit 1; }
 	mkdir -p "$GIT_DIR"
