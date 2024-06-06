@@ -1,0 +1,25 @@
+#!/bin/bash
+
+exec >> "$HOME/.local/state/log/bashbus.log"
+exec 2>&1
+
+[[ $# -eq 0 ]] && exit 1
+SIGNAL=$1 && shift
+
+SUBSCRIBERS=$HOME/.config/bashbus
+
+# [[ -d $SUBSCRIBERS/$SIGNAL ]] || exit 0
+
+for file in $SUBSCRIBERS/$SIGNAL/*; do
+	[[ -e $filename ]] || continue
+	echo "$file"
+	"$file" "$@"
+done
+# SUBSCRIBERS=$HOME/.config/bashbus/subscribers.conf
+# [[ -s $SUBSCRIBERS ]] || exit 1
+# while IFS='=' read -r key val; do
+# 	[ "${key##\#*}" ] || continue	# Skip over lines containing comments.
+# 	# printf '%s: %s\n' "$key" "$val"
+# 	[[ $key = "$SIGNAL" ]] && $val "$@"
+# done < "$SUBSCRIBERS"
+

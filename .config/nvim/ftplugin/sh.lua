@@ -10,6 +10,17 @@ Helper.map {
 }
 
 Laser.start {
-	name = "bashLS",
-	cmd = { "bash-language-server", "start" },
+	name = "EFM",
+	cmd = { "efm-langserver" },
+	filetypes = { "sh" },
+	-- settings = {
+	-- 	languages = {
+
+	-- 	},
+	-- },
 }
+
+-- Laser.start {
+-- 	name = "bashLS",
+-- 	cmd = { "bash-language-server", "start" },
+-- }

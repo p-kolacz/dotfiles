@@ -4,7 +4,8 @@
 # | |__|  __/\__ \__ \
 # |_____\___||___/___/
 
-export LESS="--incsearch --save-marks --status-column --use-color"
+# export LESS="--incsearch --save-marks --status-column --use-color"
+export LESS="--incsearch --save-marks --use-color"
 export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold - bold red
 export LESS_TERMCAP_md=$'\e[1;36m'     # begin blink - bold cyan
 export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink

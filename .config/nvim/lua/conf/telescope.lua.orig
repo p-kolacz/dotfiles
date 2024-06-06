@@ -13,7 +13,11 @@ Plugin {
 }
 
 local actions   = require "telescope.actions"
+<<<<<<< HEAD
+local trouble   = require "trouble.sources.telescope"
+=======
 -- local trouble   = require "trouble.sources.telescope"
+>>>>>>> 18fc48d75a6b4db2558566a574fa4afeb6f328df
 local telescope = require "telescope"
 
 telescope.setup {

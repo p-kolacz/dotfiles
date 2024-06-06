@@ -4,4 +4,6 @@
 [manager]
 prepend_keymap = [
 	{ on   = [ "l" ], run  = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+	{ on   = [ "g", "l" ], run  = "cd ~/.local/", desc = "Goto .local" },
+	{ on   = [ "g", "p" ], run  = "cd ~/.local/share/nvim/site/pack/", desc = "Goto Vim plugins" },
 ]

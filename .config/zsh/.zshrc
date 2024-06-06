@@ -9,7 +9,7 @@ bindkey '\e' vi-cmd-mode
 # source $ZDOTDIR/plugins/nnn.zsh
 # source $ZDOTDIR/plugins/tldr.zsh
 # source $ZDOTDIR/plugins/yazi.zsh
-for f in $ZDOTDIR/plugins/*; do source "$f"; done
+for f in $ZDOTDIR/plugins/*.zsh; do source "$f"; done
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/share/fzf/completion.zsh
