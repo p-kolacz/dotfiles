@@ -25,8 +25,7 @@ desktop() {
 
 bspwm() {
 	xorg
-	install bspwm sxhkd picom libnotify dunst rofi rofi-calc
-	ynstall polybar
+	install bspwm sxhkd picom polybar libnotify dunst rofi rofi-calc
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -100,7 +99,7 @@ dev/rust() {
 
 dotfiles() {
 	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
-	core/yay
+	# core/yay
 	# TODO: git clone dotfiles
 }
 
@@ -146,9 +145,8 @@ music() {
 }
 
 nvim() {
-	install neovim python python-pip lua-language-server ctags
+	install neovim python python-pip python-pynvim lua-language-server ctags
 	ynstall figlet-fonts 
-	python -m pip install --user --upgrade pynvim
 }
 
 pipewire() {
@@ -204,7 +202,7 @@ install() {
 	sudo pacman -S --needed --noconfirm "$@" 
 }
 ynstall() {
-	yay -S --needed --nodiffmenu --nocleanmenu "$@" 
+	yay -S --needed "$@" 
 }
 copy() {
 	sudo cp -v --no-clobber "$1" "$2"

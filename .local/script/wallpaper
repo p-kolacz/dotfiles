@@ -23,7 +23,7 @@ random() {
 }
 
 restorewp() {
-	[[ -f "$FILE" ]] || setwp "$HOME/.dotfiles/share/wallpapers/arch_layers.png"
+	[[ -f "$FILE" ]] || setwp "$HOME/.local/share/wallpapers/arch_layers.png"
 	$WALLSET "$FILE"
 }
 

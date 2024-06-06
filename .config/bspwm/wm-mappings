@@ -5,6 +5,9 @@
 									 # WM #
 #------------------------------------------------------------------------------#
 
+super + ctrl + q
+	bspc quit
+
 super + shift + y
 	bspc wm -r; \
 	notify-send "BSPWM" "WM restarted"
