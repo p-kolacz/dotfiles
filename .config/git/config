@@ -12,5 +12,7 @@
 	cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE"
 [mergetool "meld"]
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+[push]
+	autoSetupRemote = true
 [include]
 	path = local
