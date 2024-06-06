@@ -47,6 +47,8 @@ case $FILE_EXTENSION in
 	*)
 		if file --dereference "$FILE_PATH" | grep -q text; then
 			$TERMINAL "$EDITOR" "$FILE_PATH"
+		elif file --dereference "$FILE_PATH" | grep -q empty; then
+			$TERMINAL "$EDITOR" "$FILE_PATH"
 		elif [[ -x $FILE_PATH ]]; then
 			"$FILE_PATH"
 		fi

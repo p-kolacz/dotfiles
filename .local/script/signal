@@ -10,9 +10,9 @@ SUBSCRIBERS=$HOME/.config/bashbus
 
 # [[ -d $SUBSCRIBERS/$SIGNAL ]] || exit 0
 
-for file in $SUBSCRIBERS/$SIGNAL/*; do
-	[[ -e $filename ]] || continue
-	echo "$file"
+for file in "$SUBSCRIBERS/$SIGNAL"/*; do
+	[[ -e $file ]] || continue
+	# echo "$file"
 	"$file" "$@"
 done
 # SUBSCRIBERS=$HOME/.config/bashbus/subscribers.conf
