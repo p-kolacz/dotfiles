@@ -12,8 +12,6 @@ Plugin {{
 	end,
 	config = function()
 		require("peek").setup()
-		-- vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-		-- vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
 		nnoremap_buffer("<localleader>o", require("peek").open, "Open Peek")
 		nnoremap_buffer("<localleader>c", require("peek").close, "Close Peek")
 	end,
