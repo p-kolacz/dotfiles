@@ -17,7 +17,9 @@
 	Plugin "https://github.com/folke/which-key.nvim"
 	WK = require("which-key")
 	WK.setup {
-		icons = Icons.whichkey,
+		icons = {
+			mappings = false,
+		},
 		layout = {
 			align = "center",
 		},
@@ -103,7 +105,7 @@
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
 	Noremap {
-		{ "G",  "<leader>o",   "+Options"                                             },
+		{ "G",  "<leader>o",   "Options"                                             },
 		{ "n",  "<leader>ol",  ":setlocal list!<CR>",       "toggle invisible chars"  },
 		{ "n",  "<leader>on",  ":set number!<CR>",          "toggle line numbers"     },
 		{ "n",  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers" },
@@ -146,12 +148,12 @@
 -- Commands & Command Mode {{{
 
 	Noremap {
-		{ "n",  "<C-P>",             require"perun".run           },
-		{ "n",  "<leader><leader>",  ":",         "command mode", },
-		{ "c",  "<C-a>",             "<home>",                    },
-		{ "c",  "<A-f>",             "<S-right>",                 },
-		{ "c",  "<C-b>",             "<left>",                    },
-		{ "c",  "<A-b>",             "<S-left>",                  },
+		{ "n",  "<leader><leader>",  ":",                 "command mode", },
+		{ "n",  "<C-P>",             require"perun".run,                  },
+		{ "c",  "<C-a>",             "<home>",                            },
+		{ "c",  "<A-f>",             "<S-right>",                         },
+		{ "c",  "<C-b>",             "<left>",                            },
+		{ "c",  "<A-b>",             "<S-left>",                          },
 	}
 
 --}}}
@@ -295,10 +297,7 @@
 		"conf/nvim-tree",
 	}
 	Jumper = require "jumper" -- after nvim-tree
-	Map {
-		{ "n",  "<X1Mouse>",  "<C-O>" },
-		{ "n",  "<X2Mouse>",  "<C-I>" },
-	}
+
 	local config = require"bootstrap"
 	Noremap {
 		{ "i",  "jj",         "<ESC>",                                      },
@@ -314,6 +313,12 @@
 		{ "n",  "<F9>",       config.edit_ft                                },
 		{ "G",  "<leader>j",  "+Jump"                                       },
 	}
+
+	-- Not working for some reason
+	-- Map{
+	-- 	{ "n",  "<X1Mouse>",  "<C-O>" },
+	-- 	{ "n",  "<X2Mouse>",  "<C-I>" },
+	-- }
 
 -- }}}
 -- Print {{{

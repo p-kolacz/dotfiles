@@ -1,1 +1,2 @@
 setlocal.formatoptions:remove {'o'}
+
