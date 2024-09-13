@@ -9,16 +9,36 @@ Helper.map {
 	CUSTOM1    = "https://devhints.io/bash#conditionals",
 }
 
-Laser.start {
-	name = "EFM",
-	cmd = { "efm-langserver" },
-	filetypes = { "sh" },
+-- Laser.start {
+-- 	name = "EFM",
+-- 	cmd = { "efm-langserver" },
+-- 	init_options = {documentFormatting = true},
+-- 	filetypes = { "sh" },
+--     settings = {
+--       rootMarkers = {".git/"},
+--     },
+	-- init_options = {documentFormatting = true},
 	-- settings = {
-	-- 	languages = {
-
-	-- 	},
+		-- rootMarkers = {".git/"},
+		-- languages = {
+		-- 	sh = {
+		-- 		{
+		-- 			lintCommand = "shellcheck --color=never --format gcc -x",
+		-- 	-- 		-- lintCommand = "shellcheck --color=never --format=gcc -",
+		-- 			lintSource = "efm/shellcheck",
+		-- 			lintIgnoreExitCode = true,
+		-- 			lintStdin = true,
+		-- 			-- lintFormats = { '-:%l:%c: %trror: %m', '-:%l:%c: %tarning: %m', '-:%l:%c: %tote: %m' },
+		-- 			lintFormats = {
+		-- 				'%f:%l:%c: %trror: %m',
+		-- 				'%f:%l:%c: %tarning: %m',
+		-- 				'%f:%l:%c: %tote: %m',
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
 	-- },
-}
+-- }
 
 -- Laser.start {
 -- 	name = "bashLS",

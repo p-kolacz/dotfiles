@@ -110,11 +110,11 @@ nnoremap("<leader>po", ":lua require'telescope'.extensions.project.project{}<cr>
 Plugin "https://github.com/LinArcX/telescope-env.nvim"
 telescope.load_extension('env')
 
-Plugin(
-	"https://github.com/nvim-telescope/telescope-fzy-native.nvim", function(dir)
+Plugin{{
+	"https://github.com/nvim-telescope/telescope-fzy-native.nvim", build = function(dir)
 		vim.cmd("!cd "..dir.. " && git submodule init && git submodule update")
 	end
-)
+}}
 telescope.load_extension('fzy_native')
 
 local builtin = require "telescope.builtin"

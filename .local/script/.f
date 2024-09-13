@@ -4,12 +4,12 @@ export GIT_DIR="$HOME/.config/dotfiles"
 export GIT_WORK_TREE="$HOME"
 
 conf() {
-	cd
+	cd || exit
 	file=$(git ls-files | fzf --query "$1" --preview "view {}")
 	[[ -f $file ]] && $EDITOR "$file"
 }
 diff() {
-	cd
+	cd || exit
 	g diff
 	git status
 }

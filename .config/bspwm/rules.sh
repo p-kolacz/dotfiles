@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# class from xprop: 2nd:1st
+
 bspc rule -r "*"
 bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad state=floating sticky=on rectangle=1200x600+0+0 center=true
@@ -8,8 +10,8 @@ bspc rule -a Brave-browser desktop=W
 bspc rule -a thunderbird desktop=C
 bspc rule -a Brave-browser:crx_cifhbcnohmdccbgoicgdjpfamggdegmo desktop=T
 bspc rule -a Brave-browser:crx_bkdiakkpagfhaafbmaikhaancfkmejkj desktop=E
+bspc rule -a Deno:deno state=tiled
 
-# class from xprop: 2nd:1st
 while read -r class; do
 	bspc rule -a "$class" state=floating
 done <<EOF

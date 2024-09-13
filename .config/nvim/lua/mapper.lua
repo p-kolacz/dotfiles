@@ -7,7 +7,7 @@ end
 
 function _G.mapgroup(key, desc)
 	if WK then
-		WK.register({ [key] = { name = desc }})
+		WK.add({ key,  group = desc })
 	end
 end
 Mapgroup = mapgroup

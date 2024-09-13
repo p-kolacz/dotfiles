@@ -1,35 +1,35 @@
 local M = {}
 local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 local enabled_plugins = {}
+local packadd_cmd = "packadd! "
 
-local enable = function(name)
-	vim.cmd("packadd! "..name)
+local enable = function(name, dir, config)
+	if enabled_plugins[name] then return end
+	vim.cmd(packadd_cmd..name)
+	if config then config(dir) end
 	enabled_plugins[name] = true
 end
 
 vim.api.nvim_create_augroup("plugozaur", {})
 vim.api.nvim_create_autocmd("VimEnter", { group = "plugozaur", callback = function()
-	enable = function(name)
-		if enabled_plugins[name] then return end
-		vim.cmd("packadd "..name)
-		enabled_plugins[name] = true
-	end
+	packadd_cmd = "packadd "
 end})
 
-function M.add(repos, after)
+function M.add(repos)
+	local regenerate_helptags = false
 	repos = type(repos) == "table" and repos or {repos}
 	for _,repo in pairs(repos) do
-		local name = string.match(repo, "[^/]+$")
+		repo = type(repo) == "table" and repo or {repo}
+		local name = string.match(repo[1], "[^/]+$")
 		local dir = PLUGIN_HOME..name
 		if vim.fn.isdirectory(dir) == 0 then
-			vim.cmd(string.format("!git clone --depth 1 %s.git %s", repo, dir))
-			enable(name)
-			if after then after(dir) end
-			vim.cmd("helptags ALL")
-		else
-			enable(name)
+			vim.cmd(string.format("!git clone --depth 1 %s.git %s", repo[1], dir))
+			if repo.build then repo.build(dir) end
+			regenerate_helptags = true
 		end
+		enable(name, dir, repo.config)
 	end
+	if regenerate_helptags then vim.cmd("helptags ALL") end
 end
 
 function M.update()
