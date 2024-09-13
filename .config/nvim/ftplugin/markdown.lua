@@ -15,5 +15,11 @@ Plugin {{
 		nnoremap_buffer("<localleader>o", require("peek").open, "Open Peek")
 		nnoremap_buffer("<localleader>c", require("peek").close, "Close Peek")
 	end,
-}}
+	}, {
+		"https://github.com/sotte/presenting.nvim",
+		config = function ()
+			require('presenting').setup()
+		end
+	},
+}
 
