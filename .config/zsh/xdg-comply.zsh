@@ -11,6 +11,7 @@ export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
 export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
@@ -32,7 +33,6 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME"/python/startup.py
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SOLARGRAPH_CACHE="$XDG_CACHE_HOME"/solargraph
 export SQLITE_HISTORY="$XDG_STATE_HOME"/sqlite_history
-# export WGETRC="$XDG_CONFIG_HOME"/wgetrc
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 
 # alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
