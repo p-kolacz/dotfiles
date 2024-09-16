@@ -64,6 +64,9 @@ case "$FILE_EXTENSION" in
 
 	7z|apk|bz|bz2|cab|deb|epub|gz|jar|rar|rpm|tar|tgz|xz|zip)
 		bsdtar --list --file "$FILE_PATH" && exit 0;;
+	
+	lnk)
+		lnk-parse-1.0.pl "$FILE_PATH" ;;
 
 esac
 
