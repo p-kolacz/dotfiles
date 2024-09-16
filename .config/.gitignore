@@ -3,9 +3,9 @@
 !/anacron/
 !/aseprite/
 !/bspwm/
-!/etc/
 !/dosbox/
 !/dunst/
+!/etc/
 !/flameshot/
 !/fontconfig/
 !/git/
@@ -22,11 +22,12 @@
 !/qimgv/
 !/rofi/
 !/sxhkd/
+!/terminal-colors.d/
 !/vifm/
 !/xorg/
+!/yazi/
 !/zathura/
 !/zsh/
+
 !/starship.toml
-!/terminal-colors.d/
 !/xplugrc
-!/yazi/
