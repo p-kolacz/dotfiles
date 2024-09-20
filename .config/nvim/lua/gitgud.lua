@@ -56,16 +56,16 @@ function M.search4differences()
 	end)
 end
 
-function M.gitsigns_next_hunk(gs)
-	if vim.wo.diff then return ']c' end
-	vim.schedule(function() gs.next_hunk() end)
-	return '<Ignore>'
-end
+-- function M.gitsigns_next_hunk(gs)
+-- 	if vim.wo.diff then return ']c' end
+-- 	vim.schedule(function() gs.next_hunk() end)
+-- 	return '<Ignore>'
+-- end
 
-function M.gitsigns_prev_hunk(gs)
-	if vim.wo.diff then return '[c' end
-	vim.schedule(function() gs.prev_hunk() end)
-	return '<Ignore>'
-end
+-- function M.gitsigns_prev_hunk(gs)
+-- 	if vim.wo.diff then return '[c' end
+-- 	vim.schedule(function() gs.prev_hunk() end)
+-- 	return '<Ignore>'
+-- end
 
 return M
