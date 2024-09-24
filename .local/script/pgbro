@@ -31,7 +31,9 @@ preview() {
 }
 
 main() {
-	tables | fzf 										\
+	local tables=$(tables)
+	[[ -z $tables ]] && exit 1
+	echo "$tables" | fzf 										\
 	--preview="$THIS $CONNECTION preview {4}"			\
 	--preview-window="top,75%"							\
 	--bind "ctrl-r:reload($THIS $CONNECTION tables)"	\

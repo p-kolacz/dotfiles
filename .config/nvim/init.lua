@@ -228,31 +228,12 @@
 	-- }}}
 -- Git {{{
 
-	Plugin  "https://github.com/lewis6991/gitsigns.nvim"
 	local gg = require "gitgud"
 
 	mapgroup("<leader>g", "+Git")
 	Noremap { "n",  "<leader>gg",  gg.lazygit, "LazyGit" }
 
-
-	local gs = require "gitsigns"
-	gs.setup{
-		trouble = true,
-		on_attach = function()
-
-			nnoremap_buffer(']c', function()
-				gg.gitsigns_next_hunk(gs)
-			end, "next hunk", {expr=true})
-
-			nnoremap_buffer('[c', function()
-				gg.gitsigns_prev_hunk(gs)
-			end, "prev hunk",  {expr=true})
-
-			nnoremap_buffer("<leader>gb", gs.blame_line, "blame line")
-			nnoremap_buffer("<leader>gp", gs.preview_hunk, "preview hunk")
-		end,
-	}
-
+	local gs = require "conf/gitsigns"
 	Perun {
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },
@@ -470,6 +451,7 @@
 	Map     { "",   "<C-v>",       '"+P' }
 
 	Yanka  = require "yanka"
+	Noremap { "n",  "<leader>yr",  Yanka.relative_path }
 	Perun {
 		{ "  Yank filename",               Yanka.filename },
 		{ "  Yank relative path",          Yanka.relative_path },

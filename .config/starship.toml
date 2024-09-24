@@ -1,5 +1,11 @@
 # https://starship.rs/config/
 
+format = '''[╭─](bold green) $all[╰──](bold green)$status$character'''
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold green)"
+
 [status]
 disabled = false
 

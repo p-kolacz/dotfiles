@@ -2,7 +2,7 @@ local M = {}
 
 local exprs = {
 	filename = "%:t",
-	relative_path = "%",
+	relative_path = "%:.",
 	full_path = "%:p",
 	full_dir = "%:p:h",
 	cfile = "<cfile>",
