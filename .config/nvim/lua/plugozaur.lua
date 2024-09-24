@@ -23,7 +23,7 @@ function M.add(repos)
 		local name = string.match(repo[1], "[^/]+$")
 		local dir = PLUGIN_HOME..name
 		if vim.fn.isdirectory(dir) == 0 then
-			vim.cmd(string.format("!git clone --depth 1 %s.git %s", repo[1], dir))
+			vim.cmd(string.format("!GIT_WORK_TREE=%s git clone --depth 1 %s.git %s", dir, repo[1], dir))
 			if repo.build then repo.build(dir) end
 			regenerate_helptags = true
 		end

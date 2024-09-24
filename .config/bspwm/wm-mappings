@@ -90,7 +90,7 @@ alt + Tab
 	bspc node -f next.local.leaf
 
 # scratchpad
-super + grave
+super + semicolon
 	~/.config/bspwm/scratchpad.sh
 
 #
