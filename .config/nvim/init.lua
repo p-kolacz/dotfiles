@@ -451,6 +451,7 @@
 	Map     { "",   "<C-v>",       '"+P' }
 
 	Yanka  = require "yanka"
+	Noremap { "n",  "<leader>yr",  Yanka.relative_path }
 	Perun {
 		{ "  Yank filename",               Yanka.filename },
 		{ "  Yank relative path",          Yanka.relative_path },

@@ -31,14 +31,14 @@ gitsigns.setup{
 
 		-- Actions
 		-- TODO: map commented ones
-		map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = "stage hunk" })
-		map('n', '<leader>ghr', gitsigns.reset_hunk, { desc = "reset hunk" })
-		map('v', '<leader>ghs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "stage hunk" })
-		map('v', '<leader>ghr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "reset hunk" })
-		-- map('n', '<leader>hS', gitsigns.stage_buffer, { desc = "stage buffer" })
-		map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
-		-- map('n', '<leader>hR', gitsigns.reset_buffer, { desc = "reset buffer" })
-		map('n', '<leader>ghp', gitsigns.preview_hunk, { desc = "preview hunk" })
+		map('n', '<leader>gsh', gitsigns.stage_hunk, { desc = "stage hunk" })
+		map('n', '<leader>grh', gitsigns.reset_hunk, { desc = "reset hunk" })
+		map('v', '<leader>gsh', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "stage hunk" })
+		map('v', '<leader>grs', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = "reset hunk" })
+		map('n', '<leader>gsb', gitsigns.stage_buffer, { desc = "stage buffer" })
+		map('n', '<leader>guh', gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
+		map('n', '<leader>grb', gitsigns.reset_buffer, { desc = "reset buffer" })
+		map('n', '<leader>gph', gitsigns.preview_hunk, { desc = "preview hunk" })
 		-- map('n', '<leader>gb', function() gitsigns.blame_line{full=true} end, { desc = "blame line" })
 		-- map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "toggle blame" })
 		-- map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this" })
