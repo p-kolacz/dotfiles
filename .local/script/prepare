@@ -8,8 +8,7 @@ laptop() {
 	desktop
 	hw/bluetooth
 	hw/wifi
-	install xorg-xinput tlp batsignal # xinput 4 touchpad
-	startenableuser batsignal
+	install xorg-xinput tlp # xinput 4 touchpad
 	ynstall xplugd
 	sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/backlight.rules" /etc/udev/rules.d/
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/40-touchpad.conf" /etc/X11/xorg.conf.d/
@@ -26,7 +25,8 @@ desktop() {
 
 bspwm() {
 	xorg
-	install bspwm sxhkd picom polybar libnotify dunst rofi rofi-calc
+	install bspwm sxhkd picom polybar libnotify dunst rofi rofi-calc batsignal
+	startenableuser batsignal
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
