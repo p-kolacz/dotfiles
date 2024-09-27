@@ -10,6 +10,5 @@ SUBSCRIBERS=$HOME/.config/bashbus
 
 for file in "$SUBSCRIBERS/$SIGNAL"/*; do
 	[[ -e $file ]] || continue
-	"$file" "$@"
+	"$file" "$@" &
 done
-

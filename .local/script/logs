@@ -2,5 +2,5 @@
 
 file=$(find ~/.local/state/log/ -type f | fzf \
 	--preview-window="top,75%" \
-	--preview="view {}") && $PAGER "$file"
+	--preview="view {}") && tail --lines=+0 --follow  "$file"
 

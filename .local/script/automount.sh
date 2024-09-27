@@ -5,7 +5,7 @@ pathtoname() {
 }
 
 onmount() {
-	signal usb-mounted "$1" &
+	signal usb-mounted "$1"
 	LABEL=$(lsblk --noheadings --output LABEL "$1")
 	notify-send "UDisks" "$LABEL ($1) mounted"
 }
