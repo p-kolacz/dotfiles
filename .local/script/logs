@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file=$(find ~/.local/state/log/ -type f | fzf \
+file=$(find -L ~/.local/state/log/ -type f | fzf \
 	--preview-window="top,75%" \
 	--preview="view {}") && tail --lines=+0 --follow  "$file"
 
