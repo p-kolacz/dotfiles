@@ -7,7 +7,7 @@ bspc rule -a Screenkey manage=off
 bspc rule -a scratchpad state=floating sticky=on rectangle=1400x850+0+0 center=true
 bspc rule -a Gimp desktop=G follow=on
 bspc rule -a factorio desktop=G follow=on state=fullscreen
-bspc rule -a Brave-browser desktop=W
+# bspc rule -a Brave-browser desktop=W
 bspc rule -a thunderbird desktop=C
 bspc rule -a Brave-browser:crx_cifhbcnohmdccbgoicgdjpfamggdegmo desktop=T
 bspc rule -a Brave-browser:crx_bkdiakkpagfhaafbmaikhaancfkmejkj desktop=E
