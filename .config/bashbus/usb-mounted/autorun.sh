@@ -9,7 +9,7 @@ MOUNTPOINT=$(lsblk --noheadings --output MOUNTPOINT "$DEVICE")
 HOSTNAME=$(cat /etc/hostname)
 [[ -z $HOSTNAME ]] && exit 3
 
-RUNFILE="$MOUNTPOINT/$HOSTNAME.sh"
+RUNFILE="$MOUNTPOINT/$HOSTNAME.ar"
 [[ -e $RUNFILE ]] || exit 0 
 
 echo "[$(date -Iseconds)] $RUNFILE found, executing"

@@ -186,7 +186,7 @@ vm() {
 xorg() {
 	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx i3lock
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/sleep@.service" /etc/systemd/system/
-	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard.conf" /etc/X11/xorg.conf.d/
+	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard-pl.conf" /etc/X11/xorg.conf.d/
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }

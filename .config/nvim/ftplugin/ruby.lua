@@ -1,12 +1,28 @@
+local function get_spec_file()
+	local current_file = vim.fn.expand('%')
+	local spec_file = string.gsub(current_file, "app", "spec")
+	spec_file = string.gsub(spec_file, ".rb$", "_spec.rb")
+	return spec_file
+end
+
+local function get_main_file()
+	local current_file = vim.fn.expand('%')
+	local spec_file = string.gsub(current_file, "spec", "app", 1)
+	spec_file = string.gsub(spec_file, "_spec", "")
+	return spec_file
+end
+
 mapgroup("<localleader>s", "+Server")
 BufferNoremap {
-	{ "n", "<localleader>ss", ":Server<cr>", "start" },
-	{ "n", "<localleader>sr", ":Rails restart<cr>", "restart" },
-	{ "n", "<localleader>sc", ":Console<cr>" },
+	-- { "n", "<localleader>ss", ":Server<cr>", "start" },
+	-- { "n", "<localleader>sr", ":Rails restart<cr>", "restart" },
+	-- { "n", "<localleader>sc", ":Console<cr>" },
 	{ "n", "<localleader>m", ":Emodel<cr>", "model" },
 	{ "n", "<localleader>v", ":Eview<cr>", "view" },
 	{ "n", "<localleader>c", ":Econtroller<cr>", "controller" },
 	{ "n", "<localleader>r", ":e config/routes.rb<cr>", "routes" },
+	{ "n", "<localleader>s", function () vim.cmd.edit(get_spec_file()) end, "spec" },
+	{ "n", "<localleader>b", function () vim.cmd.edit(get_main_file()) end, "main" },
 }
 
 Helper.map {
@@ -31,19 +47,7 @@ Laser.start {
 	},
 }
 
--- local function rspec()
--- 	vim.fn.system('docker-compose exec app bundle exec rspec --require='..vim.fn.stdpath('config')..'/bridges/VIM_formatter.rb --format VimFormatter --out /tmp/quickfix.out  --format progress spec/domains')
--- 	vim.cmd.cgetfile('/tmp/quickfix.out')
--- 	vim.cmd.cwindow()
--- end
-
 nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow | cfirst<cr>')
-
--- Run the specs, and open the updated quickfix on `<leader>s`
--- :map <leader>s :call system('rspec --require=support/formatters/VIM_formatter.rb --format VimFormatter --out quickfix.out  --format progress') \| cg quickfix.out \| cwindow
-
--- or, without the temp file:
--- :map <leader>s :cgete system('rspec --require=support/formatters/vim_formatter.rb --format VimFormatter') \| cwindow
 
 Plugin {
 	-- "https://github.com/vim-ruby/vim-ruby",

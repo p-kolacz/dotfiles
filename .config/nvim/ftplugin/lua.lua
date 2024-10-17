@@ -15,24 +15,5 @@ Helper.map {
 }
 
 Laser.start {
-	name = "Sumneko",
 	cmd = { "lua-language-server" },
-	settings = {
-		Lua = {
-			runtime = {
-				version = 'LuaJIT',  -- LuaJIT for Neovim
-			},
-			diagnostics = {
-				globals = {'vim'},  -- Get the language server to recognize the `vim` global
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),  -- Make the server aware of Neovim runtime files
-				checkThirdParty = false,							-- fix LSP startup messages
-			},
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
 }
-
