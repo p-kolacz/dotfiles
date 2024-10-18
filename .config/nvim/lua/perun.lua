@@ -29,7 +29,7 @@ function M.run()
 			end,
 		},
 		function(choice)
-			return choice and execute(choice[2])
+			if choice then execute(choice[2]) end
 		end
 	)
 end

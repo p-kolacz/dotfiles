@@ -1,4 +1,4 @@
-setlocal.foldmethod = "indent"
+vim.opt_local.foldmethod = "indent"
 
 require 'caniuse'.setup()
 mapgroup("<leader>hu","Can I Use")

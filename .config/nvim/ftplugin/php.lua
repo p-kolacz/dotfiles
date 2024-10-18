@@ -1,4 +1,4 @@
-setlocal.autoindent = true
+vim.opt_local.autoindent = true
 
 Helper.map {
 	MANUAL     = "https://www.php.net/manual/en/",

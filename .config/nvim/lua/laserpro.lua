@@ -14,11 +14,11 @@ end
 
 function M.stop()
 	print("Stopping LS...")
-	vim.lsp.stop_client(vim.lsp.get_active_clients({ bufnr = 0 }))
+	vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = 0 }))
 end
 
 function M.print_name()
-	local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
 	print(#clients > 0 and clients[1].name or "No LS attached")
 end
 

@@ -1,2 +1,16 @@
 extends ruby
 extends loremipsum
+
+snippet spec
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+describe ${1:class} do
+  subject(:${2:subject}) { described_class }
+
+  describe '${3:method}' do
+    $0
+  end
+end
+endsnippet

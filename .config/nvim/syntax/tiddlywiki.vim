@@ -15,7 +15,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-setlocal isident+=-
+vim.opt_local isident+=-
 
 """ Patterns
 syn spell toplevel

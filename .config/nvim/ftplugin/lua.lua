@@ -1,4 +1,4 @@
-setlocal.formatoptions:remove("o")
+vim.opt_local.formatoptions:remove("o")
 
 BufferNoremap {
 	"n", "<localleader>x",  ":call luaeval(getline('.'))<cr>",  "evaluate line in nvim",

@@ -1,5 +1,5 @@
-setlocal.expandtab = true
-setlocal.shiftwidth = 2
+vim.opt_local.expandtab = true
+vim.opt_local.shiftwidth = 2
 
 Plugin "https://github.com/kchmck/vim-coffee-script"
 

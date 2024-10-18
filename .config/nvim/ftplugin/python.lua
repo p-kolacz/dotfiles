@@ -1,6 +1,6 @@
-setlocal.expandtab = false
-setlocal.tabstop = 4
-setlocal.formatoptions:remove("f")
+vim.opt_local.expandtab = false
+vim.opt_local.tabstop = 4
+vim.opt_local.formatoptions:remove("f")
 
 Helper.map {
 	MANUAL     = "https://docs.python.org/3/",

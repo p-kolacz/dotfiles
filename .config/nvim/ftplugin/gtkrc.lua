@@ -1,1 +1,1 @@
-set.commentstring="# %s"
+vim.opt.commentstring="# %s"

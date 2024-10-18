@@ -1,4 +1,4 @@
--- setlocal.formatoptions("t")
+-- vim.opt_local.formatoptions("t")
 
 -- nnoremap_buffer("<C-space>", ":Telescope find_files find_command=rg,--hidden,--no-ignore,-i,--files,--glob,*gd,--glob,*shader,--glob,*json,--glob,*csv<cr>")
 nnoremap_buffer("<F5>", ":wa<cr>:GodotRun<CR>")

@@ -1,5 +1,5 @@
 Plugin "https://github.com/zaid/vim-rec"
-setlocal.foldenable = false
+vim.opt_local.foldenable = false
 
 Helper.map {
 	MANUAL = "https://www.gnu.org/software/recutils/manual/",

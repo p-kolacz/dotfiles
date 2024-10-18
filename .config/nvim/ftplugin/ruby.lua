@@ -12,17 +12,22 @@ local function get_main_file()
 	return spec_file
 end
 
+local function run_spec()
+	vim.cmd("tab term rime spec "..vim.fn.expand("%"))
+end
+
 mapgroup("<localleader>s", "+Server")
 BufferNoremap {
 	-- { "n", "<localleader>ss", ":Server<cr>", "start" },
 	-- { "n", "<localleader>sr", ":Rails restart<cr>", "restart" },
 	-- { "n", "<localleader>sc", ":Console<cr>" },
-	{ "n", "<localleader>m", ":Emodel<cr>", "model" },
-	{ "n", "<localleader>v", ":Eview<cr>", "view" },
-	{ "n", "<localleader>c", ":Econtroller<cr>", "controller" },
-	{ "n", "<localleader>r", ":e config/routes.rb<cr>", "routes" },
+	-- { "n", "<localleader>m", ":Emodel<cr>", "model" },
+	-- { "n", "<localleader>v", ":Eview<cr>", "view" },
+	-- { "n", "<localleader>c", ":Econtroller<cr>", "controller" },
+	-- { "n", "<localleader>r", ":e config/routes.rb<cr>", "routes" },
 	{ "n", "<localleader>s", function () vim.cmd.edit(get_spec_file()) end, "spec" },
 	{ "n", "<localleader>b", function () vim.cmd.edit(get_main_file()) end, "main" },
+	{ "n", "<localleader>r", run_spec, "run spec" },
 }
 
 Helper.map {
@@ -31,8 +36,7 @@ Helper.map {
 	DOCSEARCH  = "https://devdocs.io/#q=ruby%20",
 }
 
-set.hlsearch = false
-setlocal.foldcolumn = "0"
+vim.opt_local.foldcolumn = "0"
 
 Laser.start {
 	name = "Solargraph",

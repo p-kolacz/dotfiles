@@ -106,7 +106,7 @@ function M.select_colorscheme()
 			end,
 		},
 		function(choice)
-			return choice and M.set_colorscheme(choice[1], choice[2], true)
+			if choice then M.set_colorscheme(choice[1], choice[2], true) end
 		end
 	)
 end

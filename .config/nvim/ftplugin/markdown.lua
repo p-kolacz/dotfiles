@@ -1,5 +1,5 @@
-set.isfname:append("32")
-setlocal.conceallevel=2
+vim.opt.isfname:append("32")
+vim.opt_local.conceallevel=2
 
 nnoremap_buffer("gf", ":e <cfile>.md<cr>")
 

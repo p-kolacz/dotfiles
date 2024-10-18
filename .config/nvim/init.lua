@@ -26,8 +26,8 @@
 		-- ignore_missing = true, -- wainting for merge
 	}
 
-	let.mapleader = " "
-	let.maplocalleader = "\\"
+	vim.g.mapleader = " "
+	vim.g.maplocalleader = "_"
 	augroup("vimrc", { clear = true })
 
 	autocmd("BufWinEnter", {
@@ -66,7 +66,7 @@
 		signcolumn    = "yes",
 		splitbelow    = true,
 		splitright    = true,
-		termguicolors = true,
+		-- termguicolors = true,
 	}
 
 	Icons.setup_devicons()
@@ -106,10 +106,10 @@
 
 	Noremap {
 		{ "G",  "<leader>o",   "Options"                                             },
-		{ "n",  "<leader>ol",  ":setlocal list!<CR>",       "toggle invisible chars"  },
+		{ "n",  "<leader>ol",  ":vim.opt_local list!<CR>",       "toggle invisible chars"  },
 		{ "n",  "<leader>on",  ":set number!<CR>",          "toggle line numbers"     },
 		{ "n",  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers" },
-		{ "n",  "<leader>ow",  ":setlocal wrap!<CR>",       "toggle wrap"             },
+		{ "n",  "<leader>ow",  ":vim.opt_local wrap!<CR>",       "toggle wrap"             },
 	}
 	Perun {
 		{ "  Colorschemes",       Zorya.select_colorscheme },
@@ -273,7 +273,7 @@
 -- Navigation {{{
 
 	Require {
-		"conf/trouble",
+		-- "conf/trouble",
 		"conf/telescope",
 		"conf/nvim-tree",
 	}
@@ -330,11 +330,11 @@
 		"https://github.com/adriaanzon/vim-emmet-ultisnips",
 		"https://github.com/SirVer/ultisnips",
 	}
-	Globals {
-		UltiSnipsExpandTrigger       = '<tab>',
-		UltiSnipsJumpForwardTrigger  = '<tab>',
-		UltiSnipsJumpBackwardTrigger = '<s-tab>',
-	}
+
+	vim.g.UltiSnipsExpandTrigger       = '<tab>'
+	vim.g.UltiSnipsJumpForwardTrigger  = '<tab>'
+	vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 	mapgroup("<leader>u",  "+Snippets")
 	Noremap {
 		{ "n", "<leader>uf", ":UltiSnipsEdit<CR>",     "edit filetype snippets" },
@@ -377,16 +377,17 @@
 
 	Plugin "https://github.com/rcarriga/nvim-notify"
 
-	vim.notify = require("notify")
-	vim.notify.setup { top_down = false }
+	local notify = require("notify")
+	notify.setup { top_down = false }
+	vim.notify = notify
 
 	Noremap {
 		{ "G",  "<leader>s",   "+Spell",                                              },
-		{ "n",  "<leader>ss",  ":setlocal spell!<CR>",             "spell check", },
-		{ "n",  "<leader>sc",  ":setlocal complete+=kspell<CR>",   "spell complete", },
-		{ "n",  "<leader>sn",  ":setlocal complete-=kspell<CR>",   "spell no complete", },
-		{ "n",  "<leader>se",  ":setlocal spelllang=en_us<CR>",    "lang en_us", },
-		{ "n",  "<leader>sp",  ":setlocal spelllang=pl<CR>",       "lang pl", },
+		{ "n",  "<leader>ss",  ":set spell!<CR>",             "spell check", },
+		{ "n",  "<leader>sc",  ":set complete+=kspell<CR>",   "spell complete", },
+		{ "n",  "<leader>sn",  ":set complete-=kspell<CR>",   "spell no complete", },
+		{ "n",  "<leader>se",  ":set spelllang=en_us<CR>",    "lang en_us", },
+		{ "n",  "<leader>sp",  ":set spelllang=pl<CR>",       "lang pl", },
 	}
 
 	Perun { "  Notification history", "Telescope notify" }
@@ -396,9 +397,11 @@
 	-- Noremap {
 		-- { "n", "<TAB>", "za" }
 	-- }
-	set.foldlevelstart = 99
-	set.foldmethod     = "expr"
-	set.foldexpr       = "nvim_treesitter#foldexpr()"
+	Set {
+		foldlevelstart = 99,
+		foldmethod     = "expr",
+		foldexpr       = "nvim_treesitter#foldexpr()",
+	}
 	-- set.foldtext       = "v:lua.Foldtext()"
 	-- https://vi.stackexchange.com/questions/25820/maintain-alignment-of-text-after-folding
 	-- function Foldtext()

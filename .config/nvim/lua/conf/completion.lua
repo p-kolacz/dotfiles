@@ -9,8 +9,8 @@ Plugin {
 	'https://github.com/quangnguyen30192/cmp-nvim-ultisnips',
 }
 
-set.completeopt = "menu,menuone,noselect"
-set.pumheight = 10
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.pumheight = 10
 
 local cmp = require'cmp'
 -- if not cmp then return end
