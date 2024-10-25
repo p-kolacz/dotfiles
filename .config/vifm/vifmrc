@@ -139,30 +139,30 @@ nnoremap <c-k> :tabprev<cr>
 " GoTo
 nnoremap gh :cd<cr>
 " Leader
-nnoremap <bs>a ggvG<cr>
-nnoremap <bs>b :backup<cr>
-nnoremap <bs>cf :cmp<cr>
-nnoremap <bs>cc :compare<cr>
-nnoremap <bs>cd :compare listdups<cr>
-nnoremap <bs>cu :compare listunique<cr>
-nnoremap <bs>C :write | edit $MYVIFMRC | restart full<cr>
-nnoremap <bs>d :dragon<cr>
-nnoremap <bs>e :extract<cr>
-nnoremap <bs>g :grep<space>
-nnoremap <bs>h :history<cr>
-nnoremap <bs>m :media<cr>
-nnoremap <bs>q :quit<cr>
-nnoremap <bs>r :lstrash<cr>
-nnoremap <bs>T :!$TERMINAL &<cr>
-nnoremap <bs>t :tar<cr>
-nnoremap <bs>w :set wrap!<cr>
-nnoremap <bs>z :zip<cr>
-nnoremap <bs>7 :sevenz<cr>
-nnoremap <bs>sc :!crc32 %c %S<cr>
-nnoremap <bs>sm :!md5sum %c | cut -d' ' -f1 %S<cr>
-nnoremap <bs>s1 :!sha1sum %c | cut -d' ' -f1 %S<cr>
-nnoremap <bs>s2 :!sha256sum %c | cut -d' ' -f1 %S<cr>
-nnoremap <bs>s5 :!sha512sum %c | cut -d' ' -f1 %S<cr>
+nnoremap _a ggvG<cr>
+nnoremap _b :backup<cr>
+nnoremap _cf :cmp<cr>
+nnoremap _cc :compare<cr>
+nnoremap _cd :compare listdups<cr>
+nnoremap _cu :compare listunique<cr>
+nnoremap _C :write | edit $MYVIFMRC | restart full<cr>
+nnoremap _d :dragon<cr>
+nnoremap _e :extract<cr>
+nnoremap _g :grep<space>
+nnoremap _h :history<cr>
+nnoremap _m :media<cr>
+nnoremap _q :quit<cr>
+nnoremap _r :lstrash<cr>
+nnoremap _T :!$TERMINAL &<cr>
+nnoremap _t :tar<cr>
+nnoremap _w :set wrap!<cr>
+nnoremap _z :zip<cr>
+nnoremap _7 :sevenz<cr>
+nnoremap _sc :!crc32 %c %S<cr>
+nnoremap _sm :!md5sum %c | cut -d' ' -f1 %S<cr>
+nnoremap _s1 :!sha1sum %c | cut -d' ' -f1 %S<cr>
+nnoremap _s2 :!sha256sum %c | cut -d' ' -f1 %S<cr>
+nnoremap _s5 :!sha512sum %c | cut -d' ' -f1 %S<cr>
 
 " Fs
 nnoremap <f2> cW

@@ -105,11 +105,11 @@
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
 	Noremap {
-		{ "G",  "<leader>o",   "Options"                                             },
-		{ "n",  "<leader>ol",  ":vim.opt_local list!<CR>",       "toggle invisible chars"  },
+		{ "G",  "<leader>o",   "Options"                                              },
+		{ "n",  "<leader>ol",  ":set list!<CR>",            "toggle invisible chars"  },
 		{ "n",  "<leader>on",  ":set number!<CR>",          "toggle line numbers"     },
 		{ "n",  "<leader>or",  ":set relativenumber!<CR>",  "toggle relative numbers" },
-		{ "n",  "<leader>ow",  ":vim.opt_local wrap!<CR>",       "toggle wrap"             },
+		{ "n",  "<leader>ow",  ":set wrap!<CR>",            "toggle wrap"             },
 	}
 	Perun {
 		{ "  Colorschemes",       Zorya.select_colorscheme },

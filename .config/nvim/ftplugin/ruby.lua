@@ -13,7 +13,7 @@ local function get_main_file()
 end
 
 local function run_spec()
-	vim.cmd("tab term rime spec "..vim.fn.expand("%"))
+	vim.cmd("tab term rime spec "..vim.fn.expand("%:."))
 end
 
 mapgroup("<localleader>s", "+Server")
