@@ -38,7 +38,7 @@ gitsigns.setup{
 		map('n', '<leader>gsb', gitsigns.stage_buffer, { desc = "stage buffer" })
 		map('n', '<leader>guh', gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
 		map('n', '<leader>grb', gitsigns.reset_buffer, { desc = "reset buffer" })
-		map('n', '<leader>gph', gitsigns.preview_hunk, { desc = "preview hunk" })
+		map('n', '<leader>gh', gitsigns.preview_hunk, { desc = "preview hunk" })
 		-- map('n', '<leader>gb', function() gitsigns.blame_line{full=true} end, { desc = "blame line" })
 		-- map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "toggle blame" })
 		-- map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this" })
