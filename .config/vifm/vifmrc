@@ -44,7 +44,9 @@ endif
 " ------------------------------------------------------------------------------
 
 " source instead of colorscheme to use env var
-source $VIFM/colors/$THEME_VARIANT.vifm
+" source $VIFM/colors/$THEME_VARIANT.vifm
+colorscheme Default-256-mod
+
 
 " Icons
 source $VIFM/favicons.vifm
