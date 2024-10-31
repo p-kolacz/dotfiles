@@ -13,7 +13,9 @@ local function get_main_file()
 end
 
 local function run_spec()
+	vim.cmd.wall()
 	vim.cmd("tab term rime spec "..vim.fn.expand("%:."))
+	vim.cmd.startinsert()
 end
 
 mapgroup("<localleader>s", "+Server")
@@ -28,6 +30,7 @@ BufferNoremap {
 	{ "n", "<localleader>s", function () vim.cmd.edit(get_spec_file()) end, "spec" },
 	{ "n", "<localleader>b", function () vim.cmd.edit(get_main_file()) end, "main" },
 	{ "n", "<localleader>r", run_spec, "run spec" },
+	{ "n", "<F5>", run_spec, "run spec" },
 }
 
 Helper.map {
