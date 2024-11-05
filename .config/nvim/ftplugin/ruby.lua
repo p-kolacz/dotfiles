@@ -15,7 +15,7 @@ end
 local function run_spec()
 	vim.cmd.wall()
 	vim.cmd("tab term rime spec "..vim.fn.expand("%:."))
-	vim.cmd.startinsert()
+	-- vim.cmd.startinsert()
 end
 
 mapgroup("<localleader>s", "+Server")
