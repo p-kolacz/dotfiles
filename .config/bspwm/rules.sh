@@ -18,7 +18,6 @@ while read -r class; do
 done <<EOF
 Arandr
 Hdajackretask
-heroic
 KeePassXC
 Mojosetup
 mpv
