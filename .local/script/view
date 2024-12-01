@@ -66,7 +66,10 @@ case "$FILE_EXTENSION" in
 		bsdtar --list --file "$FILE_PATH" && exit 0;;
 	
 	lnk)
-		lnk-parse-1.0.pl "$FILE_PATH" ;;
+		lnk-parse-1.0.pl "$FILE_PATH" && exit 0;;
+
+	json)
+		cat "$FILE_PATH" | jq --color-output && exit 0 ;;
 
 esac
 

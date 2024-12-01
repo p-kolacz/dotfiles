@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE="$HOME/Exocortex/Databases/waga.txt"
+FILE="$HOME/Cloud/Exocortex/Databases/waga.txt"
 
 if [[ $# -eq 0 ]]; then
 	$EDITOR "$FILE"

@@ -1,5 +1,3 @@
-vim.opt_local.autoindent = true
-
 Helper.map {
 	MANUAL     = "https://www.php.net/manual/en/",
 	FUNCTIONS  = "https://www.php.net/manual/en/indexes.functions.php",

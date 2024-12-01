@@ -118,6 +118,7 @@ vnoremap w :view<cr>gv
 nnoremap * ggvG<cr>gg
 nnoremap <c-f> :FZFfindFile<cr>
 nnoremap <BS> :cd ..<cr>
+nnoremap / :FZFfind<cr>
 
 " Mappings for faster renaming
 nnoremap a cW
@@ -267,6 +268,12 @@ command! FZFfindDir : set noquickview
 	\| endif
 command! FZFfindFile : set noquickview
  	\| let $FZF_PICK = term('find $HOME | fzf --height 10 2>/dev/tty')
+	\| if $FZF_PICK != ''
+	\|     execute 'goto' fnameescape($FZF_PICK)
+	\| endif
+
+command! FZFfind : set noquickview
+	\| let $FZF_PICK = term('find ./* | fzf --height 10 2>/dev/tty')
 	\| if $FZF_PICK != ''
 	\|     execute 'goto' fnameescape($FZF_PICK)
 	\| endif
