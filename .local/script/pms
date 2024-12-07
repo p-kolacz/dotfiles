@@ -69,7 +69,8 @@ package=$(_installed | fzf \
 	--bind "F4:reload(_installed dt)" \
 	--bind "F5:reload(_avail)" \
 	--bind "F6:execute(pacman -Ql {} | fzf)" \
-	--bind "F8:execute(sudo pacman -Rns {} < /dev/tty > /dev/tty 2>&1)" )
+	--bind "F8:execute(sudo pacman -Rns {} < /dev/tty > /dev/tty 2>&1)" \
+	--bind "F8:+reload(_installed ett)" )
 
 mode=$(cat /tmp/pms_mode)
 [[ -n $package && $mode == "sync" ]] && sudo pacman -S "$package"

@@ -24,6 +24,11 @@ endsnippet
 # "\e[0m"
 # endsnippet
 
+snippet cdhere "change dir to this script base dir"
+cd "${0%/*}"
+
+endsnippet
+
 # https://github.com/dylanaraps/pure-sh-bible#count-files-or-directories-in-directory
 snippet count_files "count files or dirs in directory"
 count() {

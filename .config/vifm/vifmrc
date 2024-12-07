@@ -4,7 +4,6 @@
 "								  Environment
 " ------------------------------------------------------------------------------
 
-" set shell=/bin/bash
 set vicmd=nvim
 
 " ------------------------------------------------------------------------------
@@ -31,8 +30,7 @@ set undolevels=100
 set vimhelp
 
 " What should be saved automatically between vifm sessions.
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=bmarks,bookmarks,chistory,dhistory,dirstack,fhistory,phistory,registers,savedirs,shistory,state,tui
 
 " Don't do too many requests to slow file systems
 if !has('win')
@@ -119,6 +117,7 @@ nnoremap * ggvG<cr>gg
 nnoremap <c-f> :FZFfindFile<cr>
 nnoremap <BS> :cd ..<cr>
 nnoremap / :FZFfind<cr>
+nnoremap <a-t> :!$TERMINAL 2> /dev/null &<cr>
 
 " Mappings for faster renaming
 nnoremap a cW
@@ -279,23 +278,31 @@ command! FZFfind : set noquickview
 	\| endif
 
 " ------------------------------------------------------------------------------
-"							   File run & preview
+"								   File preview
 " ------------------------------------------------------------------------------
 
 " set previewprg='view %c %pw %ph %px'
 
-" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
-		" \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
-		" \ %pc
-		" \ kitty icat --silent --clear
+" enable ls colors in folder preview
+fileviewer */ tree -C --dirsfirst
+fileviewer .*/ tree -C --dirsfirst
+
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^/] view %c %pw %ph %px
 fileviewer .*[^/] view %c %pw %ph %px
 
+" ------------------------------------------------------------------------------
+"								   File run
+" ------------------------------------------------------------------------------
+
 " MD5
 filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
+	\ {Check MD5 hash sum}
+	\ md5sum -c %f %S,
 
 " SHA1
 filetype *.sha1

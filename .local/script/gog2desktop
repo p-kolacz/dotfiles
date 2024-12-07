@@ -1,0 +1,29 @@
+#!/bin/bash
+
+IMG_URL=https://s.h4x.re/gog/get.php
+
+DIR=$(realpath "$1")
+cd "$DIR" || exit 1
+
+files=("$DIR"/gog/goggame-*.info)
+file=${files[0]}
+gogid=$(jq --raw-output ".gameId" < "$file")
+name=$(jq --raw-output ".name" < "$file")
+
+iconfile="$DIR/gog/icon.png"
+[[ ! -f $iconfile ]] && curl --silent --output "$iconfile" "$IMG_URL?id=$gogid&type=icon"
+
+filename="$name.desktop"
+
+{
+	echo "[Desktop Entry]"
+	echo "Name=$name"
+	echo "Exec=\"$DIR/run.sh\""
+	echo "Terminal=false"
+	echo "Type=Application"
+	echo "Icon=$iconfile"
+	echo "Categories=Game;GameZ;"
+} > "$filename"
+
+
+ln -s "$DIR/$filename" "$HOME/.local/share/applications/"

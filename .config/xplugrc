@@ -1,4 +1,4 @@
 #!/bin/bash
 
-[[ $1 == "keyboard" ]] && "/home/piotr/.local/script/kbrate.sh"
+[[ $1 == "keyboard" ]] && "/home/piotr/.local/script/kbreset"
 
