@@ -4,7 +4,6 @@
 "								  Environment
 " ------------------------------------------------------------------------------
 
-" set shell=/bin/bash
 set vicmd=nvim
 
 " ------------------------------------------------------------------------------
@@ -31,8 +30,7 @@ set undolevels=100
 set vimhelp
 
 " What should be saved automatically between vifm sessions.
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+set vifminfo=bmarks,bookmarks,chistory,dhistory,dirstack,fhistory,phistory,registers,savedirs,shistory,state,tui
 
 " Don't do too many requests to slow file systems
 if !has('win')
@@ -46,7 +44,6 @@ endif
 " source instead of colorscheme to use env var
 " source $VIFM/colors/$THEME_VARIANT.vifm
 colorscheme Default-256-mod
-
 
 " Icons
 source $VIFM/favicons.vifm
@@ -118,6 +115,9 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 nnoremap * ggvG<cr>gg
 nnoremap <c-f> :FZFfindFile<cr>
+nnoremap <BS> :cd ..<cr>
+nnoremap / :FZFfind<cr>
+nnoremap <a-t> :!$TERMINAL 2> /dev/null &<cr>
 
 " Mappings for faster renaming
 nnoremap a cW
@@ -140,6 +140,9 @@ nnoremap <c-k> :tabprev<cr>
 
 " GoTo
 nnoremap gh :cd<cr>
+nnoremap gm :cd /run/media/piotr/<cr>
+nnoremap gz :cd ~/server/zima/<cr>
+
 " Leader
 nnoremap _a ggvG<cr>
 nnoremap _b :backup<cr>
@@ -240,8 +243,8 @@ command! dragon dragon-drop -a -x %f &
 " command! zip zip -r %D/%c.zip %f
 command! zip 7z a -tzip %D/%c.zip %f
 command! sevenz 7z a %D/%c.7z %f
-command! backup 7z a %D/%c.$(date +%%F).zip %f
-command! tar tar cvf %D/%c.$(date +%%F).tar %f
+command! backup 7z a %D/%c_$(date +%%F).zip %f
+command! tar tar cvf %D/%c_$(date +%%F).tar %f
 command! extract extract %D %f
 
 " Compare
@@ -268,24 +271,38 @@ command! FZFfindFile : set noquickview
 	\|     execute 'goto' fnameescape($FZF_PICK)
 	\| endif
 
+command! FZFfind : set noquickview
+	\| let $FZF_PICK = term('find ./* | fzf --height 10 2>/dev/tty')
+	\| if $FZF_PICK != ''
+	\|     execute 'goto' fnameescape($FZF_PICK)
+	\| endif
+
 " ------------------------------------------------------------------------------
-"							   File run & preview
+"								   File preview
 " ------------------------------------------------------------------------------
 
 " set previewprg='view %c %pw %ph %px'
 
-" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
-		" \ kitty icat --silent --place=%pwx%ph@%pxx%py %c
-		" \ %pc
-		" \ kitty icat --silent --clear
+" enable ls colors in folder preview
+fileviewer */ tree -C --dirsfirst
+fileviewer .*/ tree -C --dirsfirst
+
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.webp
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 fileviewer *[^/] view %c %pw %ph %px
 fileviewer .*[^/] view %c %pw %ph %px
 
+" ------------------------------------------------------------------------------
+"								   File run
+" ------------------------------------------------------------------------------
+
 " MD5
 filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f %S,
+	\ {Check MD5 hash sum}
+	\ md5sum -c %f %S,
 
 " SHA1
 filetype *.sha1

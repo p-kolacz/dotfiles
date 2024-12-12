@@ -17,8 +17,9 @@ while read -r class; do
 	bspc rule -a "$class" state=floating
 done <<EOF
 Arandr
+Blueman-manager
 Hdajackretask
-heroic
+Jstest-gtk
 KeePassXC
 Mojosetup
 mpv

@@ -12,6 +12,9 @@ super + Return
 super + space
 	rofi -show combi -modes combi -combi-modes "drun,run" -theme-str 'window \{width:800px;\}'
 
+super + shift + space
+	rofi-games.sh
+
 super + Delete
 	power.sh
 

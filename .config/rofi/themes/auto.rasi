@@ -57,8 +57,7 @@ element {
 	padding: 4px 8px;
 }
 element-icon {
-	margin: 0 8px 0 0;
-	/* padding-right: 15px; */
+	size: 1.2em;
 }
 element-text {
 	text-color: ${THEME_FG};

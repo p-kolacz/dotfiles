@@ -2,21 +2,17 @@
 // https://github.com/davatorium/rofi/blob/next/doc/rofi-keys.5.markdown#rofi-keys-5-rofi-keys
 
 configuration {
-	modi: "drun,run,filebrowser";
 	matching: "fuzzy";
-	// sorting-method: "fzf";
-
 	font: "monospace 16";
 	show-icons: true;
 
 	kb-accept-entry: "Return";
-	// kb-accept-custom: "Control+Return,KP_Enter";
 	kb-remove-to-eol: "";
-	kb-row-down: "Control+j,Control+n,Down";
-	kb-row-up: "Control+k,Control+p,Up";
-	drun  { display-name: ""; }
-	run   { display-name: " "; }
-	combi { display-name: ""; }
-}
-@theme "rounded-blue-dark"
+	kb-row-down: "Control+j,Down";
+	kb-row-up: "Control+k,Up";
 
+	drun  { display-name: ""; }
+	run   { display-name: " "; }
+	combi { display-name: " "; }
+}
+@theme "auto"
