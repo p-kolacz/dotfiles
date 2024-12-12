@@ -229,12 +229,15 @@
 	-- }}}
 -- Git {{{
 
+	local gs = require "conf/gitsigns"
 	local gg = require "gitgud"
 
 	mapgroup("<leader>g", "+Git")
-	Noremap { "n",  "<leader>gg",  gg.lazygit, "LazyGit" }
+	Noremap {
+		{ "n",  "<leader>gg",  gg.lazygit, "LazyGit" },
+		{ "n",  "<leader>gb",  gs.blame_line, "blame line" }
+	}
 
-	local gs = require "conf/gitsigns"
 	Perun {
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },

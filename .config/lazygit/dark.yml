@@ -1,6 +1,6 @@
-gui:
-  theme:
-    selectedLineBgColor:
-      - reversed
+# gui:
+  # theme:
+    # selectedLineBgColor:
+      # - reversed
 
 
