@@ -1,0 +1,10 @@
+exit
+article = Article.new(title: "Hello Rails", body: "I'm Rails")
+arti
+article.save
+article
+Article.find(1)
+Article.all
+exit
+exit
+
