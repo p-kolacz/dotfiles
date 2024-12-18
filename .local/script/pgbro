@@ -1,18 +1,19 @@
 #!/bin/bash
 
 THIS=${0##*/}
-OPTIONS="--pset=linestyle=unicode --pset=border=2"
+OPTIONS="--pset=linestyle=unicode"
 
 query() {
-	psql $OPTIONS "$CONNECTION" -c "$@"
+	psql $OPTIONS --pset=border=2 "$CONNECTION" -c "$@"
 }
 
 query_tuples() {
-	psql -t $OPTIONS "$CONNECTION" -c "$@"
+	psql -t $OPTIONS --pset=border=1 "$CONNECTION" -c "$@"
 }
 
 tables() {
 	query_tuples "\dt"
+	query_tuples "\dv"
 }
 
 columns() {
@@ -20,8 +21,6 @@ columns() {
 }
 
 data() {
-	# echo -n "$1 count: "
-	# query_tuples "SELECT COUNT(*) FROM $1"
 	query "SELECT * FROM $1 LIMIT 10"
 }
 
@@ -34,7 +33,7 @@ main() {
 	local tables=$(tables)
 	[[ -z $tables ]] && exit 1
 	echo "$tables" | fzf 										\
-	--preview="$THIS $CONNECTION preview {4}"			\
+	--preview="$THIS $CONNECTION preview {3}"			\
 	--preview-window="top,75%"							\
 	--bind "ctrl-r:reload($THIS $CONNECTION tables)"	\
 	--header "Press CTRL-R to reload"
