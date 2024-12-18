@@ -7,6 +7,7 @@ cd "$DIR" || exit 1
 
 files=("$DIR"/gog/goggame-*.info)
 file=${files[0]}
+[[ -f $file ]] || exit 2
 gogid=$(jq --raw-output ".gameId" < "$file")
 name=$(jq --raw-output ".name" < "$file")
 
