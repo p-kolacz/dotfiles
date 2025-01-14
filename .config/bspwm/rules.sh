@@ -18,11 +18,13 @@ while read -r class; do
 done <<EOF
 Arandr
 Blueman-manager
+BoltLauncher
 Hdajackretask
 Jstest-gtk
 KeePassXC
 Mojosetup
 mpv
+net-runelite-client-RuneLite
 Pavucontrol
 Pidgin
 Qalculate-gtk

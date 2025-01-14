@@ -25,8 +25,11 @@ endsnippet
 # endsnippet
 
 snippet cdhere "change dir to this script base dir"
+cd "\$(dirname "\$0")" || exit 1
+endsnippet
+
+snippet dir "this script dir"
 DIR=$(dirname "$(realpath "\$0")")
-cd "$DIR" || exit 1
 endsnippet
 
 # https://github.com/dylanaraps/pure-sh-bible#count-files-or-directories-in-directory

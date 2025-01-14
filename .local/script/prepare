@@ -6,8 +6,8 @@
 
 laptop() {
 	desktop
-	hw/bluetooth
-	hw/wifi
+	bluetooth
+	wifi
 	install xorg-xinput tlp batsignal # xinput 4 touchpad
 	startenableuser batsignal
 	ynstall xplugd
@@ -16,7 +16,8 @@ laptop() {
 }
 
 desktop() {
-	core/yay
+	dotfiles
+	yay
 	bspwm
 	fonts
 	pipewire
@@ -29,14 +30,13 @@ bspwm() {
 	install bspwm sxhkd picom polybar libnotify dunst rofi rofi-calc
 }
 
+openbox() {
+	install openbox
+}
+
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                 Targets                                  ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
-
-# devops() {
-	# install xsv rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
-	# ynstall sql-language-server
-# }
 
 apps() {
 	install kitty syncthing udisks2
@@ -48,12 +48,11 @@ apps() {
 	ynstall brave-bin haiku-icon-theme
 }
 
-# asdf() {
-	# TODO: ynstall asdf and restart terminal
-	# asdf plugin add shellcheck
-	# asdf install shellcheck latest
-	# asdf global schellcheck latest
-# }
+bluetooth() {
+	install bluez bluez-utils
+	startenable bluetooth.service
+	# sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/bluetooth-wakeup.rules" /etc/udev/rules.d/
+}
 
 cron() {
 	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
@@ -63,12 +62,7 @@ cron() {
 	echo '@hourly /usr/bin/anacron -s -t $HOME/.config/anacron/anacrontab -S $HOME/.local/spool/anacron'
 }
 
-core/yay() {
-	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
-	yay --cleanmenu=false --diffmenu=false --removemake --save
-}
-
-dev/docker() {
+docker() {
 	install docker docker-compose
 	ynstall lazydocker-bin
 	startenable docker.service
@@ -76,85 +70,46 @@ dev/docker() {
 	sudo usermod --append --groups docker "$USER"
 	echo "Relogin for adding to group to take effect" 
 }
-dev/go() {
-	install go gopls
-}
-dev/nodejs() {
-	install npm typescript-language-server
-}
-dev/php() {
-	install php phpactor
-}
-dev/python() {
-	install python python-pip pyright
-}
-dev/ruby() {
-	ynstall asdf-vm
-	asdf plugin add ruby
-	asdf install ruby latest
-	asdf global ruby latest
-	gem install solargraph --conservative
-	install yaml-language-server
-}
-dev/rails() {
-	dev/ruby
-	gem install rails --conservative
-}
-dev/rust() {
-	install rustup rust-analyzer
-	rustup default stable
-}
 
 dotfiles() {
 	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
-	# core/yay
-	# TODO: git clone dotfiles
+	export GIT_DIR="$HOME/.config/dotfiles"
+	export GIT_WORK_TREE="$HOME"
+	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; exit 1; }
+	mkdir -p "$GIT_DIR"
+	cd &&
+	git clone --bare git@github.com:p-kolacz/dotfiles.git "$GIT_DIR" &&
+	git checkout
 }
 
 fonts() {
 	# CJK = Chinese-Japanese-Korean
 	install noto-fonts-emoji noto-fonts-cjk ttf-ubuntu-font-family ttf-ubuntu-nerd
-	# ynstall nerd-fonts-victor-mono 
 }
 
-hw/bluetooth() {
-	install bluez bluez-utils
-	startenable bluetooth.service
-	# sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/bluetooth-wakeup.rules" /etc/udev/rules.d/
-}
-hw/nvidia() {
-	install nvidia-dkms nvidia-prime
-}
-hw/printer() {
-	install cups system-config-printer
-	startenable cups.service
-}
-hw/printer-dcpt500w() {
-	hw/printer
-	install lib32-glibc		# this is needed for drivers to work, see https://aur.archlinux.org/packages/brother-dcpt500w
-	ynstall brother-dcpt500w
-}
-hw/scanner() {
-	install simple-scan sane-airscan
-}
-hw/redox() {
-	install avr-libc avrdude
-}
-hw/wacom() {
-	install xf86-input-wacom
-}
-hw/wifi() {
-	install wireless-regdb
-	# startenable NetworkManager.service
+go() {
+	install go gopls
 }
 
 music() {
 	ynstall deadbeef deadbeef-mpris2-plugin deadbeef-plugin-musical-spectrum-gtk2-git
 }
 
+nodejs() {
+	install npm typescript-language-server
+}
+
+nvidia() {
+	install nvidia-dkms nvidia-prime
+}
+
 nvim() {
-	install neovim python python-pip python-pynvim lua-language-server ctags
-	ynstall figlet-fonts 
+	install neovim python python-pip python-pynvim lua-language-server
+	# ynstall figlet-fonts 
+}
+
+php() {
+	install php phpactor
 }
 
 pipewire() {
@@ -163,6 +118,47 @@ pipewire() {
 
 photo() {
 	install darktable
+}
+
+printer() {
+	install cups system-config-printer
+	startenable cups.service
+}
+
+printer-dcpt500w() {
+	printer
+	install lib32-glibc		# this is needed for drivers to work, see https://aur.archlinux.org/packages/brother-dcpt500w
+	ynstall brother-dcpt500w
+}
+
+python() {
+	install python python-pip pyright
+}
+
+redox() {
+	install avr-libc avrdude
+}
+
+rails() {
+	ruby
+	gem install rails --conservative
+}
+ruby() {
+	ynstall asdf-vm
+	asdf plugin add ruby
+	asdf install ruby latest
+	asdf global ruby latest
+	gem install solargraph --conservative
+	install yaml-language-server
+}
+
+rust() {
+	install rustup rust-analyzer
+	rustup default stable
+}
+
+scanner() {
+	install simple-scan sane-airscan
 }
 
 terminal() {
@@ -184,6 +180,15 @@ vm() {
 	sudo usermod --append --groups libvirt "$USER"
 }
 
+wacom() {
+	install xf86-input-wacom
+}
+
+wifi() {
+	install wireless-regdb
+	sudo nvim /etc/conf.d/wireless-regdom
+}
+
 xorg() {
 	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx i3lock
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/sleep@.service" /etc/systemd/system/
@@ -192,9 +197,26 @@ xorg() {
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }
 
+yay() {
+	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
+	yay --cleanmenu=false --diffmenu=false --removemake --save
+}
+
 yazi() {
 	install yazi fd ffmpegthumbnailer fzf jq ripgrep unarchiver
 }
+
+# devops() {
+	# install xsv rsync filezilla whois npm vscode-html-languageserver vscode-css-languageserver typescript-language-server
+	# ynstall sql-language-server
+# }
+
+# asdf() {
+	# TODO: ynstall asdf and restart terminal
+	# asdf plugin add shellcheck
+	# asdf install shellcheck latest
+	# asdf global schellcheck latest
+# }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                  Utilz                                   ║
@@ -219,7 +241,7 @@ startenableuser() {
 }
 usage() {
 	local funcs
-	funcs=$(declare -F | cut -d" " -f3 | grep -Ev "install|ynstall|startenable|usage" | column) # | tr "\n" ",")
+	funcs=$(declare -F | cut -d" " -f3 | grep -Ev "copy|install|ynstall|startenable|usage")
 	SCRIPT=${0##*/}
 	cat << EOF
 $SCRIPT: Install/configure packages
