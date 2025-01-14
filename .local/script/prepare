@@ -31,7 +31,8 @@ bspwm() {
 }
 
 openbox() {
-	install openbox
+	install openbox obconf lxappearance-obconf
+	ynstall openbox-themes
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗

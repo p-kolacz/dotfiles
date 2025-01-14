@@ -25,7 +25,7 @@ KeePassXC
 Mojosetup
 mpv
 net-runelite-client-RuneLite
-Pavucontrol
+pavucontrol
 Pidgin
 Qalculate-gtk
 qv4l2
