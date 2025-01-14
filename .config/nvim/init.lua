@@ -234,7 +234,7 @@
 
 	mapgroup("<leader>g", "+Git")
 	Noremap {
-		{ "n",  "<leader>gg",  gg.lazygit, "LazyGit" },
+		{ "n",  "<leader>gg",  gg.status, "status" },
 		{ "n",  "<leader>gb",  gs.blame_line, "blame line" }
 	}
 

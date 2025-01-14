@@ -1,5 +1,6 @@
 Plugin {
 	"https://github.com/tpope/vim-fugitive",
+	"https://github.com/tpope/vim-rhubarb",
 }
 
 local M = {}
@@ -13,7 +14,7 @@ function M.commit_with_date()
 end
 
 function M.commits()
-	vim.cmd.Gclog("--")
+	vim.cmd.Git("log -100")
 	vim.cmd.copen()
 end
 
@@ -46,7 +47,7 @@ function M.lazygit()
 end
 
 function M.push()
-	vim.cmd("!git push")
+	vim.cmd.Git("push")
 end
 
 function M.search4differences()
@@ -56,6 +57,9 @@ function M.search4differences()
 	end)
 end
 
+function M.status()
+	vim.cmd.Git()
+end
 -- function M.gitsigns_next_hunk(gs)
 -- 	if vim.wo.diff then return ']c' end
 -- 	vim.schedule(function() gs.next_hunk() end)
