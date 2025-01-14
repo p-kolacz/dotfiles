@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rofi -show drun -drun-categories GameZ -disable-history -theme launchpad
+rofi -show drun -drun-categories Game -disable-history -theme launchpad
