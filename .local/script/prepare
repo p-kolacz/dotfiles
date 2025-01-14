@@ -48,6 +48,13 @@ apps() {
 	ynstall brave-bin haiku-icon-theme
 }
 
+# asdf() {
+	# TODO: ynstall asdf and restart terminal
+	# asdf plugin add shellcheck
+	# asdf install shellcheck latest
+	# asdf global schellcheck latest
+# }
+
 cron() {
 	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
 	install cronie
@@ -58,7 +65,7 @@ cron() {
 
 core/yay() {
 	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
-	yay --diffmenu=false --cleanmenu=false --save
+	yay --cleanmenu=false --diffmenu=false --removemake --save
 }
 
 dev/docker() {
@@ -151,7 +158,7 @@ nvim() {
 }
 
 pipewire() {
-	install pipewire wireplumber pipewire-pulse pavucontrol playerctl
+	install pipewire wireplumber pipewire-alsa pipewire-pulse pavucontrol playerctl
 }
 
 photo() {
@@ -159,15 +166,9 @@ photo() {
 }
 
 terminal() {
-	install fd git lsof man-db man-pages htop p7zip polkit ripgrep rsync starship
+	install fd git lsof man-db man-pages btop p7zip polkit ripgrep rsync starship
 	install catdoc hexyl python-pygments mediainfo odt2txt
-	install fzf lazygit smartmontools trash-cli
-	install bash-language-server
-	# TODO: ynstall asdf and restart terminal
-	asdf plugin add shellcheck
-	asdf install shellcheck latest
-	asdf global schellcheck latest
-	ynstall gotop nerdfetch recutils go-mtpfs wordnet-cli
+	install fzf smartmontools trash-cli
 	nvim
 	vifm
 }
