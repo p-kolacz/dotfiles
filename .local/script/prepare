@@ -18,21 +18,10 @@ laptop() {
 desktop() {
 	dotfiles
 	yay
-	bspwm
 	fonts
 	pipewire
 	terminal
 	apps
-}
-
-bspwm() {
-	xorg
-	install bspwm sxhkd picom polybar libnotify dunst rofi rofi-calc
-}
-
-openbox() {
-	install openbox obconf lxappearance-obconf
-	ynstall openbox-themes
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -43,7 +32,7 @@ apps() {
 	install kitty syncthing udisks2
 	startenableuser syncthing.service
 	install arc-gtk-theme gtk-engines gtk-engine-murrine
-	install gimp gnome-font-viewer qalculate-gtk gnumeric pcmanfm	# GTK apps
+	install gimp gnome-font-viewer qalculate-gtk gnumeric # GTK apps
 	install flameshot keepassxc # Ot Apps
 	install imagemagick mpv zathura-pdf-poppler
 	ynstall brave-bin haiku-icon-theme
@@ -53,6 +42,12 @@ bluetooth() {
 	install bluez bluez-utils
 	startenable bluetooth.service
 	# sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/bluetooth-wakeup.rules" /etc/udev/rules.d/
+}
+
+bspwm() {
+	xorg
+	install bspwm arandr sxhkd picom polybar libnotify dunst rofi rofi-calc xdotool i3lock pcmanfm
+	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/lock@.service" /etc/systemd/system/
 }
 
 cron() {
@@ -107,6 +102,12 @@ nvidia() {
 nvim() {
 	install neovim python python-pip python-pynvim lua-language-server
 	# ynstall figlet-fonts 
+}
+
+openbox() {
+	xorg
+	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 pcmanfm
+	ynstall obmenu openbox-themes
 }
 
 php() {
@@ -191,8 +192,7 @@ wifi() {
 }
 
 xorg() {
-	install xorg-server xorg-xinit xorg-xev xdotool xclip xcolor xwallpaper arandr numlockx i3lock
-	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/sleep@.service" /etc/systemd/system/
+	install xorg-server xorg-xinit xorg-xprop xorg-xev xclip xcolor xwallpaper numlockx
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard-pl.conf" /etc/X11/xorg.conf.d/
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/

@@ -26,6 +26,7 @@ Mojosetup
 mpv
 net-runelite-client-RuneLite
 pavucontrol
+Pavucontrol
 Pidgin
 Qalculate-gtk
 qv4l2

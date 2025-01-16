@@ -19,6 +19,7 @@ alias nv="nvim"
 alias weather="curl 'wttr.in/?Fqn&lang=pl'"
 (( $+commands[host] )) || alias host="drill ANY -t"
 alias webcam="qv4l2"
+alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 
 # Browsers ----------------------------
 alias cursors="find /usr/share/icons ~/.local/share/icons -type d -name \"cursors\""
