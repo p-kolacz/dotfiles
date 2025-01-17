@@ -1,6 +1,32 @@
 #!/bin/bash
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
+# ║                                Machines                                  ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
+
+archbook() {
+	laptop
+	nvidia
+	bspwm
+}
+
+hadron() {
+	desktop
+	openbox
+	wifi
+	bluetooth
+}
+
+workbook() {
+	laptop
+	bspwm
+}
+
+zima() {
+	server
+}
+
+# ╔══════════════════════════════════════════════════════════════════════════╗
 # ║                                 Groups                                   ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
@@ -18,10 +44,16 @@ laptop() {
 desktop() {
 	dotfiles
 	yay
+	syncthing
 	fonts
 	pipewire
 	terminal
 	apps
+}
+
+server() {
+	dotfiles
+	yay
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -29,13 +61,12 @@ desktop() {
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
 apps() {
-	install kitty syncthing udisks2
-	startenableuser syncthing.service
-	install arc-gtk-theme gtk-engines gtk-engine-murrine
+	install kitty udisks2
+	# install arc-gtk-theme gtk-engines gtk-engine-murrine
 	install gimp gnome-font-viewer qalculate-gtk gnumeric # GTK apps
 	install flameshot keepassxc # Ot Apps
-	install imagemagick mpv zathura-pdf-poppler
-	ynstall brave-bin haiku-icon-theme
+	install mpv zathura-pdf-poppler
+	ynstall brave-bin
 }
 
 bluetooth() {
@@ -46,7 +77,8 @@ bluetooth() {
 
 bspwm() {
 	xorg
-	install bspwm arandr sxhkd picom polybar libnotify dunst rofi rofi-calc xdotool i3lock pcmanfm
+	notifications
+	install bspwm arandr sxhkd picom polybar dunst rofi rofi-calc xdotool i3lock pcmanfm
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/lock@.service" /etc/systemd/system/
 }
 
@@ -71,11 +103,10 @@ dotfiles() {
 	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
 	export GIT_DIR="$HOME/.config/dotfiles"
 	export GIT_WORK_TREE="$HOME"
-	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; exit 1; }
+	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; return 1; }
+
 	mkdir -p "$GIT_DIR"
-	cd &&
-	git clone --bare git@github.com:p-kolacz/dotfiles.git "$GIT_DIR" &&
-	git checkout
+	cd && git clone --bare git@github.com:p-kolacz/dotfiles.git "$GIT_DIR" && git checkout
 }
 
 fonts() {
@@ -95,6 +126,11 @@ nodejs() {
 	install npm typescript-language-server
 }
 
+notifications() {
+	install libnotify dunst
+}
+
+
 nvidia() {
 	install nvidia-dkms nvidia-prime
 }
@@ -106,7 +142,8 @@ nvim() {
 
 openbox() {
 	xorg
-	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 pcmanfm
+	notifications
+	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 pcmanfm xdotool
 	ynstall obmenu openbox-themes
 }
 
@@ -163,6 +200,11 @@ scanner() {
 	install simple-scan sane-airscan
 }
 
+syncthing() {
+	install syncthing
+	startenableuser syncthing.service
+}
+
 terminal() {
 	install fd git lsof man-db man-pages btop p7zip polkit ripgrep rsync starship
 	install catdoc hexyl python-pygments mediainfo odt2txt
@@ -192,10 +234,10 @@ wifi() {
 }
 
 xorg() {
-	install xorg-server xorg-xinit xorg-xprop xorg-xev xclip xcolor xwallpaper numlockx
+	install xorg-server xorg-xinit xorg-xev xorg-xprop xclip xcolor xwallpaper numlockx
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard-pl.conf" /etc/X11/xorg.conf.d/
-	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
-	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
+	# sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
+	# sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }
 
 yay() {
