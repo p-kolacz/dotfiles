@@ -1,8 +1,9 @@
 #!/bin/bash
 
-CONFIG="$HOME/.config"
-THEMES="$HOME/.local/share/themes"
+CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
+THEMES="$HOME/.local/share/themez"
 CURRENT_THEME="$CONFIG/theme"
+BSPWM_THEME_SCRIPT="$XDG_CONFIG_HOME"/bspwm/theme.sh
 
 browse() {
 	local file
@@ -18,7 +19,7 @@ apply() {
 	source "$CURRENT_THEME"
 
 	# BSPWM
-	~/.config/bspwm/theme.sh
+	[[ -x $BSPWM_THEME_SCRIPT ]] && $BSPWM_THEME_SCRIPT
 
 	# Kitty
 	envsubst < "$CONFIG/kitty/colors/template.conf" > "$CONFIG/kitty/colors/local.conf"
