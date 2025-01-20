@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CONFIG="$HOME/.config"
-THEMES="$HOME/.local/share/themes"
+THEMES="$HOME/.local/share/themez"
 CURRENT_THEME="$CONFIG/theme"
 
 browse() {

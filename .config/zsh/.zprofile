@@ -11,6 +11,6 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 [[ -f $ZDOTDIR/local/.zprofile ]] && source $ZDOTDIR/local/.zprofile
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	startx $XDG_CONFIG_HOME/xorg/xinitrc > $XDG_STATE_HOME/log/startx.log 2>&1
+	startx $XDG_CONFIG_HOME/xorg/.xinitrc > $XDG_STATE_HOME/log/startx.log 2>&1
 fi
 

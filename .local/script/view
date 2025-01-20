@@ -76,6 +76,6 @@ esac
 if file --dereference --mime-encoding "$FILE_PATH" | grep -q binary; then
 	binary "$FILE_PATH" 
 else
-	syn_highlight "$FILE_PATH"
+	cat "$FILE_PATH"
 fi
 
