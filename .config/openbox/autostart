@@ -1,0 +1,5 @@
+wallpaper restore &
+picom -b
+setxkbmap -option caps:escape
+numlockx
+

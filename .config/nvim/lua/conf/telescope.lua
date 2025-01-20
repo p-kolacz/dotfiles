@@ -13,7 +13,6 @@ Plugin {
 }
 
 local actions   = require "telescope.actions"
--- local trouble   = require "trouble.sources.telescope"
 local telescope = require "telescope"
 
 telescope.setup {
@@ -24,10 +23,6 @@ telescope.setup {
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
-				-- ["<C-t>"] = trouble.open,
-			},
-			n = {
-				-- ["<c-t>"] = trouble.open,
 			},
 		},
 	},
@@ -49,7 +44,6 @@ telescope.setup {
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 
 --File pickers
--- nnoremap('<C-space>',  ':Telescope find_files find_command=rg,--hidden,--files<cr>')
 nnoremap('<C-space>',  ':Telescope find_files<cr>')
 nnoremap('<leader>gf', ':Telescope git_files<cr>', 'find files')
 nnoremap('<leader>fc', ':Telescope grep_string<cr>', 'find cword')

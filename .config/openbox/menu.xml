@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+
+	<menu id="root-menu" label="OpenBox 3" execute="/usr/bin/obmenu-generator -i"></menu>
+
+	<menu id="exit-menu" label="Exit">
+		<item label="Log Out">
+			<action name="Execute">
+				<command>openbox --exit</command>
+			</action>
+		</item>
+		<item label="Shutdown">
+			<action name="Execute">
+				<command>systemctl poweroff</command>
+			</action>
+		</item>
+		<item label="Restart">
+			<action name="Execute">
+				<command>systemctl reboot</command>
+			</action>
+		</item>
+		<item label="Suspend">
+			<action name="Execute">
+				<command>systemctl suspend</command>
+			</action>
+		</item>
+		<item label="Lock">
+			<action name="Execute">
+				<command>lock-workstation</command>
+			</action>
+		</item>
+	</menu>
+
+</openbox_menu>

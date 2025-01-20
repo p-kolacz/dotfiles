@@ -1,0 +1,24 @@
+export THEME_NAME=gruvbox-dark
+export THEME_VARIANT=dark
+
+export THEME_BG=#282828
+export THEME_FG=#ebdbb2
+export THEME_BLACK=#282828
+export THEME_BLACK2=#928374
+export THEME_RED=#cc241d
+export THEME_RED2=#fb4934
+export THEME_GREEN=#98971a
+export THEME_GREEN2=#b8bb26
+export THEME_YELLOW=#d79921
+export THEME_YELLOW2=#fabd2f
+export THEME_BLUE=#458588
+export THEME_BLUE2=#83a598
+export THEME_MAGENTA=#b16286
+export THEME_MAGENTA2=#d3869b
+export THEME_CYAN=#689d6a
+export THEME_CYAN2=#8ec07c
+export THEME_WHITE=#a89984
+export THEME_WHITE2=#ebdbb2
+
+export THEME_ACCENT="$THEME_BLUE"
+
