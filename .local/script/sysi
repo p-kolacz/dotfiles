@@ -1,5 +1,6 @@
-#!/bin/awk -f
+#!/bin/bash
 
+cat /proc/cpuinfo | awk '
 BEGIN {
 	FS=": "
 	cpu_count=0
@@ -36,3 +37,4 @@ END {
 # 		print "CPU model:",model;                          \
 # 		print nb_cpu,"CPU,",nb_cores,"physical cores per CPU, total",nb_units,"logical CPU units" \
 # 	}'
+'
