@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat /proc/cpuinfo | awk '
+awk -f- /proc/cpuinfo <<'AWK'
 BEGIN {
 	FS=": "
 	cpu_count=0
@@ -25,6 +25,8 @@ END {
 	print "Cache:",cache
 
 }
+AWK
+
 # 	/^physical id/ { if(nb_cpu<$2)  { nb_cpu=$2 } }     \
 # 	/^cpu cores/   { if(nb_cores<$2){ nb_cores=$2 } }   \
 # 	/^processor/   { if(nb_units<$2){ nb_units=$2 } }   \
@@ -37,4 +39,3 @@ END {
 # 		print "CPU model:",model;                          \
 # 		print nb_cpu,"CPU,",nb_cores,"physical cores per CPU, total",nb_units,"logical CPU units" \
 # 	}'
-'
