@@ -277,7 +277,6 @@
 -- Navigation {{{
 
 	Require {
-		-- "conf/trouble",
 		"conf/telescope",
 		"conf/nvim-tree",
 	}
