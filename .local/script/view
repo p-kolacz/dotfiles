@@ -73,7 +73,9 @@ case "$FILE_EXTENSION" in
 
 esac
 
-if file --dereference --mime-encoding "$FILE_PATH" | grep -q binary; then
+if [[ ! -s $FILE_PATH ]]; then
+	cat "$FILE_PATH"
+elif file --dereference --mime-encoding "$FILE_PATH" | grep -q binary; then
 	binary "$FILE_PATH" 
 else
 	cat "$FILE_PATH"

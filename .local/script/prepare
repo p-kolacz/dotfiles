@@ -80,6 +80,7 @@ bspwm() {
 	notifications
 	install bspwm arandr sxhkd picom polybar dunst rofi rofi-calc xdotool i3lock pcmanfm
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/lock@.service" /etc/systemd/system/
+	ln -s "$XDG_CONFIG_HOME/bspwm/.xinitrc" "$XDG_CONFIG_HOME/xorg/.xinitrc"
 }
 
 cron() {
@@ -144,6 +145,7 @@ openbox() {
 	notifications
 	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 xdotool
 	ynstall obmenu openbox-themes
+	ln -s "$XDG_CONFIG_HOME/openbox/.xinitrc" "$XDG_CONFIG_HOME/xorg/.xinitrc"
 }
 
 php() {
