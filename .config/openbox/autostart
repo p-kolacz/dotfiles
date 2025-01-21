@@ -1,5 +1,8 @@
 wallpaper restore &
 picom -b
+tint2
+
+xset r rate 250 40
 setxkbmap -option caps:escape
 numlockx
 

@@ -39,7 +39,7 @@
     max_icon_size = 64
 
     # dmenu path.
-    dmenu = $VMENU
+    dmenu = rofi -dmenu -i
 
     # Defines list of actions for each mouse event
     mouse_left_click = do_action, close_current

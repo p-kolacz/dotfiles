@@ -13,6 +13,7 @@ archbook() {
 hadron() {
 	desktop
 	openbox
+	radeon
 	wifi
 	bluetooth
 }
@@ -141,7 +142,7 @@ nvim() {
 openbox() {
 	xorg
 	notifications
-	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 pcmanfm xdotool
+	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 xdotool
 	ynstall obmenu openbox-themes
 }
 
@@ -174,14 +175,19 @@ python() {
 	install python python-pip pyright
 }
 
-redox() {
-	install avr-libc avrdude
+radeon() {
+	install mesa xf86-video-amdgpu vulkan-radeon nvtop
 }
 
 rails() {
 	ruby
 	gem install rails --conservative
 }
+
+redox() {
+	install avr-libc avrdude
+}
+
 ruby() {
 	ynstall asdf-vm
 	asdf plugin add ruby
