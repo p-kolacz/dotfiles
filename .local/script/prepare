@@ -42,8 +42,7 @@ laptop() {
 }
 
 desktop() {
-	dotfiles
-	yay
+	_yay
 	syncthing
 	fonts
 	pipewire
@@ -53,7 +52,7 @@ desktop() {
 
 server() {
 	dotfiles
-	yay
+	_yay
 }
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -61,7 +60,7 @@ server() {
 # ╚══════════════════════════════════════════════════════════════════════════╝
 
 apps() {
-	install kitty udisks2
+	install kitty rclone udisks2
 	# install arc-gtk-theme gtk-engines gtk-engine-murrine
 	install gimp gnome-font-viewer qalculate-gtk gnumeric # GTK apps
 	install flameshot keepassxc # Ot Apps
@@ -70,7 +69,7 @@ apps() {
 }
 
 bluetooth() {
-	install bluez bluez-utils
+	install bluez bluez-utils blueman
 	startenable bluetooth.service
 	# sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/bluetooth-wakeup.rules" /etc/udev/rules.d/
 }
@@ -105,8 +104,7 @@ dotfiles() {
 	export GIT_WORK_TREE="$HOME"
 	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; return 1; }
 
-	mkdir -p "$GIT_DIR"
-	cd && git clone --bare git@github.com:p-kolacz/dotfiles.git "$GIT_DIR" && git checkout
+	cd && git clone --bare https://github.com/p-kolacz/dotfiles.git "$GIT_DIR" && git checkout
 }
 
 fonts() {
@@ -153,6 +151,8 @@ php() {
 
 pipewire() {
 	install pipewire wireplumber pipewire-alsa pipewire-pulse pavucontrol playerctl
+	startenableuser pipewire
+	startenableuser pipewire-pulse
 }
 
 photo() {
@@ -237,11 +237,12 @@ xorg() {
 	install xorg-server xorg-xinit xorg-xev xorg-xprop xclip xcolor xwallpaper numlockx
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard-pl.conf" /etc/X11/xorg.conf.d/
 	# sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
-	# sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
+	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }
 
-yay() {
-	pacman -Qs yay > /dev/null || (git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si)
+_yay() {
+	pacman -Qs yay > /dev/null && return 1
+	git clone https://aur.archlinux.org/yay.git /tmp/yay && cd /tmp/yay && makepkg -si
 	yay --cleanmenu=false --diffmenu=false --removemake --save
 }
 
