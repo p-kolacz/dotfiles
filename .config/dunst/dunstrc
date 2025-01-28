@@ -17,7 +17,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x30
+    offset = (10, 30)
 
     # The transparency of the window.  Range: [0; 100].
     transparency = 0

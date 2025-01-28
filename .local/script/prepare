@@ -101,7 +101,7 @@ docker() {
 }
 
 dotfiles() {
-	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log
+	mkdir -p "$HOME"/.local/{bin,config,share,state} "$HOME"/.local/state/log "$HOME"/.local/share/gnupg
 	export GIT_DIR="$HOME/.config/dotfiles"
 	export GIT_WORK_TREE="$HOME"
 	[[ -e $GIT_DIR ]] && { echo "$GIT_DIR already exists"; return 1; }
@@ -143,8 +143,7 @@ nvim() {
 openbox() {
 	xorg
 	notifications
-	install openbox obconf lxappearance-obconf lxinput lxrandr picom tint2 xdotool
-	ynstall obmenu openbox-themes
+	install openbox obconf lxappearance-obconf lxrandr picom tint2 xdotool
 	ln -s "$XDG_CONFIG_HOME/openbox/.xinitrc" "$XDG_CONFIG_HOME/xorg/.xinitrc"
 }
 

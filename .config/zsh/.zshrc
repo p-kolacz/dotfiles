@@ -4,8 +4,7 @@
 bindkey -e
 bindkey '\e' vi-cmd-mode
 
-for f in $ZDOTDIR/plugins/*.zsh; do source "$f"; done
-
+# completion
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zcompdump"
 zstyle ':completion:*' menu select
@@ -21,8 +20,11 @@ SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 setopt autocd
 
-[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+# load plugins
+for f in $ZDOTDIR/plugins/*.zsh; do source "$f"; done
 
+# load local rc
 [[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
 
+# setup prompt
 eval "$(starship init zsh)"

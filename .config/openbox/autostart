@@ -1,5 +1,5 @@
 wallpaper restore &
-picom -b
+# picom -b
 tint2
 
 xset r rate 250 40
