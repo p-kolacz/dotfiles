@@ -52,7 +52,7 @@ case "$FILE_EXTENSION" in
 		xls2csv "$FILE_PATH" && exit 0 ;;
 
 	docx)
-		docx2txt.pl "$FILE_PATH" - && exit 0;;
+		docx2txt "$FILE_PATH" - && exit 0;;
 
 	csv)
 		echo -n "Lines: "

@@ -5,10 +5,10 @@
 URL=$(xclip -selection clipboard -o)
 
 if [[ $URL =~ ^https?://[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,})+([/?.#][^ ]*)?$ ]]; then
-	notify-send "YTDL", "Downloading: $URL"
+	notify-send "YTDL" "Downloading: $URL"
 	yt-dlp --no-playlist "$URL"
-	notify-send "YTDL", "Download complete"
+	notify-send "YTDL" "Download complete"
 else
-	notfiy-send "YTDL", "$URL is not a valid URL"
+	notfiy-send "YTDL" "$URL is not a valid URL"
 fi
 

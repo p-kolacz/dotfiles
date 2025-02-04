@@ -2,6 +2,12 @@
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/ file:///usr/share/openbox/menu.xsd">
 
 	<menu id="root-menu" label="OpenBox 3">
+
+		<item label="Brave" icon="/usr/share/icons/hicolor/128x128/apps/brave-desktop.png">
+			<action name="Execute">
+				<command>brave</command>
+			</action>
+		</item>
 		<item label="Kitty" icon="/usr/share/icons/hicolor/scalable/apps/kitty.svg">
 			<action name="Execute">
 				<command>kitty</command>
@@ -12,9 +18,9 @@
 				<command>nemo</command>
 			</action>
 		</item>
-		<item label="DL clip" icon="~/">
+		<item label="DL clip" icon="/home/piotr/.local/share/icons/arch.svg">
 			<action name="Execute">
-				<command>nemo</command>
+				<command>dlclip.sh</command>
 			</action>
 		</item>
 
@@ -33,7 +39,24 @@
 		</menu>
 
 		<!-- Settings ------------------------------------------------------------ -->
+		<separator />
 		<menu id="settings-menu" label="Settings">
+		<item label="OBConfig" icon="/usr/share/icons/Qogir/scalable/apps/obconf.svg">
+				<action name="Execute">
+					<command>obconf</command>
+				</action>
+			</item>
+			<item label="tint2conf" icon="/usr/share/icons/hicolor/scalable/apps/tint2.svg">
+				<action name="Execute">
+					<command>tint2conf</command>
+				</action>
+			</item>
+			<item label="LXAppearance" icon="/usr/share/icons/hicolor/scalable/apps/lxappearance.svg">
+				<action name="Execute">
+					<command>lxappearance</command>
+				</action>
+			</item>
+
 			<item label="menu.xml">
 				<action name="Execute">
 					<command>kitty nvim ~/.config/openbox/menu.xml</command>

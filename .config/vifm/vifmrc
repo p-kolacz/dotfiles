@@ -114,9 +114,9 @@ nnoremap t :select<cr>j
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 nnoremap * ggvG<cr>gg
-nnoremap <c-f> :FZFfindFile<cr>
+nnoremap <c-f> :FZFfind<cr>
 nnoremap <BS> :cd ..<cr>
-nnoremap / :FZFfind<cr>
+" nnoremap / :FZFfind<cr>
 nnoremap <a-t> :!$TERMINAL 2> /dev/null &<cr>
 
 " Mappings for faster renaming
