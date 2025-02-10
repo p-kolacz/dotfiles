@@ -28,6 +28,17 @@ snippet cdhere "change dir to this script base dir"
 cd "\$(dirname "\$0")" || exit 1
 endsnippet
 
+snippet center "function centering string"
+center_text() {
+	local text="\$1"
+	local width=$(tput cols)
+	local text_width=${#text}
+	local padding=$(( (width - text_width) / 2 ))
+
+	printf "%*s\n" $padding "$text"
+}
+endsnippet
+
 snippet dir "this script dir"
 DIR=$(dirname "$(realpath "\$0")")
 endsnippet
@@ -87,6 +98,10 @@ snippet function_exists
 typeset -f ${1:function_name} > /dev/null$0
 endsnippet
 
+snippet inc "increment variable"
+((${var}++))
+endsnippet
+
 snippet is_binary "Is file binary"
 file --dereference --mime-encoding ${1:filename} | grep -q binary
 endsnippet
@@ -95,6 +110,10 @@ snippet iterate_file_lines
 while read -r line; do
 	echo "$line"
 done <${1:filename}
+endsnippet
+
+snippet join "join array using separator"
+bar=$(IFS=,; echo "\${foo[*]}")
 endsnippet
 
 snippet last_exit

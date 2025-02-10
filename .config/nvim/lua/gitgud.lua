@@ -13,18 +13,13 @@ function M.commit_with_date()
 	vim.cmd('!git add .; git commit -m "$(date +\\%F)"')
 end
 
-function M.commits()
-	vim.cmd.Git("log -100")
-	vim.cmd.copen()
-end
-
 function M.file_commits()
 	vim.cmd.Gclog("-- %")
 	vim.cmd.copen()
 end
 
-function M.file_versions()
-	vim.cmd.Gclog("-1000")
+function M.commits()
+	vim.cmd.Gclog("-100")
 	vim.cmd.copen()
 end
 

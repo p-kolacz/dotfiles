@@ -244,7 +244,6 @@
 		{ "  Git: commit with current date",  gg.commit_with_date          },
 		{ "  Git: commits",                   gg.commits                   },
 		{ "  Git: file commits",              gg.file_commits              },
-		{ "  Git: file versions",             gg.file_versions             },
 		{ "  Git: grep",                      gg.grep                      },
 		{ "  Git: preview hunk",              gs.preview_hunk              },
 		{ "  Git: push",                      gg.push                      },
