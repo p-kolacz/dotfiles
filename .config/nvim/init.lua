@@ -66,27 +66,26 @@
 		signcolumn    = "yes",
 		splitbelow    = true,
 		splitright    = true,
-		-- termguicolors = true,
 	}
 
 	Icons.setup_devicons()
 	Icons.setup_diagnostics()
 
-	Plugin "https://github.com/RRethy/vim-illuminate"
+	Plugin {
+		"https://github.com/RRethy/vim-illuminate",
+		"https://github.com/petertriho/nvim-scrollbar",
+		"https://github.com/lukas-reineke/indent-blankline.nvim",
+		"https://github.com/stevearc/dressing.nvim",
+	}
 	require "illuminate".configure {
 		filetypes_allowlist = { "lua", "rails", "ruby", "sh", },
 		min_count_to_highlight = 2,
 	}
-	Plugin "https://github.com/petertriho/nvim-scrollbar"
 	require"scrollbar".setup { handlers = { cursor = false } }
-
-	Plugin "https://github.com/lukas-reineke/indent-blankline.nvim"
 	require("ibl").setup {
 		indent = { char = " " },
 		scope =  { char = "▎" },
 	}
-
-	Plugin "https://github.com/stevearc/dressing.nvim"
 
 	vim.cmd.colorscheme("darkblue")
 
@@ -182,9 +181,9 @@
 		{ "v",  "<A-j>",  ":m '>+1<cr>gv=gv", "move selection down"  },
 		{ "v",  "<A-k>",  ":m '<-2<cr>gv=gv", "move selection up"    },
 		{ "G",  "<leader>e",   "+Edit"                               },
+		{ "n",  "<leader>ee",  ":%s/<C-R>=expand('<cword>')<CR>//g<left><left>", "substitute cword"       },
 		{ "n",  "<leader>es",  ":%s/",            "substitute"       },
 		{ "v",  "<leader>es",  ":s/",             "substitute"       },
-		{ "n",  "<leader>er",  ":g/^/m0<CR>",     "reverse lines"    },
 		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"    },
 		-- change cword and press . to repeat change on next, n to goto next
 		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat" },
@@ -234,8 +233,8 @@
 
 	mapgroup("<leader>g", "+Git")
 	Noremap {
-		{ "n",  "<leader>gg",  gg.status, "status" },
-		{ "n",  "<leader>gb",  gs.blame_line, "blame line" }
+		{ "n",  "<leader>gg",  gg.status,     "status"     },
+		{ "n",  "<leader>gb",  gs.blame_line, "blame line" },
 	}
 
 	Perun {
@@ -442,7 +441,6 @@
 		-- Plugins ----------------------------------------------------------------
 		{ "  Update plugins",              plugger.update },
 		{ "  Update plugins (debug)",      plugger.debug_update },
-
 
 		-- Windows ----------------------------------------------------------------
 		{ "  Open quickfix",               "copen" },

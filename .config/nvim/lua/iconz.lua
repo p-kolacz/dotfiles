@@ -18,7 +18,6 @@ local M = {
 	},
 	whichkey = {
 		breadcrumb = "»",
-		-- separator = "➜",
 		separator = "→",
 		group = "+",
 	},

@@ -19,17 +19,17 @@ fi
 
 # [ -n $THEME ] && xrdb -merge $HOME/.dotfiles/themes/$THEME.xresources
 
-GPU=$("$HOME"/.local/script/gpu-detect.sh)
-echo "$GPU GPU detected"
-if [[ $GPU = "nvidia" ]]; then 
-	xrandr --setprovideroutputsource modesetting NVIDIA-0
-	xrandr --auto
-fi
+# GPU=$("$HOME"/.local/script/gpu-detect.sh)
+# echo "$GPU GPU detected"
+# if [[ $GPU = "nvidia" ]]; then 
+	# xrandr --setprovideroutputsource modesetting NVIDIA-0
+	# xrandr --auto
+# fi
 
 screenlayout="$HOME/.config/screenlayout"
 [[ -f $screenlayout ]] && $screenlayout
 
-source "$XDG_CONFIG_HOME/xorg/autostart.sh" > "$XDG_STATE_HOME/log/autostart.log" 2>&1
+source "$XDG_CONFIG_HOME/bspwm/autostart.sh" > "$XDG_STATE_HOME/log/autostart.log" 2>&1
 
 { [ $WM == bspwm ] && 
 	sxhkd -c ~/.config/sxhkd/global-mappings ~/.config/bspwm/wm-mappings ||

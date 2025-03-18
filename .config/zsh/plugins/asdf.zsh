@@ -1,1 +1,1 @@
-[[ -f /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.config/asdf}/shims:$PATH"
