@@ -10,17 +10,24 @@ require"nvim-treesitter.configs".setup {
 	sync_install = false,
 	auto_install = true,
 	ignore_install = {},
-	modules = {},
-	ensure_installed = {
-		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
-		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
-		"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "lua", "make",
-		"markdown", "markdown_inline", "mermaid", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
-		"sql", "todotxt", "toml", "typescript", "vhs", "vim", "xml", "yaml",
-	},
+	-- modules = {},
+	-- ensure_installed = {
+	-- 	"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
+	-- 	"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
+	-- 	"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "lua", "make",
+	-- 	"markdown", "markdown_inline", "mermaid", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
+	-- 	"sql", "todotxt", "toml", "typescript", "vhs", "vim", "xml", "yaml",
+	-- },
 	highlight = {
 		enable = true,
-		disable = { "markdown", "vimdoc" },
+		-- disable = { "markdown", "vimdoc" },
+		disable = function(lang, buf)
+			local max_filesize = 1024 * 1024
+			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+			if ok and stats and stats.size > max_filesize then
+				return true
+			end
+    end,
 	},
 	textobjects = {
 		select = {

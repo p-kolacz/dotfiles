@@ -1,11 +1,11 @@
 local M = {}
 
 local exprs = {
-	filename = "%:t",
+	filename      = "%:t",
 	relative_path = "%:.",
-	full_path = "%:p",
-	full_dir = "%:p:h",
-	cfile = "<cfile>",
+	full_path     = "%:p",
+	full_dir      = "%:p:h",
+	cfile         = "<cfile>",
 }
 
 for fun,expr in pairs(exprs) do
@@ -18,6 +18,10 @@ for fun,expr in pairs(exprs) do
 end
 
 function M.buffer()
+	vim.cmd("%y")
+end
+
+function M.buffer2clipboard()
 	vim.cmd("%y *")
 	vim.cmd("let @+=@*")
 end

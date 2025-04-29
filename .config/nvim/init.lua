@@ -68,15 +68,14 @@
 		splitright    = true,
 	}
 
-	Icons.setup_devicons()
-	Icons.setup_diagnostics()
-
 	Plugin {
+		"https://github.com/kyazdani42/nvim-web-devicons",
 		"https://github.com/RRethy/vim-illuminate",
 		"https://github.com/petertriho/nvim-scrollbar",
 		"https://github.com/lukas-reineke/indent-blankline.nvim",
 		"https://github.com/stevearc/dressing.nvim",
 	}
+	require "nvim-web-devicons".setup()
 	require "illuminate".configure {
 		filetypes_allowlist = { "lua", "rails", "ruby", "sh", },
 		min_count_to_highlight = 2,
@@ -134,8 +133,24 @@
 		{ "G",        "<leader>c",  "+Code"                                     },
 		{ {"n","v"},  "<BS>",       ":Commentary<cr>"                           },
 		{ "n",        "<C-/>",      ":Commentary<cr><down>"                     },
-		{ "n",        "[d",         vim.diagnostic.goto_prev, "prev diagnostic" },
-		{ "n",        "]d",         vim.diagnostic.goto_next, "next diagnostic" },
+	}
+
+-- }}}
+-- Diagnostic {{{
+
+	vim.diagnostic.config {
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = Icons.diagnostics.error,
+				[vim.diagnostic.severity.WARN]  = Icons.diagnostics.warn,
+				[vim.diagnostic.severity.INFO]  = Icons.diagnostics.info,
+				[vim.diagnostic.severity.HINT]  = Icons.diagnostics.hint,
+			},
+		},
+	}
+	Noremap {
+		{ "n",  "[d",  function () vim.diagnostic.jump {count=-1, float=true} end, "prev diagnostic" },
+		{ "n",  "]d",  function () vim.diagnostic.jump {count= 1, float=true} end, "next diagnostic" },
 	}
 	Perun {
 		{ "  Diagnostics: Show",            vim.diagnostic.show       },
@@ -296,12 +311,6 @@
 		{ "G",  "<leader>j",  "+Jump"                                       },
 	}
 
-	-- Not working for some reason
-	-- Map{
-	-- 	{ "n",  "<X1Mouse>",  "<C-O>" },
-	-- 	{ "n",  "<X2Mouse>",  "<C-I>" },
-	-- }
-
 -- }}}
 -- Print {{{
 
@@ -383,12 +392,12 @@
 	vim.notify = notify
 
 	Noremap {
-		{ "G",  "<leader>s",   "+Spell",                                              },
-		{ "n",  "<leader>ss",  ":set spell!<CR>",             "spell check", },
-		{ "n",  "<leader>sc",  ":set complete+=kspell<CR>",   "spell complete", },
+		{ "G",  "<leader>s",   "+Spell",                                           },
+		{ "n",  "<leader>ss",  ":set spell!<CR>",             "spell check",       },
+		{ "n",  "<leader>sc",  ":set complete+=kspell<CR>",   "spell complete",    },
 		{ "n",  "<leader>sn",  ":set complete-=kspell<CR>",   "spell no complete", },
-		{ "n",  "<leader>se",  ":set spelllang=en_us<CR>",    "lang en_us", },
-		{ "n",  "<leader>sp",  ":set spelllang=pl<CR>",       "lang pl", },
+		{ "n",  "<leader>se",  ":set spelllang=en_us<CR>",    "lang en_us",        },
+		{ "n",  "<leader>sp",  ":set spelllang=pl<CR>",       "lang pl",           },
 	}
 
 	Perun { "  Notification history", "Telescope notify" }
@@ -450,20 +459,23 @@
 -- }}}
 -- Yank {{{
 
-	Noremap { "v",  "<C-c>",       '"*y :let @+=@*<CR>' }
-	Map     { "",   "<C-v>",       '"+P' }
-
 	Yanka  = require "yanka"
-	Noremap { "n",  "<leader>yr",  Yanka.relative_path }
+	Noremap {
+		{ "n",  "<M-a>",          Yanka.buffer                     },
+		{ "n",  "<leader>yr",     Yanka.relative_path              },
+		{ "v",  "<C-c>",          '"*y :let @+=@*<CR>'             },
+	}
+	Map { "",   "<C-v>",          '"+P'                            }
+
 	Perun {
-		{ "  Yank filename",               Yanka.filename },
-		{ "  Yank relative path",          Yanka.relative_path },
-		{ "  Yank full path",              Yanka.full_path },
-		{ "  Yank full dir",               Yanka.full_dir },
-		{ "  Yank <cfile>",                Yanka.cfile },
-		{ "  Yank buffer content",         Yanka.buffer },
-		{ "  Yank set clipboard",          Yanka.set_clipboard },
-		{ "  Yank unset clipboard",        Yanka.unset_clipboard },
+		{ "  Yank filename",               Yanka.filename         },
+		{ "  Yank relative path",          Yanka.relative_path    },
+		{ "  Yank full path",              Yanka.full_path        },
+		{ "  Yank full dir",               Yanka.full_dir         },
+		{ "  Yank <cfile>",                Yanka.cfile            },
+		{ "  Yank buffer to clipboard",    Yanka.buffer2clipboard },
+		{ "  Yank set clipboard",          Yanka.set_clipboard    },
+		{ "  Yank unset clipboard",        Yanka.unset_clipboard  },
 	}
 
 -- }}}

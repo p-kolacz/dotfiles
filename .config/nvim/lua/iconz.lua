@@ -25,17 +25,17 @@ local M = {
 		{ left = '', right = '' },
 		{ left = '', right = '' },
 		{ left = '', right = '' },
-		-- { left = '  ', right = ' ' },
+		{ left = '  ', right = '|' },
 		{ left = '', right = '' },
-		{ left = ' ', right = '' },
+		{ left = ' ', right = '|' },
 	},
 	component_separators= { '',
 		{ left = '', right = '' },
 		{ left = '', right = '' },
 		{ left = '', right = '' },
-		-- { left = '  ', right = '  ' },
+		{ left = '  ', right = '|' },
 		{ left = '', right = '' },
-		{ left = ' ', right = ' ' },
+		{ left = ' ', right = '|' },
 	},
 }
 
@@ -46,20 +46,6 @@ function M.random_separators()
 		section_separators = M.section_separators[random],
 		component_separators = M.component_separators[random],
 	}
-end
-
--- Define icons highlights for diagnostics
-function M.setup_diagnostics()
-	for name, icon in pairs(M.diagnostics) do
-		name = name:sub(1,1):upper()..name:sub(2)	-- capitalize name
-		local hl = "DiagnosticSign" .. name
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-	end
-end
-
-function M.setup_devicons()
-	Plugin "https://github.com/kyazdani42/nvim-web-devicons"
-	require "nvim-web-devicons".setup()
 end
 
 return M
