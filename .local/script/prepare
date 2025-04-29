@@ -136,7 +136,7 @@ nvidia() {
 }
 
 nvim() {
-	install neovim python python-pip python-pynvim lua-language-server
+	install neovim lua-language-server python python-pynvim tree-sitter-cli
 	# ynstall figlet-fonts 
 }
 

@@ -35,7 +35,7 @@ done
 #------------------------------------------------------------------------------#
 
 ~/.config/bspwm/theme.sh
-bspc config border_width			1
+bspc config border_width			2
 bspc config borderless_monocle		true
 bspc config window_gap				16
 bspc config gapless_monocle			true

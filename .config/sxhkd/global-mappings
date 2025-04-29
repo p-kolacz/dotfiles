@@ -25,7 +25,7 @@ super + Escape
 	# lock-workstation
 
 super + F1
-	rofi -modi emoji -show emoji -matching normal -kb-custom-1 Ctrl+c
+	rofi -modi emoji -show emoji -matching normal
 
 super + {F2,F3,F4,F10}
 	{strselecta icons,strselecta entities,strselecta boxes,mnter.sh}

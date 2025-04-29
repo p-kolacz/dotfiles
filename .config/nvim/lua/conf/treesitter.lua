@@ -15,7 +15,7 @@ require"nvim-treesitter.configs".setup {
 		"awk", "bash", "c", "c_sharp", "clojure", "cmake", "comment", "cpp", "css", "diff", "dockerfile", "dot",
 		"gdscript", "git_rebase", "gitattributes", "gitcommit", "gitignore", "glsl", "go", "godot_resource", "gomod", "gowork",
 		"hjson", "html", "http", "ini", "java", "javascript", "jq", "jsdoc", "json", "lua", "make",
-		"markdown", "markdown_inline", "mermaid", "org", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
+		"markdown", "markdown_inline", "mermaid", "perl", "php", "phpdoc", "python", "regex", "ruby", "rust", "scss",
 		"sql", "todotxt", "toml", "typescript", "vhs", "vim", "xml", "yaml",
 	},
 	highlight = {
