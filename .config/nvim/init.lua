@@ -49,6 +49,12 @@
 -- }}}
 -- Appearance {{{
 
+	function Custom_fold_text()
+		local line = vim.fn.getline(vim.v.foldstart)
+		local lines_count = vim.v.foldend - vim.v.foldstart + 1
+		return line .. ' (' .. lines_count .. ' lines) '
+	end
+
 	vim.cmd.language("messages en_US.utf8")
 	Require {
 		"conf/lualine",
@@ -56,6 +62,8 @@
 	}
 	Set {
 		listchars     = Icons.listchars,
+		-- foldcolumn    = "auto",
+		-- foldtext      = "v:lua.Custom_fold_text()",
 		fillchars     = Icons.fillchars,
 		cursorline    = true,
 		wrap          = false,
@@ -130,9 +138,9 @@
 	}
 	nmap("<leader>cc", "yypkgccj", 'duplicomment')
 	Noremap {
-		{ "G",        "<leader>c",  "+Code"                                     },
-		{ {"n","v"},  "<BS>",       ":Commentary<cr>"                           },
-		{ "n",        "<C-/>",      ":Commentary<cr><down>"                     },
+		{ "G",        "<leader>c",  "+Code"                 },
+		{ {"n","v"},  "<BS>",       ":Commentary<cr>"       },
+		{ "n",        "<C-/>",      ":Commentary<cr><down>" },
 	}
 
 -- }}}
@@ -248,6 +256,7 @@
 
 	mapgroup("<leader>g", "+Git")
 	Noremap {
+		{ "n",  "<M-g>",       gg.status,     "status"     },
 		{ "n",  "<leader>gg",  gg.status,     "status"     },
 		{ "n",  "<leader>gb",  gs.blame_line, "blame line" },
 	}
@@ -403,79 +412,63 @@
 	Perun { "  Notification history", "Telescope notify" }
 
 -- }}}]]
--- View {{{
-	-- Noremap {
-		-- { "n", "<TAB>", "za" }
-	-- }
-	Set {
-		foldlevelstart = 99,
-		foldmethod     = "expr",
-		foldexpr       = "nvim_treesitter#foldexpr()",
-	}
-	-- set.foldtext       = "v:lua.Foldtext()"
-	-- https://vi.stackexchange.com/questions/25820/maintain-alignment-of-text-after-folding
-	-- function Foldtext()
-	-- 	local fs = vim.api.nvim_get_vvar("foldstart")
-	-- 	local line = vim.fn.trim(vim.fn.getline(fs))
-	-- 	local indent = vim.fn.indent(fs)
-	-- 	-- return string.rep(" ", indent) .. line .. "..."
-	-- 	local indent_spaces = string.rep(" ", indent)
-	-- 	return string.format("%s▶ %s...", indent_spaces, line)
-	-- end
-
-	Noremap {
-		{ "G",  "<leader>d",   "+Diff",                      },
-		{ "n",  "<leader>dd",  ":diffthis<cr>",  "diff this" },
-		{ "n",  "<leader>do",  ":diffoff!<cr>",  "diff off"  },
-		---------------------------------- Windows ---------------------------------
-		{ "n",  "<leader>q",  ":q<CR>", "quit", },
-		{ "n",  "<C-h>",  "<C-w>h", "left window", },
-		{ "n",  "<C-j>",  "<C-w>j", "bottom window", },
-		{ "n",  "<C-k>",  "<C-w>k", "up window", },
-		{ "n",  "<C-l>",  "<C-w>l", "right window", },
-		{ "n",  "<C-A-h>",  "<C-w>h<C-w>|", "left window", },
-		{ "n",  "<C-A-j>",  "<C-w>j<C-w>_", "bottom window", },
-		{ "n",  "<C-A-k>",  "<C-w>k<C-w>_", "up window", },
-		{ "n",  "<C-A-l>",  "<C-w>l<C-w>|", "right window", },
-	}
-
--- }}}
 -- Vim {{{
 
 	Mapgroup("<leader>v", "+Vim")
 
 	local plugger = require "plugozaur"
 	Perun {
-
-		-- Plugins ----------------------------------------------------------------
 		{ "  Update plugins",              plugger.update },
 		{ "  Update plugins (debug)",      plugger.debug_update },
-
-		-- Windows ----------------------------------------------------------------
-		{ "  Open quickfix",               "copen" },
-		{ "  Close quickfix",              "cclose" },
 	}
+
+-- }}}
+-- Windows {{{
+
+	Set {
+		foldlevelstart = 99,
+		foldmethod     = "expr",
+		foldexpr       = "nvim_treesitter#foldexpr()",
+	}
+	Noremap {
+		{ "G",  "<leader>d",   "+Diff",                          },
+		{ "n",  "<leader>dd",  ":diffthis<cr>",  "diff this"     },
+		{ "n",  "<leader>do",  ":diffoff!<cr>",  "diff off"      },
+		{ "n",  "<leader>q",   ":q<CR>",         "quit"          },
+		{ "n",  "<C-h>",       "<C-w>h",         "left window"   },
+		{ "n",  "<C-j>",       "<C-w>j",         "bottom window" },
+		{ "n",  "<C-k>",       "<C-w>k",         "up window"     },
+		{ "n",  "<C-l>",       "<C-w>l",         "right window"  },
+		{ "n",  "<C-A-h>",     "<C-w>h<C-w>|",   "left window"   },
+		{ "n",  "<C-A-j>",     "<C-w>j<C-w>_",   "bottom window" },
+		{ "n",  "<C-A-k>",     "<C-w>k<C-w>_",   "up window"     },
+		{ "n",  "<C-A-l>",     "<C-w>l<C-w>|",   "right window"  },
+	}
+	Perun {
+		{ "  Open quickfix",  "copen" },
+		{ "  Close quickfix", "cclose" },
+	}
+
 
 -- }}}
 -- Yank {{{
 
-	Yanka  = require "yanka"
+	local yanka  = require "yanka"
 	Noremap {
-		{ "n",  "<M-a>",          Yanka.buffer                     },
-		{ "n",  "<leader>yr",     Yanka.relative_path              },
-		{ "v",  "<C-c>",          '"*y :let @+=@*<CR>'             },
+		{ "n",  "<leader>yr",             yanka.relative_path,    "yank relative path" },
+		{ "n",  "<M-a>",                  yanka.buffer2clipboard                       },
+		{ "v",  "<C-c>",                  yanka.visual2clipboard                       },
 	}
-	Map { "",   "<C-v>",          '"+P'                            }
-
+	Map { "",   "<C-v>",                  yanka.paste_from_clipboard }
 	Perun {
-		{ "  Yank filename",               Yanka.filename         },
-		{ "  Yank relative path",          Yanka.relative_path    },
-		{ "  Yank full path",              Yanka.full_path        },
-		{ "  Yank full dir",               Yanka.full_dir         },
-		{ "  Yank <cfile>",                Yanka.cfile            },
-		{ "  Yank buffer to clipboard",    Yanka.buffer2clipboard },
-		{ "  Yank set clipboard",          Yanka.set_clipboard    },
-		{ "  Yank unset clipboard",        Yanka.unset_clipboard  },
+		{ "  Yank filename",             yanka.filename             },
+		{ "  Yank relative path",        yanka.relative_path        },
+		{ "  Yank full path",            yanka.full_path            },
+		{ "  Yank full dir",             yanka.full_dir             },
+		{ "  Yank <cfile>",              yanka.cfile                },
+		{ "  Yank buffer to clipboard",  yanka.buffer2clipboard     },
+		{ "  Yank set clipboard",        yanka.set_clipboard        },
+		{ "  Yank unset clipboard",      yanka.unset_clipboard      },
 	}
 
 -- }}}

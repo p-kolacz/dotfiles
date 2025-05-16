@@ -1,6 +1,6 @@
 Plugin "https://github.com/nvim-lualine/lualine.nvim"
 
-local separators = Icons.random_separators()
+local separators = Icons:random_separators()
 
 local function cwd()
 	return vim.fn.getcwd()

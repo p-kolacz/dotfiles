@@ -26,6 +26,17 @@ function M.buffer2clipboard()
 	vim.cmd("let @+=@*")
 end
 
+function M.paste_from_clipboard()
+  vim.cmd([[ normal! "+P ]])
+end
+
+function M.visual2clipboard()
+  vim.cmd([[
+    normal! "*y
+    let @+=@*
+  ]])
+end
+
 function M.set_clipboard()
 	vim.opt.clipboard = "unnamed,unnamedplus"
 	print(vim.cmd("set clipboard?"))

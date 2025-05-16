@@ -3,7 +3,8 @@ local M = {
 		space = "⋅", tab = "|->", eol = "↲", nbsp = "+", trail = "•", extends = "⟩", precedes = "⟨",
 	},
 	fillchars = {
-		fold = " ", foldopen = "", foldclose = "",
+		-- fold = " ", foldopen = "", foldclose = "",
+		foldopen = "", foldclose = "",
 		horiz = "═", horizdown = "╦", horizup = "╩",
 		vert = "║", vertright = "╠", verthoriz = "╬", vertleft = "╣",
 	},
@@ -37,15 +38,15 @@ local M = {
 		{ left = '', right = '' },
 		{ left = ' ', right = '|' },
 	},
+
+	random_separators = function(self)
+		math.randomseed(os.time())
+		local random = math.random(#self.section_separators)
+		return {
+			section_separators = self.section_separators[random],
+			component_separators = self.component_separators[random],
+		}
+	end
+
 }
-
-function M.random_separators()
-	math.randomseed(os.time())
-	local random = math.random(#M.section_separators)
-	return {
-		section_separators = M.section_separators[random],
-		component_separators = M.component_separators[random],
-	}
-end
-
 return M
