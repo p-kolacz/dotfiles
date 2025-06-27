@@ -110,6 +110,9 @@
 	-- Zorya.highlight("markdownH1", "gui=bold,underline")
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
+	vim.api.nvim_set_hl(0, 'TrailingSpaces', { bg = '#ee3333' })
+	vim.fn.matchadd('TrailingSpaces', [[\s\+$]])
+
 	Noremap {
 		{ "G",  "<leader>o",   "Options"                                              },
 		{ "n",  "<leader>ol",  ":set list!<CR>",            "toggle invisible chars"  },
@@ -354,11 +357,7 @@
 	vim.g.UltiSnipsJumpForwardTrigger  = '<tab>'
 	vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-	mapgroup("<leader>u",  "+Snippets")
-	Noremap {
-		{ "n", "<leader>uf", ":UltiSnipsEdit<CR>",     "edit filetype snippets" },
-		{ "n", "<leader>ua", ":UltiSnipsEdit!all<CR>", "edit all snippets"      },
-	}
+	Mapgroup("<leader>u",  "+Snippets")
 	Perun {
 		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit"          },
 		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all"      },

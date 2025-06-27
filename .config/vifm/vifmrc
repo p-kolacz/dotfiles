@@ -120,7 +120,7 @@ nnoremap <BS> :cd ..<cr>
 nnoremap <a-t> :!$TERMINAL 2> /dev/null &<cr>
 
 " Mappings for faster renaming
-nnoremap a cW
+nnoremap a cw
 nnoremap A cw
 nnoremap cc cw<c-u>
 nnoremap ce cw<c-w>

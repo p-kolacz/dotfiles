@@ -29,7 +29,7 @@ autocmd('LspAttach', {
 			{ "n", "gd", vim.lsp.buf.definition, "goto definition" },
 			{ "n", "gD", vim.lsp.buf.declaration, "goto declaration" },
 			{ "n", "gi", vim.lsp.buf.implementation, "goto implementation" },
-			{ "n", "gr", vim.lsp.buf.references, "goto references" },
+			-- { "n", "gr", vim.lsp.buf.references, "goto references" },
 			{ "n", "K",  vim.lsp.buf.hover, "LSP hover" },
 			{ "n", "<leader>cs", vim.lsp.buf.signature_help, "signature" },
 			{ "n", "<leader>ct", vim.lsp.buf.type_definition, "type definition" },
