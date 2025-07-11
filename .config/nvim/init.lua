@@ -49,12 +49,6 @@
 -- }}}
 -- Appearance {{{
 
-	function Custom_fold_text()
-		local line = vim.fn.getline(vim.v.foldstart)
-		local lines_count = vim.v.foldend - vim.v.foldstart + 1
-		return line .. ' (' .. lines_count .. ' lines) '
-	end
-
 	vim.cmd.language("messages en_US.utf8")
 	Require {
 		"conf/lualine",
@@ -62,8 +56,6 @@
 	}
 	Set {
 		listchars     = Icons.listchars,
-		-- foldcolumn    = "auto",
-		-- foldtext      = "v:lua.Custom_fold_text()",
 		fillchars     = Icons.fillchars,
 		cursorline    = true,
 		wrap          = false,
@@ -147,6 +139,18 @@
 	}
 
 -- }}}
+-- Commands & Command Mode {{{
+
+	Noremap {
+		-- { "n",  "<leader><leader>",  ":",                 "command mode", },
+		{ "n",  "<C-P>",             require"perun".run,                  },
+		{ "c",  "<C-a>",             "<home>",                            },
+		{ "c",  "<A-f>",             "<S-right>",                         },
+		{ "c",  "<C-b>",             "<left>",                            },
+		{ "c",  "<A-b>",             "<S-left>",                          },
+	}
+
+--}}}
 -- Diagnostic {{{
 
 	vim.diagnostic.config {
@@ -171,18 +175,6 @@
 	}
 
 -- }}}
--- Commands & Command Mode {{{
-
-	Noremap {
-		-- { "n",  "<leader><leader>",  ":",                 "command mode", },
-		{ "n",  "<C-P>",             require"perun".run,                  },
-		{ "c",  "<C-a>",             "<home>",                            },
-		{ "c",  "<A-f>",             "<S-right>",                         },
-		{ "c",  "<C-b>",             "<left>",                            },
-		{ "c",  "<A-b>",             "<S-left>",                          },
-	}
-
---}}}
 -- Edit {{{
 
 	Require {
@@ -257,6 +249,20 @@
 	Noremap {
 		{ "n", "<a-f>",       ":new<cr>"                 },
 	}
+
+-- }}}
+-- Folding {{{
+
+	Set {
+		foldlevelstart = 99,
+		foldmethod     = "expr",
+		foldexpr       = "nvim_treesitter#foldexpr()",
+	}
+	-- function Custom_fold_text()
+	-- 	local line = vim.fn.getline(vim.v.foldstart)
+	-- 	local lines_count = vim.v.foldend - vim.v.foldstart + 1
+	-- 	return line .. ' (' .. lines_count .. ' lines) '
+	-- end
 
 -- }}}
 -- Git {{{
@@ -423,11 +429,6 @@
 -- }}}
 -- Windows {{{
 
-	Set {
-		foldlevelstart = 99,
-		foldmethod     = "expr",
-		foldexpr       = "nvim_treesitter#foldexpr()",
-	}
 	Noremap {
 		{ "G",  "<leader>d",   "+Diff",                          },
 		{ "n",  "<leader>dd",  ":diffthis<cr>",  "diff this"     },
