@@ -3,7 +3,6 @@ local M = {
 		space = "⋅", tab = "|->", eol = "↲", nbsp = "+", trail = "•", extends = "⟩", precedes = "⟨",
 	},
 	fillchars = {
-		-- fold = " ", foldopen = "", foldclose = "",
 		foldopen = "", foldclose = "",
 		horiz = "═", horizdown = "╦", horizup = "╩",
 		vert = "║", vertright = "╠", verthoriz = "╬", vertleft = "╣",
@@ -12,10 +11,14 @@ local M = {
 		error = " ", warn = " ", hint = " ", info = " "
 	},
 	kinds = {
-		Text = "", Method = "", Function = "", Constructor = "", Field = "ﰠ", Variable = "", Class = "ﴯ", Interface = "", Module = "", Property = "ﰠ", Unit = "塞", Value = "", Enum = "", Keyword = "", Snippet = "", Color = "", File = "", Reference = "", Folder = "", EnumMember = "", Constant = "", Struct = "פּ", Event = "", Operator = "", TypeParameter = ""
+		Class         = " ", Color         = " ", Constant      = " ", Constructor   = " ", Enum          = " ",
+		EnumMember    = " ", File          = " ", Folder        = " ", Function      = "󰊕 ", Event         = " ",
+		Field         = "󰠴 ", Interface     = " ", Keyword       = " ", Method        = " ", Module        = " ",
+		Operator      = " ", Property      = " ", Reference     = " ", Snippet       = " ", Struct        = " ",
+		Text          = " ", TypeParameter = " ", Unit          = "U ", Value         = "V ", Variable      = "󰫧 ",
 	},
 	sources = {
-		buffer = "﬘", nvim_lsp = "", ultisnips = "", emoji = "", calc = "", latex_symbols = "[LaTeX]", luasnip = "[LuaSnip]", nvim_lua = "[Lua]",
+		buffer = " ", nvim_lsp = " ", ultisnips = " ", emoji = " ", calc = " ", latex_symbols = " ", nvim_lua = "󰢱 ",
 	},
 	whichkey = {
 		breadcrumb = "»",
@@ -26,17 +29,17 @@ local M = {
 		{ left = '', right = '' },
 		{ left = '', right = '' },
 		{ left = '', right = '' },
-		{ left = '  ', right = '|' },
 		{ left = '', right = '' },
-		{ left = ' ', right = '|' },
+		-- { left = '  ', right = '|' },
+		-- { left = ' ', right = '|' },
 	},
 	component_separators= { '',
 		{ left = '', right = '' },
 		{ left = '', right = '' },
 		{ left = '', right = '' },
-		{ left = '  ', right = '|' },
 		{ left = '', right = '' },
-		{ left = ' ', right = '|' },
+		-- { left = '  ', right = '|' },
+		-- { left = ' ', right = '|' },
 	},
 
 	random_separators = function(self)

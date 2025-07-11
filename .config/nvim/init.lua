@@ -1,9 +1,9 @@
--- .__   __.  _______   ______   ____    ____  __  .___  ___. 
--- |  \ |  | |   ____| /  __  \  \   \  /   / |  | |   \/   | 
--- |   \|  | |  |__   |  |  |  |  \   \/   /  |  | |  \  /  | 
--- |  . `  | |   __|  |  |  |  |   \      /   |  | |  |\/|  | 
--- |  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  | 
--- |__| \__| |_______| \______/      \__/     |__| |__|  |__| 
+-- .__   __.  _______   ______   ____    ____  __  .___  ___.
+-- |  \ |  | |   ____| /  __  \  \   \  /   / |  | |   \/   |
+-- |   \|  | |  |__   |  |  |  |  \   \/   /  |  | |  \  /  |
+-- |  . `  | |   __|  |  |  |  |   \      /   |  | |  |\/|  |
+-- |  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  |
+-- |__| \__| |_______| \______/      \__/     |__| |__|  |__|
 
 -- Bootstrap {{{
 
@@ -160,8 +160,9 @@
 		},
 	}
 	Noremap {
-		{ "n",  "[d",  function () vim.diagnostic.jump {count=-1, float=true} end, "prev diagnostic" },
-		{ "n",  "]d",  function () vim.diagnostic.jump {count= 1, float=true} end, "next diagnostic" },
+		{ "n",  "[d",     function () vim.diagnostic.jump {count=-1, float=true} end, "prev diagnostic" },
+		{ "n",  "]d",     function () vim.diagnostic.jump {count= 1, float=true} end, "next diagnostic" },
+		{ "n",  "<A-d>",  function () vim.diagnostic.jump {count= 1, float=true} end, "next diagnostic" },
 	}
 	Perun {
 		{ "  Diagnostics: Show",            vim.diagnostic.show       },
@@ -173,7 +174,7 @@
 -- Commands & Command Mode {{{
 
 	Noremap {
-		{ "n",  "<leader><leader>",  ":",                 "command mode", },
+		-- { "n",  "<leader><leader>",  ":",                 "command mode", },
 		{ "n",  "<C-P>",             require"perun".run,                  },
 		{ "c",  "<C-a>",             "<home>",                            },
 		{ "c",  "<A-f>",             "<S-right>",                         },
@@ -195,25 +196,25 @@
 		viewoptions = "cursor,folds"
 	}
 	Noremap {
-		{ "i",  "<C-a>",  "<home>",                                  },
-		{ "i",  "<C-b>",  "<left>",                                  },
-		{ "i",  "<C-e>",  "<end>",                                   },
-		{ "i",  "<C-d>",  "<delete>",                                },
-		{ "i",  "<C-f>",  "<right>",                                 },
-		{ "i",  "<A-f>",  "<s-right>",                               },
-		{ "i",  "<A-b>",  "<s-left>",                                },
-		{ "n",  "<A-j>",  ":m .+1<cr>==",     "move line down"       },
-		{ "n",  "<A-k>",  ":m .-2<cr>==",     "move line up"         },
-		{ "v",  "<A-j>",  ":m '>+1<cr>gv=gv", "move selection down"  },
-		{ "v",  "<A-k>",  ":m '<-2<cr>gv=gv", "move selection up"    },
-		{ "G",  "<leader>e",   "+Edit"                               },
-		{ "n",  "<leader>ee",  ":%s/<C-R>=expand('<cword>')<CR>//g<left><left>", "substitute cword"       },
-		{ "n",  "<leader>es",  ":%s/",            "substitute"       },
-		{ "v",  "<leader>es",  ":s/",             "substitute"       },
-		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"    },
+		{ "i",  "<C-a>",       "<home>",                                                            },
+		{ "i",  "<C-b>",       "<left>",                                                            },
+		{ "i",  "<C-e>",       "<end>",                                                             },
+		{ "i",  "<C-d>",       "<delete>",                                                          },
+		{ "i",  "<C-f>",       "<right>",                                                           },
+		{ "i",  "<A-f>",       "<s-right>",                                                         },
+		{ "i",  "<A-b>",       "<s-left>",                                                          },
+		{ "n",  "<A-j>",       ":m .+1<cr>==",     "move line down"                                 },
+		{ "n",  "<A-k>",       ":m .-2<cr>==",     "move line up"                                   },
+		{ "v",  "<A-j>",       ":m '>+1<cr>gv=gv", "move selection down"                            },
+		{ "v",  "<A-k>",       ":m '<-2<cr>gv=gv", "move selection up"                              },
+		{ "G",  "<leader>e",   "+Edit"                                                              },
+		{ "n",  "<leader>ee",  ":%s/<C-R>=expand('<cword>')<CR>//g<left><left>", "substitute cword" },
+		{ "n",  "<leader>es",  ":%s/",            "substitute"                                      },
+		{ "v",  "<leader>es",  ":s/",             "substitute"                                      },
+		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"                                   },
 		-- change cword and press . to repeat change on next, n to goto next
-		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat" },
-		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",                        "change&repeat" },
+		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat"      },
+		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",                        "change&repeat"      },
 		{ "n",	"<leader>w",   ":w<CR>",			               "write", },
 		{ "G",  "<leader>f", "+File" },
 		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
@@ -252,6 +253,12 @@
 	})
 
 	-- }}}
+-- File {{{
+	Noremap {
+		{ "n", "<a-f>",       ":new<cr>"                 },
+	}
+
+-- }}}
 -- Git {{{
 
 	local gs = require "conf/gitsigns"
@@ -259,7 +266,7 @@
 
 	mapgroup("<leader>g", "+Git")
 	Noremap {
-		{ "n",  "<M-g>",       gg.status,     "status"     },
+		{ "n",  "<A-g>",       gg.status,     "status"     },
 		{ "n",  "<leader>gg",  gg.status,     "status"     },
 		{ "n",  "<leader>gb",  gs.blame_line, "blame line" },
 	}
@@ -341,8 +348,8 @@
 		hlsearch   = false,
 	}
 	Noremap {
-		{ "v", "/", "<ESC>/\\%V" },
-		{ "n",  "<leader>oh",  ":set hlsearch!<CR>",        "toggle higlight search"  },
+		{ "v", "/",           "<ESC>/\\%V"                                    },
+		{ "n",  "<leader>oh", ":set hlsearch!<CR>", "toggle highlight search" },
 	}
 
 -- }}}
@@ -359,8 +366,8 @@
 
 	Mapgroup("<leader>u",  "+Snippets")
 	Perun {
-		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit"          },
-		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all"      },
+		{ "  Snippets: Edit filetype snippets",  "UltiSnipsEdit"          },
+		{ "  Snippets: Edit all snippets",       "UltiSnipsEdit!all"      },
 	}
 
 	-- }}}
@@ -372,27 +379,19 @@
 	Noremap {
 		{ "n", "<c-t>",       ":tabnew<cr>"                 },
 		{ "n", "<leader>tt",  ":tabnew<cr>",    "new tab"   },
-		{ "n", "<leader>tq",  ":tabclose<cr>",  "close tab" },
+		-- { "n", "<leader>tq",  ":tabclose<cr>",  "close tab" },
 		{ "n", "<leader>1",   "1gt",            "tab 1"     },
 		{ "n", "<leader>2",   "2gt",            "tab 2"     },
 		{ "n", "<leader>3",   "3gt",            "tab 3"     },
 		{ "n", "<leader>4",   "4gt",            "tab 4"     },
 		{ "n", "<leader>5",   "5gt",            "tab 5"     },
 	}
-	Perun {
-		{ "  New file",  "new"    },
-		{ "  New tab",   "tabnew" },
-	}
-
 
 -- }}}
 -- Tools & Widgets {{{
 ---[[
 
-	Require "conf/rest"
-	-- Plugin "https://github.com/goolord/alpha-nvim"
-	-- require'alpha'.setup(require'alpha.themes.startify'.config)
-
+	-- Require "conf/rest"
 	Plugin "https://github.com/rcarriga/nvim-notify"
 
 	local notify = require("notify")
@@ -438,10 +437,6 @@
 		{ "n",  "<C-j>",       "<C-w>j",         "bottom window" },
 		{ "n",  "<C-k>",       "<C-w>k",         "up window"     },
 		{ "n",  "<C-l>",       "<C-w>l",         "right window"  },
-		{ "n",  "<C-A-h>",     "<C-w>h<C-w>|",   "left window"   },
-		{ "n",  "<C-A-j>",     "<C-w>j<C-w>_",   "bottom window" },
-		{ "n",  "<C-A-k>",     "<C-w>k<C-w>_",   "up window"     },
-		{ "n",  "<C-A-l>",     "<C-w>l<C-w>|",   "right window"  },
 	}
 	Perun {
 		{ "  Open quickfix",  "copen" },
@@ -455,7 +450,7 @@
 	local yanka  = require "yanka"
 	Noremap {
 		{ "n",  "<leader>yr",             yanka.relative_path,    "yank relative path" },
-		{ "n",  "<M-a>",                  yanka.buffer2clipboard                       },
+		{ "n",  "<A-a>",                  yanka.buffer2clipboard                       },
 		{ "v",  "<C-c>",                  yanka.visual2clipboard                       },
 	}
 	Map { "",   "<C-v>",                  yanka.paste_from_clipboard }

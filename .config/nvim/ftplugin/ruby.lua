@@ -43,17 +43,34 @@ vim.opt_local.foldcolumn = "0"
 vim.opt_local.colorcolumn = "120"
 
 Laser.start {
-	name = "Solargraph",
-	cmd = { "solargraph", "stdio" },
-	init_options = {
-		formatting = true
-	},
-	settings = {
-		solargraph = {
-			diagnostics = true
-		}
-	},
+	name = "ruby-lsp",
+	cmd = { "ruby-lsp" },
+	-- cmd = { "bundle", "exec", "ruby-lsp", "--stdio", "--disable-gems" },
+	-- init_options = {
+		-- indexing = {
+			-- excludedPatterns = { "vendor/bundle/" },
+			-- "includedPatterns"= ["path/to/included/file.rb"],
+			-- excludedGems = { "gem1", "gem2", "etc." },
+			-- "excludedMagicComments"= ["compiled:true"]
+		-- },
+	-- },
 }
+
+-- vim.lsp.set_log_level("debug")
+
+-- Laser.start {
+-- 	name = "Solargraph",
+-- 	-- cmd = { "bundle", "exec", "solargraph", "stdio" },
+-- 	cmd = { "solargraph", "stdio" },
+-- 	init_options = {
+-- 		formatting = true
+-- 	},
+-- 	settings = {
+-- 		solargraph = {
+-- 			diagnostics = true
+-- 		}
+-- 	},
+-- }
 
 nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow | cfirst<cr>')
 
