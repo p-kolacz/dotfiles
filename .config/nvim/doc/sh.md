@@ -23,9 +23,9 @@ File operators:
       FILE1 -nt FILE2  True if file1 is newer than file2 (according to modification date).
       FILE1 -ot FILE2  True if file1 is older than file2.
       FILE1 -ef FILE2  True if file1 is a hard link to file2.
-    
+
       All file operators except -h and -L are acting on the target of a symbolic link, not on the symlink itself, if FILE is a symbolic link.
-    
+
 String operators:
       -z STRING           True if string is empty.
       -n STRING           True if string is not empty.
@@ -33,7 +33,7 @@ String operators:
       STRING1 != STRING2  True if the strings are not equal.
       STRING1 < STRING2   True if STRING1 sorts before STRING2 lexicographically.
       STRING1 > STRING2   True if STRING1 sorts after STRING2 lexicographically.
-    
+
 Other operators:
       -o OPTION      True if the shell option OPTION is enabled.
       -v VAR         True if the shell variable VAR is set.

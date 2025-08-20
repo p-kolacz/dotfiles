@@ -1,0 +1,7 @@
+#!/bin/bash
+
+OUTPUT_DIR="$HOME/tmp/yt"
+ARCHIVE_FILE="$HOME/Exocortex/yt.ids/"
+mkdir -p "$OUTPUT_DIR"
+
+yt-dlp --paths "$OUTPUT_DIR" --download-archive "$ARCHIVE_FILE" --recode-video av01 "$0"

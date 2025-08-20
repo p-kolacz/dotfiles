@@ -243,12 +243,13 @@
 	-- }}}
 -- File {{{
 	Noremap {
-		{ "G",  "<leader>f", "+File" },
-		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>", "current file dir" },
-		{ "n",  "<leader>fe",  ":edit ",                         "edit file" },
-		{ "n",  "<leader>fn",  ":new<cr>",                         "new file" },
-		{ "n",  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",    "chmod +x" },
-		{ "n",  "<a-f>",       ":new<cr>"                 },
+		{ "G",  "<leader>f",    "+File" },
+		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>",  "current file dir"    },
+		{ "n",  "<leader>fe",  ":edit ",                            "edit file"           },
+		{ "n",  "<leader>fn",  ":new<cr>",                          "new file"            },
+		{ "n",  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",     "chmod +x"            },
+		{ "n",  "<a-f>",       ":new<cr>",                          "new file"            },
+		{ "n",  "<a-v>",       ":edit <C-R>+",                      "open from clipboard" },
 	}
 
 -- }}}
