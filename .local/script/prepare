@@ -83,6 +83,10 @@ bspwm() {
 	ln -s "$XDG_CONFIG_HOME/bspwm/.xinitrc" "$XDG_CONFIG_HOME/xorg/.xinitrc"
 }
 
+cinnamon() {
+	install cinnamon
+}
+
 cron() {
 	mkdir -p "$HOME"/.local/spool/anacron "$HOME"/.config/anacron/{daily,monthly,weekly}
 	install cronie
