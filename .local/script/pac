@@ -11,7 +11,7 @@ case $1 in
 	sync)        sudo pacman -Sy ;;
 	lastup)      grep "starting full system upgrade" /var/log/pacman.log | tail ;;
 	set-mirrors)
-		sudo reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+		sudo reflector --latest 5 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
 		cat /etc/pacman.d/mirrorlist
 		;;
 	clear)	# clear cache

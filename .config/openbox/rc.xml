@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Arcbox</name>
+    <name>Syscrash</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -335,7 +335,18 @@
         <command> rofi -show combi -modes combi -combi-modes "drun,run" -theme-str 'window {width:800px;}' </command>
       </action>
     </keybind>
+	<keybind key="W-m">
+		<action name="ToggleMaximize"/>
+	</keybind>
+	<keybind key="Print">
+		<action name="Execute">
+			<command>flameshot full -p ~/</command>
+		</action>
+	</keybind>
   </keyboard>
+
+
+
   <mouse>
     <dragThreshold>1</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->

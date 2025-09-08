@@ -1,4 +1,4 @@
 #!/bin/bash
 
-xset r rate 250 40
+xset r rate 300 40
 

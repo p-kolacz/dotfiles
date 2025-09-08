@@ -17,7 +17,6 @@
 !/nsxiv/
 !/nvim/
 !/openbox/
-!/picom.conf
 !/polybar/
 !/python/
 !/qimgv/
@@ -30,5 +29,6 @@
 !/zathura/
 !/zsh/
 
+!/picom.conf
 !/starship.toml
 !/xplugrc
