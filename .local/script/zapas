@@ -1,0 +1,30 @@
+#!/bin/bash
+
+err() { echo "$1"; exit 1; }
+
+usage() {
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed 's/|usage|//')"
+}
+
+[[ $# -eq 0 || ! $(typeset -f "$1") ]] && { usage; exit 1; }
+func=$1 && shift
+$func "$@"
+
+# [[ $# = 2 ]]    || err "Usage: backup <source> <dest_dir>"
+# [[ -e $1 ]]     || err "Invalid source"
+# [[ -d $2 ]]     || err "Invalide destination"
+# [[ $1 -ef $2 ]] && err "Source can't be the same as destination"
+
+# SRC_BASENAME=$(basename "$1")
+# DATE_SUFFIX=$(date +%F_%H-%M-%S)
+
+# if [[ -d $1 ]]; then
+# 	DIR="$1"
+# 	FILE=.
+# else
+# 	DIR=$(dirname "$1")
+# 	FILE=$SRC_BASENAME
+# fi
+
+# tar czf "$2/${SRC_BASENAME}_${DATE_SUFFIX}.tar.gz" --dereference --directory="$DIR" "$FILE"
+
