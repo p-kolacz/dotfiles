@@ -8,7 +8,8 @@ FZF_INLINE="--height=30% --reverse $FZF_DEFAULT_OPTS"
 b() {
 	FZF_DEFAULT_OPTS=$FZF_INLINE
 	local branch
-	branch=$(git branch -vv --color=always | sed -e "/^* /d" -e "s/^  //" | fzf) &&
+	# branch=$(git branch -vv --color=always | sed -e "/^* /d" -e "s/^  //" | fzf) &&
+	branch=$(git branch --color=always --sort=-committerdate | sed 's/^[* ]*//' | fzf) &&
 		git switch "$(echo "$branch" | cut -d' ' -f1 )"
 }
 ab() {
@@ -23,7 +24,7 @@ loc() {
 diff() {
 	local files
 	files=$(git diff "$@" --name-only)
-	if [[ -n $files ]]; then 
+	if [[ -n $files ]]; then
 		echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
 	else
 		echo "No files to diff"

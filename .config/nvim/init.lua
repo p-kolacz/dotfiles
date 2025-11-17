@@ -5,6 +5,27 @@
 -- |  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  |
 -- |__| \__| |_______| \______/      \__/     |__| |__|  |__|
 
+-- Override gf to handle file:line style paths
+-- #/sys/class/dmi/id/uevent:2:gga
+
+vim.keymap.set("n", "gf", function()
+	local cfile = vim.fn.expand("<cfile>") -- get word under cursor
+	cfile = cfile:gsub("^[%s#-]+", "")
+	-- print(cfile)
+	local line = vim.fn.getline(".")
+	local lnum = line:match(":(%d*):")
+	-- print(lnum)
+
+	if cfile and vim.fn.filereadable(cfile) == 1 then
+		vim.cmd("edit " .. cfile)
+		if lnum ~= "" then
+			vim.cmd(lnum)
+		end
+	else
+		vim.cmd("normal! gf") -- fallback to normal gf
+	end
+end, { noremap = true, silent = true })
+
 -- Bootstrap {{{
 
 	Require  = require "bootstrap".require
@@ -187,6 +208,7 @@
 		mouse       = "a",
 		viewoptions = "cursor,folds"
 	}
+	local edit = require "edit"
 	Noremap {
 		{ "i",  "<C-a>",       "<home>",                                                            },
 		{ "i",  "<C-b>",       "<left>",                                                            },
@@ -195,8 +217,8 @@
 		{ "i",  "<C-f>",       "<right>",                                                           },
 		{ "i",  "<A-f>",       "<s-right>",                                                         },
 		{ "i",  "<A-b>",       "<s-left>",                                                          },
-		{ "n",  "<A-j>",       ":m .+1<cr>==",     "move line down"                                 },
-		{ "n",  "<A-k>",       ":m .-2<cr>==",     "move line up"                                   },
+		{ "n",  "<A-j>",       edit.move_line_down,     "move line down"                                 },
+		{ "n",  "<A-k>",       edit.move_line_up,       "move line up"                                   },
 		{ "v",  "<A-j>",       ":m '>+1<cr>gv=gv", "move selection down"                            },
 		{ "v",  "<A-k>",       ":m '<-2<cr>gv=gv", "move selection up"                              },
 		{ "G",  "<leader>e",   "+Edit"                                                              },
@@ -204,6 +226,7 @@
 		{ "n",  "<leader>es",  ":%s/",            "substitute"                                      },
 		{ "v",  "<leader>es",  ":s/",             "substitute"                                      },
 		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"                                   },
+		{ "v",  "<leader>ee",  edit.substitute_selected,  "substitute selected"                                   },
 		-- change cword and press . to repeat change on next, n to goto next
 		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat"      },
 		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",                        "change&repeat"      },
