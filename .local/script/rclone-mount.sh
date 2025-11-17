@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p ~/server/{crypt,elements,static,vault,wiki,zima}
+mkdir -p ~/server/{crypt,elements,oracle,static,vault,wiki,zima}
 
 rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-crypt.log" crypt: ~/server/crypt
 rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-elements.log" zima:Elements ~/server/elements
@@ -8,5 +8,5 @@ rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclo
 rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-static.log" vault:apps/static ~/server/static
 rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-vault.log" vault:files/vault ~/server/vault
 rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-wiki.log" vault:apps/tiddlywiki/wiki ~/server/wiki
-rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-zima.log" zima:DATA ~/server/zima
+rclone mount --daemon --vfs-cache-mode full --log-file="$XDG_STATE_HOME/log/rclone-zima.log" zima:/mnt/media ~/server/zima
 

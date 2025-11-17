@@ -24,11 +24,16 @@
 			</action>
 		</item>
 
-		<!-- GameZ --------------------------------------------------------------- -->
+		<!-- GameZ =============================================================== -->
 		<menu id="games" label="GameZ">
 			<item label="Heroic" icon="/var/lib/flatpak/app/com.heroicgameslauncher.hgl/x86_64/stable/active/files/share/icons/hicolor/128x128/apps/com.heroicgameslauncher.hgl.png">
 				<action name="Execute">
 					<command>flatpak run com.heroicgameslauncher.hgl</command>
+				</action>
+			</item>
+			<item label="FS-UAE" icon="/usr/share/icons/hicolor/256x256/apps/fs-uae-launcher.png">
+				<action name="Execute">
+					<command>fs-uae-launcher</command>
 				</action>
 			</item>
 			<item label="Bolt" icon="/usr/share/icons/hicolor/scalable/apps/bolt-launcher.svg">
@@ -36,9 +41,14 @@
 					<command>bolt</command>
 				</action>
 			</item>
+			<item label="Rofi" icon="/usr/share/icons/hicolor/scalable/apps/rofi.svg">
+				<action name="Execute">
+					<command>rofi-games.sh</command>
+				</action>
+			</item>
 		</menu>
 
-		<!-- Settings ------------------------------------------------------------ -->
+		<!-- Settings =============================================================== -->
 		<separator />
 		<menu id="settings-menu" label="Settings">
 		<item label="OBConfig" icon="/usr/share/icons/Qogir/scalable/apps/obconf.svg">
@@ -69,7 +79,7 @@
 			</item>
 		</menu>
 
-		<!-- Exit ---------------------------------------------------------------- -->
+		<!-- Exit =============================================================== -->
 		<menu id="exit-menu" label="Exit">
 			<item label="Log Out">
 				<action name="Execute">

@@ -16,9 +16,9 @@ Sxiv.foreground: #e7e7e7
 Sxiv.background: #282828
 Sxiv.font: monospace-12
 
-! Nsxiv.window.foreground: #e7e7e7
-! Nsxiv.window.background: #282828
-! Nsxiv.bar.font: monospace-12
+Nsxiv.window.foreground: #e7e7e7
+Nsxiv.window.background: #282828
+Nsxiv.bar.font: monospace-12
 
 ! dmenu
 dmenu.font: monospace-13

@@ -12,7 +12,7 @@ archbook() {
 
 hadron() {
 	desktop
-	openbox
+	# openbox
 	radeon
 	wifi
 	bluetooth
@@ -35,7 +35,7 @@ laptop() {
 	desktop
 	bluetooth
 	wifi
-	install xorg-xinput tlp batsignal # xinput 4 touchpad
+	install tlp batsignal # xinput 4 touchpad
 	startenableuser batsignal
 	ynstall xplugd
 	sudo ln -s "$XDG_CONFIG_HOME/etc/udev/rules.d/backlight.rules" /etc/udev/rules.d/
@@ -81,6 +81,10 @@ bspwm() {
 	install bspwm arandr sxhkd picom polybar dunst rofi rofi-calc xdotool i3lock pcmanfm
 	sudo ln -s "$XDG_CONFIG_HOME/etc/systemd/system/lock@.service" /etc/systemd/system/
 	ln -s "$XDG_CONFIG_HOME/bspwm/.xinitrc" "$XDG_CONFIG_HOME/xorg/.xinitrc"
+}
+
+cinnamon() {
+	install cinnamon
 }
 
 cron() {
@@ -241,10 +245,10 @@ wifi() {
 }
 
 xorg() {
-	install xorg-server xorg-xinit xorg-xev xorg-xprop xclip xcolor xwallpaper numlockx
+	install xorg-server xorg-xinit xorg-xinput xorg-xev xorg-xprop xclip xcolor xwallpaper numlockx
 	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/00-keyboard-pl.conf" /etc/X11/xorg.conf.d/
 	# sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/10-monitor.conf" /etc/X11/xorg.conf.d/
-	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/50-pointer-accel.conf" /etc/X11/xorg.conf.d/
+	sudo ln -s "$XDG_CONFIG_HOME/etc/X11/xorg.conf.d/90-pointer-accel.conf" /etc/X11/xorg.conf.d/
 }
 
 _yay() {

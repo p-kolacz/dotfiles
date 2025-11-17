@@ -1,0 +1,32 @@
+#!/bin/bash
+
+FILTER="$HOME/.config/backup.filter"
+SOURCE="$HOME/"
+
+run() {
+	local BASE_DIR && BASE_DIR=$(realpath "$1")
+	[[ -d $BASE_DIR ]] || { echo "Invalid destination: $BASE_DIR"; exit 1; }
+
+	local DEST && DEST=$BASE_DIR/$(date +%F_%H-%M-%S)
+	local LATEST_LINK=$BASE_DIR/latest
+
+	mkdir "$DEST" || exit 2
+	rsync                          \
+		--archive                  \
+		--one-file-system          \
+		--filter="merge $FILTER"   \
+		--link-dest="$LATEST_LINK" \
+		"$SOURCE" "$DEST"          \
+		|| exit 3
+	rm "$LATEST_LINK"
+	ln -s --relative "$DEST" "$LATEST_LINK"
+}
+
+case $1 in
+	edit)
+		$EDITOR "$FILTER" ;;
+	run)
+		run "$2" ;;
+	*)
+		echo "Usage: zapas [edit|run <dest>]"
+esac
