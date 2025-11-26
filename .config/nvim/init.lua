@@ -454,6 +454,8 @@ end, { noremap = true, silent = true })
 -- }}}
 -- Windows {{{
 
+	-- Require "conf/quickfix"
+
 	Noremap {
 		{ "G",  "<leader>d",   "+Diff",                          },
 		{ "n",  "<leader>dd",  ":diffthis<cr>",  "diff this"     },
