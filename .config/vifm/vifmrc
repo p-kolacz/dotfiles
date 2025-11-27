@@ -147,7 +147,7 @@ nnoremap gz :cd ~/server/zima/<cr>
 nnoremap _a ggvG<cr>
 nnoremap _b :backup<cr>
 nnoremap _cf :cmp<cr>
-nnoremap _cc :compare<cr>
+nnoremap _cc :compare showdifferent showuniqueleft showuniqueright<cr>
 nnoremap _cd :compare listdups<cr>
 nnoremap _cu :compare listunique<cr>
 nnoremap _C :write | edit $MYVIFMRC | restart full<cr>
@@ -242,6 +242,7 @@ command! dragon dragon-drop -a -x %f &
 " Compress
 " command! zip zip -r %D/%c.zip %f
 command! zip 7z a -tzip %D/%c.zip %f
+" command! zip zstd %f -o %D/%c.zst
 command! sevenz 7z a %D/%c.7z %f
 command! backup 7z a %D/%c_$(date +%%F).zip %f
 command! tar tar cvf %D/%c_$(date +%%F).tar %f
@@ -324,6 +325,11 @@ filetype {*.asc},<application/pgp-signature>
        \ {Check signature}
        \ !!gpg --verify %c,
 
+" FuseArchive https://github.com/google/fuse-archive
+filetype {*.7z,*.cab,*.deb,*.iso,*.jar,*.rar,*.rpm,*.tar,*.tar.gz,*.tar.xz,*.tar.zst},
+       \ {Mount with fuse-archive}
+       \ FUSE_MOUNT|fuse-archive %SOURCE_FILE %DESTINATION_DIR,
+
 " FuseZipMount
 " filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
 	" \<application/zip,application/java-archive>
@@ -331,26 +337,26 @@ filetype {*.zip,*.war,*.ear,*.oxt,*.apkg},
        \<application/zip>
        \ {Mount with fuse-zip}
        \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ {Extract here}
-       \ tar -xf %c,
+       " \ {View contents}
+       " \ zip -sf %c | less,
+       " \ {Extract here}
+       " \ tar -xf %c,
 
 " ArchiveMount
-filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
-        \<application/x-tar>
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+" filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
+        " \<application/x-tar>
+       " \ {Mount with archivemount}
+       " \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 
 " Rar2FsMount and rar archives
-filetype {*.rar},<application/x-rar>
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+" filetype {*.rar},<application/x-rar>
+       " \ {Mount with rar2fs}
+       " \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
 
 " IsoMount
-filetype {*.iso},<application/x-iso9660-image>
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+" filetype {*.iso},<application/x-iso9660-image>
+       " \ {Mount with fuseiso}
+       " \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
 
 " SshMount
 filetype *.ssh
@@ -368,13 +374,12 @@ filetype {*.7z},<application/x-7z-compressed>
        \ FUSE_MOUNT|fuse3-p7zip %SOURCE_FILE %DESTINATION_DIR,
        " \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 
-
 " Directories
 filextype */
         \ {View in thunar}
         \ Thunar %f &,
 
 " Open all other files with:
-filextype * open &> /dev/null &
-" filextype * run.sh & %i
+filextype *
+		\ open %f:p &> /dev/null &
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILTER="$HOME/.config/backup.filter"
+FILTER="$HOME/.config/backup/backup.filter"
 SOURCE="$HOME/"
 
 run() {
@@ -13,7 +13,6 @@ run() {
 	mkdir "$DEST" || exit 2
 	rsync                          \
 		--archive                  \
-		--one-file-system          \
 		--filter="merge $FILTER"   \
 		--link-dest="$LATEST_LINK" \
 		"$SOURCE" "$DEST"          \

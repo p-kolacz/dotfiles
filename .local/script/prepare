@@ -101,7 +101,7 @@ docker() {
 	startenable docker.service
 	sudo groupadd docker
 	sudo usermod --append --groups docker "$USER"
-	echo "Relogin for adding to group to take effect" 
+	echo "Relogin for adding to group to take effect"
 }
 
 dotfiles() {

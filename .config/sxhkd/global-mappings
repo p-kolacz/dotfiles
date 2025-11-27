@@ -42,7 +42,7 @@ XF86AudioMute
 XF86MonBrightnessUp
 	backlight +5
 
-XF86MonBrightnessDown   
+XF86MonBrightnessDown
 	backlight -5
 
 XF86TouchpadToggle

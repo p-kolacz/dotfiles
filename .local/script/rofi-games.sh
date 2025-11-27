@@ -1,3 +1,1 @@
-#!/bin/bash
-
-rofi -show drun -drun-categories Game -disable-history -theme launchpad
+../../../../run/media/piotr/Vault/GameZ/Runtimes/rofi/rofi-games.sh

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-OUTPUT_DIR="$HOME/tmp/yt"
+OUTPUT_DIR="$HOME"
 ARCHIVE_FILE="$HOME/Exocortex/yt.ids"
-mkdir -p "$OUTPUT_DIR"
+# mkdir -p "$OUTPUT_DIR"
 
 yt-dlp --no-playlist --paths "$OUTPUT_DIR" --download-archive "$ARCHIVE_FILE" "$@"
