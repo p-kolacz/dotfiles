@@ -1,0 +1,3 @@
+Scripts in this dirs can not have any extensions like ".sh".
+
+This behavior is by design to prevent accidentally executing backup files, temp files, or scripts with extensions (like .sh~, .bak, etc.) that might not be meant to run automatically.

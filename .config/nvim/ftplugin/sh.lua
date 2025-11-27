@@ -1,5 +1,3 @@
-vim.opt_local.formatoptions:remove("t")
-
 nnoremap_buffer("<localleader>s", ":!./%<CR>", "source file")
 nnoremap_buffer("<localleader>x", ":.w !$SHELL<CR>", "execute line")
 nnoremap_buffer("<localleader>c", ":w !shellcheck %<CR>", "shellcheck")
