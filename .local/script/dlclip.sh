@@ -9,6 +9,6 @@ if [[ $URL =~ ^https?://[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,})+([/?.#][^ ]*)?$ ]]; then
 	yt-dlp --no-playlist "$URL"
 	notify-send "YTDL" "Download complete"
 else
-	notfiy-send "YTDL" "$URL is not a valid URL"
+	notify-send --urgency=critical "YTDL" "$URL is not a valid URL"
 fi
 

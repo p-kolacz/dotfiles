@@ -68,7 +68,6 @@ element selected {
 }
 element-text selected {
 	text-color: ${THEME_BG};
-		
 }
 
 textbox {

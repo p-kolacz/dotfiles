@@ -21,7 +21,7 @@ fi
 
 # GPU=$("$HOME"/.local/script/gpu-detect.sh)
 # echo "$GPU GPU detected"
-# if [[ $GPU = "nvidia" ]]; then 
+# if [[ $GPU = "nvidia" ]]; then
 	# xrandr --setprovideroutputsource modesetting NVIDIA-0
 	# xrandr --auto
 # fi
@@ -31,7 +31,7 @@ screenlayout="$HOME/.config/screenlayout"
 
 source "$XDG_CONFIG_HOME/bspwm/autostart.sh" > "$XDG_STATE_HOME/log/autostart.log" 2>&1
 
-{ [ $WM == bspwm ] && 
+{ [ $WM == bspwm ] &&
 	sxhkd -c ~/.config/sxhkd/global-mappings ~/.config/bspwm/wm-mappings ||
 	sxhkd; } &
 
