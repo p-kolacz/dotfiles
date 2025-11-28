@@ -20,7 +20,7 @@ local picker_defaults = {
 		define_preview = function(self, entry)
 			local lines = {}
 			for _,v in ipairs(PREVIEW_TEXT) do
-				local str = figlet.generate(v, entry.value, 80)
+				local str = figlet.generate(v, entry.value)
 				for s in str:gmatch("[^\n]+") do
 					table.insert(lines, s)
 				end
@@ -34,7 +34,7 @@ local picker_defaults = {
 			local selection = action_state.get_selected_entry()
 			local font = selection[1]
 			local str = vim.api.nvim_get_current_line()
-			local out = figlet.generate(str, font)
+			local out = figlet.generate(str, font, 240)
 			if out ~= "" then
 				local lines = {}
 				for line in out:gmatch("[^\n]+") do

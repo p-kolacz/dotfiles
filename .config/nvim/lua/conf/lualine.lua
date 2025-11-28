@@ -18,12 +18,12 @@ local function winbar()
 end
 
 local function tabline()
-	if NVIM_MODE == "standalone" then
-		return {
+	-- if NVIM_MODE == "standalone" then
+	return {
 		lualine_a = {"tabs"},
 		lualine_z = {cwd},
-		}
-	end
+	}
+	-- end
 end
 
 local function treesitter()
@@ -66,7 +66,7 @@ if NVIM_MODE == "firenvim" then
 	}
 end
 
-autocmd("ColorScheme", {
+vim.api.nvim_create_autocmd("ColorScheme", {
 	group = "vimrc",
 	callback = function()
 		lualine.setup {}

@@ -1,4 +1,10 @@
+if not vim.g.started_by_firenvim then
+	NVIM_MODE = "standalone"
+	return
+end
+
 NVIM_MODE = "firenvim"
+require "conf/firenvim"
 
 vim.g.firenvim_config = {
 	globalSettings = { alt = "all" },

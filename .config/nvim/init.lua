@@ -1,75 +1,31 @@
--- .__   __.  _______   ______   ____    ____  __  .___  ___.
--- |  \ |  | |   ____| /  __  \  \   \  /   / |  | |   \/   |
--- |   \|  | |  |__   |  |  |  |  \   \/   /  |  | |  \  /  |
--- |  . `  | |   __|  |  |  |  |   \      /   |  | |  |\/|  |
--- |  |\   | |  |____ |  `--'  |    \    /    |  | |  |  |  |
--- |__| \__| |_______| \______/      \__/     |__| |__|  |__|
-
--- Override gf to handle file:line style paths
--- #/sys/class/dmi/id/uevent:2:gga
-
-vim.keymap.set("n", "gf", function()
-	local cfile = vim.fn.expand("<cfile>") -- get word under cursor
-	cfile = cfile:gsub("^[%s#-]+", "")
-	-- print(cfile)
-	local line = vim.fn.getline(".")
-	local lnum = line:match(":(%d*):")
-	-- print(lnum)
-
-	if cfile and vim.fn.filereadable(cfile) == 1 then
-		vim.cmd("edit " .. cfile)
-		if lnum ~= "" then
-			vim.cmd(lnum)
-		end
-	else
-		vim.cmd("normal! gf") -- fallback to normal gf
-	end
-end, { noremap = true, silent = true })
-
+-- '##::: ##:'########::'#######::'##::::'##:'####:'##::::'##:
+--  ###:: ##: ##.....::'##.... ##: ##:::: ##:. ##:: ###::'###:
+--  ####: ##: ##::::::: ##:::: ##: ##:::: ##:: ##:: ####'####:
+--  ## ## ##: ######::: ##:::: ##: ##:::: ##:: ##:: ## ### ##:
+--  ##. ####: ##...:::: ##:::: ##:. ##:: ##::: ##:: ##. #: ##:
+--  ##:. ###: ##::::::: ##:::: ##::. ## ##:::: ##:: ##:.:: ##:
+--  ##::. ##: ########:. #######::::. ###::::'####: ##:::: ##:
+-- ..::::..::........:::.......::::::...:::::....::..:::::..::
 -- Bootstrap {{{
 
-	Require  = require "bootstrap".require
-	Plugin   = require "plugozaur".add
-	Icons    = require "iconz"
-	Perun    = require "perun".add
-	Mapper   = require "mapper"
-	Helper   = require "helpozor"
+	require "bootstrap"
 
-	Plugin "https://github.com/folke/which-key.nvim"
-	WK = require("which-key")
-	WK.setup {
-		icons = {
-			mappings = false,
-		},
-		layout = {
-			align = "center",
-		},
-		-- ignore_missing = true, -- wainting for merge
+	Plugin   = require "plugozaur".add
+	Perun    = require "perun".add
+	Plugin "https://github.com/nvim-lua/plenary.nvim"
+	Require {
+		"conf/firenvim",
+		"conf/which-key",
+		"mapper",
 	}
 
 	vim.g.mapleader = " "
 	vim.g.maplocalleader = "_"
-	augroup("vimrc", { clear = true })
-
-	autocmd("BufWinEnter", {
-		group = "vimrc",
-		pattern = { "*/.config/nvim/init.lua" },
-		command = "setlocal includeexpr=stdpath('config').'/lua/'.v:fname"
-	})
-
-	vim.cmd("command! -nargs=1 Rsync :!rsync -avz --filter=':- .gitignore' ./ <args>")
-
-	Plugin "https://github.com/nvim-lua/plenary.nvim"
-
-	if vim.g.started_by_firenvim then
-		require "conf/firenvim"
-	else
-		NVIM_MODE = "standalone"
-	end
 
 -- }}}
 -- Appearance {{{
 
+	Icons    = require "iconz"
 	vim.cmd.language("messages en_US.utf8")
 	Require {
 		"conf/lualine",
@@ -138,21 +94,62 @@ end, { noremap = true, silent = true })
 		{ "  Toggle background",  Zorya.toggle_background  },
 	}
 
+	vim.opt.foldtext = "v:lua.CustomFoldText()"
+
+	function CustomFoldText()
+		local line = vim.fn.getline(vim.v.foldstart)
+		line = line:gsub("{", "")
+		return line
+	end
+
+-- }}}
+-- Buffer {{{
+
+	local fileops = require "fileops"
+	Set {
+		autowrite   = true,
+		viewoptions = "cursor,folds"
+	}
+	Noremap {
+		{ "G",  "<leader>f",                                "+File"               },
+		{ "n",  "<leader>fn",  ":new<cr>",                  "new file"            },
+		{ "n",  "<leader>fx",  fileops.chmodx,              "chmod +x"            },
+		{ "n",	"<leader>w",   ":w<CR>",			        "write",              },
+		{ "n",  "<a-v>",       fileops.open_from_clipboard, "open from clipboard" },
+	}
+	Autocmd {
+		FocusLost = {
+			pattern = "*",
+			command = "wall",
+		},
+		BufWinLeave = {             -- Remeber foldings and stuff...
+			pattern = "?*",			-- ?* ensures filename is not empty, for non-file buffers
+			command = "mkview",
+		},
+		BufWinEnter = {
+			pattern = "?*",
+			command = "silent! loadview",
+		},
+	}
+
 -- }}}
 -- Code {{{
 
 	Laser  = require "laserpro"
+
 	Require {
 		"conf/completion",
 		"conf/lsp",
 		"conf/treesitter",
+		"conf/copilot",
 	}
+
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
 		"https://github.com/tpope/vim-surround",
 		"https://github.com/tpope/vim-repeat",
 	}
-	nmap("<leader>cc", "yypkgccj", 'duplicomment')
+
 	Noremap {
 		{ "G",        "<leader>c",  "+Code"                 },
 		{ {"n","v"},  "<BS>",       ":Commentary<cr>"       },
@@ -160,10 +157,9 @@ end, { noremap = true, silent = true })
 	}
 
 -- }}}
--- Commands & Command Mode {{{
+-- Command Mode {{{
 
 	Noremap {
-		-- { "n",  "<leader><leader>",  ":",                 "command mode", },
 		{ "n",  "<C-P>",             require"perun".run,                  },
 		{ "c",  "<C-a>",             "<home>",                            },
 		{ "c",  "<A-f>",             "<S-right>",                         },
@@ -198,110 +194,58 @@ end, { noremap = true, silent = true })
 -- }}}
 -- Edit {{{
 
-	Require {
-		"conf/figlet"
-	}
+	local edit = require "edit"
 	Set {
 		shiftwidth  = 4,
 		tabstop     = 4,
-		autowrite   = true,
 		mouse       = "a",
-		viewoptions = "cursor,folds"
-	}
-	local edit = require "edit"
-	Noremap {
-		{ "i",  "<C-a>",       "<home>",                                                            },
-		{ "i",  "<C-b>",       "<left>",                                                            },
-		{ "i",  "<C-e>",       "<end>",                                                             },
-		{ "i",  "<C-d>",       "<delete>",                                                          },
-		{ "i",  "<C-f>",       "<right>",                                                           },
-		{ "i",  "<A-f>",       "<s-right>",                                                         },
-		{ "i",  "<A-b>",       "<s-left>",                                                          },
-		{ "n",  "<A-j>",       edit.move_line_down,     "move line down"                                 },
-		{ "n",  "<A-k>",       edit.move_line_up,       "move line up"                                   },
-		{ "v",  "<A-j>",       ":m '>+1<cr>gv=gv", "move selection down"                            },
-		{ "v",  "<A-k>",       ":m '<-2<cr>gv=gv", "move selection up"                              },
-		{ "G",  "<leader>e",   "+Edit"                                                              },
-		{ "n",  "<leader>ee",  ":%s/<C-R>=expand('<cword>')<CR>//g<left><left>", "substitute cword" },
-		{ "n",  "<leader>es",  ":%s/",            "substitute"                                      },
-		{ "v",  "<leader>es",  ":s/",             "substitute"                                      },
-		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",  "reverse lines"                                   },
-		{ "v",  "<leader>ee",  edit.substitute_selected,  "substitute selected"                                   },
-		-- change cword and press . to repeat change on next, n to goto next
-		{ "n",  "<leader>ed",  ":let @/='\\<'.expand('<cword>').'\\>'<cr>cgn", "change&repeat"      },
-		{ "x",  "<leader>ed",  "\"sy:let @/=@s<cr>cgn",                        "change&repeat"      },
-		{ "n",	"<leader>w",   ":w<CR>",			               "write", },
-		{ "t",  "<Esc>",       "<C-/><C-n>",                         },
 	}
 	Map {
-		{ "n",  '<leader>"',   'ysiW"',  '"cWord"'                 },
-		{ "n",  "<leader>'",   "ysiW'",  "'cWord'"                 },
-		{ "n",  "<leader>e'",  [[cs"']], "change surrounding to '" },
-		{ "n",  '<leader>e"',  [[cs'"]], 'change surrounding to "' },
+		{ "n",  '<leader>"',   'ysiW"',    '"cWord"'                             },
+		{ "n",  "<leader>'",   "ysiW'",    "'cWord'"                             },
+		{ "n",  "<leader>ec",  "yypkgccj", 'duplicomment'                        },
+	}
+	Noremap {
+		{ "i",  "<C-a>",       "<home>",                                         },
+		{ "i",  "<C-b>",       "<left>",                                         },
+		{ "i",  "<C-e>",       "<end>",                                          },
+		{ "i",  "<C-d>",       "<delete>",                                       },
+		{ "i",  "<C-f>",       "<right>",                                        },
+		{ "i",  "<A-f>",       "<s-right>",                                      },
+		{ "i",  "<A-b>",       "<s-left>",                                       },
+		{ "n",  "<A-j>",       edit.move_line_down,       "move line down"       },
+		{ "n",  "<A-k>",       edit.move_line_up,         "move line up"         },
+		{ "v",  "<A-j>",       ":m '>+1<cr>gv=gv",        "move selection down"  },
+		{ "v",  "<A-k>",       ":m '<-2<cr>gv=gv",        "move selection up"    },
+		{ "G",  "<leader>e",   "+Edit"                                           },
+		{ "n",  "<leader>ee",  edit.substitute_cword,     "substitute cword"     },
+		{ "n",  "<leader>es",  edit.substitute_input,     "substitute"           },
+		{ "v",  "<leader>es",  edit.substitute_input,     "substitute"           },
+		{ "v",  "<leader>er",  ":'<,'>!tac<CR>",          "reverse lines"        },
+		{ "v",  "<leader>ee",  edit.substitute_selected,  "substitute selected"  },
+		{ "n",  "<leader>ed",  edit.change_repeat_cword,  "change&repeat cword"  },
+		{ "x",  "<leader>ed",  edit.change_repeat_visual, "change&repeat visual" },
+		{ "t",  "<Esc>",       "<C-\\><C-n>",                                    },
 	}
 	Perun {
-		{ "  Edit: Capitalize buffer",          [[%s/\<./\u&/g]]    },
-		{ "  Edit: Capitalize line",            [[s/\<./\u&/g]]     },
-		{ "  Edit: Remove trailing spaces",     "%s/\\s\\+$//e"     },
-		{ "  Edit: Reverse all lines",          "g/^/m0"            },
-		{ "  Edit: Unicode chars from \\uXXXX", [[%s/\\\(\x\+\)/\=nr2char('0x'.submatch(1),1)/g]] },
+		{ "  Edit: Capitalize buffer",          edit.capitalise_buffer          },
+		{ "  Edit: Capitalize line",            edit.capitalise_line            },
+		{ "  Edit: Remove trailing spaces",     edit.remove_trailing_spaces     },
+		{ "  Edit: Reverse all lines",          edit.reverse_lines              },
+		{ "  Edit: Unicode chars from \\uXXXX", edit.slash2unicode              },
 	}
-
-	autocmd("FocusLost", {
-		group = "vimrc",
-		pattern = "*",
-		command = "wall",
-	})
-	autocmd("BufWinLeave", { -- Remeber foldings and stuff...
-		group = "vimrc",
-		pattern = "?*",			-- ?* ensures filename is not empty, for non-file buffers
-		command = "mkview",
-	})
-	autocmd("BufWinEnter", {
-		group = "vimrc",
-		pattern = "?*",
-		command = "silent! loadview",
-	})
-
-	-- }}}
--- File {{{
-	Noremap {
-		{ "G",  "<leader>f",    "+File" },
-		{ "n",  "<leader>fd",  ":e <C-R>=expand('%:p:h').'/'<CR>",  "current file dir"    },
-		{ "n",  "<leader>fe",  ":edit ",                            "edit file"           },
-		{ "n",  "<leader>fn",  ":new<cr>",                          "new file"            },
-		{ "n",  "<leader>fx",  ":silent !chmod +x %<cr>:e<cr>",     "chmod +x"            },
-		{ "n",  "<a-f>",       ":new<cr>",                          "new file"            },
-		{ "n",  "<a-v>",       ":edit <C-R>+",                      "open from clipboard" },
-	}
-
--- }}}
--- Folding {{{
-
-	Set {
-		foldlevelstart = 99,
-		foldmethod     = "expr",
-		foldexpr       = "nvim_treesitter#foldexpr()",
-	}
-	-- function Custom_fold_text()
-	-- 	local line = vim.fn.getline(vim.v.foldstart)
-	-- 	local lines_count = vim.v.foldend - vim.v.foldstart + 1
-	-- 	return line .. ' (' .. lines_count .. ' lines) '
-	-- end
 
 -- }}}
 -- Git {{{
 
 	local gs = require "conf/gitsigns"
 	local gg = require "gitgud"
-
-	mapgroup("<leader>g", "+Git")
 	Noremap {
-		{ "n",  "<A-g>",       gg.status,     "status"     },
-		{ "n",  "<leader>gg",  gg.status,     "status"     },
-		{ "n",  "<leader>gb",  gs.blame_line, "blame line" },
+		{ "G",  "<leader>g",                                  "+Git"        },
+		{ "n",  "<A-g>",                       gg.status,     "status"      },
+		{ "n",  "<leader>gg",                  gg.status,     "status"      },
+		{ "n",  "<leader>gb",                  gs.blame_line, "blame line"  },
 	}
-
 	Perun {
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },
@@ -323,8 +267,8 @@ end, { noremap = true, silent = true })
 -- }}}
 -- Help {{{
 
+	Helper   = require "helpozor"
 	require 'cheatash'.setup()
-
 	Noremap {
 		{ "G", "<leader>h",    "+Help",                                         },
 		{ "n", "gy",           Helper.search_this,    "online search cword"     },
@@ -343,22 +287,26 @@ end, { noremap = true, silent = true })
 		"conf/telescope",
 		"conf/nvim-tree",
 	}
-	Jumper = require "jumper" -- after nvim-tree
-
-	local config = require"bootstrap"
+	Navigator = require "navigator" -- after nvim-tree
+	Set {
+		foldlevelstart = 99,
+		foldmethod     = "expr",
+		foldexpr       = "nvim_treesitter#foldexpr()",
+	}
 	Noremap {
+		{ "G",  "<leader>j",  "+Jump"                                       },
 		{ "i",  "jj",         "<ESC>",                                      },
 		{ "i",  "kk",         "<ESC>",                                      },
 		{ "i",  "jk",         "<ESC>",                                      },
 		{ {"n", "v"},  "H",  "^",                                           },
 		{ {"n", "v"},  "L",  "$",                                           },
+		{ "n", "gf",          Navigator.gf,      "goto file and line"       },
 		{ "n",  "[q",         ":cprevious<cr>",  "next quickfix entry",     },
 		{ "n",  "]q",         ":cnext<cr>",      "previous quickfix entry", },
 		{ "n",  "[l",         ":lprevious<cr>",  "next loclist entry",      },
 		{ "n",  "]l",         ":lnext<cr>",      "previous loclist entry",  },
-		{ "n",  "<F10>",      config.edit_init                              },
-		{ "n",  "<F9>",       config.edit_ft                                },
-		{ "G",  "<leader>j",  "+Jump"                                       },
+		{ "n",  "<F10>",      Navigator.goto_init                           },
+		{ "n",  "<F9>",       Navigator.goto_ft                             },
 	}
 
 -- }}}
@@ -404,13 +352,10 @@ end, { noremap = true, silent = true })
 	-- }}}
 -- Tabs {{{
 
-	mapgroup(
-		"<leader>t", "+Tabs"
-	)
 	Noremap {
+		{ "G", "<leader>t",   "+Tabs"                       },
 		{ "n", "<c-t>",       ":tabnew<cr>"                 },
 		{ "n", "<leader>tt",  ":tabnew<cr>",    "new tab"   },
-		-- { "n", "<leader>tq",  ":tabclose<cr>",  "close tab" },
 		{ "n", "<leader>1",   "1gt",            "tab 1"     },
 		{ "n", "<leader>2",   "2gt",            "tab 2"     },
 		{ "n", "<leader>3",   "3gt",            "tab 3"     },
@@ -453,8 +398,6 @@ end, { noremap = true, silent = true })
 
 -- }}}
 -- Windows {{{
-
-	-- Require "conf/quickfix"
 
 	Noremap {
 		{ "G",  "<leader>d",   "+Diff",                          },

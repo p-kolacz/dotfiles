@@ -17,3 +17,8 @@ Helper.map {
 Laser.start {
 	cmd = { "lua-language-server" },
 }
+
+-- probably not needed:
+-- if vim.fn.expand('%:t') == 'init.lua' then
+  -- vim.bo.includeexpr = "stdpath('config').'/lua/'.v:fname"
+-- end
