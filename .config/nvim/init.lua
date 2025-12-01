@@ -136,20 +136,17 @@
 -- Code {{{
 
 	Laser  = require "laserpro"
-
 	Require {
 		"conf/completion",
 		"conf/lsp",
 		"conf/treesitter",
 		"conf/copilot",
 	}
-
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
 		"https://github.com/tpope/vim-surround",
 		"https://github.com/tpope/vim-repeat",
 	}
-
 	Noremap {
 		{ "G",        "<leader>c",  "+Code"                 },
 		{ {"n","v"},  "<BS>",       ":Commentary<cr>"       },

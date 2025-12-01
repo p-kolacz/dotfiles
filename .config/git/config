@@ -15,8 +15,6 @@
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [push]
 	autoSetupRemote = true
-[include]
-	path = local
 
 # delta
 [interactive]
@@ -34,6 +32,6 @@
 
 ; [diff]
     ; colorMoved = default
-[user]
-	email = piotr@kolacz.org
-	name = PK
+
+[include]
+	path = local
