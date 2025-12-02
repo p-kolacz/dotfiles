@@ -18,6 +18,8 @@ apply() {
 	ln -s --force "$file" "$CURRENT_THEME"
 	source "$CURRENT_THEME"
 
+	signal "theme-changed"
+
 	# BSPWM
 	[[ -x $BSPWM_THEME_SCRIPT ]] && $BSPWM_THEME_SCRIPT
 
@@ -42,7 +44,7 @@ current() {
 
 case $1 in
 	apply)    apply ;;
-	current)  current ;;		
+	current)  current ;;
 	*)        browse ;;
 esac
 
