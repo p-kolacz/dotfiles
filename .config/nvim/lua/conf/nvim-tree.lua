@@ -63,7 +63,7 @@ nnoremap('<leader>fl', ':NvimTreeFindFile<cr>', 'locate in tree')
 
 -- hide cursor
 -- require("nvim-tree.view").View.winopts.cursorline = true
-autocmd({"WinEnter", "BufWinEnter"}, {
+vim.api.nvim_create_autocmd({"WinEnter", "BufWinEnter"}, {
 	group = "vimrc",
 	pattern = "NvimTree_1",
 	callback = function ()
@@ -72,7 +72,7 @@ autocmd({"WinEnter", "BufWinEnter"}, {
 	end,
 })
 
-autocmd({"BufLeave", "WinClosed"}, {
+vim.api.nvim_create_autocmd({"BufLeave", "WinClosed"}, {
 	group = "vimrc",
 	pattern = "NvimTree_1",
 	callback = function ()

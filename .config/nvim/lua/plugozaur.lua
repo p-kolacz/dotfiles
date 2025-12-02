@@ -1,4 +1,5 @@
 local M = {}
+
 local PLUGIN_HOME = vim.fn.stdpath('data')..'/site/pack/plugozaur/opt/'
 local enabled_plugins = {}
 local packadd_cmd = "packadd! "

@@ -35,7 +35,6 @@ local function add(maps, opts)
 			mapgroup(v[2], v[3])
 		else
 			opts.desc = v[4]
-			-- if v[4] then opts.desc = v[4] end
 			vim.keymap.set(v[1], v[2], v[3], opts)
 		end
 	end

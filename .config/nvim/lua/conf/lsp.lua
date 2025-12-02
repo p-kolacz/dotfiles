@@ -20,8 +20,8 @@ Perun {
 	{ "  LSP: Logs", Laser.logs },
 }
 
-autocmd('LspAttach', {
-	group = augroup('UserLspConfig', {}),
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 	callback = function(args)
 		vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc' -- Enable completion triggered by <c-x><c-o>
 

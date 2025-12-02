@@ -1,22 +1,14 @@
-local function get_spec_file()
-	local current_file = vim.fn.expand('%')
-	local spec_file = string.gsub(current_file, "app", "spec")
-	spec_file = string.gsub(spec_file, ".rb$", "_spec.rb")
-	return spec_file
-end
 
-local function get_main_file()
-	local current_file = vim.fn.expand('%')
-	local spec_file = string.gsub(current_file, "spec", "app", 1)
-	spec_file = string.gsub(spec_file, "_spec", "")
-	return spec_file
-end
+-- '########::'##::::'##:'########::'##:::'##:
+--  ##.... ##: ##:::: ##: ##.... ##:. ##:'##::
+--  ##:::: ##: ##:::: ##: ##:::: ##::. ####:::
+--  ########:: ##:::: ##: ########::::. ##::::
+--  ##.. ##::: ##:::: ##: ##.... ##:::: ##::::
+--  ##::. ##:: ##:::: ##: ##:::: ##:::: ##::::
+--  ##:::. ##:. #######:: ########::::: ##::::
+-- ..:::::..:::.......:::........::::::..:::::
 
-local function run_spec()
-	vim.cmd.wall()
-	vim.cmd("tab term rime spec "..vim.fn.expand("%:."))
-	-- vim.cmd.startinsert()
-end
+local rubies = require "rubies"
 
 mapgroup("<localleader>s", "+Server")
 BufferNoremap {
@@ -27,10 +19,10 @@ BufferNoremap {
 	-- { "n", "<localleader>v", ":Eview<cr>", "view" },
 	-- { "n", "<localleader>c", ":Econtroller<cr>", "controller" },
 	-- { "n", "<localleader>r", ":e config/routes.rb<cr>", "routes" },
-	{ "n", "<localleader>s", function () vim.cmd.edit(get_spec_file()) end, "spec" },
-	{ "n", "<localleader>b", function () vim.cmd.edit(get_main_file()) end, "main" },
-	{ "n", "<localleader>r", run_spec, "run spec" },
-	{ "n", "<F5>", run_spec, "run spec" },
+	{ "n", "<localleader>s", rubies.edit_spec_file, "spec" },
+	{ "n", "<localleader>b", rubies.edit_main_file, "main" },
+	{ "n", "<F5>", rubies.run_spec, "run spec" },
+	{ "n", '<M-s>', rubies.quickfix_spec_results },
 }
 
 Helper.map {
@@ -72,7 +64,6 @@ Laser.start {
 -- 	},
 -- }
 
-nnoremap_buffer('<M-s>', ':cgetfile tmp/quickfix.out | cwindow | cfirst<cr>')
 
 Plugin {
 	-- "https://github.com/vim-ruby/vim-ruby",

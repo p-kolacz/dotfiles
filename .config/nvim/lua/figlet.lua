@@ -17,6 +17,7 @@ end
 
 function M.generate(str, font, width)
 	width = width and "-w "..width or "-t"
+	print("Figlet command width:", width)
 	font = font or "standard"
 	local handle = io.popen(GEN_CMD:format(width, font, str))
 	if handle then
