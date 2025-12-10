@@ -131,6 +131,11 @@ exec 2>&1
 
 endsnippet
 
+snippet log2both
+exec > >(tee ${1:filename}) 2>&1
+
+endsnippet
+
 snippet lowercase
 ${${1:var},,}
 endsnippet

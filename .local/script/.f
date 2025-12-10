@@ -5,7 +5,7 @@ export GIT_WORK_TREE="$HOME"
 
 conf() {
 	cd || exit
-	file=$(git ls-files | fzf --query "$1" --preview "view {}")
+	file=$(git ls-files | fzf --query "$1" --preview "bat --color=always --plain {}")
 	[[ -f $file ]] && $EDITOR "$file"
 }
 diff() {
