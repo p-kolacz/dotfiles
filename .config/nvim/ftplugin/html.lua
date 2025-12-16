@@ -5,7 +5,7 @@ mapgroup("<leader>hu","Can I Use")
 nnoremap_buffer('<leader>huc', ':CaniuseCword<cr>', 'caniuse cword')
 nnoremap_buffer('<leader>huq', ':Caniuse ', 'caniuse query')
 
-nnoremap("<localleader>l", ":!livereload -p 8000 &<cr>", "livereload server")
+nnoremap_buffer("<localleader>l", ":!livereload -p 8000 &<cr>", "livereload server")
 
 -- this should be set by cmp_nvim_lsp
 -- local capabilities = LaSerPro.defaults.capabilities

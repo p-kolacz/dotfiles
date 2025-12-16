@@ -50,6 +50,7 @@ alias gicora='git add .; git commit -m "$(shuf -n 1 < $HOME/.local/share/txt/git
 alias gipura='git add .; git commit -m "$(shuf -n 1 < $HOME/.local/share/txt/git-messages.txt)"; git push'
 alias gicoda='git add .; git commit -m "$(date +%F_%T)"'
 alias gipuda='git add .; git commit -m "$(date +%F_%T)" && git push'
+alias loc="git ls-files | xargs  wc -l | awk '{total += \$1} END {print total}'"
 
 # Pacman ------------------------------
 abbr inst="sudo pacman -S"

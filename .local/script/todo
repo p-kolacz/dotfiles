@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TODO="$HOME/Exocortex/TODO/todo.txt"
+TODO="$HOME/Exocortex/todo.txt"
 
 add() {
 	entry="$(date +%F) $*"

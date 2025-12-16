@@ -10,8 +10,8 @@
 
 	require "bootstrap"
 
-	Plugin   = require "plugozaur".add
-	Perun    = require "perun".add
+	Plugin = require "plugozaur".add
+	Perun  = require "perun".add
 	Plugin "https://github.com/nvim-lua/plenary.nvim"
 	Require {
 		"conf/firenvim",
@@ -135,12 +135,15 @@
 -- }}}
 -- Code {{{
 
+	if vim.fn.hostname() == "workbook" then
+		Require "conf/copilot"
+	end
+
 	Laser  = require "laserpro"
 	Require {
 		"conf/completion",
 		"conf/lsp",
 		"conf/treesitter",
-		"conf/copilot",
 	}
 	Plugin {
 		"https://github.com/tpope/vim-commentary",

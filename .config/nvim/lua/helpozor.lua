@@ -51,7 +51,7 @@ function M.search_this(url)
 	else
 		vim.cmd("visual")
 		vim.cmd("normal gvy")
-		query = vim.fn.getreg(0)
+		query = vim.fn.getreg("0")
 	end
 	open_url(url..query)
 end
@@ -72,5 +72,3 @@ return M
 -- 	open_url(url..selection)
 -- end
 
-
--- nnoremap("<leader>x", ':call netrw#BrowseX("https://onet.pl", netrw#CheckIfRemote())<cr>')
