@@ -1,0 +1,43 @@
+#!/bin/bash
+
+declare -A codes=([reset]=0 [bold]=1 [italic]=3 [underline]=4 [undercurl]=4:3 [reverse]=7 [strike]=9 [black]=30 [red]=31 [green]=32 [yellow]=33 [blue]=34 [magenta]=35 [cyan]=36 [white]=37 [default]=39 [black2]=90 [red2]=91 [green2]=92 [yellow2]=93 [blue2]=94 [magenta2]=95 [cyan2]=96 [white2]=97)
+# declare -A props=([fg]=0 [bg]=10)
+# bg padding align
+for arg in "$@"; do
+	case $arg in
+		\#*)
+			hex="${arg#\#}"        # remove leading '#' if present
+
+			# Extract RR, GG, BB and convert from hex to decimal
+			r=$((16#${hex:0:2}))
+			g=$((16#${hex:2:2}))
+			b=$((16#${hex:4:2}))
+
+			printf "\e[38;2;%d;%d;%dm" "$r" "$g" "$b"    # Output ANSI escape code (foreground)
+			;;
+		# *=*)
+		# 	key="${arg%%=*}"
+		# 	value="${arg#*=}"
+			# printf -v "$key" "%s" "$value"
+			# ;;
+		--*)
+			arg="${arg#--}"
+			if [[ -v codes[$arg] ]]; then
+				printf "\e[%sm" "${codes[$arg]}"
+			else
+				echo "Invalid argument: $arg"
+				exit 1
+			fi
+			;;
+		*)
+			printf "%s" "$arg"
+			reset="\e[0m"
+			;;
+	esac
+done
+echo -e "$reset"
+
+	# if [ ${x:0:4} == bgbr ]; then
+	# 	code=${codes[${x:4}]} && ((code=code+70))
+	# elif [ ${x:0:2} == bg ]; then
+	# 	code=${codes[${x:2}]} && ((code=code+10))

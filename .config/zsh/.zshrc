@@ -26,5 +26,9 @@ for f in $ZDOTDIR/plugins/*.zsh; do source "$f"; done
 # load local rc
 [[ -f $ZDOTDIR/local/.zshrc ]] && source $ZDOTDIR/local/.zshrc
 
+# load machine specific rc
+MACHINE_RC=$ZDOTDIR/machines/$(cat /etc/hostname).zshrc
+[[ -f $MACHINE_RC ]] && source $MACHINE_RC
+
 # setup prompt
 eval "$(starship init zsh)"

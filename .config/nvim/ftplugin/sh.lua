@@ -40,7 +40,7 @@ Helper.map {
 	-- },
 -- }
 
--- Laser.start {
--- 	name = "bashLS",
--- 	cmd = { "bash-language-server", "start" },
--- }
+Laser.start {
+	name = "bashLS",
+	cmd = { "bash-language-server", "start" },
+}

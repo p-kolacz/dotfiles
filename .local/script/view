@@ -21,6 +21,10 @@ syn_highlight() {
 	# pygmentize -g "$1"
 }
 
+text() {
+	bat --color=always --plain "$@"
+}
+
 binary() {
 	FILE_PATH="$1"
 	[[ -s $FILE_PATH ]] && hexyl --length=512 --no-position --no-squeezing "$FILE_PATH"
@@ -64,7 +68,7 @@ case "$FILE_EXTENSION" in
 
 	7z|apk|bz|bz2|cab|deb|epub|gz|jar|rar|rpm|tar|tgz|xz|zip)
 		bsdtar --list --file "$FILE_PATH" && exit 0;;
-	
+
 	lnk)
 		lnk-parse-1.0.pl "$FILE_PATH" && exit 0;;
 
@@ -74,10 +78,10 @@ case "$FILE_EXTENSION" in
 esac
 
 if [[ ! -s $FILE_PATH ]]; then
-	cat "$FILE_PATH"
+	text "$FILE_PATH"
 elif file --dereference --mime-encoding "$FILE_PATH" | grep -q binary; then
-	binary "$FILE_PATH" 
+	binary "$FILE_PATH"
 else
-	cat "$FILE_PATH"
+	text "$FILE_PATH"
 fi
 

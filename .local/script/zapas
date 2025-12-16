@@ -1,31 +1,35 @@
 #!/bin/bash
 
-FILTER="$HOME/.config/backup/backup.filter"
-SOURCE="$HOME/"
+set -e
 
-run() {
-	local BASE_DIR && BASE_DIR=$(realpath "$1")
-	[[ -d $BASE_DIR ]] || { echo "Invalid destination: $BASE_DIR"; exit 1; }
+incremental() {
+	local SRC_DIR FILTER DEST_DIR BACKUP_DIR LATEST_LINK
+	SRC_DIR=$(realpath "$1")
+	DEST_DIR=$(realpath "$2")
+	FILTER=$SRC_DIR/.backup-filter
+	[[ -d $SRC_DIR ]]  || { echo "Invalid source: $SRC_DIR"; exit 1; }
+	[[ -f $FILTER ]]   || { echo "Missing filter: $FILTER"; exit 2; }
+	[[ -d $DEST_DIR ]] || { echo "Invalid destination: $DEST_DIR"; exit 3; }
 
-	local DEST && DEST=$BASE_DIR/$(date +%F_%H-%M-%S)
-	local LATEST_LINK=$BASE_DIR/latest
+	BACKUP_DIR=$DEST_DIR/$(date +%F_%H-%M-%S)
+	LATEST_LINK=$DEST_DIR/latest
 
-	mkdir "$DEST" || exit 2
-	rsync                          \
-		--archive                  \
-		--filter="merge $FILTER"   \
-		--link-dest="$LATEST_LINK" \
-		"$SOURCE" "$DEST"          \
-		|| exit 3
-	rm "$LATEST_LINK"
-	ln -s --relative "$DEST" "$LATEST_LINK"
+	mkdir "$BACKUP_DIR" || exit 4
+
+	rsync                           \
+		--archive                   \
+		--filter="merge $FILTER"    \
+		--link-dest="$LATEST_LINK"  \
+		"$SRC_DIR/" "$BACKUP_DIR"  ||
+		exit 3
+
+	[[ -e $LATEST_LINK ]] && rm "$LATEST_LINK"
+	ln -s --relative "$BACKUP_DIR" "$LATEST_LINK"
 }
 
 case $1 in
-	edit)
-		$EDITOR "$FILTER" ;;
-	run)
-		run "$2" ;;
+	incremental)
+		incremental "$2" "$3" ;;
 	*)
-		echo "Usage: zapas [edit|run <dest>]"
+		echo "Usage: zapas incremental <src> <dest>"
 esac
