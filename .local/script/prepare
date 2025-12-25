@@ -209,6 +209,7 @@ rust() {
 
 scanner() {
 	install simple-scan sane-airscan
+	sudo ln -s --force "$XDG_CONFIG_HOME/etc/sane.d/airscan.conf" "/etc/sane.d/airscan.conf"
 }
 
 syncthing() {

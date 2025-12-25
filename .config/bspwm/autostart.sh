@@ -1,6 +1,6 @@
 #!/bin/sh
 
-kbreset
+reset-input.sh
 wallpaper restore &
 picom -b
 xplugd &
