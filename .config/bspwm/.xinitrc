@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "using $0"
-
 userresources=$XDG_CONFIG_HOME/xorg/Xresources
 sysresources=/etc/X11/xinit/.Xresources
 
@@ -29,6 +27,6 @@ screenlayout="$HOME/.config/screenlayout"
 
 source "$XDG_CONFIG_HOME/bspwm/autostart.sh" > "$XDG_STATE_HOME/log/autostart.log" 2>&1
 
-sxhkd -c ~/.config/sxhkd/global-mappings ~/.config/bspwm/wm-mappings
+sxhkd -c ~/.config/sxhkd/global-mappings ~/.config/bspwm/wm-mappings &
 
-exec bspwm > "$XDG_STATE_HOME/log/$WM.log" 2>&1
+exec "bspwm" > "$XDG_STATE_HOME/log/$WM.log" 2>&1
