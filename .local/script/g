@@ -8,7 +8,6 @@ FZF_INLINE="--height=30% --reverse $FZF_DEFAULT_OPTS"
 b() {
 	FZF_DEFAULT_OPTS=$FZF_INLINE
 	local branch
-	# branch=$(git branch -vv --color=always | sed -e "/^* /d" -e "s/^  //" | fzf) &&
 	branch=$(git branch --color=always --sort=-committerdate | sed 's/^[* ]*//' | fzf) &&
 		git switch "$(echo "$branch" | cut -d' ' -f1 )"
 }
@@ -29,6 +28,13 @@ diff() {
 	else
 		echo "No files to diff"
 	fi
+}
+new() {
+	local number title branch
+	number=$(gum input --prompt="PBI number: ")
+	title=$(gum input --prompt="PBI title: ")
+	branch="AB-$number-$title"
+	gum confirm --default=no "Create branch $branch ?" && git checkout -b "$branch"
 }
 usage() {
 	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed "s/usage|//")"

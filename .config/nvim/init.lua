@@ -247,10 +247,13 @@
 		{ "n",  "<leader>gb",                  gs.blame_line, "blame line"  },
 	}
 	Perun {
+		{ "  Git: blame",                     gs.blame                     },
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },
 		{ "  Git: commit with current date",  gg.commit_with_date          },
 		{ "  Git: commits",                   gg.commits                   },
+		{ "  Git: current version",           gg.current_version           },
+		{ "  Git: diff",                      gg.diff                      },
 		{ "  Git: file commits",              gg.file_commits              },
 		{ "  Git: grep",                      gg.grep                      },
 		{ "  Git: preview hunk",              gs.preview_hunk              },
@@ -259,6 +262,7 @@
 		{ "  Git: search 4 differences",      gg.search4differences        },
 		{ "  Git: set loclist",               gs.setloclist                },
 		{ "  Git: set quickfix",              gs.setqflist                 },
+		{ "  Git: status",                    gs.status                    },
 		{ "  Git: stage buffer",              gs.stage_buffer              },
 		{ "  Git: toggle deleted",            gs.toggle_deleted            },
 		{ "  Git: toggle line blame",         gs.toggle_current_line_blame },
