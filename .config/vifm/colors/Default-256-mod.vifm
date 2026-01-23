@@ -2,7 +2,7 @@
 
 " This is Vifm's default color scheme for terminals that support 256 colors.
 "
-" This file last updated: 2 April, 2023
+" This file last updated: 6 September, 2024
 
 highlight clear
 
@@ -30,18 +30,18 @@ hi CmpMismatch  cterm=bold                    ctermfg=white    ctermbg=88
 hi CmpUnmatched cterm=bold                    ctermfg=white    ctermbg=28
 hi CmpBlank                                   ctermfg=default  ctermbg=default
 
-hi SuggestBox   cterm=bold,reverse            ctermfg=cyan     ctermbg=232
+hi SuggestBox   cterm=bold,reverse            ctermfg=black    ctermbg=white
 hi WildMenu     cterm=underline,bold,reverse  ctermfg=yellow   ctermbg=black
 
 hi CmdLine      cterm=bold                    ctermfg=default  ctermbg=default
 hi ErrorMsg     cterm=bold                    ctermfg=white    ctermbg=red
 
-" hi Directory    cterm=bold                    ctermfg=123      ctermbg=default
+hi Directory    cterm=bold                    ctermfg=123      ctermbg=default
 hi Executable   cterm=bold                    ctermfg=119      ctermbg=default
 hi Socket       cterm=bold,reverse            ctermfg=182      ctermbg=default
 hi Device       cterm=bold,reverse            ctermfg=204      ctermbg=default
 hi Fifo         cterm=bold,reverse            ctermfg=50       ctermbg=default
-" hi Link         cterm=bold                    ctermfg=229      ctermbg=default
+hi Link         cterm=bold                    ctermfg=229      ctermbg=default
 hi BrokenLink   cterm=bold                    ctermfg=209      ctermbg=default
 hi HardLink     cterm=bold                    ctermfg=221      ctermbg=default
 
@@ -59,14 +59,15 @@ highlight {Makefile,Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,*.m4,*.ac,
 " archives
 highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,
           \*.rar,*.rpm,*.rz,*.tar,*.taz,*.tb2,*.tbz,*.tbz2,*.tgz,*.tlz,*.trz,
-          \*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip,*.lz}
+          \*.txz,*.tz,*.tz2,*.tzst,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip,*.lz,
+          \*.zstd}
         \ cterm=none ctermfg=215 ctermbg=default
 " configuration and other readable textual formats
 highlight {*.css,*.less,*.scss,*.markdown,*.md,*.mkd,*.org,*.pandoc,*.pdc,*.tex,
           \*.txt,*.xml,*.log,*.rss,*.xul,*.json,*.yaml,*.yml,*.csv,*.plist,
           \*.ini,*.cfg,*.rc,*.conf,*.spec,*.qrc,*.description,*.list,*.log.old,
           \*.log.1,*.log.2,*.log.3,*.log.4,*.log.5,*.log.6,*.log.7,*.log.8,
-          \syslog,syslog.1}
+          \syslog,syslog.1,*.xsd,*.toml,*.rst}
         \ cterm=none ctermfg=217 ctermbg=default
 " still text files, but keeping this unoptimizable glob separately
 highlight {*[^0-9].[1-9]}
@@ -98,7 +99,8 @@ highlight {*.sh,*.bash,*.zsh,*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,
 highlight {*.patch,*.diff,*.py,*.cpp,*.hpp,*.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.ld,
           \*.hs,*.php,*.lua,*.vim,*.vifm,*.asm,*.s,*.java,*.cxx,*.c++,*.go,
           \*.pl,*.pm,*.t,*.cs,*.asp,*.dart,*.js,*.rb,*.scala,*.ts,*.coffee,
-          \*.ml,*.mli,*.rs,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S}
+          \*.ml,*.mli,*.rs,*.sql,*.qml,vifmrc,vimrc,.vimrc,*.flex,*.ypp,*.S,
+          \*.robot}
         \ cterm=none ctermfg=193 ctermbg=default
 " software documentation
 highlight {COPYRIGHT,COPYING*,BUGS,ChangeLog*,FAQ,INSTALL*,LICENCE,LICENSE,NEWS,

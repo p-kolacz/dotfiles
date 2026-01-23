@@ -33,7 +33,7 @@ new() {
 	local number title branch
 	number=$(gum input --prompt="PBI number: ")
 	title=$(gum input --prompt="PBI title: ")
-	branch="AB-$number-$title"
+	branch="$number-$title"
 	gum confirm --default=no "Create branch $branch ?" && git checkout -b "$branch"
 }
 usage() {

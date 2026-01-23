@@ -66,6 +66,7 @@ function M.search4differences()
 end
 
 function M.status()
+	-- vim.cmd.tabnew()
 	vim.cmd.Git()
 end
 -- function M.gitsigns_next_hunk(gs)

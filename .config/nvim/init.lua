@@ -244,6 +244,7 @@
 		{ "G",  "<leader>g",                                  "+Git"        },
 		{ "n",  "<A-g>",                       gg.status,     "status"      },
 		{ "n",  "<leader>gg",                  gg.status,     "status"      },
+		{ "n",  "<F6>",                        gg.status,     "status"      },
 		{ "n",  "<leader>gb",                  gs.blame_line, "blame line"  },
 	}
 	Perun {
