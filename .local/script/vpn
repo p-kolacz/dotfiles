@@ -1,0 +1,18 @@
+#!/bin/sh
+
+function down() {
+	sudo wg-quick down /etc/wireguard/sk-bts-wg-001.conf
+}
+
+function up() {
+	sudo wg-quick up /etc/wireguard/sk-bts-wg-001.conf
+}
+
+_usage() {
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | awk '$3 !~ /^_/ { printf "%s", $3 "|" }')"
+}
+
+[[ $# -eq 0 || ! $(typeset -f "$1") ]] && { _usage; exit 1; }
+func=$1 && shift
+$func "$@"
+

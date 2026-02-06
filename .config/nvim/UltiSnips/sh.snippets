@@ -371,12 +371,11 @@ snippet remove_last_line
 endsnippet
 
 snippet runfunc
-usage() {
-	# printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed 's/|usage|//')"
-	declare -F | awk '\$3 !~ /^_/ { printf "%s", \$3 "|" }'
+_usage() {
+	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | awk '\$3 !~ /^_/ { printf "%s", \$3 "|" }')"
 }
 
-[[ $# -eq 0 || ! $(typeset -f "\$1") ]] && { usage; exit 1; }
+[[ $# -eq 0 || ! $(typeset -f "\$1") ]] && { _usage; exit 1; }
 func=\$1 && shift
 \$func "$@"
 $0

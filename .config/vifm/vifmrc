@@ -158,6 +158,7 @@ nnoremap _h :history<cr>
 nnoremap _m :media<cr>
 nnoremap _q :quit<cr>
 nnoremap _r :lstrash<cr>
+nnoremap _s :zstd<cr>
 nnoremap _T :!$TERMINAL &<cr>
 nnoremap _t :tar<cr>
 nnoremap _w :set wrap!<cr>
@@ -240,9 +241,8 @@ command! reload :write | restart full
 command! dragon dragon-drop -a -x %f &
 
 " Compress
-" command! zip zip -r %D/%c.zip %f
-command! zip 7z a -tzip %D/%c.zip %f
-" command! zip zstd %f -o %D/%c.zst
+command! zip zip -r %D/%c.zip %f
+command! zstd zstd %f -o %D/%c.zst
 command! sevenz 7z a %D/%c.7z %f
 command! backup 7z a %D/%c_$(date +%%F).zip %f
 command! tar tar cvf %D/%c_$(date +%%F).tar %f
@@ -325,36 +325,56 @@ filetype {*.asc},<application/pgp-signature>
        \ {Check signature}
        \ !!gpg --verify %c,
 
-" FuseArchive https://github.com/google/fuse-archive
-filetype {*.7z,*.cab,*.deb,*.iso,*.jar,*.rar,*.rpm,*.tar,*.tar.gz,*.tar.xz,*.tar.zst},
-       \ {Mount with fuse-archive}
-       \ FUSE_MOUNT|fuse-archive %SOURCE_FILE %DESTINATION_DIR,
 
-" FuseZipMount
+" ------------------------------------------------------------------------------
+"								   Mounting
+" ------------------------------------------------------------------------------
+
+" FuseArchive, read-only
+" https://github.com/google/fuse-archive
+" filetype {*.7z,*.cab,*.cbr,*.deb,*.iso,*.jar,*.rar,*.rpm,*.zst},
+       " \ {Mount with fuse-archive}
+       " \ FUSE_MOUNT|fuse-archive %SOURCE_FILE %DESTINATION_DIR,
+
+" Ratarmount
+" https://github.com/mxmlnkn/ratarmount
+" filetype {*.tar,*.tar.bz2,*.tar.gz,*.tar.xz,*.tar.zst,*.iso,*.rar,*.zip,*.zst},
+       " \ {Mount with ratarmount}
+       " \ FUSE_MOUNT|ratarmount --index-folders "/tmp" %SOURCE_FILE %DESTINATION_DIR > /dev/null,
+
 " filetype {*.zip,*.jar,*.war,*.ear,*.oxt,*.apkg},
 	" \<application/zip,application/java-archive>
-filetype {*.zip,*.war,*.ear,*.oxt,*.apkg},
-       \<application/zip>
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+
+" Fuse-Zip
+" https://bitbucket.org/agalanin/fuse-zip/src/master/
+" filetype {*.zip,*.war,*.ear,*.oxt,*.apkg},
+       " \<application/zip>
+       " \ {Mount with fuse-zip}
+       " \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
        " \ {View contents}
        " \ zip -sf %c | less,
        " \ {Extract here}
        " \ tar -xf %c,
 
 " ArchiveMount
-" filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz},
-        " \<application/x-tar>
-       " \ {Mount with archivemount}
-       " \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.7z,*.zip},
+        \<application/x-tar>
+       \ {Mount with archivemount}
+       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
 
 " Rar2FsMount and rar archives
 " filetype {*.rar},<application/x-rar>
        " \ {Mount with rar2fs}
        " \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
 
+" Fuse7z and 7z archives
+" filetype {*.7z},<application/x-7z-compressed>
+       " \ {Mount with fuse-7z}
+       " \ FUSE_MOUNT|fuse3-p7zip %SOURCE_FILE %DESTINATION_DIR,
+       " \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+
 " IsoMount
-filetype {*.bin},<application/x-iso9660-image>
+filetype {*.bin,*.img},<application/x-iso9660-image>
        \ {Mount with fuseiso}
        \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
 
@@ -368,11 +388,9 @@ filetype *.ftp
        \ {Mount with curlftpfs}
        \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR %FOREGROUND,
 
-" Fuse7z and 7z archives
-filetype {*.7z},<application/x-7z-compressed>
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse3-p7zip %SOURCE_FILE %DESTINATION_DIR,
-       " \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+" ------------------------------------------------------------------------------
+"								   filextype
+" ------------------------------------------------------------------------------
 
 " Directories
 filextype */
