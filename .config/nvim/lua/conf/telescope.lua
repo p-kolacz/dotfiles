@@ -134,6 +134,7 @@ Perun {
 	{ "  Telescope Treesitter", builtin.treesitter   },
 
 	{ "  Vim commands",         builtin.commands     },
+	{ "  Vim buffers",          builtin.buffers      },
 	{ "  Vim filetypes",        builtin.filetypes    },
 	{ "  Vim highlights",       builtin.highlights   },
 	{ "  Vim keymaps",          builtin.keymaps      },

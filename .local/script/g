@@ -36,6 +36,11 @@ new() {
 	branch="$number-$title"
 	gum confirm --default=no "Create branch $branch ?" && git checkout -b "$branch"
 }
+rename() {
+	local branch
+	local new_name="$(gum input --prompt='New branch name: ')"
+	[[ -n $new_name ]] && git branch -m "$new_name"
+}
 usage() {
 	printf "Usage: ${0##*/} [%s]\n" "$(declare -F | cut -d" " -f3 | tr "\n" "|" | sed "s/usage|//")"
 }
