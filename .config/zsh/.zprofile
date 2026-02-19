@@ -8,7 +8,7 @@ path+="$HOME/.local/script"
 LOCAL_PROFILE=$ZDOTDIR/local/.zprofile
 [[ -f $LOCAL_PROFILE ]] && source $LOCAL_PROFILE
 
-MACHINE_PROFILE=$ZDOTDIR/machines/$(cat /etc/hostname).zprofile
+MACHINE_PROFILE=$ZDOTDIR/include/$(cat /etc/hostname).zprofile
 [[ -f $MACHINE_PROFILE ]] && source $MACHINE_PROFILE
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then

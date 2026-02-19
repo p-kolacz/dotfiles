@@ -20,7 +20,7 @@
 	}
 
 	vim.g.mapleader = " "
-	vim.g.maplocalleader = "<BS>"
+	vim.g.maplocalleader = "_"
 
 -- }}}
 -- Appearance {{{
