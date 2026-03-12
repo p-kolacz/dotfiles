@@ -33,18 +33,24 @@ function M.goto_ft()
 	vim.cmd.edit(string.format('%s/ftplugin/%s.lua', vim.fn.stdpath('config'), vim.o.filetype))
 end
 
-function M.gf()
-	local cfile = vim.fn.expand("<cfile>")
-	cfile = cfile:gsub("^[%s#-]+", "")
-	local line = vim.fn.getline(".")
-	local lnum = line:match(":(%d*):")
+-- Deprecated as of gF
+-- function M.gf()
+-- 	-- local isfilename_bak = vim.opt.isfname
+-- 	-- vim.opt.isfname:remove("@ @")
+-- 	local cfile = vim.fn.expand("<cfile>")
+-- 	print("CFILE: " .. cfile)
+-- 	-- vim.opt.isfname = isfilename_bak
+-- 	cfile = cfile:gsub("^[%s#-]+", "")
+-- 	print("CFILE: " .. cfile)
+-- 	local line = vim.fn.getline(".")
+-- 	local lnum = line:match(":(%d*):")
 
-	if cfile and vim.fn.filereadable(cfile) == 1 then
-		vim.cmd("edit " .. cfile)
-		if lnum then vim.cmd(lnum) end
-	else
-		vim.cmd("normal! gf") -- fallback to normal gf
-	end
-end
+-- 	if cfile and vim.fn.filereadable(cfile) == 1 then
+-- 		vim.cmd("edit " .. cfile)
+-- 		if lnum then vim.cmd(lnum) end
+-- 	else
+-- 		vim.cmd("normal! gf") -- fallback to normal gf
+-- 	end
+-- end
 
 return M

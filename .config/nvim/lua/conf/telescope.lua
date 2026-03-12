@@ -12,8 +12,9 @@ Plugin {
 	"https://github.com/nvim-telescope/telescope-symbols.nvim",
 }
 
-local actions   = require "telescope.actions"
 local telescope = require "telescope"
+local actions   = require "telescope.actions"
+local builtin   = require "telescope.builtin"
 
 telescope.setup {
 	defaults = {
@@ -48,6 +49,7 @@ nnoremap('<C-space>',  ':Telescope find_files<cr>')
 nnoremap('<leader>gf', ':Telescope git_files<cr>', 'find files')
 nnoremap('<leader>fc', ':Telescope grep_string<cr>', 'find cword')
 nnoremap('<leader>ff', ':Telescope live_grep<cr>', 'find in files')
+nnoremap('<leader>fr',  builtin.resume, 'resume last picker')
 -- nnoremap('<leader>fb', ':Telescope file_browser theme=get_dropdown<cr>', 'browse files')
 
 --Vim pickers
@@ -110,8 +112,6 @@ Plugin{{
 	end
 }}
 telescope.load_extension('fzy_native')
-
-local builtin = require "telescope.builtin"
 
 Perun {
 	{ "  Diagnostics",            builtin.diagnostics  },

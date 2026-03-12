@@ -242,7 +242,7 @@
 	local gg = require "gitgud"
 	Noremap {
 		{ "G",  "<leader>g",                                  "+Git"        },
-		{ "n",  "<A-g>",                       gg.status,     "status"      },
+		{ "n",  "<A-g>",                       gg.telescope_git_status,     },
 		{ "n",  "<leader>gg",                  gg.status,     "status"      },
 		{ "n",  "<F6>",                        gg.status,     "status"      },
 		{ "n",  "<leader>gb",                  gs.blame_line, "blame line"  },
@@ -263,7 +263,7 @@
 		{ "  Git: search 4 differences",      gg.search4differences        },
 		{ "  Git: set loclist",               gs.setloclist                },
 		{ "  Git: set quickfix",              gs.setqflist                 },
-		{ "  Git: status",                    gs.status                    },
+		{ "  Git: status",                    gs.telescope_git_status      },
 		{ "  Git: stage buffer",              gs.stage_buffer              },
 		{ "  Git: toggle deleted",            gs.toggle_deleted            },
 		{ "  Git: toggle line blame",         gs.toggle_current_line_blame },
@@ -275,6 +275,7 @@
 	Helper   = require "helpozor"
 	require 'cheatash'.setup()
 	Noremap {
+		{ "n", "<F1>",         Helper.notes,          "Notes",                  },
 		{ "G", "<leader>h",    "+Help",                                         },
 		{ "n", "gy",           Helper.search_this,    "online search cword"     },
 		{ "v", "gy",           Helper.search_this,    "online search selection" },
@@ -305,7 +306,8 @@
 		{ "i",  "jk",         "<ESC>",                                      },
 		{ {"n", "v"},  "H",  "^",                                           },
 		{ {"n", "v"},  "L",  "$",                                           },
-		{ "n", "gf",          Navigator.gf,      "goto file and line"       },
+		-- { "n", "gf",          Navigator.gf,      "goto file and line"       },
+		{ "n",  "gf",         "gF",              "goto file and line"       },
 		{ "n",  "[q",         ":cprevious<cr>",  "next quickfix entry",     },
 		{ "n",  "]q",         ":cnext<cr>",      "previous quickfix entry", },
 		{ "n",  "[l",         ":lprevious<cr>",  "next loclist entry",      },

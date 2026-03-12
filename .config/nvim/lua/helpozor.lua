@@ -43,6 +43,10 @@ function M.edit_ft_notes()
 	vim.cmd(string.format("edit %s/doc/%s.md", vim.fn.stdpath("config"), vim.bo.filetype))
 end
 
+function M.notes()
+	vim.cmd.edit("notes.md")
+end
+
 function M.search_this(url)
 	url = url or SEARCH_URL
 	local query
