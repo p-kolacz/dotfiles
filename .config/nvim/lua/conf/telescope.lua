@@ -15,16 +15,22 @@ Plugin {
 local telescope = require "telescope"
 local actions   = require "telescope.actions"
 local builtin   = require "telescope.builtin"
+local trouble_telescope = require("trouble.sources.telescope")
 
 telescope.setup {
 	defaults = {
 		prompt_prefix = "🔭",
 		mappings = {
 			i = {
+				["<c-t>"] = trouble_telescope.open,
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 			},
+			n = {
+				["<c-t>"] = trouble_telescope.open,
+				["<c-T>"] = trouble_telescope.add,
+	  },
 		},
 	},
 	pickers = {
