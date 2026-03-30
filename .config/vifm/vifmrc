@@ -105,6 +105,7 @@ mark h ~/
 "									Mappings
 " ------------------------------------------------------------------------------
 
+nnoremap ` :file<cr>
 nnoremap b :bmarks<cr>
 nnoremap O :sync %c<cr>
 nnoremap o :sync<cr>
@@ -115,7 +116,7 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 nnoremap * ggvG<cr>gg
 nnoremap <c-f> :FZFfind<cr>
-nnoremap <BS> :cd ..<cr>
+" nnoremap <BS> :cd ..<cr>
 " nnoremap / :FZFfind<cr>
 nnoremap <a-t> :!$TERMINAL 2> /dev/null &<cr>
 
@@ -134,7 +135,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Tabs
-nnoremap <c-t> :tabnew<cr>:cd<cr>
+nnoremap <c-t> :tabnew<cr>
 nnoremap <c-j> :tabnext<cr>
 nnoremap <c-k> :tabprev<cr>
 
@@ -150,7 +151,7 @@ nnoremap _cf :cmp<cr>
 nnoremap _cc :compare showdifferent showuniqueleft showuniqueright<cr>
 nnoremap _cd :compare listdups<cr>
 nnoremap _cu :compare listunique<cr>
-nnoremap _C :write | edit $MYVIFMRC | restart full<cr>
+nnoremap <bs>C :write | edit $MYVIFMRC | restart full<cr>
 nnoremap _d :dragon<cr>
 nnoremap _e :extract<cr>
 nnoremap _g :grep<space>
@@ -158,8 +159,8 @@ nnoremap _h :history<cr>
 nnoremap _m :media<cr>
 nnoremap _q :quit<cr>
 nnoremap _r :lstrash<cr>
-nnoremap _s :zstd<cr>
-nnoremap _T :!$TERMINAL &<cr>
+" nnoremap _s :zstd<cr>
+nnoremap <bs>T :!$TERMINAL &<cr>
 nnoremap _t :tar<cr>
 nnoremap _w :set wrap!<cr>
 nnoremap _z :zip<cr>
@@ -357,7 +358,7 @@ filetype {*.asc},<application/pgp-signature>
        " \ tar -xf %c,
 
 " ArchiveMount
-filetype {*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.7z,*.zip},
+filetype {*.7z,*.rar,*.zip,*.zst,*.tar,*.tar.bz2,*.tbz2,*.tar.gz,*.tgz,*.tar.xz,*.txz},
         \<application/x-tar>
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
@@ -394,10 +395,15 @@ filetype *.ftp
 
 " Directories
 filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
+        \ {View in Nemo}
+        \ Nemo %f &,
 
 " Open all other files with:
 filextype *
-		\ open %f:p &> /dev/null &
+		\ {Open}
+		\ open %f:p &> /dev/null &,
+		\ {7z it}
+		\ 7z a %D/%c.7z %f,
+		\ {zstd it}
+		\ zstd %f -o %D/%c.zst,
 
