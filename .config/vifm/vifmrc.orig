@@ -160,7 +160,11 @@ nnoremap _m :media<cr>
 nnoremap _q :quit<cr>
 nnoremap _r :lstrash<cr>
 " nnoremap _s :zstd<cr>
+<<<<<<< HEAD
+nnoremap <bs>T :!$TERMINAL &<cr>
+=======
 nnoremap _T :!$TERMINAL &<cr>
+>>>>>>> 970da068790ca948679352587401338f9cc0a0e9
 nnoremap _t :tar<cr>
 nnoremap _w :set wrap!<cr>
 nnoremap _z :zip<cr>

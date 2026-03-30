@@ -98,6 +98,11 @@ snippet function_exists
 typeset -f ${1:function_name} > /dev/null$0
 endsnippet
 
+snippet game
+GAME_DIR=
+GAME_EXE=
+endsnippet
+
 snippet inc "increment variable"
 ((${var}++))
 endsnippet
@@ -118,6 +123,10 @@ endsnippet
 
 snippet last_exit
 $?
+endsnippet
+
+snippet lib
+export LD_LIBRARY_PATH=lib
 endsnippet
 
 snippet list_functions "list functions declared in script"

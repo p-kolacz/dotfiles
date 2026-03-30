@@ -22,6 +22,7 @@ alias weather="curl 'wttr.in/?Fqn&lang=pl'"
 alias webcam="qv4l2"
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
 alias rga="rg --hidden --no-ignore"
+alias wget="wget --hsts-file=$XDG_STATE_HOME/wget-hsts"
 
 # Browsers ----------------------------
 alias cursors="find /usr/share/icons ~/.local/share/icons -type d -name \"cursors\""
