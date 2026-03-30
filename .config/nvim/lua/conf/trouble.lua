@@ -1,23 +1,30 @@
 Plugin "https://github.com/folke/trouble.nvim"
 
+require "trouble".setup {}
+
 mapgroup("<leader>x", "+Trouble")
-nnoremap("<leader>xx", ":TroubleToggle<cr>", "toggle")
-nnoremap("<leader>xw", ":TroubleToggle workspace_diagnostics<cr>", "workspace diagnostics")
-nnoremap("<leader>xd", ":TroubleToggle document_diagnostics<cr>", "document diagnostics")
-nnoremap("<leader>xq", ":TroubleToggle quickfix<cr>", "quickfix")
-nnoremap("<leader>xl", ":TroubleToggle loclist<cr>", "loclist")
-nnoremap("gR", " :TroubleToggle lsp_references<cr>", "LSP references")
+nnoremap("<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", "diagnostics")
+nnoremap("<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "buffer diagnostics")
+nnoremap("<leader>xq", "<cmd>Trouble qflist toggle<cr>", "quickfix")
+nnoremap("<leader>xl", "<cmd>Trouble loclist toggle<cr>", "loclist")
 
--- local actions = require("telescope.actions")
--- local trouble = require "trouble.providers.telescope"
--- local telescope = require "telescope"
+Perun {
+	{ "Trouble: Symbols", "Trouble symbols toggle focus=false"                },
+	{ "Trouble: LSP",     "Trouble lsp toggle focus=false win.position=right" },
+}
 
--- telescope.setup {
--- 	defaults = {
--- 		mappings = {
--- 			i = { ["<c-t>"] = trouble.open_with_trouble },
--- 			n = { ["<c-t>"] = trouble.open_with_trouble },
--- 		},
--- 	},
--- }
+-- local trouble_telescope = require("trouble.sources.telescope")
 
+-- require("telescope").setup({
+--   defaults = {
+--     mappings = {
+--       i = {
+-- 		  ["<c-t>"] = trouble_telescope.open,
+-- 	  },
+--       n = {
+-- 		  ["<c-t>"] = trouble_telescope.open,
+-- 		  ["<c-T>"] = trouble_telescope.add,
+-- 	  },
+--     },
+--   },
+-- })

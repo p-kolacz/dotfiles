@@ -1,7 +1,7 @@
-vim.opt.isfname:append("32")
+-- vim.opt.isfname:append("32")
 vim.opt_local.conceallevel=2
 
-nnoremap_buffer("gf", ":e <cfile>.md<cr>")
+-- nnoremap_buffer("gf", ":e <cfile>.md<cr>")
 
 Helper.map { CHEATSHEET = "https://devhints.io/markdown" }
 

@@ -12,18 +12,27 @@ Plugin {
 	"https://github.com/nvim-telescope/telescope-symbols.nvim",
 }
 
-local actions   = require "telescope.actions"
 local telescope = require "telescope"
+local actions   = require "telescope.actions"
+local builtin   = require "telescope.builtin"
+local trouble_telescope = require("trouble.sources.telescope")
 
 telescope.setup {
 	defaults = {
 		prompt_prefix = "🔭",
 		mappings = {
 			i = {
+				["<c-t>"] = trouble_telescope.open,
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["<C-s>"] = actions.cycle_previewers_next,
+				["<C-a>"] = actions.cycle_previewers_prev,
 			},
+			n = {
+				["<c-t>"] = trouble_telescope.open,
+				["<c-T>"] = trouble_telescope.add,
+	  },
 		},
 	},
 	pickers = {
@@ -48,6 +57,7 @@ nnoremap('<C-space>',  ':Telescope find_files<cr>')
 nnoremap('<leader>gf', ':Telescope git_files<cr>', 'find files')
 nnoremap('<leader>fc', ':Telescope grep_string<cr>', 'find cword')
 nnoremap('<leader>ff', ':Telescope live_grep<cr>', 'find in files')
+nnoremap('<leader>fr',  builtin.resume, 'resume last picker')
 -- nnoremap('<leader>fb', ':Telescope file_browser theme=get_dropdown<cr>', 'browse files')
 
 --Vim pickers
@@ -76,7 +86,6 @@ nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
 --Git Pickers
 mapgroup('<leader>gs',  '+Show')
 -- nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
--- nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
 -- nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
 nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 
@@ -89,6 +98,11 @@ nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emo
 nnoremap('<leader>ik', ":lua require'telescope.builtin'.symbols{ sources = {'kaomoji'} }<cr>", 'kaomoji')
 nnoremap('<leader>im', ":lua require'telescope.builtin'.symbols{ sources = {'math'}    }<cr>", 'math')
 nnoremap('<leader>il', ":lua require'telescope.builtin'.symbols{ sources = {'latex'}   }<cr>", 'latex')
+
+Noremap {
+	{ "n",  "<A-g>",        builtin.git_status,     },
+	{ "n",  "<leader>gc",   builtin.git_bcommits,     },
+}
 
 --  Ultisnips
 Plugin "https://github.com/fhill2/telescope-ultisnips.nvim"
@@ -111,12 +125,11 @@ Plugin{{
 }}
 telescope.load_extension('fzy_native')
 
-local builtin = require "telescope.builtin"
-
 Perun {
 	{ "  Diagnostics",            builtin.diagnostics  },
 	{ "  Env variables",          "Telescope env"      },
 
+	{ "  Git: status",                    builtin.git_status   },
 	{ "  Git: telescope branches",        builtin.git_branches },
 	{ "  Git: telescope buffer commits",  builtin.git_bcommits },
 	{ "  Git: telescope commits",         builtin.git_commits  },
@@ -134,6 +147,7 @@ Perun {
 	{ "  Telescope Treesitter", builtin.treesitter   },
 
 	{ "  Vim commands",         builtin.commands     },
+	{ "  Vim buffers",          builtin.buffers      },
 	{ "  Vim filetypes",        builtin.filetypes    },
 	{ "  Vim highlights",       builtin.highlights   },
 	{ "  Vim keymaps",          builtin.keymaps      },
@@ -148,4 +162,3 @@ Perun {
 
 telescope.load_extension("figlet")
 Perun { "  Figlet", "Telescope figlet" }
-

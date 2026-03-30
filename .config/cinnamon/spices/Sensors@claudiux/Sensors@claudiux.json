@@ -1,0 +1,1265 @@
+{
+    "layoutsensors": {
+        "type": "layout",
+        "pages": [
+            "page_General",
+            "page_Temperatures",
+            "page_Fans",
+            "page_Voltages",
+            "page_Intrusion"
+        ],
+        "page_General": {
+            "type": "page",
+            "title": "⚙ General",
+            "sections": [
+                "section_Display",
+                "section_Tooltip",
+                "section_Report",
+                "section_remove_incompatible_xlets"
+            ]
+        },
+        "page_Temperatures": {
+            "type": "page",
+            "title": "⦿ Temperature",
+            "sections": [
+                "section_tempDisplay",
+                "section_tempOptions",
+                "section_tempSensors",
+                "section_tempDisktemp",
+                "section_tempDisks"
+            ]
+        },
+        "page_Fans": {
+            "type": "page",
+            "title": "𖣘 Fan",
+            "sections": [
+                "section_fanDisplay",
+                "section_fanOptions",
+                "section_fanSensors"
+            ]
+        },
+        "page_Voltages": {
+            "type": "page",
+            "title": "🗲 Voltage",
+            "sections": [
+                "section_voltDisplay",
+                "section_voltOptions",
+                "section_voltSensors"
+            ]
+        },
+        "page_Intrusion": {
+            "type": "page",
+            "title": "⮿ Intrusion",
+            "sections": [
+                "section_intrusionDisplay",
+                "section_intrusionOptions",
+                "section_intrusionSensors"
+            ]
+        },
+        "page_Custom": {
+            "type": "page",
+            "title": "⛓ Custom",
+            "sections": [
+                "section_customDisclaimer",
+                "section_customDisplay",
+                "section_customSensors"
+            ]
+        },
+        "section_Display": {
+            "type": "section",
+            "title": "Options",
+            "keys": [
+                "interval",
+                "keep_size",
+                "char_size",
+                "horizontal_width",
+                "separator_type",
+                "char_color_customized",
+                "char_color",
+                "crit_color",
+                "high_color",
+                "remove_border",
+                "remove_icons",
+                "restart_in_menu",
+                "show_tooltip"
+            ]
+        },
+        "section_Tooltip": {
+            "type": "section",
+            "dependency": "show_tooltip",
+            "title": "Tooltip",
+            "keys": [
+                "bold_values",
+                "bold_italics_main_sensors"
+            ]
+        },
+        "section_Report": {
+            "type": "section",
+            "title": "Sensors values",
+            "keys": [
+                "report",
+                "xsensors"
+            ]
+        },
+        "section_remove_incompatible_xlets": {
+            "type": "section",
+            "dependency": "temperatureATfevimu_is_loaded",
+            "title": "Remove from panels certain applets that also use sensors",
+            "keys": [
+                "remove_temperatureATfevimu"
+            ]
+        },
+        "section_tempDisktemp": {
+            "type": "section",
+            "title": "For the time being, disk temperature can only be read by root.",
+            "keys": [
+                "make_disktemp_readable_by_user"
+            ],
+            "dependency": "!disktemp_is_user_readable"
+        },
+        "section_tempDisplay": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "show_temp",
+                "show_temp_name",
+                "chars_temp"
+            ]
+        },
+        "section_tempOptions": {
+            "type": "section",
+            "title": "Options",
+            "keys": [
+                "strictly_positive_temp",
+                "use_fahrenheit",
+                "only_integer_part",
+                "show_unit",
+                "show_unit_letter",
+                "always_show_unit_in_line",
+                "journalize_temp"
+            ]
+        },
+        "section_tempSensors": {
+            "type": "section",
+            "title": "Temperature sensors",
+            "keys": [
+                "btn_renew_temp_sensors_list",
+                "temp_sensors",
+                "update_display"
+            ]
+        },
+        "section_tempDisks": {
+            "type": "section",
+            "title": "Disk temperature sensors",
+            "keys": [
+                "btn_renew_disks_list",
+                "temp_disks",
+                "update_display"
+            ],
+            "dependency": "disktemp_is_user_readable"
+        },
+        "section_fanDisplay": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "show_fan",
+                "show_fan_name",
+                "chars_fan"
+            ]
+        },
+        "section_fanOptions": {
+            "type": "section",
+            "title": "Options",
+            "keys": [
+                "show_fan_unit",
+                "fan_unit",
+                "journalize_fan"
+            ]
+        },
+        "section_fanSensors": {
+            "type": "section",
+            "title": "Fan sensors",
+            "keys": [
+                "btn_renew_fan_sensors_list",
+                "fan_sensors",
+                "update_display"
+            ]
+        },
+        "section_voltDisplay": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "show_volt",
+                "show_volt_name",
+                "chars_volt"
+            ]
+        },
+        "section_voltOptions": {
+            "type": "section",
+            "title": "Options",
+            "keys": [
+                "strictly_positive_volt",
+                "show_volt_unit",
+                "volt_unit",
+                "journalize_volt"
+            ]
+        },
+        "section_voltSensors": {
+            "type": "section",
+            "title": "Voltage sensors",
+            "keys": [
+                "btn_renew_volt_sensors_list",
+                "volt_sensors",
+                "update_display"
+            ]
+        },
+        "section_intrusionDisplay": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "show_intrusion",
+                "show_intrusion_name",
+                "chars_intrusion"
+            ]
+        },
+        "section_intrusionOptions": {
+            "type": "section",
+            "title": "Options",
+            "keys": [
+                "strictly_positive_intrusion",
+                "journalize_intrusion"
+            ]
+        },
+        "section_intrusionSensors": {
+            "type": "section",
+            "title": "Intrusion sensors",
+            "keys": [
+                "btn_renew_intrusion_sensors_list",
+                "intrusion_sensors",
+                "update_display"
+            ]
+        },
+        "section_customDisclaimer": {
+            "type": "section",
+            "title": "Disclaimer",
+            "keys": [
+                "custom_disclaimer",
+                "custom_openREADME"
+            ]
+        },
+        "section_customDisplay": {
+            "type": "section",
+            "title": "Display",
+            "keys": [
+                "show_custom",
+                "show_custom_name"
+            ]
+        },
+        "section_customSensors": {
+            "type": "section",
+            "title": "Custom sensors",
+            "keys": [
+                "custom_sensors",
+                "update_display"
+            ]
+        }
+    },
+    "has_set_markup": {
+        "type": "generic",
+        "default": false,
+        "value": true
+    },
+    "interval": {
+        "type": "combobox",
+        "default": 10,
+        "options": {
+            "1": 1,
+            "2": 2,
+            "3": 3,
+            "4": 4,
+            "5": 5,
+            "6": 6,
+            "7": 7,
+            "8": 8,
+            "9": 9,
+            "10": 10,
+            "12": 12,
+            "15": 15,
+            "20": 20,
+            "30": 30,
+            "1 minute": 60,
+            "2 minutes": 120,
+            "3 minutes": 180,
+            "4 minutes": 240,
+            "5 minutes": 300,
+            "10 minutes": 600,
+            "15 minutes": 900,
+            "30 minutes": 1800,
+            "1 hour": 3600
+        },
+        "description": "Refresh interval (seconds)",
+        "value": 10
+    },
+    "keep_size": {
+        "type": "switch",
+        "default": false,
+        "description": "Avoid size changes",
+        "tooltip": "Checked: The size of this applet remains constant, once all your preferences have been defined.\nUnchecked: The size of this applet is optimized, but it may change.",
+        "value": false
+    },
+    "char_size": {
+        "type": "scale",
+        "default": 100,
+        "min": 60,
+        "max": 160,
+        "step": 1,
+        "description": "Character size (% of standard size)",
+        "value": 100
+    },
+    "horizontal_width": {
+        "type": "scale",
+        "default": 0,
+        "min": 0,
+        "max": 2000,
+        "step": 5,
+        "description": "Display width (pixels) for horizontal panels",
+        "tooltip": "0 means automatic. This value does not include border.",
+        "value": 0
+    },
+    "separator_type": {
+        "type": "combobox",
+        "default": "bar",
+        "options": {
+            "(none)": "none",
+            "blank": "blank",
+            "bar": "bar"
+        },
+        "description": "Separator",
+        "value": "bar"
+    },
+    "vertical-align": {
+        "type": "generic",
+        "default": "text-bottom",
+        "value": "text-bottom"
+    },
+    "char_color_customized": {
+        "type": "switch",
+        "default": false,
+        "description": "Customize Text Color",
+        "value": false
+    },
+    "char_color": {
+        "type": "colorchooser",
+        "default": "#CFD8DC",
+        "dependency": "char_color_customized",
+        "description": "Text Color",
+        "value": "#CFD8DC"
+    },
+    "crit_color": {
+        "type": "colorchooser",
+        "default": "FireBrick",
+        "description": "Critical Value Color",
+        "value": "FireBrick"
+    },
+    "high_color": {
+        "type": "colorchooser",
+        "default": "DarkOrange",
+        "description": "High Value Color",
+        "value": "DarkOrange"
+    },
+    "remove_border": {
+        "type": "switch",
+        "default": false,
+        "description": "Remove border line",
+        "tooltip": "Whether or not to remove the border line around this applet.",
+        "value": false
+    },
+    "remove_icons": {
+        "type": "switch",
+        "default": false,
+        "description": "Remove icons",
+        "tooltip": "Whether or not to remove icons in panel.",
+        "value": false
+    },
+    "show_tooltip": {
+        "type": "switch",
+        "default": true,
+        "description": "Display a tooltip on mouseover",
+        "value": true
+    },
+    "bold_values": {
+        "type": "switch",
+        "dependency": "has_set_markup",
+        "default": false,
+        "description": "Show values in bold in the tooltip",
+        "tooltip": "Whether or not to show values in bold in the tooltip.",
+        "value": false
+    },
+    "bold_italics_main_sensors": {
+        "type": "switch",
+        "dependency": "has_set_markup",
+        "default": false,
+        "description": "Show main sensors in bold italics in the tooltip",
+        "tooltip": "Whether or not to display the names of the main sensors (those displayed in the panel) in bold italics in the tooltip.",
+        "value": false
+    },
+    "restart_in_menu": {
+        "type": "switch",
+        "default": false,
+        "description": "Show in menu the action: Restart this applet",
+        "tooltip": "Whether or not to display in menu the action: Restart this applet.",
+        "value": false
+    },
+    "make_disktemp_readable_by_user": {
+        "type": "button",
+        "description": "Make disk temperature user-readable",
+        "callback": "_on_disktemp_button_pressed"
+    },
+    "show_temp": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the values of these selected sensors",
+        "tooltip": "Whether or not to display the values of the sensors selected in the list below.",
+        "value": false
+    },
+    "show_temp_name": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the 'Shown name' of each of these selected sensors",
+        "tooltip": "Whether or not to display into this applet label the 'Shown name' of the sensors selected in the list below. Without effect in vertical panels.",
+        "dependency": "show_temp",
+        "value": false
+    },
+    "chars_temp": {
+        "type": "list",
+        "tooltip": "The first emoji in this list is used for temperature",
+        "columns": [
+            {
+                "id": "emoji",
+                "title": "Emoji",
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [
+            {
+                "emoji": "🌡️"
+            },
+            {
+                "emoji": "🔥"
+            },
+            {
+                "emoji": "♨️"
+            },
+            {
+                "emoji": "♨"
+            },
+            {
+                "emoji": "⦿"
+            },
+            {
+                "emoji": "🌡"
+            }
+        ],
+        "value": [
+            {
+                "emoji": "🌡️"
+            },
+            {
+                "emoji": "🔥"
+            },
+            {
+                "emoji": "♨️"
+            },
+            {
+                "emoji": "♨"
+            },
+            {
+                "emoji": "⦿"
+            },
+            {
+                "emoji": "🌡"
+            }
+        ]
+    },
+    "strictly_positive_temp": {
+        "type": "switch",
+        "default": false,
+        "description": "Show only strictly positive values",
+        "value": false
+    },
+    "use_fahrenheit": {
+        "type": "switch",
+        "default": false,
+        "description": "Show temperature in Fahrenheit",
+        "value": false
+    },
+    "only_integer_part": {
+        "type": "switch",
+        "default": false,
+        "description": "Display integer values",
+        "tooltip": "Whether or not to round the values.",
+        "value": false
+    },
+    "show_unit": {
+        "type": "switch",
+        "default": false,
+        "description": "Show unit",
+        "tooltip": "Whether or not to show the unit after the value.",
+        "value": false
+    },
+    "show_unit_letter": {
+        "type": "switch",
+        "default": false,
+        "description": "Show unit character",
+        "tooltip": "Whether or not to show the unit character (C or F).",
+        "dependency": "show_unit",
+        "value": false
+    },
+    "always_show_unit_in_line": {
+        "type": "switch",
+        "default": false,
+        "description": "Vertical panel: Temperature value and °C / °F on one line",
+        "tooltip": "Whether or not to show, in a vertical panel, °C or °F on the same line as the temperature value.",
+        "dependency": "show_unit_letter",
+        "value": false
+    },
+    "journalize_temp": {
+        "type": "switch",
+        "default": false,
+        "description": "Log high and critical temperatures",
+        "tooltip": "When this option is checked, temperatures exceeding the high or critical limit are recorded in the system journal.",
+        "value": false
+    },
+    "btn_renew_temp_sensors_list": {
+        "type": "button",
+        "description": "Renew the list of sensors",
+        "dependency": "show_temp",
+        "callback": "populate_temp_sensors_in_settings"
+    },
+    "temp_sensors": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "sensor",
+                "title": "Sensor name\n(Do not modify!)",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "shown_name",
+                "title": "Shown name",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "high_by_user",
+                "title": "High\n(°C)",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "crit_by_user",
+                "title": "Critical\n(°C)",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "user_formula",
+                "title": "Formula",
+                "align": 0.5,
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [],
+        "tooltip": "Double-click on a line to change 'Shown name', 'High', 'Critical' or 'Formula'.\nTo reset a 'Shown name', copy/paste the 'Sensor name'.\n'High' and 'Critical' (optional) must be valid numbers.\n'Formula' (optional):\n  Use $ as the value returned by the sensor.\n  You can use the 4 operations (+-*/) and parentheses.\n  Example: $*1.1+0.5",
+        "show-buttons": true,
+        "value": []
+    },
+    "btn_renew_disks_list": {
+        "type": "button",
+        "description": "Renew the list of known disks",
+        "callback": "populate_temp_disks_in_settings"
+    },
+    "temp_disks": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "disk",
+                "title": "Disk name",
+                "type": "string",
+                "default": "",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "shown_name",
+                "title": "Shown\nname",
+                "type": "string",
+                "default": ""
+            },
+            {
+                "id": "high",
+                "title": "High\n(°C)",
+                "type": "integer",
+                "align": 0.5,
+                "min": 0,
+                "max": 127,
+                "default": 69
+            },
+            {
+                "id": "crit",
+                "title": "Critical\n(°C)",
+                "type": "integer",
+                "align": 0.5,
+                "min": 0,
+                "max": 127,
+                "default": 75
+            },
+            {
+                "id": "user_formula",
+                "title": "Formula",
+                "align": 0.5,
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [],
+        "tooltip": "Disk name: The name of the disk, as returned by the 'lsblk' command. Please see help.\nHigh and Critical values: Cf. technical manual of your disk.",
+        "show-buttons": true,
+        "value": []
+    },
+    "numberOfTempSensors": {
+        "type": "generic",
+        "default": 0,
+        "value": 0
+    },
+    "show_fan": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the values of these selected sensors",
+        "tooltip": "Whether or not to display the values of the sensors selected in the list below.",
+        "value": false
+    },
+    "show_fan_name": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the 'Shown name' of each of these selected sensors",
+        "tooltip": "Whether or not to display into this applet label the 'Shown name' of the sensors selected in the list below. Without effect in vertical panels.",
+        "dependency": "show_fan",
+        "value": false
+    },
+    "chars_fan": {
+        "type": "list",
+        "tooltip": "The first emoji in this list is used for fan",
+        "columns": [
+            {
+                "id": "emoji",
+                "title": "Emoji",
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [
+            {
+                "emoji": "🌀"
+            },
+            {
+                "emoji": "💨"
+            },
+            {
+                "emoji": "☢️"
+            },
+            {
+                "emoji": "✇☢✇"
+            },
+            {
+                "emoji": "🌫"
+            },
+            {
+                "emoji": "✇🌫"
+            },
+            {
+                "emoji": "✇"
+            },
+            {
+                "emoji": "𖣘"
+            },
+            {
+                "emoji": "⚽︎"
+            },
+            {
+                "emoji": "꩜"
+            },
+            {
+                "emoji": "🤂"
+            },
+            {
+                "emoji": "༄.°"
+            }
+        ],
+        "value": [
+            {
+                "emoji": "🌀"
+            },
+            {
+                "emoji": "💨"
+            },
+            {
+                "emoji": "☢️"
+            },
+            {
+                "emoji": "✇☢✇"
+            },
+            {
+                "emoji": "🌫"
+            },
+            {
+                "emoji": "✇🌫"
+            },
+            {
+                "emoji": "✇"
+            },
+            {
+                "emoji": "𖣘"
+            },
+            {
+                "emoji": "⚽︎"
+            },
+            {
+                "emoji": "꩜"
+            },
+            {
+                "emoji": "🤂"
+            },
+            {
+                "emoji": "༄.°"
+            }
+        ]
+    },
+    "strictly_positive_fan": {
+        "type": "switch",
+        "default": false,
+        "description": "Show only positive or zero values",
+        "value": false
+    },
+    "show_fan_unit": {
+        "type": "switch",
+        "default": false,
+        "description": "Show unit",
+        "tooltip": "Whether or not to show the unit after the value.",
+        "value": false
+    },
+    "fan_unit": {
+        "type": "entry",
+        "default": "rpm",
+        "description": "Abbreviation of \"Rotations per minute\"",
+        "value": "rpm"
+    },
+    "journalize_fan": {
+        "type": "switch",
+        "default": false,
+        "description": "Log critical fan speeds",
+        "tooltip": "When this option is checked, fan speeds below the critical limit are recorded in the system log.",
+        "value": false
+    },
+    "btn_renew_fan_sensors_list": {
+        "type": "button",
+        "description": "Renew the list of sensors",
+        "dependency": "show_fan",
+        "callback": "populate_fan_sensors_in_settings"
+    },
+    "fan_sensors": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "sensor",
+                "title": "Sensor name\n(Do not modify!)",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "shown_name",
+                "title": "Shown name",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "min_by_user",
+                "title": "Min\n(rpm)",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "user_formula",
+                "title": "Formula",
+                "align": 0.5,
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [],
+        "tooltip": "Double-click on a line to change 'Shown name', 'Min' or 'Formula'.\nTo reset a 'Shown name', copy/paste the 'Sensor name'.\n'Min' (optional) must be valid number.\n'Formula' (optional):\n  Use $ as the value returned by the sensor.\n  You can use the 4 operations (+-*/) and parentheses.\n  Example: $*1.1+0.5",
+        "show-buttons": true,
+        "value": []
+    },
+    "numberOfFanSensors": {
+        "type": "generic",
+        "default": 0,
+        "value": 0
+    },
+    "show_volt": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the values of these selected sensors",
+        "tooltip": "Whether or not to display the values of the sensors selected in the list below.",
+        "value": false
+    },
+    "show_volt_name": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the 'Shown name' of each of these selected sensors",
+        "tooltip": "Whether or not to display into this applet label the 'Shown name' of the sensors selected in the list below. Without effect in vertical panels.",
+        "dependency": "show_volt",
+        "value": false
+    },
+    "chars_volt": {
+        "type": "list",
+        "tooltip": "The first emoji in this list is used for voltage",
+        "columns": [
+            {
+                "id": "emoji",
+                "title": "Emoji",
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [
+            {
+                "emoji": "⚡"
+            },
+            {
+                "emoji": "🗲"
+            },
+            {
+                "emoji": "🔌"
+            }
+        ],
+        "value": [
+            {
+                "emoji": "⚡"
+            },
+            {
+                "emoji": "🗲"
+            },
+            {
+                "emoji": "🔌"
+            }
+        ]
+    },
+    "strictly_positive_volt": {
+        "type": "switch",
+        "default": false,
+        "description": "Show only strictly positive values",
+        "value": false
+    },
+    "show_volt_unit": {
+        "type": "switch",
+        "default": false,
+        "description": "Show unit",
+        "tooltip": "Whether or not to show the unit after the value.",
+        "value": false
+    },
+    "volt_unit": {
+        "type": "combobox",
+        "default": "V",
+        "description": "Voltage unit",
+        "options": {
+            "Most appropriate (V or mV)": "both",
+            "V only": "V",
+            "mV only": "mV"
+        },
+        "value": "V"
+    },
+    "journalize_volt": {
+        "type": "switch",
+        "default": false,
+        "description": "Log critical voltages",
+        "tooltip": "When this option is checked, voltages below the minimum limit or above the maximum limit are recorded in the system log.",
+        "value": false
+    },
+    "btn_renew_volt_sensors_list": {
+        "type": "button",
+        "description": "Renew the list of sensors",
+        "dependency": "show_volt",
+        "callback": "populate_volt_sensors_in_settings"
+    },
+    "volt_sensors": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "sensor",
+                "title": "Sensor name\n(Do not modify!)",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "shown_name",
+                "title": "Shown\nname",
+                "type": "string"
+            },
+            {
+                "id": "min_by_user",
+                "title": "Min\n(V)",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "max_by_user",
+                "title": "Max\n(V)",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "user_formula",
+                "title": "Formula",
+                "align": 0.5,
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [],
+        "tooltip": "Double-click on a line to change 'Shown name', 'Min', 'Max' or 'Formula'.\nTo reset a 'Shown name', copy/paste the 'Sensor name'.\n'Min' and 'Max' (optional) must be valid numbers.\n'Formula' (optional):\n  Use $ as the value returned by the sensor.\n  You can use the 4 operations (+-*/) and parentheses.\n  Example: $*1.1+0.5",
+        "show-buttons": true,
+        "value": []
+    },
+    "numberOfVoltageSensors": {
+        "type": "generic",
+        "default": 0,
+        "value": 0
+    },
+    "show_intrusion": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the values of these selected sensors",
+        "tooltip": "Whether or not to display the values of the sensors selected in the list below.",
+        "value": false
+    },
+    "show_intrusion_name": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the 'Shown name' of each of these selected sensors",
+        "tooltip": " Whether or not to display into this applet label the 'Shown name' of the sensors selected in the list below. Without effect in vertical panels.",
+        "dependency": "show_intrusion",
+        "value": false
+    },
+    "chars_intrusion": {
+        "type": "list",
+        "tooltip": "The first emoji in this list is used for intrusion",
+        "columns": [
+            {
+                "id": "emoji",
+                "title": "Emoji",
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [
+            {
+                "emoji": "🔓"
+            },
+            {
+                "emoji": "🔑"
+            },
+            {
+                "emoji": "🎯"
+            },
+            {
+                "emoji": "❗"
+            },
+            {
+                "emoji": "‼️"
+            },
+            {
+                "emoji": "🛠️"
+            },
+            {
+                "emoji": "⚠️"
+            },
+            {
+                "emoji": "🔧"
+            },
+            {
+                "emoji": "⮿"
+            },
+            {
+                "emoji": "🪛"
+            }
+        ],
+        "value": [
+            {
+                "emoji": "🔓"
+            },
+            {
+                "emoji": "🔑"
+            },
+            {
+                "emoji": "🎯"
+            },
+            {
+                "emoji": "❗"
+            },
+            {
+                "emoji": "‼️"
+            },
+            {
+                "emoji": "🛠️"
+            },
+            {
+                "emoji": "⚠️"
+            },
+            {
+                "emoji": "🔧"
+            },
+            {
+                "emoji": "⮿"
+            },
+            {
+                "emoji": "🪛"
+            }
+        ]
+    },
+    "strictly_positive_intrusion": {
+        "type": "switch",
+        "default": false,
+        "description": "Show in the panel only when an intrusion was detected",
+        "value": false
+    },
+    "journalize_intrusion": {
+        "type": "switch",
+        "default": false,
+        "description": "Log intrusions",
+        "tooltip": "When this option is checked, intrusions are recorded in the system log.",
+        "value": false
+    },
+    "btn_renew_intrusion_sensors_list": {
+        "type": "button",
+        "description": "Renew the list of sensors",
+        "dependency": "show_intrusion",
+        "callback": "populate_intrusion_sensors_in_settings"
+    },
+    "intrusion_sensors": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "sensor",
+                "title": "Sensor name\n(Do not modify!)",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "shown_name",
+                "title": "Shown\nname",
+                "type": "string"
+            }
+        ],
+        "default": [],
+        "tooltip": "Double-click on a line to change Shown name.\nTo reset a Shown name, copy/paste the Sensor name.",
+        "show-buttons": true,
+        "value": []
+    },
+    "numberOfIntrusionSensors": {
+        "type": "generic",
+        "default": 0,
+        "value": 0
+    },
+    "custom_disclaimer": {
+        "type": "label",
+        "description": "These settings are for advanced users only!\nPlease refer to the README file."
+    },
+    "custom_openREADME": {
+        "type": "button",
+        "description": "Open the README file",
+        "callback": "_on_open_README"
+    },
+    "show_custom": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the values of these selected sensors",
+        "tooltip": "Whether or not to display the values of the sensors selected in the list below.",
+        "value": false
+    },
+    "show_custom_name": {
+        "type": "switch",
+        "default": false,
+        "description": "Display the 'Shown name' of each of these selected sensors",
+        "tooltip": " Whether or not to display into this applet label the 'Shown name' of the sensors selected in the list below. Without effect in vertical panels.",
+        "dependency": "show_custom",
+        "value": false
+    },
+    "custom_sensors": {
+        "type": "list",
+        "columns": [
+            {
+                "id": "sensor_type",
+                "title": "Type",
+                "type": "string",
+                "options": {
+                    "Temperature": "temperature",
+                    "Fan": "fan",
+                    "Voltage": "voltage",
+                    "Intrusion": "intrusion"
+                }
+            },
+            {
+                "id": "shown_name",
+                "title": "Name",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "show_in_panel",
+                "title": "Show\nin panel",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "show_in_tooltip",
+                "title": "Show\nin tooltip",
+                "align": 0.5,
+                "type": "boolean"
+            },
+            {
+                "id": "sysfile",
+                "title": "File to\nmonitor",
+                "type": "string",
+                "expand-width": true
+            },
+            {
+                "id": "high_by_user",
+                "title": "High\nvalue",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "crit_by_user",
+                "title": "Critical\nvalue",
+                "align": 0.5,
+                "type": "string"
+            },
+            {
+                "id": "user_formula",
+                "title": "Formula",
+                "align": 0.5,
+                "type": "string",
+                "default": ""
+            }
+        ],
+        "default": [],
+        "tooltip": "Add a line by custom sensor to set the type, the name and the path of the file to monitor (/sys/class/...).",
+        "show-buttons": true,
+        "value": []
+    },
+    "report": {
+        "type": "button",
+        "description": "Example of sensor values from this computer",
+        "tooltip": "Useful for reporting an issue.",
+        "callback": "_on_report_button_pressed"
+    },
+    "xsensors": {
+        "type": "button",
+        "description": "Run xsensors",
+        "callback": "_on_xsensors_pressed"
+    },
+    "update_display": {
+        "type": "button",
+        "description": "Update display",
+        "callback": "updateUI_from_settings"
+    },
+    "custom_names": {
+        "type": "generic",
+        "default": {},
+        "value": {}
+    },
+    "temperatureATfevimu_is_loaded": {
+        "type": "generic",
+        "default": false,
+        "value": false
+    },
+    "remove_temperatureATfevimu": {
+        "type": "button",
+        "description": "Remove from panel the temperature@fevimu applet",
+        "callback": "_on_remove_temperatureATfevimu_from_panels"
+    },
+    "disktemp_is_user_readable": {
+        "type": "generic",
+        "default": false,
+        "value": false
+    },
+    "sensors_version": {
+        "type": "generic",
+        "default": "3.5.0",
+        "value": "3.6.2"
+    },
+    "__md5__": "c80cb8b5c2315c69a9a3ab867343e0fc"
+}
