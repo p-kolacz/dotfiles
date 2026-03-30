@@ -12,5 +12,5 @@ MACHINE_PROFILE=$ZDOTDIR/include/$(cat /etc/hostname).zprofile
 [[ -f $MACHINE_PROFILE ]] && source $MACHINE_PROFILE
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	$XDG_CONFIG_HOME/start-wm.sh
+	$HOME/.local/script/start-wm.sh
 fi
