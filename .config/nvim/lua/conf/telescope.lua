@@ -26,6 +26,8 @@ telescope.setup {
 				["<esc>"] = actions.close,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
+				["<C-s>"] = actions.cycle_previewers_next,
+				["<C-a>"] = actions.cycle_previewers_prev,
 			},
 			n = {
 				["<c-t>"] = trouble_telescope.open,
@@ -84,7 +86,6 @@ nnoremap('<leader>cf', ':Telescope lsp_references<cr>', 'references')
 --Git Pickers
 mapgroup('<leader>gs',  '+Show')
 -- nnoremap('<leader>gsc', ':Telescope git_commits<cr>', 'commits')
--- nnoremap('<leader>gsd', ':Telescope git_bcommits<cr>', 'buffer commits')
 -- nnoremap('<leader>gsb',  ':Telescope git_branches<cr>', 'branches')
 nnoremap('<leader>gss',  ':Telescope git_status<cr>', 'status')
 
@@ -97,6 +98,11 @@ nnoremap('<leader>ie', ":lua require'telescope.builtin'.symbols{ sources = {'emo
 nnoremap('<leader>ik', ":lua require'telescope.builtin'.symbols{ sources = {'kaomoji'} }<cr>", 'kaomoji')
 nnoremap('<leader>im', ":lua require'telescope.builtin'.symbols{ sources = {'math'}    }<cr>", 'math')
 nnoremap('<leader>il', ":lua require'telescope.builtin'.symbols{ sources = {'latex'}   }<cr>", 'latex')
+
+Noremap {
+	{ "n",  "<A-g>",        builtin.git_status,     },
+	{ "n",  "<leader>gc",   builtin.git_bcommits,     },
+}
 
 --  Ultisnips
 Plugin "https://github.com/fhill2/telescope-ultisnips.nvim"
@@ -123,6 +129,7 @@ Perun {
 	{ "  Diagnostics",            builtin.diagnostics  },
 	{ "  Env variables",          "Telescope env"      },
 
+	{ "  Git: status",                    builtin.git_status   },
 	{ "  Git: telescope branches",        builtin.git_branches },
 	{ "  Git: telescope buffer commits",  builtin.git_bcommits },
 	{ "  Git: telescope commits",         builtin.git_commits  },
@@ -155,4 +162,3 @@ Perun {
 
 telescope.load_extension("figlet")
 Perun { "  Figlet", "Telescope figlet" }
-

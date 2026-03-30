@@ -70,10 +70,6 @@ function M.status()
 	vim.cmd.Git()
 end
 
-function M.telescope_git_status()
-	require("telescope.builtin").git_status()
-end
-
 -- function M.gitsigns_next_hunk(gs)
 -- 	if vim.wo.diff then return ']c' end
 -- 	vim.schedule(function() gs.next_hunk() end)

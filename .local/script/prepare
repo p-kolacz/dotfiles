@@ -35,8 +35,6 @@ desktop() {
 	_yay
 	terminal
 	pipewire
-	syncthing
-	install kitty
 }
 
 laptop() {
@@ -63,6 +61,7 @@ apps() {
 	install kitty
 	install gimp gnumeric # GTK apps
 	install flameshot keepassxc # Qt Apps
+	syncthing
 	ynstall brave-bin
 }
 

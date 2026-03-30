@@ -158,7 +158,7 @@ nnoremap _h :history<cr>
 nnoremap _m :media<cr>
 nnoremap _q :quit<cr>
 nnoremap _r :lstrash<cr>
-nnoremap _s :zstd<cr>
+" nnoremap _s :zstd<cr>
 nnoremap _T :!$TERMINAL &<cr>
 nnoremap _t :tar<cr>
 nnoremap _w :set wrap!<cr>
