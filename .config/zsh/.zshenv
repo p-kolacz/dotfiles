@@ -14,7 +14,4 @@ export FZF_DEFAULT_OPTS="--color=${THEME_VARIANT:-dark}"
 source $ZDOTDIR/xdg-comply.zsh
 source $($HOME/.local/script/theme current)
 
-# alias xdg-open=open
-
 [[ -f $ZDOTDIR/local/.zshenv ]] && source $ZDOTDIR/local/.zshenv
-

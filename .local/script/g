@@ -27,16 +27,18 @@ diff() {
 	local files
 	files=$(git diff "$@" --name-only)
 	if [[ -n $files ]]; then
-		echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}"
+		local file
+		file=$(echo "$files" | fzf --preview-window="top,75%" --preview "git diff $* --color=always -- {}")
+		[[ -e $file ]] && exec $EDITOR "$file"
 	else
 		echo "No files to diff"
 	fi
 }
 new() {
 	local number title branch
-	number=$(gum input --prompt="PBI number: ")
+	# number=$(gum input --prompt="PBI number: ")
 	title=$(gum input --prompt="PBI title: ")
-	branch="$number-$title"
+	branch="pk-$title"
 	gum confirm --default=no "Create branch $branch ?" && git checkout -b "$branch"
 }
 rename() {

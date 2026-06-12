@@ -1,5 +1,10 @@
 local M = {}
 
+local function copy2clipboard(value)
+	vim.fn.setreg("+",value)
+	vim.fn.setreg("*",value)
+end
+
 local exprs = {
 	filename      = "%:t",
 	relative_path = "%:.",
@@ -11,8 +16,7 @@ local exprs = {
 for fun,expr in pairs(exprs) do
 	M[fun] = function()
 		local value = vim.fn.expand(expr)
-		vim.fn.setreg("+",value)
-		vim.fn.setreg("*",value)
+		copy2clipboard(value)
 		print(value .. " yanked to clipboard")
 	end
 end
@@ -45,6 +49,12 @@ end
 function M.unset_clipboard()
 	vim.opt.clipboard = nil
 	print(vim.cmd("set clipboard?"))
+end
+
+function M.relative_path_with_line()
+	local value = vim.fn.expand(exprs.relative_path) .. ':' .. vim.fn.line('.')
+	copy2clipboard(value)
+	print(value .. " yanked to clipboard")
 end
 
 return M

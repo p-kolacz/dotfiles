@@ -10,7 +10,7 @@ Plugin "https://github.com/kyazdani42/nvim-tree.lua"
 local function grep_in_dir(node)
 	-- v(node.absolute_path)
 	local path = node.absolute_path
-	path = node.type == "file" and path or path.."/**"
+	path = node.type == "file" and path or path.."/**/*.rb"
 	vim.api.nvim_input(":vimgrep //j "..path.." | copen<home><s-right><right><right>")
 end
 

@@ -28,7 +28,7 @@ BufferNoremap {
 Helper.map {
 	API        = "https://api.rubyonrails.org/",
 	CHEATSHEET = "https://dev.to/ericchapman/my-beloved-ruby-cheat-sheet-208o",
-	DOCSEARCH  = "https://devdocs.io/#q=ruby%20",
+	DOCSEARCH  = "https://devdocs.io/#q=rails%20",
 }
 
 vim.opt_local.foldcolumn = "0"

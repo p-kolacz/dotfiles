@@ -143,7 +143,7 @@
 	Require {
 		"conf/completion",
 		"conf/lsp",
-		"conf/treesitter",
+		-- "conf/treesitter",
 	}
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
@@ -263,8 +263,11 @@
 		{ "  Git: set loclist",               gs.setloclist                },
 		{ "  Git: set quickfix",              gs.setqflist                 },
 		{ "  Git: stage buffer",              gs.stage_buffer              },
+		{ "  Git: stage hunk",                gs.stage_hunk                },
+		{ "  Git: reset hunk",                gs.reset_hunk                },
 		{ "  Git: toggle deleted",            gs.toggle_deleted            },
 		{ "  Git: toggle line blame",         gs.toggle_current_line_blame },
+		{ "  Git: undo stage hunk",           gs.undo_stage_hunk           },
 	}
 
 -- }}}
@@ -432,6 +435,7 @@
 	Perun {
 		{ "  Yank filename",             yanka.filename             },
 		{ "  Yank relative path",        yanka.relative_path        },
+		{ "  Yank relative path with line", yanka.relative_path_with_line },
 		{ "  Yank full path",            yanka.full_path            },
 		{ "  Yank full dir",             yanka.full_dir             },
 		{ "  Yank <cfile>",              yanka.cfile                },

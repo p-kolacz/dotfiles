@@ -14,3 +14,14 @@
 
 See also:
 - [[~/.config/nvim/doc/rails]]
+
+## .. ...
+
+```ruby
+(1..5).to_a   # => [1, 2, 3, 4, 5]
+(1...5).to_a  # => [1, 2, 3, 4]
+(..5)   # x <= 5
+(...5)  # x < 5
+(5..)   # x >= 5
+(5...)  # x >= 5  (no upper bound, so the dot count doesn't change anything)
+```
