@@ -247,6 +247,7 @@
 		{ "n",  "<leader>gb",                  gs.blame_line, "blame line"  },
 	}
 	Perun {
+		{ "  Git: add file",                  gg.add_file                  },
 		{ "  Git: blame",                     gs.blame                     },
 		{ "  Git: blame line",                gs.blame_line                },
 		{ "  Git: browse",                    gg.browse                    },

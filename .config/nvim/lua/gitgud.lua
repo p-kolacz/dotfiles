@@ -5,6 +5,10 @@ Plugin {
 
 local M = {}
 
+function M.add_file()
+	vim.cmd.G("add %")
+end
+
 function M.blame()
 	vim.cmd.Gblame()
 end
