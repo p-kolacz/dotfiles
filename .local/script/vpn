@@ -1,11 +1,14 @@
 #!/bin/sh
 
+# CONF=/etc/wireguard/sk-bts-wg-001.conf
+CONF=/etc/wireguard/cz-prg-wg-201.conf
+
 function down() {
-	sudo wg-quick down /etc/wireguard/sk-bts-wg-001.conf
+	sudo wg-quick down "$CONF"
 }
 
 function up() {
-	sudo wg-quick up /etc/wireguard/sk-bts-wg-001.conf
+	sudo wg-quick up "$CONF"
 }
 
 _usage() {
