@@ -1,3 +1,5 @@
+~/.config/nvim/doc/http_response_codes.txt
+
 # Ruby on Rails
 
 - `bin/rails generate controller Articles index --skip-routes`

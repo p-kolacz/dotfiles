@@ -143,7 +143,7 @@
 	Require {
 		"conf/completion",
 		"conf/lsp",
-		-- "conf/treesitter",
+		"conf/treesitter",
 	}
 	Plugin {
 		"https://github.com/tpope/vim-commentary",
@@ -454,5 +454,37 @@
 	end
 
 -- }}}
+
+Plugin {
+	{
+		"https://github.com/selimacerbas/live-server.nvim",
+		config = function ()
+			-- print("LiveServer config")
+			require("live_server").setup {
+				default_port = 8000,
+				live_reload = { enabled = true, inject_script = true, debounce = 120, css_inject = true },
+				directory_listing = { enabled = true, show_hidden = false },
+			}
+		end
+	},
+	{
+		"https://github.com/selimacerbas/markdown-preview.nvim",
+		config = function()
+			-- print("MDPreview config")
+			require("markdown_preview").setup()
+			--	{
+			  -- all optional; sane defaults shown
+			  -- instance_mode = "takeover",  -- "takeover" (one tab) or "multi" (tab per instance)
+			  -- port = 0,                    -- 0 = auto (8421 for takeover, OS-assigned for multi)
+			  -- open_browser = true,
+			  -- default_theme = "dark",      -- "dark" or "light"; initial preview theme
+			  -- debounce_ms = 300,
+			-- }
+			-- )
+			-- vim.keymap.set("n", "<localleader>o", "<cmd>MarkdownPreview<cr>", { desc = "Markdown: Start preview" }
+			-- vim.keymap.set("n",
+		end,
+	},
+}
 
 -- vim:foldmethod=marker

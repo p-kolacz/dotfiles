@@ -1,14 +1,14 @@
-Plugin {
-	{
-		"https://github.com/rest-nvim/rest.nvim",
-		config = function ()
-			require("rest-nvim").setup {}
-		end
-	}
-}
+-- Plugin {
+-- 	{
+-- 		"https://github.com/rest-nvim/rest.nvim",
+-- 		config = function ()
+-- 			require("rest-nvim").setup {}
+-- 		end
+-- 	}
+-- }
 
-nnoremap_buffer("<localleader>x", "<Plug>RestNvim", "CURL current line")
-nnoremap_buffer("<localleader>p", "<Plug>RestNvimPreview", "preview CURL of current line")
-nnoremap_buffer("<localleader>r", "<Plug>RestNvimLast", "rerun last request")
+-- nnoremap_buffer("<localleader>x", "<Plug>RestNvim", "CURL current line")
+-- nnoremap_buffer("<localleader>p", "<Plug>RestNvimPreview", "preview CURL of current line")
+-- nnoremap_buffer("<localleader>r", "<Plug>RestNvimLast", "rerun last request")
 
-vim.opt_local.commentstring = "# %s"
+-- vim.opt_local.commentstring = "# %s"

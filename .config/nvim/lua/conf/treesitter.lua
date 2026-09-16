@@ -72,11 +72,11 @@ require"nvim-treesitter.configs".setup {
 	},
 }
 
-require"treesitter-context".setup()
+-- require"treesitter-context".setup()
 
 Perun {
 	{ "  TS: Enable highlight",  "TSBufEnable highlight"  },
 	{ "  TS: Disable highlight", "TSBufDisable highlight" },
-	{ "  TS: Context toggle",    "TSContextToggle"        },
+	-- { "  TS: Context toggle",    "TSContextToggle"        },
 
 }

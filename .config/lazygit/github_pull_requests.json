@@ -1,0 +1,851 @@
+{
+  "/home/piotr/src/riskmethods": [
+    {
+      "headRefName": "ll-IN-321-add-command-entity-to-delete-old-data",
+      "number": 15144,
+      "title": "IN-321 - Add cron worker to automaticlally clean up obsolete IndicatorMessage Data",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15144",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "mw-rm-11239-risk-object-address-data",
+      "number": 14747,
+      "title": "[RM-11239] Infrastructure for EventMessages risk objects",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/14747",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "RM-11656-refactor-businesspartner-location-repositories",
+      "number": 15722,
+      "title": "[RM-11656] refactor create method in BusinessPartner and Location Event Message Repository",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15722",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "staging",
+      "number": 15354,
+      "title": "Trunk based development",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15354",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "staging",
+      "number": 15348,
+      "title": "Release 186",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15348",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "staging",
+      "number": 15313,
+      "title": "Release 185",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15313",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "staging",
+      "number": 15239,
+      "title": "Release 184",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15239",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "staging",
+      "number": 15192,
+      "title": "Release 183",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15192",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-unneeded-calls-to-sorting-handler",
+      "number": 22157,
+      "title": "[NOREF] Remove use of SortingHandler when is not needed",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22157",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "dependabot/bundler/rubocop-1.64.1",
+      "number": 18168,
+      "title": "build(deps-dev): bump rubocop from 1.63.5 to 1.64.1",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/18168",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ll-fix-location-error",
+      "number": 17215,
+      "title": "FIX - Redistribution of Events is not working.",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/17215",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1459862-refactoring-of-ro-infrastructure",
+      "number": 21397,
+      "title": "[AB#1459862] [RO] Refactoring of infrastructure",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21397",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "mw-rm-11754-cleanup-cache",
+      "number": 16250,
+      "title": "[RM-11754] add means to clear subscription and risk object caches in domains",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/16250",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "prod-1480-fault-tolerant-bvd-search",
+      "number": 15215,
+      "title": "[RM-10358] Fault tolerant BvD Search",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/15215",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-exclusions-from-rubocop_todo-2.yml",
+      "number": 22078,
+      "title": "[NOREF] Removed inverse_of from rubobop exclusions and added inverese_of to models",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22078",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "AB-1465351-refactoring-event-messages-infrastructure",
+      "number": 21532,
+      "title": "[Ab#1465351] Refactoring EventMessages infrastructure",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21532",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-fix-rubocop-errors-for-app-models",
+      "number": 21211,
+      "title": "[INV][WIP][2SPLIT] Removed /app/models exclusions from rubocop and fixed offences where possible",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21211",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "BUG-1314397-ric-creates-location-em-with-radius-zero",
+      "number": 18738,
+      "title": "[BUG-1214397] RIC creates location em with radius 0",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/18738",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "AB-1470026-use-countries.search_name-for-searching",
+      "number": 21959,
+      "title": "[AB#1470026] Use countries.search name for searching",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21959",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "AB-1469982-remove-i18n-country-translations",
+      "number": 21913,
+      "title": "[AB#1469982 ] Remove I18n country translations",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21913",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "AB-1470029-use-countries.translations-for-country-names-displaying",
+      "number": 21772,
+      "title": "[AB#1470029]  Start using with countries.translations column for Country names displaying",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21772",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1451406-validate-check-constraint",
+      "number": 21204,
+      "title": "[AB#1451406] validate country slug check constraint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/21204",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "issue/em-coordinates-failure",
+      "number": 18530,
+      "title": "[AB#1299438] Fix Location Event Messages processing",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/18530",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "dependabot/bundler/rubocop-rspec-2.27.1",
+      "number": 17593,
+      "title": "build(deps-dev): bump rubocop-rspec from 2.26.1 to 2.27.1",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/17593",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-move-setting-to-proper-place",
+      "number": 23620,
+      "title": "[NOREF] Moved Settings to app/lib",
+      "state": "DRAFT",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23620",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-semantic-logger-appenders-deprecation",
+      "number": 23857,
+      "title": "[NOREF] Replace deprecated add_file_appender with appenders block",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23857",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1562786-fix-error-message",
+      "number": 23833,
+      "title": "fix",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23833",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-map-excel",
+      "number": 23821,
+      "title": "[NOREF] Move Excel build and upload outside DB transaction in MapExcel",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23821",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-lint-staged-git-add",
+      "number": 23781,
+      "title": "Remove redundant git add from lint-staged JS task",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23781",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1532827-cleanup-ia-ff",
+      "number": 23555,
+      "title": "[AB#1532827] Clean up after Impact Analyzer enablement",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23555",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-pg18-structure-sql-rebaseline",
+      "number": 23888,
+      "title": "[NOREF] Re-baseline db/structure.sql in PostgreSQL 18 dump format",
+      "state": "DRAFT",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23888",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-fix-actionplan-spec",
+      "number": 23952,
+      "title": "[NOREF] fix flaky Action Plan test",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23952",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "js-ab-1560856-soft-delete-tasks",
+      "number": 23844,
+      "title": "[AB#1560856] Soft deletion for tasks",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23844",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1562792-quota-editing",
+      "number": 23760,
+      "title": "[AB#1562792] Allow customer quota editing in Customer Success Cockpit",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23760",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-fix-commit-hooks",
+      "number": 23780,
+      "title": "Fix pre-commit hook failing on git dubious-ownership in docker",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23780",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-remove-deprecations-from-em-specs",
+      "number": 23632,
+      "title": "[NOREF][EM] Fix deprecaction warnings in spec",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23632",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-refactor-ed-domain-types",
+      "number": 23631,
+      "title": "[NOREF][ED] Promote ClusterAffectionState to a Dry::Struct",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23631",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-cleanup-after-zurich-removal",
+      "number": 23618,
+      "title": "[NOREF] Cleanup after Zurich deletion",
+      "state": "DRAFT",
+      "checksState": "FAILURE",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23618",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-remove-exclusions-from-rubocop_todo-part-5",
+      "number": 22913,
+      "title": "[AB#1547560] Removal of exclusions of complexity cops from .rubocop_todo.yml",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22913",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1568774-rrc-default-fields",
+      "number": 23889,
+      "title": "[AB#1568774][RRC-BE] Add assignment-level default fields for mitigation catalog entries",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23889",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-empty-action-plan",
+      "number": 23832,
+      "title": "[NOREF] Fix 400 on empty task/risk-object relations in Response Center tasks index",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23832",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1562786-soft-delete-documents",
+      "number": 23751,
+      "title": "[AB#1562786][RRC] Soft-deletion for documents",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23751",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-creditsafe-cleanup",
+      "number": 22513,
+      "title": "[NOREF] Creditsafe cleanup BAK",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22513",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1517636-remove-service-factory-04",
+      "number": 22820,
+      "title": "[AB#1517636] Remove geocoder_service from service factory",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22820",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1520531-new-columns-for-rr_risk_responses",
+      "number": 22889,
+      "title": "[AB#1520531][RRC-BE] Introduce new columns to rr_risk_responses table",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22889",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1502696-indicator-entity-cleanup",
+      "number": 22804,
+      "title": "[AB#1502696] Remove IndicatorEntity model and leftover code",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22804",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1518653-filtering-by-monitoring-status",
+      "number": 22778,
+      "title": "[AB#1518653] Enable filtering by Monitoring Status on ScoreCards index and RiskObject index endpoints",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22778",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1483339-remove-obsolete-creditsafe-db-columns-2",
+      "number": 22450,
+      "title": "[AB#1483339] Remove obsolete creditsafe db columns",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22450",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1483339-prepare-removal-obsolete-creditsafe-db-columns",
+      "number": 22416,
+      "title": "[AB#1483339] Prepare removal obsolete creditsafe db columns",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22416",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-service-factory",
+      "number": 22518,
+      "title": "[AB#1517636][WIP] Remove Service Factor - to be splited",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22518",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1517636-remove-service-factroy-03",
+      "number": 22728,
+      "title": "[AB#1517636] Remove impact_anayzer_service and export_factory from service factory",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22728",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "issue/data-sources-unregistered-listeners",
+      "number": 22426,
+      "title": "[NOREF] Add missing initializer to data sources domain",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22426",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1518652-expose-monitoring-status-on-scorecards-and-ro-api",
+      "number": 22790,
+      "title": "[AB#1518652] Expose Monitoring Status on ScoreCards and RiskObject API",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22790",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-service-factory-02",
+      "number": 22711,
+      "title": "[AB#1517636] Remove customer service from service factory",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22711",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-registrable-from-data-source-model",
+      "number": 22678,
+      "title": "[NOREF] Removed risk object deregistration from data source adapter",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22678",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1496791-remove-related-countries-from-supply-paths",
+      "number": 22497,
+      "title": "[AB#1496791] Removing related countries from supply paths",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22497",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-dependent-cop-exclusions",
+      "number": 22147,
+      "title": "[AB#1517589] Added Rails/HasManyOrHasOneDependent cop to rubocop",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22147",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-remove-service-factory-01",
+      "number": 22679,
+      "title": "[AB#1517636] Slimming down service factory",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22679",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "inv-creditsafe-cleanup-2",
+      "number": 22552,
+      "title": "[NOREF] Creditsafe cleanup",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22552",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "AB-1493078-add-list-score-cards-api-v2-endpoint",
+      "number": 22245,
+      "title": "[AB#1493078][RO Portfolio] Add List ScoreCards API v2 endpoint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22245",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1549612-location-create-event-v3",
+      "number": 23487,
+      "title": "[AB#1549612] Accept Location Event Created v3.0 (geojson-only)",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23487",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-inv-fix-packwerkconfig-for-rc",
+      "number": 23468,
+      "title": "packwerk enabled, refactored namespaces",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23468",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1539846-country_slug_writing_fix",
+      "number": 23419,
+      "title": "[AB#1539846] Fix for country_slug",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23419",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1530844-decomission-active-from-action-plans",
+      "number": 23148,
+      "title": "[AB#1530844] Decomission activated column from action plans",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23148",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1520335-change-risk-response-doc",
+      "number": 23030,
+      "title": "[AB#1520335] Change doc folder for Risk Response Show endpoint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23030",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-remove-portfolio_export-feature-flag",
+      "number": 22968,
+      "title": "[NOREF] Remove portfolio_export feature flag",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22968",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pa-1548462-crt-018-t2-supplier-model",
+      "number": 23530,
+      "title": "[AB#1548462] CRT-018 T2: CommoditySupplier model + migration + public value types",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23530",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1517636-remove-service-factory-5",
+      "number": 23040,
+      "title": "[AB#1517636] Remove indicator_* from service factory",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23040",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "oa-1553970-attachment-manipulations",
+      "number": 23581,
+      "title": "[AB#1553970] Task Attachments APIv2",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23581",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1539853-add-indirectly-affected-countries-to-em-api",
+      "number": 23426,
+      "title": "[AB#1539853][APIv2] Introduce indirectly affected countries to Event Messages API",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23426",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1539846-country_slugs-write-fix",
+      "number": 23414,
+      "title": "[AB#1539846][FIX] Fix writing country_slugs",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23414",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1520335-add-status_code_to_risk_response_show",
+      "number": 23012,
+      "title": "[AB#1520335] Add status_code to risk response show endpoint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23012",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1549547-exclude-completed-rr-from-overdue-filters",
+      "number": 23508,
+      "title": "[AB#1549547][RRC-BE] Exclude completed risk responses from overdue filters",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23508",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1539846-em-accepty-directly-indirectly-affected-country-ids",
+      "number": 23311,
+      "title": "[AB#1539846][EM] Accept indirectly_affected_country_ids and directly_affected_country_ids",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23311",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1532314-rr-index-date-filtering",
+      "number": 23225,
+      "title": "[AB#1532314] Date filtering for RiskResponse Index endpoint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23225",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1517636-remove-service-factory-6",
+      "number": 23100,
+      "title": "[AB#1517636] Removed services from factory and removed import service factory",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23100",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ab-1496791-remove-related-countries-from-supply-paths-3",
+      "number": 22639,
+      "title": "[AB#1496791] Removing related countries from supply paths",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22639",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1520335-add-risk-response-show-endpoint",
+      "number": 22970,
+      "title": "[AB#1520335] Add risk response show endpoint",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/22970",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1563728-http-codes-hardening",
+      "number": 23911,
+      "title": "[AB#1563728] Harden 404 handling for unmatched routes behind a feature flag",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23911",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-git-hooks-host-user",
+      "number": 24034,
+      "title": "[NOREF] Fix user premissions for linter",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24034",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 13620,
+      "title": "Master",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/13620",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 13353,
+      "title": "Release v160",
+      "state": "CLOSED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/13353",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 11214,
+      "title": "Merge down `master` to `staging`",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/11214",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 9695,
+      "title": "🕯 Warm fix - merge master into staging",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/9695",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 9362,
+      "title": "Merge down Master to Staging",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/9362",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "js-ab-1568983-populate-mitigation-templates",
+      "number": 24009,
+      "title": "[AB#1568983] Populate mitigation templates",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24009",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "mh-1579425-dynamic-kpis",
+      "number": 24163,
+      "title": "[AB#1579425] Support dynamic KPIs depending on Risk Reponse Filters",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24163",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1589338-remove-legacy-task_template-destroyer",
+      "number": 24102,
+      "title": "[AB#1589338] Remove legacy Destroyer::TaskTemplate::* business objects",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24102",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1590462-link-mitigation-templates-fo-admin-ui",
+      "number": 24124,
+      "title": "[AB#1590462][RRC-BE] Link assignments to mitigation templates on admin system task template screen",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24124",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-api-v2-route-not-found",
+      "number": 23992,
+      "title": "[NOREF][WIP] Answer unmatched API paths inside Grape",
+      "state": "CLOSED",
+      "checksState": "FAILURE",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23992",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-import-supply-path-self-loop",
+      "number": 23864,
+      "title": "[NOREF] Report self-referential supply path imports as row errors",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23864",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "js-ab-1568983-introduce-mitigation-template",
+      "number": 24006,
+      "title": "[AB#1568983] MitigationTemplate migrations and model",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24006",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1568954-internal-api-task-template",
+      "number": 23984,
+      "title": "[AB#1568954] Add internal API task-template resource and serializer",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/23984",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 13620,
+      "title": "Master",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/13620",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 13353,
+      "title": "Release v160",
+      "state": "CLOSED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/13353",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 11214,
+      "title": "Merge down `master` to `staging`",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/11214",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 9695,
+      "title": "🕯 Warm fix - merge master into staging",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/9695",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "master",
+      "number": 9362,
+      "title": "Merge down Master to Staging",
+      "state": "MERGED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/9362",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-sync-ac-azure-project",
+      "number": 24142,
+      "title": "[NOREF] Fix sync-acceptance-criteria input name mismatch",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24142",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1592908-remove-roll_out",
+      "number": 24141,
+      "title": "[AB#1592908][RRC-BE] Remove dead roll_out system task associations flow",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24141",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1568972-add-interntal-api-task-template-crud",
+      "number": 24049,
+      "title": "[AB#1568972] Add task template internal API CRUD endpoints",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24049",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "ks-ab-1488374-remove-country_slug-callbacks-in-address",
+      "number": 24038,
+      "title": "[AB-1488374] Remove country slug callbacks",
+      "state": "CLOSED",
+      "checksState": "SUCCESS",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24038",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-fix-pat-controller-spec-time-bomb",
+      "number": 24155,
+      "title": "[NOREF] Fix PAT controller spec time bomb",
+      "state": "CLOSED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24155",
+      "headRepositoryOwner": "riskmethods"
+    },
+    {
+      "headRefName": "pk-1590463-link-mitigation-templates-for-customer-ui",
+      "number": 24125,
+      "title": "[AB#1590463][RRC-BE] Link assignments to mitigation templates on customer Task Configuration screen",
+      "state": "MERGED",
+      "url": "https://github.com/riskmethods/riskmethods/pull/24125",
+      "headRepositoryOwner": "riskmethods"
+    }
+  ]
+}
