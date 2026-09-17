@@ -30,5 +30,5 @@ for f in $ZDOTDIR/plugins/*.zsh; do source "$f"; done
 MACHINE_RC=$ZDOTDIR/machines/$(cat /etc/hostname).zshrc
 [[ -f $MACHINE_RC ]] && source $MACHINE_RC
 
-# setup prompt
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
