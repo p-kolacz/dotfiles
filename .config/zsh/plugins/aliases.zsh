@@ -16,7 +16,7 @@ abbr yt2mp3="youtube-dl --extract-audio --audio-format mp3 --embed-thumbnail --a
 alias batman="nmcli device wifi connect 'Batman'"
 alias myip="curl ipinfo.io/ip"
 alias nv="nvim"
-alias v="nvim"
+alias v="nvim --listen /tmp/server.nvim"
 alias weather="curl 'wttr.in/?Fqn&lang=pl'"
 (( $+commands[host] )) || alias host="drill ANY -t"
 alias webcam="qv4l2"

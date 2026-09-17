@@ -36,4 +36,4 @@ export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 alias claws-mail="claws-mail --alternate-config-dir $XDG_DATA_HOME/claws-mail"
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias pidgin="pidgin --config=$XDG_DATA_HOME/purple"
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
