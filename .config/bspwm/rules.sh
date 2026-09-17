@@ -28,6 +28,7 @@ net-runelite-client-RuneLite
 pavucontrol
 Pavucontrol
 Pidgin
+opensnitch-ui
 Qalculate-gtk
 qv4l2
 scummvm

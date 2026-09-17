@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FILE="$HOME/.cache/wallpaper"
-WALLPAPERS="$HOME/Images/Wallpapers/29 x 1"
+WALLPAPERS="$HOME/Images/Wallpapers/21 x 9"
 WALLSET="xwallpaper --zoom"
 # WALLSET="feh --no-fehbg --bg-fill"
 

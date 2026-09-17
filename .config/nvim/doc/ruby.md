@@ -1,3 +1,5 @@
+~/.config/nvim/doc/http_response_codes.txt
+
 # Ruby
 
 - %
