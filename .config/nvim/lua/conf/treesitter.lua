@@ -6,6 +6,36 @@ Plugin {
 
 mapgroup("<leader>ct",   "+Treesitter")
 
+-- nvim-treesitter's master branch only supports nvim 0.10/0.11: its query handlers
+-- register with `all = false`, expecting match[id] to be a single node. 0.12 dropped
+-- that option, so they now get a node list and throw on every injection that uses
+-- them (#downcase! in ruby/bash/php heredocs, #set-lang-from-info-string! in
+-- markdown fences, #set-lang-from-mimetype! in html <script>). Collapse the list
+-- back to one node while they register.
+do
+	local tsq = require "vim.treesitter.query"
+
+	local function collapse(match)
+		local single = {}
+		for id, nodes in pairs(match) do
+			single[id] = type(nodes) == "table" and nodes[#nodes] or nodes
+		end
+		return single
+	end
+
+	local function wrap(register)
+		return function(name, handler, opts)
+			return register(name, function(match, ...) return handler(collapse(match), ...) end, opts)
+		end
+	end
+
+	local add_directive, add_predicate = tsq.add_directive, tsq.add_predicate
+	tsq.add_directive, tsq.add_predicate = wrap(add_directive), wrap(add_predicate)
+	package.loaded["nvim-treesitter.query_predicates"] = nil
+	require "nvim-treesitter.query_predicates"
+	tsq.add_directive, tsq.add_predicate = add_directive, add_predicate
+end
+
 require"nvim-treesitter.configs".setup {
 	sync_install = false,
 	auto_install = true,

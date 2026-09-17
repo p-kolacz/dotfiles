@@ -45,6 +45,19 @@ kk() {
 	# echo $pid
 }
 
+minimize() {
+	  emulate -L zsh
+	  (( $# )) || { print -u2 'usage: jpgmin <file.jpg|glob> ...'; return 1 }
+
+	  local f out
+	  for f in "$@"; do
+		[[ $f == *.min.jpg ]] && continue
+		out=${f:r}.min.jpg
+		magick "$f" -strip -resize 'x1440>' -quality 80 "$out" || return
+		print -r -- "$f -> $out"
+	  done
+}
+
 mkd() {
 	mkdir -p "$1" && cd "$1"
 }
