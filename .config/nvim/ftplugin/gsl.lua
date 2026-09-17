@@ -1,4 +1,3 @@
-vim.opt_local.formatoptions("t")
 vim.opt_local.autoindent = true
 
 Helper.map {

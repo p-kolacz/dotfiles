@@ -1,7 +1,5 @@
 local group_id = vim.api.nvim_create_augroup("yamlkit", { clear = true })
 
-print("yamlkit included")
-
 local function is_yaml_buffer(bufnr)
 	return vim.bo[bufnr or 0].filetype == "yaml"
 end

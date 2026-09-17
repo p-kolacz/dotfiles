@@ -80,7 +80,6 @@
 	-- Zorya.highlight("markdownH2", "gui=undercurl")
 
 	vim.api.nvim_set_hl(0, 'TrailingSpaces', { bg = '#ee3333' })
-	vim.fn.matchadd('TrailingSpaces', [[\s\+$]])
 
 	Noremap {
 		{ "G",  "<leader>o",   "Options"                                              },
@@ -108,7 +107,6 @@
 	local fileops = require "fileops"
 	Set {
 		autowrite   = true,
-		viewoptions = "cursor,folds"
 	}
 	Noremap {
 		{ "G",  "<leader>f",                                "+File"               },
@@ -120,17 +118,10 @@
 	Autocmd {
 		FocusLost = {
 			pattern = "*",
-			command = "wall",
-		},
-		BufWinLeave = {             -- Remeber foldings and stuff...
-			pattern = "?*",			-- ?* ensures filename is not empty, for non-file buffers
-			command = "mkview",
-		},
-		BufWinEnter = {
-			pattern = "?*",
-			command = "silent! loadview",
+			command = "silent! wall",
 		},
 	}
+	require("state").enable()
 
 -- }}}
 -- Code {{{
@@ -299,8 +290,8 @@
 	Navigator = require "navigator" -- after nvim-tree
 	Set {
 		foldlevelstart = 99,
-		foldmethod     = "expr",
-		foldexpr       = "nvim_treesitter#foldexpr()",
+		-- foldmethod     = "expr",
+		-- foldexpr       = "nvim_treesitter#foldexpr()",
 	}
 	Noremap {
 		{ "G",  "<leader>j",  "+Jump"                                       },

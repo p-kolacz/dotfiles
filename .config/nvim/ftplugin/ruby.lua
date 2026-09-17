@@ -8,6 +8,7 @@
 --  ##:::. ##:. #######:: ########::::: ##::::
 -- ..:::::..:::.......:::........::::::..:::::
 
+vim.treesitter.start()
 local rubies = require "rubies"
 
 mapgroup("<localleader>s", "+Server")

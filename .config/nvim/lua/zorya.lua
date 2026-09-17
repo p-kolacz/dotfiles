@@ -138,7 +138,7 @@ end
 function M.enable_highlight()
 	vim.api.nvim_create_autocmd("TextYankPost", { group = "zorya", pattern = "*", callback =
 		function()
-			vim.highlight.on_yank { higroup="IncSearch", timeout=500 }
+			vim.hl.on_yank { higroup="IncSearch", timeout=500 }
 		end
 	})
 end
