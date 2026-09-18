@@ -31,24 +31,29 @@ function M.buffer2clipboard()
 end
 
 function M.paste_from_clipboard()
-  vim.cmd([[ normal! "+P ]])
+	vim.cmd [[ normal! "+P ]]
 end
 
 function M.visual2clipboard()
-  vim.cmd([[
-    normal! "*y
-    let @+=@*
-  ]])
+	vim.cmd [[
+		normal! "*y
+		let @+=@*
+	]]
 end
 
-function M.set_clipboard()
-	vim.opt.clipboard = "unnamed,unnamedplus"
-	print(vim.cmd("set clipboard?"))
-end
-
-function M.unset_clipboard()
-	vim.opt.clipboard = nil
-	print(vim.cmd("set clipboard?"))
+-- Send only real yanks (y, yy, Y, visual y, :y) to the system clipboard,
+-- leaving d/x/c/s alone. Explicit registers ("ay) are skipped.
+function M.enable_yank2clipboard()
+	vim.api.nvim_create_autocmd("TextYankPost", {
+		group = vim.api.nvim_create_augroup("yanka", { clear = true }),
+		pattern = "*",
+		callback = function()
+			local ev = vim.v.event
+			if ev.operator ~= "y" or ev.regname ~= "" then return end
+			vim.fn.setreg("+", ev.regcontents, ev.regtype)
+			vim.fn.setreg("*", ev.regcontents, ev.regtype)
+		end,
+	})
 end
 
 function M.relative_path_with_line()

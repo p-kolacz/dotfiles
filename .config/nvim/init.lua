@@ -418,10 +418,11 @@
 -- Yank {{{
 
 	local yanka  = require "pxtr/yanka"
+	yanka.enable_yank2clipboard()
 	Noremap {
 		{ "n",  "<leader>yr",             yanka.relative_path,    "yank relative path" },
 		{ "n",  "<A-a>",                  yanka.buffer2clipboard                       },
-		{ "v",  "<C-c>",                  yanka.visual2clipboard                       },
+		-- { "v",  "<C-c>",                  yanka.visual2clipboard                       },
 	}
 	Map { "",   "<C-v>",                  yanka.paste_from_clipboard }
 	Perun {
@@ -432,8 +433,6 @@
 		{ "  Yank full dir",             yanka.full_dir             },
 		{ "  Yank <cfile>",              yanka.cfile                },
 		{ "  Yank buffer to clipboard",  yanka.buffer2clipboard     },
-		{ "  Yank set clipboard",        yanka.set_clipboard        },
-		{ "  Yank unset clipboard",      yanka.unset_clipboard      },
 	}
 
 -- }}}
