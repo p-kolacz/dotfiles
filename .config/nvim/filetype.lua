@@ -5,6 +5,7 @@ vim.filetype.add {
 	filename = {
 		["todo.txt"] = "todotxt",
 		["done.txt"] = "todotxt",
+		sxhkdrc = "sxhkd",
 	},
 	-- pattern = {
 		-- ["~/%.config/foo/.*"] = "fooscript",

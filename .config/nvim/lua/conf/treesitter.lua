@@ -11,17 +11,17 @@ Perun {
 require("nvim-treesitter.install").install {
 	"lua",
 	"awk", "bash", "regex",
-	"ruby", "embedded_template", "sql",
-	"html", "css", "scss", "javascript", "nginx",
+	"ruby", "embedded_template",
+	"html", "css", "scss", "javascript", "nginx", "sql",
 	"comment", "make",
 	"markdown", "markdown_inline",
 	"csv", "json", "toml", "xml", "yaml",
-	"gdscript", "gdshader", "go", "php", "python", "rust",
+	"gdscript", "gdshader",
+	"c_sharp", "go", "php", "python", "rust",
 	"sxhkdrc", "xresources",
 	"todotxt",
 }
 
-vim.treesitter.language.register("gdshader", "gsl")
 vim.treesitter.language.register("sxhkdrc", "sxhkd")
 vim.treesitter.language.register("csv", "csv_semicolon")
 
@@ -31,8 +31,7 @@ vim.treesitter.language.register("csv", "csv_semicolon")
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
 	callback = function(ev)
-		local lang = vim.treesitter.language.get_lang(ev.match)
-		if not lang or not pcall(vim.treesitter.start, ev.buf, lang) then
+		if not pcall(vim.treesitter.start, ev.buf) then
 			return
 		end
 
