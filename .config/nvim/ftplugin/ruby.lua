@@ -9,7 +9,7 @@
 -- ..:::::..:::.......:::........::::::..:::::
 
 vim.treesitter.start()
-local rubies = require "rubies"
+local rubies = require "pxtr/rubies"
 
 mapgroup("<localleader>s", "+Server")
 BufferNoremap {

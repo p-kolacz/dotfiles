@@ -1,6 +1,6 @@
 vim.opt_local.foldmethod = "indent"
 
-require 'caniuse'.setup()
+require 'pxtr/caniuse'.setup()
 mapgroup("<leader>hu","Can I Use")
 nnoremap_buffer('<leader>huc', ':CaniuseCword<cr>', 'caniuse cword')
 nnoremap_buffer('<leader>huq', ':Caniuse ', 'caniuse query')

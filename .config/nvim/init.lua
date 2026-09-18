@@ -8,15 +8,15 @@
 -- ..::::..::........:::.......::::::...:::::....::..:::::..::
 -- Bootstrap {{{
 
-	require "bootstrap"
+	require "pxtr/bootstrap"
 
-	Plugin = require "plugozaur".add
-	Perun  = require "perun".add
+	Plugin = require "pxtr/plugozaur".add
+	Perun  = require "pxtr/perun".add
 	Plugin "https://github.com/nvim-lua/plenary.nvim"
 	Require {
 		"conf/firenvim",
 		"conf/which-key",
-		"mapper",
+		"pxtr/mapper",
 	}
 
 	vim.g.mapleader = " "
@@ -25,7 +25,7 @@
 -- }}}
 -- Appearance {{{
 
-	Icons = require "iconz"
+	Icons = require "pxtr/iconz"
 	vim.cmd.language("messages en_US.utf8")
 	Require {
 		"conf/lualine",
@@ -65,7 +65,7 @@
 
 	vim.cmd.colorscheme("darkblue")
 
-	Zorya  = require "zorya"
+	Zorya  = require "pxtr/zorya"
 	Zorya.setup {
 		restore_colorscheme = true,
 		colorschemes = require "conf/themez",
@@ -104,7 +104,7 @@
 -- }}}
 -- Buffer {{{
 
-	local fileops = require "fileops"
+	local fileops = require "pxtr/fileops"
 	Set {
 		autowrite   = true,
 	}
@@ -121,7 +121,7 @@
 			command = "silent! wall",
 		},
 	}
-	require("state").enable()
+	require("pxtr/state").enable()
 
 -- }}}
 -- Code {{{
@@ -130,7 +130,7 @@
 		-- Require "conf/code-companion"
 	-- end
 
-	Laser  = require "laserpro"
+	Laser  = require "pxtr/laserpro"
 	Require {
 		"conf/completion",
 		"conf/lsp",
@@ -151,7 +151,7 @@
 -- Command Mode {{{
 
 	Noremap {
-		{ "n",  "<C-P>",             require"perun".run,                  },
+		{ "n",  "<C-P>",             require"pxtr/perun".run,                  },
 		{ "c",  "<C-a>",             "<home>",                            },
 		{ "c",  "<A-f>",             "<S-right>",                         },
 		{ "c",  "<C-b>",             "<left>",                            },
@@ -185,7 +185,7 @@
 -- }}}
 -- Edit {{{
 
-	local edit = require "edit"
+	local edit = require "pxtr/edit"
 	Set {
 		shiftwidth  = 4,
 		tabstop     = 4,
@@ -230,7 +230,7 @@
 -- Git {{{
 
 	local gs = require "conf/gitsigns"
-	local gg = require "gitgud"
+	local gg = require "pxtr/gitgud"
 	Noremap {
 		{ "G",  "<leader>g",                                  "+Git"        },
 		{ "n",  "<leader>gg",                  gg.status,     "status"      },
@@ -265,8 +265,8 @@
 -- }}}
 -- Help {{{
 
-	Helper   = require "helpozor"
-	require 'cheatash'.setup()
+	Helper   = require "pxtr/helpozor"
+	require 'pxtr/cheatash'.setup()
 	Noremap {
 		{ "n", "<F1>",         Helper.notes,          "Notes",                  },
 		{ "G", "<leader>h",    "+Help",                                         },
@@ -287,7 +287,7 @@
 		"conf/telescope",
 		"conf/nvim-tree",
 	}
-	Navigator = require "navigator" -- after nvim-tree
+	Navigator = require "pxtr/navigator" -- after nvim-tree
 	Set {
 		foldlevelstart = 99,
 		-- foldmethod     = "expr",
@@ -390,7 +390,7 @@
 
 	Mapgroup("<leader>v", "+Vim")
 
-	local plugger = require "plugozaur"
+	local plugger = require "pxtr/plugozaur"
 	Perun {
 		{ "  Update plugins",              plugger.update },
 		{ "  Update plugins (debug)",      plugger.debug_update },
@@ -417,7 +417,7 @@
 -- }}}
 -- Yank {{{
 
-	local yanka  = require "yanka"
+	local yanka  = require "pxtr/yanka"
 	Noremap {
 		{ "n",  "<leader>yr",             yanka.relative_path,    "yank relative path" },
 		{ "n",  "<A-a>",                  yanka.buffer2clipboard                       },

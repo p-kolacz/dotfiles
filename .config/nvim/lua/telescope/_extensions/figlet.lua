@@ -1,4 +1,4 @@
-local figlet = require "figlet"
+local figlet = require "pxtr.figlet"
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
